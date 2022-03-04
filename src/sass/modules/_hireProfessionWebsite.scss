@@ -1,0 +1,241 @@
+/*======================================
+  hireProfessionWebsite
+======================================*/
+
+.hireProfessionWebsite {
+  padding-top: 151px;
+  padding-bottom: 113px;
+  .grid {
+    padding: 0 0 0 4px;
+    @include columns( $quant: 31.5% 37% 31.5%, $gutter: 0%, $align: stretch, $template: 'fast phone customSite');
+    .icons {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 auto 16px auto;
+      padding: 10px;
+      .icon {
+        width: 100%;
+        height: 100%;
+        fill: transparent;
+        stroke: #323232;
+      }
+    }
+    h3 {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 133%;
+      color: #371A45;
+      width: 100%;
+      text-align: center;
+      padding: 0 0 15px 0;
+    }
+    p {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 157%;
+      text-align: center;
+      color: #59608B;
+      padding: 0 0 0 0;
+      &.small {
+        font-size: 12px;
+        line-height: 217%;
+      }
+    }
+    ul {
+      text-align: left;
+      li {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 153%;
+        color: #59608B;
+        display: block;
+        position: relative;
+        padding: 12px 21px 12px 41px;
+        .before {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          position: absolute;
+          top: 10px;
+          left: 0;
+          padding: 0 7px;
+          .icon {
+            width: 100%;
+            height: 100%;
+            fill: transparent;
+          }
+        }
+      }
+    }
+    hr {
+      border: none;
+      width: 87%;
+      height: 1px;
+      background-color: #E0E0E0;
+      margin: 16px auto;
+    }
+    .price {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 80%;
+      color: #00B48F;
+      text-align: center;
+      padding-bottom: 7px;
+    }
+    .budget {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 114%;
+      color: #00B48F;
+      text-align: center;
+      padding-bottom: 7px;
+    }
+    .btnBudgets {
+      margin-top: 23px;
+      margin-bottom: 29px;
+      padding: 17px 25px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .box {
+      border-radius: 16px;
+      border: 1px solid #E0E0E0;
+      padding: 32px 31px 31px 31px;
+      text-align: center;
+      background-color: #FFF;
+      box-shadow: 0px 30px 80px rgba(0, 0, 114, 0.05);
+    }
+    .fast {
+      grid-area: fast;
+      .icons {
+        background-color: #FFF2BD;
+      }
+      ul {
+        li {
+          .before {
+            background-color: #FFF2BD;
+          }
+        }
+      }
+    }
+    .phone {
+      grid-area: phone;
+      text-align: center;
+      position: relative;
+      .boxStick {
+        position: sticky;
+        top: 0;
+        padding: 48px 0 0 0;
+        &:before {
+          content: '';
+          width: 39px;
+          height: 4px;
+          display: inline-block;
+          position: absolute;
+          background-color: #00B48F;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, 0px);
+          border-radius: 5px;
+        }
+      }
+      span {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 120%;
+        letter-spacing: 0.05em;
+        padding-bottom: 8px;
+        color: #008CFF;
+        display: block;
+      }
+      h2 {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 125%;
+        text-transform: uppercase;
+        color: #371A45;
+        display: block;
+        padding-bottom: 36px;
+      }
+      .image {
+        width: 100%;
+        height: 300px;
+        img {
+          margin: 24px 69px 0 56px;
+        }
+      }
+      p {
+        padding: 5px 0 0 0;
+        font-size: 16px;
+        line-height: 137%;
+      }
+      a {
+        display: block;
+        width: 55%;
+        padding: 11px 10px 9px 16px;
+        border: 2px solid #00B48F;
+        border-radius: 20px;
+        margin: 16px auto;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        font-weight: bold;
+        color: #00B48F;
+        .icon {
+          width: 20px;
+          height: 20px;
+          fill: transparent;
+          margin: 0 7px 0 0;
+          vertical-align: middle;
+        }
+      }
+      .arrowSlide {
+        fill: transparent;
+        width: 16px;
+        height: 20px;
+        transform: rotate(90deg);
+        margin: 41px auto 39px auto;
+        display: block;
+      }
+    }
+    .customSite {
+      grid-area: customSite;
+      .icons {
+        background-color: #85FFE6;
+      }
+      ul {
+        li {
+          .before {
+            background-color: #85FFE6;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}

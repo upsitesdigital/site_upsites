@@ -1,0 +1,112 @@
+/*======================================
+  featuredArticles
+======================================*/
+
+.featuredArticles {
+  padding-top: 88px;
+  padding-bottom: 132px;
+  border-bottom: 1px solid #E0E0E0;
+  span {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    padding-bottom: 10px;
+    color: #008CFF;
+    display: block;
+  }
+  h2 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 119%;
+    text-transform: uppercase;
+    color: #371A45;
+    display: block;
+    padding-bottom: 51px;
+  }
+  .all {
+    position: absolute;
+    top: 46px;
+    right: 8px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 143%;
+    color: #00B48F;
+    .icon {
+      fill: transparent;
+      width: 20px;
+      height: 12px;
+      margin-left: 17px;
+    }
+  }
+  .grid {
+    @include columns( $quant: 32% 32% 32%, $gutter: 2%, $align: stretch, $template: '');
+    .item {
+      position: relative;
+      -webkit-box-shadow: 0px 0px 60px 40px rgba(0, 0, 114, 0.1);
+      box-shadow: 0px 0px 60px 40px rgba(0, 0, 114, 0.1);
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      border-radius: 16px;
+      .image {
+        width: 100%;
+        height: 304px;
+        background-color: #F00;
+        border-radius: 16px;
+      }
+      .box {
+        padding: 26px 20px 60px 42px;
+      }
+      h3 {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 133%;
+        text-transform: uppercase;
+        color: #371A45;
+        padding-bottom: 7px;
+      }
+      a {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 143%;
+        color: #00B48F;
+        position: absolute;
+        bottom: 33px;
+        left: 43px;
+      }
+    }
+  }
+  &.internaPost {
+    padding-top: 76px;
+    .container {
+      border-top: 1px solid #E0E0E0;
+      padding-top: 74px;
+      .all {
+        top: 120px;
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}

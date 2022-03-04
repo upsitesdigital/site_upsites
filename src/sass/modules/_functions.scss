@@ -1,0 +1,220 @@
+/*======================================
+  Functions
+======================================*/
+
+.functions {
+  padding-bottom: 50px;
+  background-color: #002D54;
+  hr {
+    background-color: #E0E0E0;
+    opacity: 0.2;
+    border: none;
+    height: 1px;
+  }
+  span {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    padding-bottom: 16px;
+    color: #008CFF;
+    display: block;
+  }
+  h2 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 119%;
+    text-transform: uppercase;
+    color: #FFF;
+    display: block;
+    padding-bottom: 44px;
+  }
+  .grid {
+    @include columns( $quant: 51% 49%, $gutter: 0%, $align: stretch, $template: 'image text');
+    .image {
+      grid-area: image;
+      .box {
+        position: sticky;
+        top: 0;
+      }
+      .image {
+        width: 100%;
+        height: 524px;
+        img {
+          margin: 60px 110px 0 -48px;
+        }
+      }
+      h3 {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 133%;
+        text-align: center;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        margin: 0 145px 9px 0;
+      }
+      .btnBudgets {
+        margin-left: 72px;
+        padding: 20px 41px;
+      }
+    }
+    .text {
+      grid-area: text;
+      padding-top: 93px;
+      ul {
+        padding-top: 14px;
+        li {
+          padding-top: 32px;
+          padding-bottom: 34px;
+          border-bottom: 1px solid rgba(215, 238, 253, 0.1);
+          &:last-child {
+            border-bottom: none;
+          }
+          @include columns( $quant: 10% 88%, $gutter: 2%, $align: start, $template: 'icon title' 'icon text');
+          .icons {
+            grid-area: icon;
+            width: 40px;
+            height: 40px;
+            background: rgba(215, 238, 253, 0.1);
+            border-radius: 50%;
+            padding: 8px;
+            .icon {
+              width: 100%;
+              height: 100%;
+              fill: transparent;
+              stroke: #FFE000;
+            }
+          }
+          h3 {
+            grid-area: title;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 145%;
+            color: #FFFFFF;
+            padding-bottom: 14px;
+          }
+          p {
+            grid-area: text;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            color: #969ECC;
+          }
+        }
+        &.green {
+          padding-top: 18px;
+          padding-bottom: 31px;
+          li {
+            padding-bottom: 8px;
+            border-bottom: 0px solid rgba(215, 238, 253, 0.1);
+            @include columns( $quant: 12% 86%, $gutter: 2%, $align: start, $template: 'icon title' 'icon text');
+            .icons {
+              grid-area: icon;
+              width: 48px;
+              height: 48px;
+              background: #85FFE6;
+              border-radius: 50%;
+              padding: 8px;
+              .icon {
+                stroke: #323232;
+              }
+            }
+            h3 {
+              font-size: 16px;
+              line-height: 175%;
+              padding-bottom: 0;
+            }
+            p {
+              line-height: 175%;
+            }
+          }
+        }
+      }
+    }
+    &.gridSmall {
+      grid-template-columns: 45.5% 54.5%;
+    }
+  }
+  &.left {
+    h2 {
+      padding-bottom: 0;
+    }
+    .grid {
+      @include columns( $quant: 49% 51%, $gutter: 0%, $align: stretch, $template: 'text image');
+      .text {
+        padding-top: 102px;
+      }
+    }
+  }
+  &.white {
+    background-color: transparent;
+    padding-bottom: 105px;
+    h2 {
+      color: #371A45;
+      padding-bottom: 44px;
+    }
+    .grid {
+      @include columns( $quant: 51% 49%, $gutter: 0%, $align: stretch, $template: 'image text');
+      .image {
+        .image {
+          width: 100%;
+          height: 524px;
+          img {
+            margin: 60px 110px 0 -48px;
+          }
+        }
+        h3 {
+          color: #371A45;
+        }
+        .btnBudgets {
+          margin-left: 72px;
+        }
+      }
+      .text {
+        padding-top: 61px;
+        ul {
+          li {
+            border-bottom: 1px solid rgba(215, 238, 253, 0.3);
+            &:last-child {
+              border-bottom: none;
+            }
+            .icons {
+              background: rgba(215, 238, 253, 0.3);
+              .icon {
+                stroke: #008CFF;
+              }
+            }
+            h3 {
+              color: #371A45;
+            }
+            p {
+              color: #59608B;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}

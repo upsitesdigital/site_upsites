@@ -1,0 +1,177 @@
+/*======================================
+  Sliders
+======================================*/
+
+.clients {
+  padding-top: 84px;
+  padding-bottom: 120px;
+  overflow: hidden;
+  span {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    padding-bottom: 10px;
+    color: #008CFF;
+    display: block;
+    text-align: center;
+  }
+  h2 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 119%;
+    text-transform: uppercase;
+    color: #371A45;
+    display: block;
+    padding-bottom: 31px;
+    text-align: center;
+  }
+  p {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 175%;
+    color: #59608B;
+    padding-bottom: 52px;
+    text-align: center;
+    margin-top: -13px;
+  }
+  .slick-arrow {
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -35%);
+    width: 33px;
+    height: 40px;
+    border: none;
+    .icon {
+      fill: transparent;
+      width: 100%;
+      height: 100%;
+    }
+    &.slick-prev {
+      left: 0;
+      .icon {
+        transform: rotate(180deg);
+      }
+    }
+    &.slick-next {
+      right: 0;
+    }
+  }
+  .clientSlide {
+    padding: 0 39px 0 33px;
+    margin-bottom: 53px;
+    .item {
+      padding: 0 13px;
+    }
+  }
+  .testimonySlide {
+    margin: 0 -14px;
+    .item {
+      padding: 0 14px;
+      .box {
+        border: 1px solid #E0E0E0;
+        border-radius: 16px;
+        padding: 32px 31px 24px 31px;
+        .icon {
+          width: 38px;
+          height: 32px;
+          fill: #8DD7FF;
+          margin-bottom: 23px;
+        }
+        p {
+          font-family: Inter;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 175%;
+          color: #59608B;
+          text-align: left;
+          margin-top: 0;
+          padding-bottom: 0px;
+        }
+        .person {
+          padding: 30px 0 0 0;
+          display: grid;
+          grid-template-columns: 48px auto;
+          gap: 15px;
+          .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #F00;
+          }
+          .info {
+            strong {
+              display: block;
+              font-family: Inter;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 18px;
+              line-height: 100%;
+              color: #371A45;
+              padding: 5px 0 11px 0;
+            }
+            span {
+              display: block;
+              font-family: Inter;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 12px;
+              line-height: 100%;
+              text-transform: uppercase;
+              color: #008CFF;
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+  .pagSlide {
+    position: relative;
+    width: 176px;
+    float: right;
+    margin: 75px -6px 0 0;
+    .pagingInfo {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 143%;
+      color: #371A45;
+      display: block;
+      text-align: center;
+    }
+    .slick-arrow {
+      transform: translate(0, -50%);
+      width: 28px;
+      height: 40px;
+    }
+  }
+  .blockGoogle {
+    height: 60px;
+    width: 760px;
+    background: #F00;
+    float: left;
+    margin: 65px 0 0 0;
+  }
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}

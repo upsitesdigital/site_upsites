@@ -1,0 +1,267 @@
+/*======================================
+  Main structure
+======================================*/
+
+body {
+  //background: url(../img/bg.png) top center no-repeat;
+}
+
+hr {
+  margin: 0;
+}
+
+// header
+header {
+  padding: 44px 0;
+  .grid {
+    @include columns( $quant: 13% 72% 15%, $gutter: 0px, $align: center, $template: 'logo menu phone');
+    .item.logo {
+      grid-area: logo;
+    }
+    .item.menu {
+      grid-area: menu;
+      text-align: right;
+      ul {
+        li {
+          display: inline-block;
+          font-family: Inter;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 15px;
+          letter-spacing: 0.05em;
+          color: #726977;
+          padding: 17px 31px 0 0;
+          a {}
+        }
+      }
+    }
+    .item.phone {
+      grid-area: phone;
+      .icon {
+        width: 20px;
+        height: 20px;
+        fill: transparent;
+        margin: 0 7px 0 0;
+        vertical-align: middle;
+      }
+      a {
+        display: block;
+        width: 95%;
+        padding: 10px 10px 8px 16px;
+        border: 2px solid #00B48F;
+        border-radius: 20px;
+        margin: 16px 0 0 6px;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        font-weight: bold;
+        color: #00B48F;
+      }
+    }
+  }
+  &.blue {
+    background-color: #002D54;
+    .grid {
+      .item.menu {
+        ul {
+          li {
+            color: #FFF;
+          }
+        }
+      }
+      .item.phone {
+        grid-area: phone;
+        .icon {
+          width: 20px;
+          height: 20px;
+          fill: transparent;
+          margin: 0 7px 0 0;
+          vertical-align: middle;
+        }
+        a {
+          display: block;
+          width: 95%;
+          padding: 10px 10px 8px 16px;
+          border: 2px solid #00B48F;
+          border-radius: 20px;
+          margin: 16px 0 0 6px;
+          font-size: 13px;
+          letter-spacing: 0.05em;
+          font-weight: bold;
+          color: #00B48F;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}
+
+// end header
+// main
+main {
+  width: 100%;
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}
+
+// end main
+// footer
+footer {
+  .grid {
+    @include columns( $quant: 36% 37% 27%, $gutter: 0, $align: center, $template: '');
+    padding-bottom: 4px;
+    border-bottom: 1px solid #E9E9E9;
+    .cols-01 {
+      padding-top: 67px;
+      padding-bottom: 73px;
+      .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+      }
+      .logo {
+        width: 35%;
+        display: inline-block;
+      }
+      .share {
+        width: 31%;
+        display: inline-flex;
+        justify-content: space-between;
+        margin: 0% 48px 0 0px;
+        li {
+          display: inline-block;
+          .icon {
+            width: 20px;
+            height: 20px;
+            &.whats {
+              width: 16px;
+              height: 21px;
+            }
+            &.facebook {
+              width: 16px;
+              height: 17px;
+            }
+          }
+        }
+      }
+      p {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 157%;
+        color: #59608B;
+        padding: 39px 0 0 9px;
+      }
+    }
+    .cols-02 {
+      display: flex;
+      justify-content: center;
+      ul {
+        li {
+          font-family: Inter;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 120%;
+          letter-spacing: 0.05em;
+          color: #59608B;
+          padding: 8px 0;
+        }
+      }
+    }
+    .cols-03 {
+      p {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 143%;
+        letter-spacing: -0.01em;
+        color: #726977;
+        padding-bottom: 14px;
+        a {
+          font-weight: 500;
+        }
+      }
+      a.btn {
+        display: inline-block;
+        padding: 11px 31px 9px 35px;
+        border: 2px solid #00B48F;
+        border-radius: 20px;
+        margin: 25px 0 0 0;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        font-weight: bold;
+        color: #00B48F;
+        .icon {
+          width: 20px;
+          height: 20px;
+          fill: transparent;
+          margin: 0 7px 0 0;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .copyright {
+    display: flex;
+    justify-content: space-between;
+    padding: 23px 0 17px 0;
+    p {
+      font-family: Inter;
+      //font-family: Almarai;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 140%;
+      letter-spacing: 0.01em;
+      color: #726977;
+    }
+    a {
+      font-family: Inter;
+      //font-family: Almarai;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 160%;
+      letter-spacing: 0.01em;
+      color: #59608B;
+    }
+  }
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}
+
+// end footer

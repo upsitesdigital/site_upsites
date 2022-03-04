@@ -1,0 +1,123 @@
+/*======================================
+  dontJustWebsite
+======================================*/
+
+.dontJustWebsite {
+  padding-top: 279px;
+  position: relative;
+  background-color: #002D54;
+  .before {
+    content: '';
+    width: 100%;
+    height: 220px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .after {
+    content: '';
+    width: 50%;
+    height: 305px;
+    position: absolute;
+    bottom: -65px;
+    left: 0;
+  }
+  .moon {
+    content: '';
+    width: 96px;
+    height: 75px;
+    position: absolute;
+    bottom: 87px;
+    right: -10px;
+  }
+  .container {
+    padding-bottom: 77px;
+  }
+  .grid {
+    padding-bottom: 110px;
+    @include columns( $quant: 38% 40%, $gutter: 22%, $align: start, $template: 'left right');
+    .left {
+      grid-area: left;
+      h3 {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 133%;
+        text-transform: uppercase;
+        color: #FFFFFF;
+      }
+      .btnBudgets {
+        margin-top: 31px;
+        margin-bottom: 42px;
+        padding: 20px 41px;
+      }
+      p {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 175%;
+        color: #FFFFFF;
+        margin-bottom: 28px;
+      }
+    }
+    .right {
+      grid-area: right;
+      span {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 120%;
+        letter-spacing: 0.05em;
+        padding-bottom: 9px;
+        color: #008CFF;
+        display: block;
+      }
+      h2 {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 119%;
+        text-transform: uppercase;
+        color: #FFF;
+        display: block;
+        padding-bottom: 79px;
+      }
+      ul {
+        li {
+          font-family: Inter;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 175%;
+          color: #FFFFFF;
+          padding: 8px 15px;
+          position: relative;
+          &:before {
+            content: '.';
+            color: #FFF;
+            font-size: 33px;
+            position: absolute;
+            top: 0;
+            left: -2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}
