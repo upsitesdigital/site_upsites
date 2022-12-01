@@ -6,6 +6,9 @@
   padding-top: 84px;
   padding-bottom: 120px;
   overflow: hidden;
+  &.grey {
+    background-color: #F9F9F9;
+  }
   span {
     font-family: Inter;
     font-style: normal;

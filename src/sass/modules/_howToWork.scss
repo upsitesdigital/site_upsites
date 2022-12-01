@@ -53,6 +53,7 @@
       padding: 32px 32px 58px 32px;
       background-color: $color-white;
       border-radius: 16px;
+      box-shadow: 0px 30px 80px rgba(0, 0, 114, 0.05);
       .icons {
         width: 40px;
         height: 40px;
@@ -90,6 +91,9 @@
         text-align: left;
         padding: 0;
       }
+    }
+    &.fourCols {
+      @include columns( $quant: 23.05% 23.05% 23.05% 23.05%, $gutter: 2.6%, $align: stretch, $template: 'cols-01 cols-02 cols-03 cols-04');
     }
   }
   &.blue {

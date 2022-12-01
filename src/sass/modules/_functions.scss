@@ -145,17 +145,6 @@
       grid-template-columns: 45.5% 54.5%;
     }
   }
-  &.left {
-    h2 {
-      padding-bottom: 0;
-    }
-    .grid {
-      @include columns( $quant: 49% 51%, $gutter: 0%, $align: stretch, $template: 'text image');
-      .text {
-        padding-top: 102px;
-      }
-    }
-  }
   &.white {
     background-color: transparent;
     padding-bottom: 105px;
@@ -202,6 +191,17 @@
             }
           }
         }
+      }
+    }
+  }
+  &.left {
+    h2 {
+      padding-bottom: 0;
+    }
+    .grid {
+      @include columns( $quant: 49% 51%, $gutter: 0%, $align: stretch, $template: 'text image');
+      .text {
+        padding-top: 102px;
       }
     }
   }
