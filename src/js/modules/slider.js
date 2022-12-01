@@ -1,7 +1,7 @@
 /**
  * Slider
  */
-export default function () {
+export default function() {
 
   const $clientSlide = $('.clientSlide');
   $clientSlide.slick({
@@ -17,6 +17,34 @@ export default function () {
     centerPadding: '0'
   });
 
+  const $boxslide = $('.box-slide');
+  $boxslide.slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: true,
+    appendDots: $('.slide-grafics .box-dots'),
+    arrows: true,
+    nextArrow: $('.slide-grafics .container-small .next'),
+    prevArrow: $('.slide-grafics .container-small .prev'),
+    centerMode: true,
+    focusOnSelect: true,
+    adaptiveHeight: true,
+    centerPadding: '0'
+  });
+
+  const $recoverypenaltiesslide = $('.recovery-penalties-slide');
+  $recoverypenaltiesslide.slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    arrows: true,
+    nextArrow: $('.recovery-penalties .next'),
+    prevArrow: $('.recovery-penalties .prev'),
+    centerMode: true,
+    focusOnSelect: true,
+    adaptiveHeight: true,
+    centerPadding: '0'
+  });
 
   const $status = $('.pagingInfo');
   const $testimonySlide = $('.testimonySlide');
@@ -32,7 +60,7 @@ export default function () {
     changeSlide($testimonySlide, 'slickPrev');
   });
 
-  $testimonySlide.on('init reInit afterChange', function (event, slick, currentSlide) {
+  $testimonySlide.on('init reInit afterChange', function(event, slick, currentSlide) {
     const i = (currentSlide ? currentSlide : 0) + 1;
     const n = (i <= 9 ? '0' + i : i);
     const c = (slick.slideCount <= 9 ? '0' + slick.slideCount : slick.slideCount);

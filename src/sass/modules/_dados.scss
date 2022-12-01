@@ -1,0 +1,67 @@
+/*======================================
+  Dados
+======================================*/
+
+.dados {
+  background-color: #002D54;
+  padding: 81px 0 0 0;
+  .grid {
+    @include columns( $quant: repeat(4, 1fr), $gutter: 85px, $align: start, $template: '');
+    .item {
+      position: relative;
+      &::after {
+        content: '';
+        width: 1px;
+        height: 126px;
+        background-color: $color-white;
+        position: absolute;
+        top: 0;
+        right: -40px;
+        opacity: 0.2;
+      }
+      &:nth-child(4) {
+        &::after {
+          display: none;
+        }
+      }
+      h2 {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 153%;
+        letter-spacing: 0.12em;
+        color: $color-white;
+        padding: 0 0 15px 0;
+        strong {
+          font-weight: 900;
+          font-size: 61px;
+          line-height: 137%;
+          text-transform: uppercase;
+          color: $color-yellow;
+          display: block;
+        }
+      }
+      p {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: #969ECC;
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xl, $max:'') {}
+
+@include breakpoint2($min:lg, $max:xl) {}
+
+@include breakpoint2($min:md, $max:lg) {}
+
+@include breakpoint2($min:sm, $max:md) {}
+
+@include breakpoint2($min:xs, $max:sm) {}
+
+@include breakpoint2($min:'', $max:xs) {}
