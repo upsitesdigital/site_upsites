@@ -1,0 +1,547 @@
+/*======================================
+  hireProfessionWebsite
+======================================*/
+
+.hireProfessionWebsite {
+  padding-top: 151px;
+  padding-bottom: 113px;
+  .grid {
+    padding: 0 0 0 4px;
+    @include columns( $quant: 31.5% 37% 31.5%, $gutter: 0%, $align: stretch, $template: 'fast phone customSite');
+    .icons {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 auto 16px auto;
+      padding: 10px;
+      .icon {
+        width: 100%;
+        height: 100%;
+        fill: transparent;
+        stroke: #323232;
+      }
+    }
+    h3 {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 133%;
+      color: #371A45;
+      width: 100%;
+      text-align: center;
+      padding: 0 0 15px 0;
+    }
+    p {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 157%;
+      text-align: center;
+      color: #59608B;
+      padding: 0 0 0 0;
+      &.small {
+        font-size: 12px;
+        line-height: 217%;
+      }
+    }
+    ul {
+      text-align: left;
+      li {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 153%;
+        color: #59608B;
+        display: block;
+        position: relative;
+        padding: 12px 21px 12px 41px;
+        .before {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          position: absolute;
+          top: 10px;
+          left: 0;
+          padding: 0 7px;
+          .icon {
+            width: 100%;
+            height: 100%;
+            fill: transparent;
+          }
+        }
+      }
+    }
+    hr {
+      border: none;
+      width: 87%;
+      height: 1px;
+      background-color: #E0E0E0;
+      margin: 16px auto;
+    }
+    .price {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 80%;
+      color: #00B48F;
+      text-align: center;
+      padding-bottom: 7px;
+    }
+    .budget {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 114%;
+      color: #00B48F;
+      text-align: center;
+      padding-bottom: 7px;
+    }
+    .btnBudgets {
+      margin-top: 23px;
+      margin-bottom: 29px;
+      padding: 17px 25px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .box {
+      border-radius: 16px;
+      border: 1px solid #E0E0E0;
+      padding: 32px 31px 31px 31px;
+      text-align: center;
+      background-color: #FFF;
+      box-shadow: 0px 30px 80px rgba(0, 0, 114, 0.05);
+    }
+    .fast {
+      grid-area: fast;
+      .icons {
+        background-color: #FFF2BD;
+      }
+      ul {
+        li {
+          .before {
+            background-color: #FFF2BD;
+          }
+        }
+      }
+    }
+    .phone {
+      grid-area: phone;
+      text-align: center;
+      position: relative;
+      .boxStick {
+        position: sticky;
+        top: 0;
+        padding: 48px 0 0 0;
+        &:before {
+          content: '';
+          width: 39px;
+          height: 4px;
+          display: inline-block;
+          position: absolute;
+          background-color: #00B48F;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, 0px);
+          border-radius: 5px;
+        }
+      }
+      span {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 120%;
+        letter-spacing: 0.05em;
+        padding-bottom: 8px;
+        color: #008CFF;
+        display: block;
+      }
+      h2 {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 125%;
+        text-transform: uppercase;
+        color: #371A45;
+        display: block;
+        padding-bottom: 36px;
+      }
+      .image {
+        width: 100%;
+        height: 300px;
+        img {
+          margin: 24px 69px 0 56px;
+        }
+      }
+      p {
+        padding: 5px 0 0 0;
+        font-size: 16px;
+        line-height: 137%;
+      }
+      a {
+        display: block;
+        width: 55%;
+        padding: 11px 10px 9px 16px;
+        border: 2px solid #00B48F;
+        border-radius: 20px;
+        margin: 16px auto;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        font-weight: bold;
+        color: #00B48F;
+        .icon {
+          width: 20px;
+          height: 20px;
+          fill: transparent;
+          margin: 0 7px 0 0;
+          vertical-align: middle;
+        }
+      }
+      .arrowSlide {
+        fill: transparent;
+        width: 16px;
+        height: 20px;
+        transform: rotate(90deg);
+        margin: 41px auto 39px auto;
+        display: block;
+      }
+    }
+    .customSite {
+      grid-area: customSite;
+      .icons {
+        background-color: #85FFE6;
+      }
+      ul {
+        li {
+          .before {
+            background-color: #85FFE6;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:sm, $max:lg) {
+  .hireProfessionWebsite {
+    padding-top: get-vw-lg(151px);
+    padding-bottom: get-vw-lg(113px);
+    .grid {
+      padding: 0 0 0 get-vw-lg(4px);
+      .icons {
+        width: get-vw-lg(40px);
+        height: get-vw-lg(40px);
+        margin: 0 auto get-vw-lg(16px) auto;
+        padding: get-vw-lg(10px);
+      }
+      h3 {
+        font-size: get-vw-lg(24px);
+        padding: 0 0 get-vw-lg(15px) 0;
+      }
+      p {
+        font-size: get-vw-lg(14px);
+        &.small {
+          font-size: get-vw-lg(12px);
+        }
+      }
+      ul {
+        li {
+          font-size: get-vw-lg(15px);
+          padding: get-vw-lg(12px) get-vw-lg(21px) get-vw-lg(12px) get-vw-lg(41px);
+          .before {
+            width: get-vw-lg(25px);
+            height: get-vw-lg(25px);
+            top: get-vw-lg(10px);
+            padding: 0 get-vw-lg(7px);
+          }
+        }
+      }
+      hr {
+        margin: get-vw-lg(16px) auto;
+      }
+      .price {
+        font-size: get-vw-lg(40px);
+        padding-bottom: get-vw-lg(7px);
+      }
+      .budget {
+        font-size: get-vw-lg(28px);
+        padding-bottom: get-vw-lg(7px);
+      }
+      .btnBudgets {
+        margin-top: get-vw-lg(23px);
+        margin-bottom: get-vw-lg(29px);
+        padding: get-vw-lg(17px) get-vw-lg(25px);
+      }
+      .box {
+        border-radius: get-vw-lg(16px);
+        padding: get-vw-lg(32px) get-vw-lg(31px) get-vw-lg(31px) get-vw-lg(31px);
+        box-shadow: 0 get-vw-lg(30px) get-vw-lg(80px) rgba(0, 0, 114, 0.05);
+      }
+      .phone {
+        .boxStick {
+          padding: get-vw-lg(48px) 0 0 0;
+          &:before {
+            width: get-vw-lg(39px);
+            height: get-vw-lg(4px);
+            border-radius: get-vw-lg(5px);
+          }
+        }
+        span {
+          font-size: get-vw-lg(13px);
+          padding-bottom: get-vw-lg(8px);
+        }
+        h2 {
+          font-size: get-vw-lg(32px);
+          padding-bottom: get-vw-lg(36px);
+        }
+        .image {
+          height: get-vw-lg(300px);
+          img {
+            margin: get-vw-lg(24px) get-vw-lg(69px) 0 get-vw-lg(56px);
+          }
+        }
+        p {
+          padding: get-vw-lg(5px) 0 0 0;
+          font-size: get-vw-lg(16px);
+        }
+        a {
+          padding: get-vw-lg(11px) get-vw-lg(10px) get-vw-lg(9px) get-vw-lg(16px);
+          border: get-vw-lg(2px) solid #00B48F;
+          border-radius: get-vw-lg(20px);
+          margin: get-vw-lg(16px) auto;
+          font-size: get-vw-lg(13px);
+          .icon {
+            width: get-vw-lg(20px);
+            height: get-vw-lg(20px);
+            margin: 0 get-vw-lg(7px) 0 0;
+          }
+        }
+        .arrowSlide {
+          width: get-vw-lg(16px);
+          height: get-vw-lg(20px);
+          margin: get-vw-lg(41px) auto get-vw-lg(39px) auto;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xs, $max:sm) {
+  .hireProfessionWebsite {
+    padding-top: get-vw-sm(151px);
+    padding-bottom: get-vw-sm(113px);
+    .grid {
+      @include columns( $quant: 100%, $gutter: get-vw-sm(50px), $align: stretch, $template: 'fast' 'phone' 'customSite');
+      padding: 0 0 0 get-vw-sm(4px);
+      .icons {
+        width: get-vw-sm(40px);
+        height: get-vw-sm(40px);
+        margin: 0 auto get-vw-sm(16px) auto;
+        padding: get-vw-sm(10px);
+      }
+      h3 {
+        font-size: get-vw-sm(24px);
+        padding: 0 0 get-vw-sm(15px) 0;
+      }
+      p {
+        font-size: get-vw-sm(14px);
+        &.small {
+          font-size: get-vw-sm(12px);
+        }
+      }
+      ul {
+        li {
+          font-size: get-vw-sm(15px);
+          padding: get-vw-sm(12px) get-vw-sm(21px) get-vw-sm(12px) get-vw-sm(41px);
+          .before {
+            width: get-vw-sm(25px);
+            height: get-vw-sm(25px);
+            top: get-vw-sm(10px);
+            padding: 0 get-vw-sm(7px);
+          }
+        }
+      }
+      hr {
+        margin: get-vw-sm(16px) auto;
+      }
+      .price {
+        font-size: get-vw-sm(40px);
+        padding-bottom: get-vw-sm(7px);
+      }
+      .budget {
+        font-size: get-vw-sm(28px);
+        padding-bottom: get-vw-sm(7px);
+      }
+      .btnBudgets {
+        margin-top: get-vw-sm(23px);
+        margin-bottom: get-vw-sm(29px);
+        padding: get-vw-sm(17px) get-vw-sm(25px);
+      }
+      .box {
+        border-radius: get-vw-sm(16px);
+        padding: get-vw-sm(32px) get-vw-sm(31px) get-vw-sm(31px) get-vw-sm(31px);
+        box-shadow: 0 get-vw-sm(30px) get-vw-sm(80px) rgba(0, 0, 114, 0.05);
+      }
+      .phone {
+        .boxStick {
+          padding: get-vw-sm(48px) 0 0 0;
+          &:before {
+            width: get-vw-sm(39px);
+            height: get-vw-sm(4px);
+            border-radius: get-vw-sm(5px);
+          }
+        }
+        span {
+          font-size: get-vw-sm(13px);
+          padding-bottom: get-vw-sm(8px);
+        }
+        h2 {
+          font-size: get-vw-sm(32px);
+          padding-bottom: get-vw-sm(36px);
+        }
+        .image {
+          height: auto;
+          margin: 0 auto;
+          max-width: 50%;
+          img {
+            margin: get-vw-sm(24px) get-vw-sm(69px) 0 get-vw-sm(56px);
+          }
+        }
+        p {
+          padding: get-vw-sm(5px) 0 0 0;
+          font-size: get-vw-sm(16px);
+        }
+        a {
+          padding: get-vw-sm(11px) get-vw-sm(10px) get-vw-sm(9px) get-vw-sm(16px);
+          border: get-vw-sm(2px) solid #00B48F;
+          border-radius: get-vw-sm(20px);
+          margin: get-vw-sm(16px) auto;
+          font-size: get-vw-sm(13px);
+          .icon {
+            width: get-vw-sm(20px);
+            height: get-vw-sm(20px);
+            margin: 0 get-vw-sm(7px) 0 0;
+          }
+        }
+        .arrowSlide {
+          width: get-vw-sm(16px);
+          height: get-vw-sm(20px);
+          margin: get-vw-sm(41px) auto get-vw-sm(39px) auto;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:'', $max:xs) {
+  .hireProfessionWebsite {
+    padding-top: get-vw-xs(151px);
+    padding-bottom: get-vw-xs(113px);
+    .grid {
+      @include columns( $quant: 100%, $gutter: get-vw-xs(50px), $align: stretch, $template: 'fast' 'phone' 'customSite');
+      padding: 0 0 0 get-vw-xs(4px);
+      .icons {
+        width: get-vw-xs(40px);
+        height: get-vw-xs(40px);
+        margin: 0 auto get-vw-xs(16px) auto;
+        padding: get-vw-xs(10px);
+      }
+      h3 {
+        font-size: get-vw-xs(24px);
+        padding: 0 0 get-vw-xs(15px) 0;
+      }
+      p {
+        font-size: get-vw-xs(14px);
+        &.small {
+          font-size: get-vw-xs(12px);
+        }
+      }
+      ul {
+        li {
+          font-size: get-vw-xs(15px);
+          padding: get-vw-xs(12px) get-vw-xs(21px) get-vw-xs(12px) get-vw-xs(41px);
+          .before {
+            width: get-vw-xs(25px);
+            height: get-vw-xs(25px);
+            top: get-vw-xs(10px);
+            padding: 0 get-vw-xs(7px);
+          }
+        }
+      }
+      hr {
+        margin: get-vw-xs(16px) auto;
+      }
+      .price {
+        font-size: get-vw-xs(40px);
+        padding-bottom: get-vw-xs(7px);
+      }
+      .budget {
+        font-size: get-vw-xs(28px);
+        padding-bottom: get-vw-xs(7px);
+      }
+      .btnBudgets {
+        margin-top: get-vw-xs(23px);
+        margin-bottom: get-vw-xs(29px);
+        padding: get-vw-xs(17px) get-vw-xs(25px);
+      }
+      .box {
+        border-radius: get-vw-xs(16px);
+        padding: get-vw-xs(32px) get-vw-xs(31px) get-vw-xs(31px) get-vw-xs(31px);
+        box-shadow: 0 get-vw-xs(30px) get-vw-xs(80px) rgba(0, 0, 114, 0.05);
+      }
+      .phone {
+        .boxStick {
+          padding: get-vw-xs(48px) 0 0 0;
+          &:before {
+            width: get-vw-xs(39px);
+            height: get-vw-xs(4px);
+            border-radius: get-vw-xs(5px);
+          }
+        }
+        span {
+          font-size: get-vw-xs(13px);
+          padding-bottom: get-vw-xs(8px);
+        }
+        h2 {
+          font-size: get-vw-xs(32px);
+          padding-bottom: get-vw-xs(36px);
+        }
+        .image {
+          height: auto;
+          margin: 0 auto;
+          max-width: 80%;
+          img {
+            margin: get-vw-xs(24px) get-vw-xs(69px) 0 get-vw-xs(56px);
+          }
+        }
+        p {
+          padding: get-vw-xs(5px) 0 0 0;
+          font-size: get-vw-xs(16px);
+        }
+        a {
+          padding: get-vw-xs(11px) get-vw-xs(10px) get-vw-xs(9px) get-vw-xs(16px);
+          border: get-vw-xs(2px) solid #00B48F;
+          border-radius: get-vw-xs(20px);
+          margin: get-vw-xs(16px) auto;
+          font-size: get-vw-xs(13px);
+          .icon {
+            width: get-vw-xs(20px);
+            height: get-vw-xs(20px);
+            margin: 0 get-vw-xs(7px) 0 0;
+          }
+        }
+        .arrowSlide {
+          width: get-vw-xs(16px);
+          height: get-vw-xs(20px);
+          margin: get-vw-xs(41px) auto get-vw-xs(39px) auto;
+        }
+      }
+    }
+  }
+}

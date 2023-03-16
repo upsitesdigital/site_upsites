@@ -1,0 +1,313 @@
+/*======================================
+  fullControl
+======================================*/
+
+.fullControl {
+  span {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    padding-bottom: 17px;
+    color: #008CFF;
+    display: block;
+  }
+  h2 {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 119%;
+    text-transform: uppercase;
+    color: #371A45;
+    display: block;
+    padding-bottom: 31px;
+  }
+  .grid {
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 110px;
+    @include columns( $quant: 45% 41%, $gutter: 14%, $align: stretch, $template: 'text image');
+    .text {
+      grid-area: text;
+      padding-top: 92px;
+      p {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 175%;
+        color: #59608B;
+        padding-bottom: 17px;
+      }
+      .items {
+        padding-top: 23px;
+        @include columns( $quant: 28% 28% 28%, $gutter: 8%, $align: stretch, $template: 'text image');
+        .item {
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 200%;
+          color: #371A45;
+          padding: 16px 10px 16px 26px;
+          background: #FFFFFF;
+          box-shadow: 0px 30px 80px rgba(0, 0, 114, 0.15);
+          border-radius: 16px;
+          .icons {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #FFF6D1;
+            vertical-align: middle;
+            display: inline-block;
+            margin-right: 5px;
+            padding: 8px;
+            .icon {
+              width: 100%;
+              height: 100%;
+              fill: transparent;
+            }
+          }
+        }
+      }
+      .btnBudgets {
+        margin-top: 66px;
+        padding: 20px 41px;
+      }
+    }
+    .image {
+      grid-area: image;
+      .image {
+        width: 100%;
+        height: 550px;
+        img {
+          margin: 85px 38px 0 -19px;
+        }
+      }
+      .box {
+        margin-top: 22px;
+        @include columns( $quant: 56px auto, $gutter: 23px, $align: stretch, $template: 'text image');
+        .icons {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: #85FFE6;
+          margin: 0 auto;
+          padding: 8px;
+          .icon {
+            width: 100%;
+            height: 100%;
+            fill: transparent;
+          }
+        }
+        p {
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 175%;
+          color: #59608B;
+          b,
+          strong {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:sm, $max:lg) {
+  .fullControl {
+    span {
+      font-size: get-vw-lg(13px);
+      padding-bottom: get-vw-lg(17px);
+    }
+    h2 {
+      font-size: get-vw-lg(32px);
+      padding-bottom: get-vw-lg(31px);
+    }
+    .grid {
+      padding-bottom: get-vw-lg(110px);
+      .text {
+        padding-top: get-vw-lg(92px);
+        p {
+          font-size: get-vw-lg(16px);
+          padding-bottom: get-vw-lg(17px);
+        }
+        .items {
+          padding-top: get-vw-lg(23px);
+          .item {
+            font-size: get-vw-lg(16px);
+            padding: get-vw-lg(16px) get-vw-lg(10px) get-vw-lg(16px) get-vw-lg(26px);
+            box-shadow: 0 get-vw-lg(30px) get-vw-lg(80px) rgba(0, 0, 114, 0.15);
+            border-radius: get-vw-lg(16px);
+            .icons {
+              width: get-vw-lg(40px);
+              height: get-vw-lg(40px);
+              margin-right: get-vw-lg(5px);
+              padding: get-vw-lg(8px);
+            }
+          }
+        }
+        .btnBudgets {
+          margin-top: get-vw-lg(66px);
+          padding: get-vw-lg(20px) get-vw-lg(41px);
+        }
+      }
+      .image {
+        .image {
+          height: get-vw-lg(550px);
+          img {
+            margin: get-vw-lg(85px) get-vw-lg(38px) 0 get-vw-lg(-19px);
+          }
+        }
+        .box {
+          margin-top: get-vw-lg(22px);
+          @include columns( $quant: get-vw-lg(56px) auto, $gutter: get-vw-lg(23px), $align: stretch, $template: 'text image');
+          .icons {
+            width: get-vw-lg(48px);
+            height: get-vw-lg(48px);
+            padding: get-vw-lg(8px);
+          }
+          p {
+            font-size: get-vw-lg(16px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xs, $max:sm) {
+  .fullControl {
+    span {
+      font-size: get-vw-sm(13px);
+      padding-bottom: get-vw-sm(17px);
+    }
+    h2 {
+      font-size: get-vw-sm(32px);
+      padding-bottom: get-vw-sm(31px);
+    }
+    .grid {
+      @include columns( $quant: 100%, $gutter: 4%, $align: stretch, $template: 'text' 'image');
+      padding-bottom: get-vw-sm(110px);
+      .text {
+        padding-top: get-vw-sm(92px);
+        p {
+          font-size: get-vw-sm(16px);
+          padding-bottom: get-vw-sm(17px);
+        }
+        .items {
+          padding-top: get-vw-sm(23px);
+          .item {
+            font-size: get-vw-sm(16px);
+            padding: get-vw-sm(16px) get-vw-sm(10px) get-vw-sm(16px) get-vw-sm(26px);
+            box-shadow: 0 get-vw-sm(30px) get-vw-sm(80px) rgba(0, 0, 114, 0.15);
+            border-radius: get-vw-sm(16px);
+            .icons {
+              width: get-vw-sm(40px);
+              height: get-vw-sm(40px);
+              margin-right: get-vw-sm(5px);
+              padding: get-vw-sm(8px);
+            }
+          }
+        }
+        .btnBudgets {
+          margin-top: get-vw-sm(66px);
+          padding: get-vw-sm(20px) get-vw-sm(41px);
+        }
+      }
+      .image {
+        .image {
+          height: auto;
+          max-width: 50%;
+          margin: 0 auto;
+          img {
+            margin: 0;
+          }
+        }
+        .box {
+          margin-top: get-vw-sm(22px);
+          @include columns( $quant: get-vw-sm(56px) auto, $gutter: get-vw-sm(23px), $align: stretch, $template: 'text image');
+          .icons {
+            width: get-vw-sm(48px);
+            height: get-vw-sm(48px);
+            padding: get-vw-sm(8px);
+          }
+          p {
+            font-size: get-vw-sm(16px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:'', $max:xs) {
+  .fullControl {
+    span {
+      font-size: get-vw-xs(13px);
+      padding-bottom: get-vw-xs(17px);
+    }
+    h2 {
+      font-size: get-vw-xs(32px);
+      padding-bottom: get-vw-xs(31px);
+    }
+    .grid {
+      @include columns( $quant: 100%, $gutter: 4%, $align: stretch, $template: 'text' 'image');
+      padding-bottom: get-vw-xs(110px);
+      .text {
+        padding-top: get-vw-xs(92px);
+        p {
+          font-size: get-vw-xs(16px);
+          padding-bottom: get-vw-xs(17px);
+        }
+        .items {
+          @include columns( $quant: 100%, $gutter: get-vw-xs(23px), $align: stretch, $template: 'text' 'image');
+          padding-top: get-vw-xs(23px);
+          .item {
+            font-size: get-vw-xs(16px);
+            padding: get-vw-xs(16px) get-vw-xs(10px) get-vw-xs(16px) get-vw-xs(26px);
+            box-shadow: 0 get-vw-xs(30px) get-vw-xs(80px) rgba(0, 0, 114, 0.15);
+            border-radius: get-vw-xs(16px);
+            .icons {
+              width: get-vw-xs(40px);
+              height: get-vw-xs(40px);
+              margin-right: get-vw-xs(5px);
+              padding: get-vw-xs(8px);
+            }
+          }
+        }
+        .btnBudgets {
+          margin-top: get-vw-xs(66px);
+          padding: get-vw-xs(20px) get-vw-xs(41px);
+        }
+      }
+      .image {
+        .image {
+          height: auto;
+          max-width: 50%;
+          margin: 0 auto;
+          img {
+            margin: 0;
+          }
+        }
+        .box {
+          margin-top: get-vw-xs(22px);
+          @include columns( $quant: get-vw-xs(56px) auto, $gutter: get-vw-xs(23px), $align: stretch, $template: 'text image');
+          .icons {
+            width: get-vw-xs(48px);
+            height: get-vw-xs(48px);
+            padding: get-vw-xs(8px);
+          }
+          p {
+            font-size: get-vw-xs(16px);
+          }
+        }
+      }
+    }
+  }
+}

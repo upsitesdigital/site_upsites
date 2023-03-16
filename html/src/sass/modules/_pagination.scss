@@ -1,0 +1,110 @@
+/*======================================
+  Paginations
+======================================*/
+
+.paginations {
+  width: 100%;
+  max-width: 180px;
+  height: 50px;
+  position: relative;
+  margin: 0 auto 75px auto;
+  .slick-arrow {
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -35%);
+    width: 33px;
+    height: 40px;
+    border: none;
+    .icon {
+      fill: transparent;
+      width: 100%;
+      height: 100%;
+    }
+    &.slick-prev {
+      left: 0;
+      .icon {
+        transform: rotate(180deg);
+      }
+    }
+    &.slick-next {
+      right: 0;
+    }
+  }
+  .pagingInfo {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 143%;
+    color: #371A45;
+    display: block;
+    text-align: center;
+    padding: 15px 0;
+  }
+  .slick-arrow {
+    transform: translate(0, -50%);
+    width: 28px;
+    height: 40px;
+  }
+}
+
+@include breakpoint2($min:sm, $max:lg) {
+  .paginations {
+    max-width: get-vw-lg(180px);
+    height: get-vw-lg(50px);
+    margin: 0 auto get-vw-lg(75px) auto;
+    .slick-arrow {
+      width: get-vw-lg(33px);
+      height: get-vw-lg(40px);
+    }
+    .pagingInfo {
+      font-size: get-vw-lg(14px);
+      padding: get-vw-lg(15px) 0;
+    }
+    .slick-arrow {
+      width: get-vw-lg(28px);
+      height: get-vw-lg(40px);
+    }
+  }
+}
+
+@include breakpoint2($min:xs, $max:sm) {
+  .paginations {
+    max-width: get-vw-sm(180px);
+    height: get-vw-sm(50px);
+    margin: 0 auto get-vw-sm(75px) auto;
+    .slick-arrow {
+      width: get-vw-sm(33px);
+      height: get-vw-sm(40px);
+    }
+    .pagingInfo {
+      font-size: get-vw-sm(14px);
+      padding: get-vw-sm(15px) 0;
+    }
+    .slick-arrow {
+      width: get-vw-sm(28px);
+      height: get-vw-sm(40px);
+    }
+  }
+}
+
+@include breakpoint2($min:'', $max:xs) {
+  .paginations {
+    max-width: get-vw-xs(180px);
+    height: get-vw-xs(50px);
+    margin: 0 auto get-vw-xs(75px) auto;
+    .slick-arrow {
+      width: get-vw-xs(33px);
+      height: get-vw-xs(40px);
+    }
+    .pagingInfo {
+      font-size: get-vw-xs(14px);
+      padding: get-vw-xs(15px) 0;
+    }
+    .slick-arrow {
+      width: get-vw-xs(28px);
+      height: get-vw-xs(40px);
+    }
+  }
+}
