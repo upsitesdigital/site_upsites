@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+/*======================================
+  Settings admin
+======================================*/
+
+.mce-content-body a.btnPost {
+  transition: all 0.3s ease 0s;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 100%;
+  color: #ffffff;
+  background-color: #00B48F;
+  border: 1px solid #00B48F;
+  padding: 21px 65px 21px 69px;
+  margin-top: 23px;
+  border-radius: 60px;
+  display: inline-block;
+}
+
+.mce-content-body a.btnPost:hover {
+  color: #00B48F;
+  background-color: transparent;
+}

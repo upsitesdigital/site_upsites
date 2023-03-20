@@ -1,0 +1,131 @@
+/*======================================
+  PaymentMethod
+======================================*/
+
+.paymentMethod {
+  .grid {
+    padding: 101px 0px 102px 0px;
+    @include columns( $quant: 51.3% 48.7%, $gutter: 0px, $align: start, $template: 'text image');
+    border-bottom: 1px solid #E0E0E0;
+    .image {
+      grid-area: image;
+    }
+    .text {
+      grid-area: text;
+      padding: 0px 6px;
+      span {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 120%;
+        letter-spacing: 0.05em;
+        color: #008CFF;
+        padding: 0 0 8px 0;
+        display: block;
+      }
+      h2 {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 125%;
+        text-transform: uppercase;
+        color: $color-navy;
+        padding: 0 0 24px 0;
+      }
+      p {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 150%;
+        color: #59608B;
+      }
+      .btnBudgets {
+        margin: 17px 0 0 0;
+        padding: 21px 41px 21px 42px;
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:sm, $max:lg) {
+  .paymentMethod {
+    .grid {
+      padding: get-vw-lg(101px) 0 get-vw-lg(102px) 0;
+      .text {
+        padding: 0 get-vw-lg(6px);
+        span {
+          font-size: get-vw-lg(13px);
+          padding: 0 0 get-vw-lg(8px) 0;
+        }
+        h2 {
+          font-size: get-vw-lg(32px);
+          padding: 0 0 get-vw-lg(24px) 0;
+        }
+        p {
+          font-size: get-vw-lg(16px);
+        }
+        .btnBudgets {
+          margin: get-vw-lg(17px) 0 0 0;
+          padding: get-vw-lg(21px) get-vw-lg(41px) get-vw-lg(21px) get-vw-lg(42px);
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xs, $max:sm) {
+  .paymentMethod {
+    .grid {
+      @include columns( $quant: 100%, $gutter: 0px, $align: start, $template: 'text' 'image');
+      padding: get-vw-sm(101px) 0 get-vw-sm(102px) 0;
+      .text {
+        padding: 0 get-vw-sm(6px) get-vw-sm(30px) get-vw-sm(6px);
+        span {
+          font-size: get-vw-sm(13px);
+          padding: 0 0 get-vw-sm(8px) 0;
+        }
+        h2 {
+          font-size: get-vw-sm(32px);
+          padding: 0 0 get-vw-sm(24px) 0;
+        }
+        p {
+          font-size: get-vw-sm(16px);
+        }
+        .btnBudgets {
+          margin: get-vw-sm(17px) 0 0 0;
+          padding: get-vw-sm(21px) get-vw-sm(41px) get-vw-sm(21px) get-vw-sm(42px);
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:'', $max:xs) {
+  .paymentMethod {
+    .grid {
+      @include columns( $quant: 100%, $gutter: 0px, $align: start, $template: 'text' 'image');
+      padding: get-vw-xs(101px) 0 get-vw-xs(102px) 0;
+      .text {
+        padding: 0 get-vw-xs(6px) get-vw-xs(30px) get-vw-xs(6px);
+        span {
+          font-size: get-vw-xs(13px);
+          padding: 0 0 get-vw-xs(8px) 0;
+        }
+        h2 {
+          font-size: get-vw-xs(32px);
+          padding: 0 0 get-vw-xs(24px) 0;
+        }
+        p {
+          font-size: get-vw-xs(16px);
+        }
+        .btnBudgets {
+          margin: get-vw-xs(17px) 0 0 0;
+          padding: get-vw-xs(21px) get-vw-xs(41px) get-vw-xs(21px) get-vw-xs(42px);
+        }
+      }
+    }
+  }
+}

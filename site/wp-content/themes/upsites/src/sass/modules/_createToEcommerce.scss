@@ -1,0 +1,298 @@
+/*======================================
+  CreateToEcommerce
+======================================*/
+
+.createToEcommerce {
+  width: 100%;
+  padding: 115px 0 0 0;
+  h2 {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 119%;
+    text-transform: uppercase;
+    color: $color-navy;
+    display: block;
+    padding-bottom: 35px;
+    text-align: center;
+  }
+  .tabs {
+    @include columns( $quant: 20% 20% 20% 20% 20%, $gutter: 0px, $align: center, $template: '');
+    a {
+      @include animate($time: 0.3s);
+      display: block;
+      padding: 20px 0 23px 0px;
+      position: relative;
+      .icons {
+        @include animate($time: 0.3s);
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+        display: block;
+        margin: 0 auto 17px auto;
+        padding: 10px;
+        .icon {
+          @include animate($time: 0.3s);
+          fill: none;
+          width: 100%;
+          height: 100%;
+          stroke-width: 1.5;
+          stroke: #323232;
+          stroke-opacity: 0.5;
+        }
+      }
+      span {
+        @include animate($time: 0.3s);
+        display: block;
+        text-align: center;
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 140%;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $color-navy;
+        opacity: 0.5;
+      }
+      &:after {
+        @include animate($time: 0.3s);
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: #D2D2D2;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      &:hover,
+      &.act {
+        .icons {
+          background-color: $color-green;
+          .icon {
+            stroke: #FFF;
+            stroke-opacity: 1;
+          }
+        }
+        span {
+          opacity: 1;
+        }
+        &:after {
+          background-color: $color-green;
+        }
+      }
+    }
+  }
+  .content {
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 27px;
+    .grid {
+      @include columns( $quant: 51.3% 48.7%, $gutter: 0px, $align: center, $template: 'image text');
+      display: none;
+      position: relative;
+      opacity: 0;
+      //visibility: hidden;
+      transform: translateY(80px);
+      transition: all 1s ease 0s;
+      -webkit-transition: all 1s ease 0s;
+      animation: fadeIn 1s ease 0s forwards;
+      .image {
+        grid-area: image;
+        img {
+          width: auto;
+          height: auto;
+        }
+      }
+      .text {
+        grid-area: text;
+        padding: 95px 0;
+        h3 {
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 38px;
+          text-transform: uppercase;
+          color: $color-navy;
+          padding: 0 0 24px 0;
+        }
+        p {
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 18px;
+          line-height: 160%;
+          color: #59608B;
+          padding: 0 0 30px 0;
+        }
+        .btnBudgets {
+          margin: 17px 0 0 0;
+          padding: 21px 41px 21px 42px;
+        }
+      }
+      &.act {
+        transition: all 1s ease 1s;
+        -webkit-transition: all 1s ease 1s;
+        display: grid;
+        //opacity: 1;
+        //visibility: visible;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@include breakpoint2($min:sm, $max:lg) {
+  .createToEcommerce {
+    padding: get-vw-lg(115px) 0 0 0;
+    h2 {
+      font-size: get-vw-lg(32px);
+      padding-bottom: get-vw-lg(35px);
+    }
+    .tabs {
+      a {
+        padding: get-vw-lg(20px) 0 get-vw-lg(23px) 0;
+        .icons {
+          width: get-vw-lg(60px);
+          height: get-vw-lg(60px);
+          border-radius: get-vw-lg(8px);
+          margin: 0 auto get-vw-lg(17px) auto;
+          padding: get-vw-lg(10px);
+        }
+        span {
+          font-size: get-vw-lg(12px);
+        }
+      }
+    }
+    .content {
+      padding-bottom: get-vw-lg(27px);
+      .grid {
+        .text {
+          padding: get-vw-lg(95px) 0;
+          h3 {
+            font-size: get-vw-lg(24px);
+            line-height: get-vw-lg(38px);
+            padding: 0 0 get-vw-lg(24px) 0;
+          }
+          p {
+            font-size: get-vw-lg(18px);
+            padding: 0 0 get-vw-lg(30px) 0;
+          }
+          .btnBudgets {
+            margin: get-vw-lg(17px) 0 0 0;
+            padding: get-vw-lg(21px) get-vw-lg(41px) get-vw-lg(21px) get-vw-lg(42px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xs, $max:sm) {
+  .createToEcommerce {
+    padding: get-vw-sm(115px) 0 0 0;
+    h2 {
+      font-size: get-vw-sm(32px);
+      padding-bottom: get-vw-sm(35px);
+    }
+    .tabs {
+      a {
+        padding: get-vw-sm(20px) 0 get-vw-sm(23px) 0;
+        .icons {
+          width: get-vw-sm(60px);
+          height: get-vw-sm(60px);
+          border-radius: get-vw-sm(8px);
+          margin: 0 auto get-vw-sm(17px) auto;
+          padding: get-vw-sm(10px);
+        }
+        span {
+          display: none;
+          font-size: get-vw-sm(12px);
+        }
+      }
+    }
+    .content {
+      padding-bottom: get-vw-sm(27px);
+      .grid {
+        @include columns( $quant: 100%, $gutter: 0px, $align: center, $template: 'image' 'text');
+        .image {
+          display: none;
+        }
+        .text {
+          padding: get-vw-sm(35px) 0 get-vw-sm(95px) 0;
+          h3 {
+            font-size: get-vw-sm(24px);
+            line-height: get-vw-sm(38px);
+            padding: 0 0 get-vw-sm(24px) 0;
+          }
+          p {
+            font-size: get-vw-sm(18px);
+            padding: 0 0 get-vw-sm(30px) 0;
+          }
+          .btnBudgets {
+            margin: get-vw-sm(17px) 0 0 0;
+            padding: get-vw-sm(21px) get-vw-sm(41px) get-vw-sm(21px) get-vw-sm(42px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:'', $max:xs) {
+  .createToEcommerce {
+    padding: get-vw-xs(115px) 0 0 0;
+    h2 {
+      font-size: get-vw-xs(32px);
+      padding-bottom: get-vw-xs(35px);
+    }
+    .tabs {
+      a {
+        padding: get-vw-xs(20px) 0 get-vw-xs(23px) 0;
+        .icons {
+          width: get-vw-xs(60px);
+          height: get-vw-xs(60px);
+          border-radius: get-vw-xs(8px);
+          margin: 0 auto get-vw-xs(17px) auto;
+          padding: get-vw-xs(10px);
+        }
+        span {
+          display: none;
+          font-size: get-vw-xs(12px);
+        }
+      }
+    }
+    .content {
+      padding-bottom: get-vw-xs(27px);
+      .grid {
+        @include columns( $quant: 100%, $gutter: 0px, $align: center, $template: 'image' 'text');
+        .image {
+          display: none;
+        }
+        .text {
+          padding: get-vw-xs(35px) 0 get-vw-xs(95px) 0;
+          h3 {
+            font-size: get-vw-xs(24px);
+            line-height: get-vw-xs(38px);
+            padding: 0 0 get-vw-xs(24px) 0;
+          }
+          p {
+            font-size: get-vw-xs(18px);
+            padding: 0 0 get-vw-xs(30px) 0;
+          }
+          .btnBudgets {
+            margin: get-vw-xs(17px) 0 0 0;
+            padding: get-vw-xs(21px) get-vw-xs(41px) get-vw-xs(21px) get-vw-xs(42px);
+          }
+        }
+      }
+    }
+  }
+}

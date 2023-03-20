@@ -1,0 +1,321 @@
+/*======================================
+  professionalWebsites
+======================================*/
+
+.professionalWebsites {
+  span {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    padding-bottom: 9px;
+    color: #008CFF;
+    display: block;
+  }
+  h2 {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 119%;
+    text-transform: uppercase;
+    color: $color-navy;
+    display: block;
+    padding-bottom: 35px;
+  }
+  .grid {
+    padding-bottom: 110px;
+    @include columns( $quant: 47% 48%, $gutter: 5%, $align: stretch, $template: 'text image');
+    .text {
+      grid-area: text;
+      padding-top: 127px;
+      p {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 175%;
+        color: #59608B;
+        padding-bottom: 28px;
+      }
+      .items {
+        padding-top: 27px;
+        .item {
+          @include columns( $quant: 56px auto, $gutter: 18px, $align: stretch, $template: '');
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 200%;
+          color: $color-navy;
+          padding: 31px 30px 26px 35px;
+          border-radius: 16px;
+          //border: 1px solid #8DD7FF;
+          background: $color-white;
+          filter: drop-shadow(0px 30.3117px 45.4675px rgba(0, 0, 114, 0.2));
+          .icons {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #FFF6D1;
+            vertical-align: middle;
+            display: inline-block;
+            margin-right: 5px;
+            padding: 8px;
+            .icon {
+              width: 100%;
+              height: 100%;
+              fill: transparent;
+            }
+          }
+          p {
+            padding-bottom: 0;
+            b,
+            strong {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    .image {
+      grid-area: image;
+      .image {
+        width: 100%;
+        height: 570px;
+        img {
+          margin: 107px 1px 0 53px;
+          width: auto;
+          height: auto;
+        }
+      }
+      .box {
+        margin-top: 28px;
+        background: $color-white;
+        filter: drop-shadow(0px 30.3117px 45.4675px rgba(0, 0, 114, 0.2));
+        padding: 31px 30px 26px 35px;
+        border-radius: 16px;
+        @include columns( $quant: 56px auto, $gutter: 18px, $align: stretch, $template: '');
+        .icons {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: #85FFE6;
+          margin: 0 auto;
+          padding: 8px;
+          .icon {
+            width: 100%;
+            height: 100%;
+            fill: transparent;
+          }
+        }
+        p {
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 175%;
+          color: #59608B;
+          b,
+          strong {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:sm, $max:lg) {
+  .professionalWebsites {
+    span {
+      font-size: get-vw-lg(13px);
+      padding-bottom: get-vw-lg(9px);
+    }
+    h2 {
+      font-size: get-vw-lg(32px);
+      padding-bottom: get-vw-lg(35px);
+    }
+    .grid {
+      padding-bottom: get-vw-lg(110px);
+      .text {
+        padding-top: get-vw-lg(127px);
+        p {
+          font-size: get-vw-lg(16px);
+          padding-bottom: get-vw-lg(28px);
+        }
+        .items {
+          padding-top: get-vw-lg(27px);
+          .item {
+            @include columns( $quant: get-vw-lg(56px) auto, $gutter: get-vw-lg(18px), $align: stretch, $template: '');
+            font-size: get-vw-lg(16px);
+            padding: get-vw-lg(31px) get-vw-lg(30px) get-vw-lg(26px) get-vw-lg(35px);
+            border-radius: get-vw-lg(16px);
+            filter: drop-shadow(0 get-vw-lg(30.3117px) get-vw-lg(45.4675px) rgba(0, 0, 114, 0.2));
+            .icons {
+              width: get-vw-lg(48px);
+              height: get-vw-lg(48px);
+              margin-right: get-vw-lg(5px);
+              padding: get-vw-lg(8px);
+            }
+          }
+        }
+      }
+      .image {
+        .image {
+          height: get-vw-lg(570px);
+          img {
+            margin: get-vw-lg(107px) get-vw-lg(1px) 0 get-vw-lg(53px);
+          }
+        }
+        .box {
+          margin-top: get-vw-lg(28px);
+          filter: drop-shadow(0 get-vw-lg(30.3117px) get-vw-lg(45.4675px) rgba(0, 0, 114, 0.2));
+          padding: get-vw-lg(31px) get-vw-lg(30px) get-vw-lg(26px) get-vw-lg(35px);
+          border-radius: get-vw-lg(16px);
+          @include columns( $quant: get-vw-lg(56px) auto, $gutter: get-vw-lg(18px), $align: stretch, $template: '');
+          .icons {
+            width: get-vw-lg(48px);
+            height: get-vw-lg(48px);
+            padding: get-vw-lg(8px);
+          }
+          p {
+            font-size: get-vw-lg(16px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:xs, $max:sm) {
+  .professionalWebsites {
+    span {
+      font-size: get-vw-sm(13px);
+      padding-bottom: get-vw-sm(9px);
+    }
+    h2 {
+      font-size: get-vw-sm(32px);
+      padding-bottom: get-vw-sm(35px);
+    }
+    .grid {
+      @include columns( $quant: 100%, $gutter: 5%, $align: stretch, $template: 'text' 'image');
+      padding-bottom: get-vw-sm(110px);
+      .text {
+        padding-top: get-vw-sm(127px);
+        p {
+          font-size: get-vw-sm(16px);
+          padding-bottom: get-vw-sm(28px);
+        }
+        .items {
+          padding-top: get-vw-sm(27px);
+          .item {
+            @include columns( $quant: get-vw-sm(56px) auto, $gutter: get-vw-sm(18px), $align: stretch, $template: '');
+            font-size: get-vw-sm(16px);
+            padding: get-vw-sm(31px) get-vw-sm(30px) get-vw-sm(26px) get-vw-sm(35px);
+            border-radius: get-vw-sm(16px);
+            filter: drop-shadow(0 get-vw-sm(30.3117px) get-vw-sm(45.4675px) rgba(0, 0, 114, 0.2));
+            .icons {
+              width: get-vw-sm(48px);
+              height: get-vw-sm(48px);
+              margin-right: get-vw-sm(5px);
+              padding: get-vw-sm(8px);
+            }
+          }
+        }
+      }
+      .image {
+        .image {
+          height: auto;
+          max-width: 50%;
+          margin: 0 auto;
+          img {
+            margin: 0 0 0 0;
+          }
+        }
+        .box {
+          margin-top: get-vw-sm(28px);
+          filter: drop-shadow(0 get-vw-sm(30.3117px) get-vw-sm(45.4675px) rgba(0, 0, 114, 0.2));
+          padding: get-vw-sm(31px) get-vw-sm(30px) get-vw-sm(26px) get-vw-sm(35px);
+          border-radius: get-vw-sm(16px);
+          @include columns( $quant: get-vw-sm(56px) auto, $gutter: get-vw-sm(18px), $align: stretch, $template: '');
+          .icons {
+            width: get-vw-sm(48px);
+            height: get-vw-sm(48px);
+            padding: get-vw-sm(8px);
+          }
+          p {
+            font-size: get-vw-sm(16px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min:'', $max:xs) {
+  .professionalWebsites {
+    span {
+      font-size: get-vw-xs(13px);
+      padding-bottom: get-vw-xs(9px);
+    }
+    h2 {
+      font-size: get-vw-xs(32px);
+      padding-bottom: get-vw-xs(35px);
+    }
+    .grid {
+      @include columns( $quant: 100%, $gutter: 5%, $align: stretch, $template: 'text' 'image');
+      padding-bottom: get-vw-xs(110px);
+      .text {
+        padding-top: get-vw-xs(127px);
+        p {
+          font-size: get-vw-xs(16px);
+          padding-bottom: get-vw-xs(28px);
+        }
+        .items {
+          padding-top: get-vw-xs(27px);
+          .item {
+            @include columns( $quant: get-vw-xs(56px) auto, $gutter: get-vw-xs(18px), $align: stretch, $template: '');
+            font-size: get-vw-xs(16px);
+            padding: get-vw-xs(31px) get-vw-xs(30px) get-vw-xs(26px) get-vw-xs(35px);
+            border-radius: get-vw-xs(16px);
+            filter: drop-shadow(0 get-vw-xs(30.3117px) get-vw-xs(45.4675px) rgba(0, 0, 114, 0.2));
+            .icons {
+              width: get-vw-xs(48px);
+              height: get-vw-xs(48px);
+              margin-right: get-vw-xs(5px);
+              padding: get-vw-xs(8px);
+            }
+          }
+        }
+      }
+      .image {
+        .image {
+          height: auto;
+          max-width: 50%;
+          margin: 0 auto;
+          img {
+            margin: 0 0 0 0;
+          }
+        }
+        .box {
+          margin-top: get-vw-xs(28px);
+          filter: drop-shadow(0 get-vw-xs(30.3117px) get-vw-xs(45.4675px) rgba(0, 0, 114, 0.2));
+          padding: get-vw-xs(31px) get-vw-xs(30px) get-vw-xs(26px) get-vw-xs(35px);
+          border-radius: get-vw-xs(16px);
+          @include columns( $quant: get-vw-xs(56px) auto, $gutter: get-vw-xs(18px), $align: stretch, $template: '');
+          .icons {
+            width: get-vw-xs(48px);
+            height: get-vw-xs(48px);
+            padding: get-vw-xs(8px);
+          }
+          p {
+            font-size: get-vw-xs(16px);
+          }
+        }
+      }
+    }
+  }
+}

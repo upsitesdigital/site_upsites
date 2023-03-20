@@ -1,0 +1,84 @@
+/*======================================
+  Buttons
+======================================*/
+
+.btn {
+  @include animate($time: 0.3s);
+  @include inline-block($align: middle);
+}
+
+.btnPost,
+.btnBudgets {
+  @include animate($time: 0.3s);
+  font-family: $font-main;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 100%;
+  color: $color-white;
+  background-color: $color-green;
+  border: 1px solid $color-green;
+  padding: 21px 65px 21px 69px;
+  margin-top: 23px;
+  border-radius: 60px;
+  display: inline-block;
+  .icon {
+    width: 13px;
+    height: 15px;
+    margin-right: 10px;
+    fill: $color-white;
+    @include inline-block($align: middle);
+  }
+  &:hover {
+    color: $color-green;
+    background-color: transparent;
+    .icon {
+      fill: $color-green;
+    }
+  }
+}
+
+@include breakpoint2($min:sm, $max:lg) {
+  .btnPost,
+  .btnBudgets {
+    font-size: get-vw-lg(18px);
+    padding: get-vw-lg(21px) get-vw-lg(65px) get-vw-lg(21px) get-vw-lg(69px);
+    margin-top: get-vw-lg(23px);
+    border-radius: get-vw-lg(60px);
+    .icon {
+      width: get-vw-lg(13px);
+      height: get-vw-lg(15px);
+      margin-right: get-vw-lg(10px);
+    }
+  }
+}
+
+@include breakpoint2($min:xs, $max:sm) {
+  .btnPost,
+  .btnBudgets {
+    font-size: get-vw-sm(18px);
+    padding: get-vw-sm(21px) get-vw-sm(65px) get-vw-sm(21px) get-vw-sm(69px);
+    margin-top: get-vw-sm(23px);
+    border-radius: get-vw-sm(60px);
+    .icon {
+      width: get-vw-sm(13px);
+      height: get-vw-sm(15px);
+      margin-right: get-vw-sm(10px);
+    }
+  }
+}
+
+@include breakpoint2($min:'', $max:xs) {
+  .btnPost,
+  .btnBudgets {
+    font-size: get-vw-xs(16px);
+    padding: get-vw-xs(21px) get-vw-xs(65px) get-vw-xs(21px) get-vw-xs(69px);
+    margin-top: get-vw-xs(23px);
+    border-radius: get-vw-xs(60px);
+    .icon {
+      width: get-vw-xs(13px);
+      height: get-vw-xs(15px);
+      margin-right: get-vw-xs(10px);
+    }
+  }
+}
