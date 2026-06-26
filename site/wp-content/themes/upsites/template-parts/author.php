@@ -10,7 +10,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-$user_id = $post->post_author;
+$author = get_queried_object();
+$user_id = $author->ID;
 $avatar = (get_user_meta($post->post_author, 'us_imagem_avatar', true) != '') ? wp_get_attachment_image(get_user_meta($post->post_author, 'us_imagem_avatar', true)) : get_avatar($post->post_author, 120);
 US_set_post_views(get_the_ID());
 
@@ -22,7 +23,7 @@ $linkedin = get_the_author_meta( 'linkedin', $user_id );
 ?>
 
   <!-- main -->
-  <main>
+  <main id="main">
     <!-- slideFull -->
     <section class="author-description">
       <div class="container">
@@ -32,30 +33,34 @@ $linkedin = get_the_author_meta( 'linkedin', $user_id );
 							<?= $avatar ?>
 						</div>
 						<div class="text">
-							<span>Autor</span>
-							<h3><?= get_the_author_meta('display_name', $post->post_author) ?></h3>
+							<h2>Autor</h2>
+							<h1><?= get_the_author_meta('display_name', $post->post_author) ?></h1>
+							<?php 
+								if($twitter or $facebook or $linkedin) {
+							?>
 							<div class="share">
 								<ul>
 									<?php 
 										if($twitter) {
-											echo '<li><a href="' . $twitter . '" title="Twitter"><svg class="icon twitter"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#twitter"></use></svg></a></li>';
+											echo '<li><a rel="nofollow" href="' . $twitter . '" title="Twitter"><svg class="icon twitter"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#twitter"></use></svg></a></li>';
 										}
 										if($facebook) {
-											echo '<li><a href="' . $facebook . '" title="Facebook"><svg class="icon facebook"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#facebook"></use></svg></a></li>';
+											echo '<li><a rel="nofollow" href="' . $facebook . '" title="Facebook"><svg class="icon facebook"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#facebook"></use></svg></a></li>';
 										}
 										if($linkedin) {
-											echo '<li><a href="' . $linkedin . '" title="Linkedin"><svg class="icon linkedin"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#linkedin"></use></svg></a></li>';
+											echo '<li><a rel="nofollow" href="' . $linkedin . '" title="Linkedin"><svg class="icon linkedin"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#linkedin"></use></svg></a></li>';
 										}
 									?>
 								</ul>
 							</div>
+							<?php } ?>
 							<p><?= get_the_author_meta('description', $post->post_author) ?></p>
 						</div>
 					</div>
 					<div class="total-post">
 						<?php
 						if (count_user_posts($user_id) == 0) {
-							echo 'Nenhuma matéria publicada';
+							echo '<span class="num"></span><span class="text">Nenhuma matéria <br>publicada</span>';
 						} elseif (count_user_posts($user_id) == 1) {
 							echo '<span class="num">' . count_user_posts($user_id) . '</span><span class="text">MATÉRIA <br> POSTADA</span>';
 						} else {
@@ -78,7 +83,7 @@ $linkedin = get_the_author_meta( 'linkedin', $user_id );
             <?php 
               if(get_field('banner_blog')) {
                 if(get_field('link_banner_blog')) {
-                  echo '<a href="'.get_field('link_banner_blog').'">';
+                  echo '<a rel="dofollow" href="'.get_field('link_banner_blog').'">';
                 }
                 echo wp_get_attachment_image(get_field('banner_blog'), 'full');
                 if(get_field('link_banner_blog')) {
@@ -94,13 +99,18 @@ $linkedin = get_the_author_meta( 'linkedin', $user_id );
 									'post_type' 						 => 'post',
 									'paged' 								 => $paged,
 									'post_status'            => 'publish',
+									//'author__in' 						 => array($user_id),
 									'author' 								 => $user_id,
 								);
 								$postcat = new WP_Query($postargs);
 								$maxpages = $postcat->max_num_pages;
-								while ($postcat->have_posts()) : $postcat->the_post();
-									get_template_part('template-parts/posts/content', 'blog');
-								endwhile;
+								if($postcat->have_posts()) {
+									while ($postcat->have_posts()) : $postcat->the_post();
+										get_template_part('template-parts/posts/content', 'blog');
+									endwhile;
+								} else {
+									echo '<p>Nenhuma matéria publicada</p>';
+								}
 								// wp_reset_postdata();
 							?>
             </div>

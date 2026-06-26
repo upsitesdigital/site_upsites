@@ -31,16 +31,16 @@ function US_pagination_nav($loop, $paged, $maxpages)
 
   /** Previous Post Link */
   if (get_previous_posts_link()) {
-    printf('<a href="%s" class="prev"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg> Anterior</a>' . "\n", get_previous_posts_page_link());
+    printf('<a rel="dofollow" href="%s" class="prev"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg> Anterior</a>' . "\n", get_previous_posts_page_link());
   } else {
-    printf('<a href="#" class="prev"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg> Anterior</a>' . "\n", get_previous_posts_page_link());
+    printf('<a rel="dofollow" href="#" class="prev"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg> Anterior</a>' . "\n", get_previous_posts_page_link());
   }
   echo '<div>' . "\n";
   /** Link to first page, plus ellipses if necessary */
   if (!in_array(1, $links)) {
     $class = 1 == $paged ? ' class="act"' : '';
 
-    printf('<a%s href="%s">%s</a>' . "\n", $class, esc_url(get_pagenum_link(1)), '1');
+    printf('<a%s href="%s" rel="dofollow">%s</a>' . "\n", $class, esc_url(get_pagenum_link(1)), '1');
 
     if (!in_array(2, $links))
       echo '<span>…</span>';
@@ -50,7 +50,7 @@ function US_pagination_nav($loop, $paged, $maxpages)
   sort($links);
   foreach ((array) $links as $link) {
     $class = $paged == $link ? ' class="act"' : '';
-    printf('<a%s href="%s">%s</a>' . "\n", $class, esc_url(get_pagenum_link($link)), $link);
+    printf('<a%s href="%s" rel="dofollow">%s</a>' . "\n", $class, esc_url(get_pagenum_link($link)), $link);
   }
 
   /** Link to last page, plus ellipses if necessary */
@@ -59,14 +59,14 @@ function US_pagination_nav($loop, $paged, $maxpages)
       echo '<span>…</span>' . "\n";
 
     $class = $paged == $max ? ' class="act"' : '';
-    printf('<a%s href="%s">%s</a>' . "\n", $class, esc_url(get_pagenum_link($max)), $max);
+    printf('<a%s href="%s" rel="dofollow">%s</a>' . "\n", $class, esc_url(get_pagenum_link($max)), $max);
   }
   echo '</div>' . "\n";
   /** Next Post Link */
   if (get_next_posts_link()) {
-    printf('<a href="%s" class="next">Próximo <svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg></a>' . "\n", get_next_posts_page_link());
+    printf('<a rel="dofollow" href="%s" class="next">Próximo <svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg></a>' . "\n", get_next_posts_page_link());
   } else {
-    printf('<a href="#" class="next">Próximo <svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg></a>' . "\n", get_next_posts_page_link());
+    printf('<a rel="dofollow" href="#" class="next">Próximo <svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg></a>' . "\n", get_next_posts_page_link());
   }
   echo '</nav>' . "\n";
 }

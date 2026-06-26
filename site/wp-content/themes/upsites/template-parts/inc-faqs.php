@@ -15,13 +15,14 @@ $idObj = get_page_by_path( 'home' );
 $idhome = $idObj->ID;
 
 $term = $args['type'];
+$title = array_key_exists('title', $args) ? $args['title'] : get_field('subtitulo_faqs', $idhome);
 ?>
 <?php if(get_field('desativar_seccao_faqs') !== 'inativo') { ?>
 <section class="faq">
 	<div class="container">
 		<?php 
-			if(get_field('subtitulo_faqs', $idhome)) {
-				echo '<span>' . get_field('subtitulo_faqs', $idhome) . '</span>';
+			if($title != '') {
+				echo '<h3 class="subtitle">' . $title . '</h3>';
 			}
 			if(get_field('titulo_faqs', $idhome)) {
 				echo '<h2>' . get_field('titulo_faqs', $idhome) . '</h2>';
@@ -51,20 +52,38 @@ $term = $args['type'];
 			$slideposts = new WP_Query($slideargs);
 			$arrayfaq = [];
 			while ($slideposts->have_posts()) : $slideposts->the_post();
-				$objfaq = ["@type" => "Question", "name" => get_the_title(), "acceptedAnswer" => [ "@type" => "Answer", "text" => get_the_content()]];
-				$objfaqjson = json_encode($objfaq,JSON_UNESCAPED_UNICODE);
+				$objfaq = [
+					"@type" => "Question", 
+					"name" => get_the_title(), 
+					"acceptedAnswer" => [ 
+						"@type" => "Answer", 
+						"text" => get_the_content()
+					]
+				];
+				$objfaqjson = $objfaq;
 				array_push($arrayfaq, $objfaq);
 				get_template_part('template-parts/posts/content', 'faq');
 			endwhile;
 			wp_reset_postdata();
+			// echo "<pre>";
+			// var_dump($arrayfaq);
+			// echo "</pre>";
 			?>
-			<script type="application/ld+json">
+			<div id="US_schema" style="display: none;">
+				<textarea><?php echo json_encode($arrayfaq) ?></textarea>
+			</div>
+
+			<!-- script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
 				"@type": "FAQPage",
+				"isPartOf": {
+					"@type": "WebSite",
+					"@id": "#WebSite"
+				},
 				"mainEntity": <?php echo json_encode($arrayfaq,JSON_UNESCAPED_UNICODE) ?>
 			}
-			</script>
+			</script -->
 		</div>
 	</div>
 </section>

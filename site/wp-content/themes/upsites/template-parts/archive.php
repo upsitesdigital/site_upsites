@@ -19,29 +19,36 @@ $id_blog = get_page_by_path( 'blog' );
 $post_content = get_post($id_blog);
 ?>
   <!-- main -->
-  <main>
+  <main id="main">
     <!-- slideFull -->
-    <?php if(get_field('imagem_toppagecat', get_queried_object())) { ?>
-      <section class="slideFull">
+    <?php if(category_description( $termID ) != '') { ?>
+      <section class="slideFull textMedium text-center max-width">
         <div class="container">
           <div class="grid">
             <div class="text">
-              <div class="tag noBox">
-                <b><?= $termName ?></b>
+              <div class="tag noBox" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+                <span><?= $termName ?></span>
               </div>
+              <div data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
               <?php 
-                echo category_description( $termID );
+                $title = explode("<p>", category_description( $termID ));
+                echo apply_filters('the_content', $title[0]);
+                $content = explode("</h1>", category_description( $termID ));
+                echo '<div id="shortContent">';
+                echo apply_filters('the_content', $content[1]);
+                //echo '<p><a href="#" id="readMore">Leia mais</a></p>';
+                echo '</div>';
+                /*echo '<div id="largeContent">';
+                echo apply_filters('the_content', $content[1]);
+                echo '<p><a href="#" id="readLess">Leia menos</a></p>';
+                echo '</div>';*/
+
+                //echo category_description( $termID );
                 if(get_field('texto_botao_toppagecat', get_queried_object())) {
-                  echo '<a href="' . get_field('link_botao_toppagecat', get_queried_object()) . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_toppagecat', get_queried_object()) . '</a>';
+                  echo '<a rel="dofollow" href="' . get_field('link_botao_toppagecat', get_queried_object()) . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_toppagecat', get_queried_object()) . '</a>';
                 }
               ?>
-            </div>
-            <div class="image">
-              <?php 
-                if(get_field('imagem_toppagecat', get_queried_object())) {
-                  echo wp_get_attachment_image(get_field('imagem_toppagecat', get_queried_object()), 'full');
-                }
-              ?>
+              </div>
             </div>
           </div>
         </div>
@@ -51,12 +58,12 @@ $post_content = get_post($id_blog);
         <div class="container">
           <div class="grid">
             <div class="text pbottom-30">
-              <div class="tag noBox">
-                <b><?= $post_content->post_title ?></b>
+              <div class="tag noBox" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+                <span><?= $post_content->post_title ?></span>
               </div>
-              <h1><?php the_field('subtitulo_blog', $id_blog) ?></h1>
+              <h1 class="title" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s"><?php the_field('subtitulo_blog', $id_blog) ?></h1>
             </div>
-            <div class="image pTop">
+            <div class="image pTop" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
               <img src="<?= get_template_directory_uri() ?>/assets/img/star.svg" alt="">
               <p class="ptop-20"><?php the_field('texto_de_apoio_blog', $id_blog) ?></p>
             </div>
@@ -73,15 +80,25 @@ $post_content = get_post($id_blog);
         <hr>
         <div class="grid">
           <div class="sidebar">
-            <h3>CATEGORIAS</h3>
-            <nav>
+            <div class="search-box" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+              <form role="search" method="get" class="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+                <input type="text" autocomplete="off" class="search-field" placeholder="O que você procura?" value="<?php echo get_search_query(); ?>" name="s" />
+                <button type="submit" class="search-submit">
+                  <svg class="icon">
+                    <use xlink:href="<?php echo get_template_directory_uri(); ?>/assets/img/icons.svg#search"></use>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            <h3 data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">CATEGORIAS</h3>
+            <nav data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
               <ul>
                 <?php
                 $args = array('orderby' => 'name', 'parent' => 0);
                 $categories = get_categories($args);
                 foreach($categories as $category) {
                   $act = $term == $category->slug ? 'act' : '' ;
-                  echo '<li class="' . $act . '"><a href="' . get_category_link($category->term_id) . '" title="' . $category->name . '">' . $category->name . '</a>';
+                  echo '<li class="' . $act . '"><a rel="dofollow" href="' . get_category_link($category->term_id) . '" title="' . $category->name . '">' . $category->name . '</a>';
                   
                   $args2 = array('orderby' => 'name', 'parent' => $category->cat_ID);
                   $subcategories = get_categories( $args2 );
@@ -93,7 +110,9 @@ $post_content = get_post($id_blog);
                     // list their child categories
                     foreach ($subcategories as $subcategory) {
                         $actsub = $term == $subcategory->slug ? 'act' : '' ;
-                        echo '<li class="' . $actsub . '"><a href="' . get_category_link($subcategory->term_id) . '" title="' . $subcategory->name . '">' . $subcategory->cat_name . '</a></li>';
+                        if($subcategory->name != 'notin') {
+                          echo '<li class="' . $actsub . '"><a rel="dofollow" href="' . get_category_link($subcategory->term_id) . '" title="' . $subcategory->name . '">' . $subcategory->cat_name . '</a></li>';
+                        }
                     }
 
                     echo '</ul>';
@@ -103,21 +122,25 @@ $post_content = get_post($id_blog);
                 ?>
               </ul>
             </nav>
+            <div class="banner" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s">
+              <?php 
+                if(get_field('banner_img_blog_lateral', $id_blog)) {
+                  if(get_field('banner_img_link_blog_lateral', $id_blog)) {
+                    echo '<a rel="dofollow" href="'.get_field('banner_img_link_blog_lateral', $id_blog).'">';
+                  }
+                  echo wp_get_attachment_image(get_field('banner_img_blog_lateral', $id_blog), 'full');
+                  if(get_field('banner_img_link_blog_lateral', $id_blog)) {
+                    echo '</a>';
+                  }
+                }
+
+                if(get_field('banner_js_blog_lateral', $id_blog)) {
+                  echo get_field('banner_js_blog_lateral', $id_blog);
+                }
+              ?>
+            </div>
           </div>
           <div class="content">
-            <div class="banner">
-            <?php 
-              if(get_field('banner_blog')) {
-                if(get_field('link_banner_blog')) {
-                  echo '<a href="'.get_field('link_banner_blog').'">';
-                }
-                echo wp_get_attachment_image(get_field('banner_blog'), 'full');
-                if(get_field('link_banner_blog')) {
-                  echo '</a>';
-                }
-              }
-            ?>
-            </div>
             <div class="list">
               <?php
 								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

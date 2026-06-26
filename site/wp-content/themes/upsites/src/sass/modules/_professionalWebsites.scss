@@ -3,7 +3,8 @@
 ======================================*/
 
 .professionalWebsites {
-  span {
+  span,
+  .subtitle {
     font-family: $font-main;
     font-style: normal;
     font-weight: 600;
@@ -27,7 +28,7 @@
   }
   .grid {
     padding-bottom: 110px;
-    @include columns( $quant: 47% 48%, $gutter: 5%, $align: stretch, $template: 'text image');
+    @include columns( $quant: 47% 48%, $gutter: 5%, $align: end, $template: 'text image');
     .text {
       grid-area: text;
       padding-top: 127px;
@@ -130,7 +131,8 @@
 
 @include breakpoint2($min:sm, $max:lg) {
   .professionalWebsites {
-    span {
+    span,
+    .subtitle {
       font-size: get-vw-lg(13px);
       padding-bottom: get-vw-lg(9px);
     }
@@ -192,34 +194,38 @@
 
 @include breakpoint2($min:xs, $max:sm) {
   .professionalWebsites {
-    span {
-      font-size: get-vw-sm(13px);
+    &.hide-mobile {
+      display: none;
+    }
+    span,
+    .subtitle {
+      // font-size: get-vw-sm(13px);
       padding-bottom: get-vw-sm(9px);
     }
     h2 {
-      font-size: get-vw-sm(32px);
+      // font-size: get-vw-sm(32px);
       padding-bottom: get-vw-sm(35px);
     }
     .grid {
       @include columns( $quant: 100%, $gutter: 5%, $align: stretch, $template: 'text' 'image');
       padding-bottom: get-vw-sm(110px);
       .text {
-        padding-top: get-vw-sm(127px);
+        padding-top: 0;
         p {
-          font-size: get-vw-sm(16px);
+          // font-size: get-vw-sm(16px);
           padding-bottom: get-vw-sm(28px);
         }
         .items {
           padding-top: get-vw-sm(27px);
           .item {
             @include columns( $quant: get-vw-sm(56px) auto, $gutter: get-vw-sm(18px), $align: stretch, $template: '');
-            font-size: get-vw-sm(16px);
+            // font-size: get-vw-sm(16px);
             padding: get-vw-sm(31px) get-vw-sm(30px) get-vw-sm(26px) get-vw-sm(35px);
             border-radius: get-vw-sm(16px);
             filter: drop-shadow(0 get-vw-sm(30.3117px) get-vw-sm(45.4675px) rgba(0, 0, 114, 0.2));
             .icons {
-              width: get-vw-sm(48px);
-              height: get-vw-sm(48px);
+              // width: get-vw-sm(48px);
+              // height: get-vw-sm(48px);
               margin-right: get-vw-sm(5px);
               padding: get-vw-sm(8px);
             }
@@ -247,7 +253,7 @@
             padding: get-vw-sm(8px);
           }
           p {
-            font-size: get-vw-sm(16px);
+            // font-size: get-vw-sm(16px);
           }
         }
       }
@@ -257,28 +263,32 @@
 
 @include breakpoint2($min:'', $max:xs) {
   .professionalWebsites {
-    span {
-      font-size: get-vw-xs(13px);
+    &.hide-mobile {
+      display: none;
+    }
+    span,
+    .subtitle {
+      // font-size: get-vw-xs(13px);
       padding-bottom: get-vw-xs(9px);
     }
     h2 {
-      font-size: get-vw-xs(32px);
+      // font-size: get-vw-xs(32px);
       padding-bottom: get-vw-xs(35px);
     }
     .grid {
       @include columns( $quant: 100%, $gutter: 5%, $align: stretch, $template: 'text' 'image');
       padding-bottom: get-vw-xs(110px);
       .text {
-        padding-top: get-vw-xs(127px);
+        padding-top: 0;
         p {
-          font-size: get-vw-xs(16px);
+          // font-size: get-vw-xs(16px);
           padding-bottom: get-vw-xs(28px);
         }
         .items {
           padding-top: get-vw-xs(27px);
           .item {
             @include columns( $quant: get-vw-xs(56px) auto, $gutter: get-vw-xs(18px), $align: stretch, $template: '');
-            font-size: get-vw-xs(16px);
+            // font-size: get-vw-xs(16px);
             padding: get-vw-xs(31px) get-vw-xs(30px) get-vw-xs(26px) get-vw-xs(35px);
             border-radius: get-vw-xs(16px);
             filter: drop-shadow(0 get-vw-xs(30.3117px) get-vw-xs(45.4675px) rgba(0, 0, 114, 0.2));
@@ -293,6 +303,7 @@
       }
       .image {
         .image {
+          display: none;
           height: auto;
           max-width: 50%;
           margin: 0 auto;
@@ -312,7 +323,7 @@
             padding: get-vw-xs(8px);
           }
           p {
-            font-size: get-vw-xs(16px);
+            // font-size: get-vw-xs(16px);
           }
         }
       }

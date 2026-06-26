@@ -6,7 +6,9 @@
   padding-top: 97px;
   padding-bottom: 103px;
   background-color: #F9F9F9;
-  span {
+  overflow: hidden;
+  span,
+  .subtitle {
     font-family: $font-main;
     font-style: normal;
     font-weight: 600;
@@ -73,6 +75,46 @@
           line-height: 175%;
           color: #59608B;
           padding-bottom: 30px;
+          b,
+          strong {
+            font-weight: 700;
+          }
+          i,
+          em {
+            font-style: italic;
+          }
+        }
+        ul,
+        ol {
+          li {
+            font-family: $font-main;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 175%;
+            color: #59608B;
+            padding: 5px 0;
+            b,
+            strong {
+              font-weight: 700;
+            }
+            i,
+            em {
+              font-style: italic;
+            }
+          }
+        }
+        ul {
+          list-style: disc inside;
+          li {
+            list-style: disc inside;
+          }
+        }
+        ol {
+          list-style: decimal-leading-zero inside;
+          li {
+            list-style: decimal-leading-zero inside;
+          }
         }
       }
       &.accordionOpen {
@@ -103,7 +145,8 @@
   .faq {
     padding-top: get-vw-lg(97px);
     padding-bottom: get-vw-lg(103px);
-    span {
+    span,
+    .subtitle {
       font-size: get-vw-lg(13px);
       padding-bottom: get-vw-lg(9px);
     }
@@ -131,6 +174,13 @@
             font-size: get-vw-lg(16px);
             padding-bottom: get-vw-lg(30px);
           }
+          ul,
+          ol {
+            li {
+              font-size: get-vw-lg(16px);
+              padding: get-vw-lg(5px) 0;
+            }
+          }
         }
       }
     }
@@ -146,12 +196,13 @@
   .faq {
     padding-top: get-vw-sm(97px);
     padding-bottom: get-vw-sm(103px);
-    span {
-      font-size: get-vw-sm(13px);
+    span,
+    .subtitle {
+      // font-size: get-vw-sm(13px);
       padding-bottom: get-vw-sm(9px);
     }
     h2 {
-      font-size: get-vw-sm(32px);
+      // font-size: get-vw-sm(32px);
       padding-bottom: get-vw-sm(51px);
     }
     .grid {
@@ -160,11 +211,12 @@
       grid-column-gap: 0;
       .item {
         border-radius: get-vw-sm(4px);
+        margin-bottom: 3.43%;
         .title {
           min-height: get-vw-sm(90px);
           padding: get-vw-sm(10px) get-vw-sm(50px) get-vw-sm(10px) get-vw-sm(27px);
           h3 {
-            font-size: get-vw-sm(16px);
+            // font-size: get-vw-sm(16px);
           }
           .icon {
             right: get-vw-sm(22px);
@@ -174,8 +226,15 @@
         .content {
           padding: 0 get-vw-sm(27px) get-vw-sm(10px) get-vw-sm(27px);
           p {
-            font-size: get-vw-sm(16px);
+            // font-size: get-vw-sm(16px);
             padding-bottom: get-vw-sm(30px);
+          }
+          ul,
+          ol {
+            li {
+              //font-size: get-vw-sm(16px);
+              padding: get-vw-sm(5px) 0;
+            }
           }
         }
       }
@@ -192,12 +251,13 @@
   .faq {
     padding-top: get-vw-xs(97px);
     padding-bottom: get-vw-xs(103px);
-    span {
-      font-size: get-vw-xs(13px);
+    span,
+    .subtitle {
+      // font-size: get-vw-xs(13px);
       padding-bottom: get-vw-xs(9px);
     }
     h2 {
-      font-size: get-vw-xs(32px);
+      // font-size: get-vw-xs(32px);
       padding-bottom: get-vw-xs(51px);
     }
     .grid {
@@ -206,11 +266,12 @@
       grid-column-gap: 0;
       .item {
         border-radius: get-vw-xs(4px);
+        margin-bottom: 3.43%;
         .title {
           min-height: get-vw-xs(90px);
           padding: get-vw-xs(10px) get-vw-xs(50px) get-vw-xs(10px) get-vw-xs(27px);
           h3 {
-            font-size: get-vw-xs(16px);
+            // font-size: get-vw-xs(16px);
           }
           .icon {
             right: get-vw-xs(22px);
@@ -220,8 +281,15 @@
         .content {
           padding: 0 get-vw-xs(27px) get-vw-xs(10px) get-vw-xs(27px);
           p {
-            font-size: get-vw-xs(16px);
+            // font-size: get-vw-xs(16px);
             padding-bottom: get-vw-xs(30px);
+          }
+          ul,
+          ol {
+            li {
+              //font-size: get-vw-xs(16px);
+              padding: get-vw-xs(5px) 0;
+            }
           }
         }
       }

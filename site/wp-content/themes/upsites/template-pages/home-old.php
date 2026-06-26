@@ -1,0 +1,678 @@
+<?php
+/*
+Template Name: Home old
+*/
+get_header();
+?>
+
+  <!-- main -->
+  <main id="main" class="ptop-50">
+    <!-- slideFull -->
+    <?php if(get_field('desativar_seccao_tophome') !== 'inativo') { ?>
+      <?php 
+        $bg = '';
+        if(get_field('imagem_tophome')) {
+          $bg = 'background-image: url(' . wp_get_attachment_image_url(get_field('imagem_tophome'), 'full') . ');';
+        }
+        /*$bgmobile = '';
+        if(get_field('imagem_tophome3')) {
+          $bgmobile = 'background: url(' . wp_get_attachment_image_url(get_field('imagem_tophome3'), 'full') . ') center bottom no-repeat, url(' . wp_get_attachment_image_url(get_field('imagem_tophome4'), 'full') . ') bottom center no-repeat;';
+        }*/
+        $astronauta = '';
+        if(get_field('imagem_tophome2')) {
+          $astronauta = '<div class="bg2 parallax" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.7s" style="background-image: url(' . wp_get_attachment_image_url(get_field('imagem_tophome2'), 'full') . ');"></div>';
+        }
+      ?>
+      <section class="slideFull text-center relative" data-scroll-reveal="enter bottom move 0px over 0.6s after 0s">
+        <div class="bgdesk" style="<?= $bg ?>"></div>
+        <!-- div class="bgmobile" style="<?= $bgmobile ?>"></div -->
+        <div class="container relative">
+          <?= $astronauta ?>
+          <div class="grid">
+            <div class="text">
+              <?php 
+                if(get_field('subtitulo_tophome')) {
+                  echo '<div class="tag noBox flex small" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">' . get_field('subtitulo_tophome') . ' 
+                    <span class="google">4.9 
+                    <img src="' . get_template_directory_uri() . '/assets/img/criacao-sites-melhor-empresa.svg" alt="google" width="100" height="22" />
+                    </span>
+                  </div>';
+                }
+                if(get_field('titulo_tophome')) {
+                  echo '<h2 class="title" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">' . get_field('titulo_tophome') . '</h2>';
+                }
+                if(get_field('texto_tophome')) {
+                  echo '<p class="" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">' . get_field('texto_tophome') . '</p>';
+                }
+                if(get_field('form_tophome')) {
+                  echo '<div class="form" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s">' . do_shortcode(get_field('form_tophome')) . '</div>';
+                }
+                if(get_field('texto_botao_tophome')) {
+                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s"><a rel="nofollow" target="_blank" href="' . get_field('link_botao_tophome') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tophome') . '</a></div>';
+                } ?>
+                <div class="clients ptop-50 pbottom-0" style="min-height: auto; max-width: 1128px;">
+                    <div class="clientSlide pbottom-0" style="margin-bottom: 0;">
+                      <?php
+                        $slideargs = array(
+                          'post_type' 						 => 'clients',
+                          'post_status'            => 'publish',
+                          'posts_per_page'         => '15',
+                          'no_found_rows'          => true,
+                          'update_post_term_cache' => false,
+                          'update_post_meta_cache' => false,
+                          'cache_results'          => false
+                        );
+                        $slideposts = new WP_Query($slideargs);
+                        $count = 1;
+                        while ($slideposts->have_posts()) : $slideposts->the_post();
+                          echo '<div class="item gray" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.'.$count.'s">' . wp_get_attachment_image(get_field('imagem_clients'), 'logos-thumb', '', array()) . '</div>';
+                          $count++;
+                        endwhile;
+                        wp_reset_postdata();
+                      ?>
+                    </div>
+                </div>
+                <?php
+                if(get_field('texto_botao_veja_mais_tophome')) {
+                  $anchor = strpos(get_field('link_botao_veja_mais_tophome'), '#') === false ? 'more' : 'more anchor' ;
+                  echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0.6s" rel="dofollow" href="' . get_field('link_botao_veja_mais_tophome') . '" class="'.$anchor.'"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrow"></use></svg> ' . get_field('texto_botao_veja_mais_tophome') . '</a>';
+                }
+              ?>
+            </div>
+          </div>
+        </div>
+      </section>
+    <?php } ?>
+    <!-- end:slideFull -->
+     
+    <!-- howToWork -->
+    <?php if(get_field('desativar_seccao_howtowork') !== 'inativo') { ?>
+    <section id="como-funciona" class="howToWork ptop-100">
+      <div class="container relative">
+        <?php 
+          if(get_field('subtitulo_howtowork')) {
+            echo '<h3 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" class="title">' . get_field('subtitulo_howtowork') . '</h3>';
+          }
+          if(get_field('titulo_howtowork')) {
+            echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_howtowork') . '</h2>';
+          }
+          if( have_rows('box_howtowork') ):
+            $cont = 1;
+            echo '<div class="grid">';
+            while ( have_rows('box_howtowork') ) : the_row();
+              if(get_sub_field('icone')) {
+                $image = '<div class="icons">' . wp_get_attachment_image(get_sub_field('icone'), 'full') . '</div>';
+              } else {
+                $image = '<div class="icons"><svg class="icon clearFill"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#screen"></use></svg></div>';
+              }
+              echo '<div class="item cols-0' . $cont . '" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.' . $cont . 's">' . $image . '
+                <h3>' . get_sub_field('titulo') . '</h3>
+                <p>' . get_sub_field('texto') . '</p>
+              </div>';
+              $cont++;
+            endwhile;
+            echo '</div>';
+          endif;
+        ?>
+      </div>
+    </section>
+    <?php } ?>
+    <!-- end:howToWork -->
+
+    <!-- portfolio -->
+    <?php if(get_field('desativar_seccao_porthome') !== 'inativo') { ?>
+    <section class="portfoliolistnew">
+      <div class="container">
+        <?php 
+          if(get_field('subtitulo_porthome')) {
+            echo '<span class="subtitle">' . get_field('subtitulo_porthome') . '</span>';
+          }
+          if(get_field('titulo_porthome')) {
+            echo '<h2 class="title">' . get_field('titulo_porthome') . '</h2>';
+          }
+          if(get_field('texto_apoio_porthome')) {
+            echo '<p>' . get_field('texto_apoio_porthome') . '</p>';
+          }
+        ?>
+        <div class="box-slidepag" style="position: relative;">
+        <?php
+          $postargs = array(
+            'post_type' 						 => 'portifolios',
+            'posts_per_page'         => 6,
+            'post_status'            => 'publish',
+            'meta_key'      				 => 'destacar_port',
+            'meta_value'    				 => '1',
+            'no_found_rows'          => true,
+            'update_post_term_cache' => false,
+            'update_post_meta_cache' => false,
+            'cache_results'          => false
+          );
+          $postcat = new WP_Query($postargs);
+          if($postcat->have_posts()) {
+            echo '<div class="box-slider">';
+        ?>
+          <?php while ($postcat->have_posts()) : $postcat->the_post(); ?>
+            <div class="item">
+              <div class="image">
+                <?= wp_get_attachment_image(get_field('mocap_port'), 'full', '', array( "loading" => "lazy" )) ?>
+                <a rel="nofollow" target="_blank" href="<?php the_field('link_portifolio') ?>"><img src="<?= get_template_directory_uri() ?>/assets/img/btn-portifolio.png" alt=""></a>
+              </div>
+              <div class="text">
+                <div class="item">
+                  <h3><?php the_title() ?></h3>
+                  <span class="tag"><?php the_field('subtitulo_portifolio') ?></span>
+                  <?php
+                    if(get_the_excerpt()) {
+                      echo '<p>' . get_the_excerpt() . '</p>';
+                    }
+                  ?>
+                </div>
+                <div class="btn-box">
+                  <a rel="nofollow" target="_blank" href="<?php the_field('link_portifolio') ?>" class="seeMore">
+                    veja online - <b><?php 
+                    $remove = array("https:", "http:", "/", "www.");
+                    echo str_replace($remove, "", get_field('link_portifolio'));
+                    ?></b>
+                  </a>
+                </div>
+              </div>
+            </div>
+          <?php endwhile; wp_reset_postdata(); ?>
+        <?php 
+            echo '</div>';
+          } 
+        ?>
+          <div id="btns-slider">
+            <a href="#" class="prev">
+              <svg class="icon">
+                <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrowSlide"></use>
+              </svg>
+            </a>
+            <div class="pags"><span class="current">01</span>  •  <span class="total">04</span></div>
+            <a href="#" class="next">
+              <svg class="icon">
+                <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrowSlide"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="portfolio" class="portfolioListHome" style="padding-top: 0;">
+      <div class="container">
+        <div class="grid">
+          <?php
+            $postargs = array(
+              'post_type' 						 => 'portifolios',
+              'posts_per_page'         => 3,
+              'post_status'            => 'publish',
+              'meta_key'               => 'destacar_port',
+              'meta_value'             => '0',
+              'no_found_rows'          => true,
+              'update_post_term_cache' => false,
+              'update_post_meta_cache' => false,
+              'cache_results'          => false,
+              'tax_query' => array(
+                array(
+                  'taxonomy' => 'segmentos_portifolios',
+                  'field' => 'slug',
+                  'terms' => 'site-sob-medida'
+                )
+              )
+            );
+            $postcat = new WP_Query($postargs);
+            while ($postcat->have_posts()) : $postcat->the_post();
+              $args = array(
+                'current_post' => $postcat->current_post,
+              );
+              get_template_part('template-parts/posts/content', 'portifolio', $args);
+            endwhile;
+            wp_reset_postdata();
+          ?>
+        </div>
+        <div class="center" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">
+          <a rel="dofollow" href="<?= get_permalink( get_page_by_path( 'portfolio' ) ) ?>" class="btnBudgets"><svg class="icon"><use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#ray"></use></svg> Ver todo o portfólio</a>
+        </div>
+      </div>
+    </section>
+    <?php } ?>
+    <!-- end:portfolio -->
+
+    <!-- functions -->
+    <?php if(get_field('desativar_seccao_func') !== 'inativo') { ?>
+    <section class="functions">
+      <div class="container">
+        <div class="grid">
+          <div class="image">
+            <div class="box">
+              <?php 
+                if(get_field('imagem_func')) {
+                  echo '<div class="image" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . wp_get_attachment_image(get_field('imagem_func'), 'full') . '</div>';
+                }
+                if(get_field('texto_func')) {
+                  echo '<h3 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('texto_func') . '</h3>';
+                }
+                if(get_field('texto_botao_func')) {
+                  echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="nofollow" target="'.get_field('target_type_func').'" href="' . get_field('link_botao_func') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_func') . '</a>';
+                }
+              ?>
+            </div>
+          </div>
+          <div class="text">
+            <?php 
+              if(get_field('subtitulo_func')) {
+                echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('subtitulo_func') . '</h3>';
+              }
+              if(get_field('titulo_func')) {
+                echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_func') . '</h2>';
+              }
+              
+              if( have_rows('funcionalidades_func') ):
+                echo '<ul>';
+                while ( have_rows('funcionalidades_func') ) : the_row();
+                  if(get_sub_field('icone')) {
+                    $image = '<div class="icons" data-scroll-reveal="enter right move 50px over 0.6s after 0s">' . wp_get_attachment_image(get_sub_field('icone'), 'full') . '</div>';
+                  } else {
+                    $image = '<div class="icons" data-scroll-reveal="enter right move 50px over 0.6s after 0s"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#responsive"></use></svg></div>';
+                  }
+                  echo '<li>' . $image . '
+                    <h3 data-scroll-reveal="enter right move 50px over 0.6s after 0.1s">' . get_sub_field('titulo') . '</h3>
+                    <p data-scroll-reveal="enter right move 50px over 0.6s after 0.2s">' . get_sub_field('texto') . '</p>
+                  </li>';
+                endwhile;
+                echo '</ul>';
+              endif;
+            ?>
+          </div>
+        </div>
+      </div>
+    </section>
+    <?php } ?>
+    <!-- end:functions -->
+    
+    <?php if(!get_field('desativar_seccao_agency')) { ?>
+    <section class="agency">
+      <div class="container">
+        <span class="subtitle"><?= get_field('subtitle_agency') ?></span>
+        <h2 class="title"><?= get_field('title_agency') ?></h2>
+        <?php if( have_rows('list_agency') ): ?>
+          <div class="grid-agency">
+            <?php while( have_rows('list_agency') ): the_row(); ?>
+              <div class="item">
+                <div class="box-icon"><?= wp_get_attachment_image(get_sub_field('icon'), 'full') ?></div>
+                <h3><?= get_sub_field('text') ?></h3>
+              </div>
+            <?php endwhile; ?>
+          </div>
+        <?php endif; ?>
+      </div>
+    </section>
+    <?php } ?>
+
+    <?php if(!get_field('desativar_seccao_process_worksp')) { ?>
+    <section class="how-the-process-works">
+      <div class="container">
+        <span class="subtitle"><?= get_field('subtitle_processworks') ?></span>
+        <h2 class="title"><?= get_field('title_processworks') ?></h2>
+        <?php if( have_rows('list_processworks') ): ?>
+          <div class="box-cards">
+            <?php 
+            $count = 1;
+            while( have_rows('list_processworks') ): the_row(); 
+              $count = $count <= 9 ? '0'.$count : $count ;
+            ?>
+              <div class="item">
+                <span class="count"><?= $count ?></span>
+                <div class="content">
+                  <h3><?= get_sub_field('title') ?></h3>
+                  <p><?= get_sub_field('text') ?></p>
+                </div>
+              </div>
+            <?php $count++; endwhile; ?>
+          </div>
+        <?php endif; ?>
+      </div>
+    </section>
+    <?php } ?>
+
+    <!-- fullControl -->
+    <?php if(get_field('desativar_seccao_fullcontrol') !== 'inativo') { ?>
+    <section class="fullControl">
+      <div class="container">
+        <div class="grid">
+          <div class="text">
+            <?php 
+              if(get_field('subtitulo_fullcontrol')) {
+                echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('subtitulo_fullcontrol') . '</h3>';
+              }
+              if(get_field('titulo_fullcontrol')) {
+                echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_fullcontrol') . '</h2>';
+              }
+              if(get_field('texto_fullcontrol')) {
+                echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('texto_fullcontrol') . '</div>';
+              }
+            ?>
+            <div class="items">
+              <?php 
+                if(get_field('link_fotos_fullcontrol')) {
+                  echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" href="' . get_field('link_fotos_fullcontrol') . '" class="item"><div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#photo"></use></svg></div> Fotos</a>';
+                } else {
+                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" class="item"><div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#photo"></use></svg></div> Fotos</div>';
+                } 
+                if(get_field('link_videos_fullcontrol')) {
+                  echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" href="' . get_field('link_videos_fullcontrol') . '" class="item"><div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#video"></use></svg></div> Videos</a>';
+                } else {
+                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" class="item"><div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#video"></use></svg></div> Videos</div>';
+                }
+                if(get_field('link_texto_fullcontrol')) {
+                  echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" href="' . get_field('link_texto_fullcontrol') . '" class="item"><div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#text"></use></svg></div> Textos</a>';
+                } else {
+                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" class="item"><div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#text"></use></svg></div> Textos</div>';
+                }
+              ?>
+            </div>
+            <?php
+            if(get_field('texto_botao_fullcontrol')) {
+                echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="nofollow" target="'.get_field('target_type_fullcontrol').'" href="' . get_field('link_botao_fullcontrol') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_fullcontrol') . '</a>';
+              }
+            ?>
+          </div>
+          <div class="image">
+            <?php 
+              if(get_field('imagem_fullcontrol')) {
+                echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" class="image">' . wp_get_attachment_image(get_field('imagem_fullcontrol'), 'full') . '</div>';
+              }
+              if(get_field('subtexto_fullcontrol')) {
+                echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" class="box"><div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#star"></use></svg></div><p>' . get_field('subtexto_fullcontrol') . '</p></div>';
+              }
+            ?>
+          </div>
+        </div>
+      </div>
+    </section>
+    <?php } ?>
+    <!-- end:fullControl -->
+
+    <!-- clients -->
+    <?php
+      $args = array(
+        'clientSlide' => 'false',
+      ); 
+      get_template_part( 'template-parts/inc','clients', $args ); ?>
+    <!-- end:clients -->
+
+    <!-- dontJustWebsite -->
+    <?php if(get_field('desativar_seccao_dontjustwebsite') !== 'inativo') { ?>
+    <section class="dontJustWebsite">
+      <div class="before" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s"><img src="<?= get_template_directory_uri() ?>/assets/img/imageDontJustWebsite.svg" alt=""></div>
+      <div class="container relative" style="overflow: hidden;">
+        <div class="moon" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s"><img src="<?= get_template_directory_uri() ?>/assets/img/moon.svg" alt=""></div>
+        <div class="grid">
+          <div class="left">
+            <?php 
+              if(get_field('titulo_lateral_dontjustwebsite')) {
+                echo '<h3 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_lateral_dontjustwebsite') . '</h3>';
+              }
+              if(get_field('texto_dontjustwebsite')) {
+                echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('texto_dontjustwebsite') . '</div>';
+              }
+            ?>
+          </div>
+          <div class="right">
+            <?php 
+              if(get_field('subtitulo_dontjustwebsite')) {
+                echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('subtitulo_dontjustwebsite') . '</h3>';
+              }
+              if(get_field('titulo_dontjustwebsite')) {
+                echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_dontjustwebsite') . '</h2>';
+              }
+              if( have_rows('lista_dontjustwebsite') ):
+                echo '<ul class="check">';
+                $count = 1;
+                while ( have_rows('lista_dontjustwebsite') ) : the_row();
+                  echo '<li data-scroll-reveal="enter bottom move 50px over 0.6s after 0.'.$count.'s">' . get_sub_field('item') . '</li>';
+                  $count++;
+                endwhile;
+                echo '</ul>';
+              endif;
+              
+              if(get_field('texto_botao_dontjustwebsite')) {
+                echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" href="' . get_field('link_botao_dontjustwebsite') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_dontjustwebsite') . '</a>';
+              }
+            ?>
+          </div>
+        </div>
+      </div>
+      <div class="container relative">
+        <div class="after" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s"><img src="<?= get_template_directory_uri() ?>/assets/img/imageDontJustWebsiteafter.svg" alt=""></div>
+      </div>
+    </section>
+    <?php } ?>
+    <!-- end:dontJustWebsite -->
+
+    <?php if(!get_field('desativar_seccao_canwedo')) { ?>
+    <section class="can-we-do">
+      <div class="container">
+        <span class="subtitle"><?= get_field('subtitle_canwedo') ?></span>
+        <h2 class="title"><?= get_field('title_canwedo') ?></h2>
+        <?php if( have_rows('list_canwedo') ): ?>
+          <div class="grid-can-we-do">
+            <?php while( have_rows('list_canwedo') ): the_row(); ?>
+            <div class="item">
+              <div class="icons"><?= wp_get_attachment_image(get_sub_field('icon'), 'full') ?></div>
+              <h3><?= get_sub_field('title') ?></h3>
+              <p><?= get_sub_field('text') ?></p>
+            </div>
+            <?php endwhile; ?>
+          </div>
+        <?php endif; ?>
+      </div>
+    </section>
+    <?php } ?>
+
+    <!-- faq -->
+    <?php /* $args = array(
+      'type' => 'home',
+    );
+    get_template_part( 'template-parts/inc','faqs', $args ); */?>
+    <!-- end:faq -->
+
+    <section class="faqs-new">
+      <div class="container">
+        <span class="subtitle"><?= get_field('subtitulo_faqs') ?></span>
+        <h2 class="title"><?= get_field('titulo_faqs') ?></h2>
+        <div class="grid-faqs">
+          <div class="left">
+            <ul class="box-list">
+              <?php
+                $slideargs = array(
+                  'post_type' 						 => 'faqs',
+                  'post_status'            => 'publish',
+                  'posts_per_page'         => '-1',
+                  'orderby' => 'date',
+                  'order'   => 'DESC',
+                  'no_found_rows'          => true,
+                  'update_post_term_cache' => false,
+                  'update_post_meta_cache' => false,
+                  'cache_results'          => false,
+                  'tax_query' => array(
+                    array(
+                      'taxonomy' => 'categories_faqs',
+                      'field' => 'slug',
+                      'terms' => 'home',
+                    )
+                  )
+                );
+                $slideposts = new WP_Query($slideargs);
+                $countall = $slideposts->post_count / 2;
+                $count = 1;
+                while ($slideposts->have_posts()) : $slideposts->the_post(); ?>
+                  <li>
+                    <div class="top">
+                      <div class="left">
+                        <?= US_term_list(get_the_ID(), 'cat_faqs', 'color') ?>
+                        <h3><?php the_title() ?></h3>
+                      </div>
+                      <svg class="icon">
+                        <use xlink:href="<?= get_bloginfo("template_url") ?>/assets/img/icons.svg#chevron"></use>
+                      </svg>
+                    </div>
+                    <div class="content">
+                      <?php the_content() ?>
+                    </div>
+                  </li>
+                <?php 
+                if ($count == $countall) {
+                  echo '</ul></div><div class="right"><ul class="box-list">';
+                }
+                $count++;
+                endwhile;
+                wp_reset_postdata();
+              ?>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- hireProfessionWebsite -->
+    <?php $args = array(
+      'type' => 'tree-cols',
+    );
+    get_template_part( 'template-parts/inc','prices', $args ); ?>
+    <!-- end:hireProfessionWebsite -->
+
+    <!-- professionalWebsites -->
+    <?php if(get_field('desativar_seccao_sitespro') !== 'inativo') { ?>
+    <section class="professionalWebsites">
+      <div class="container">
+        <div class="grid">
+          <div class="text">
+            <?php 
+              if(get_field('subtitulo_sitespro')) {
+                echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('subtitulo_sitespro') . '</h3>';
+              }
+              if(get_field('titulo_sitespro')) {
+                echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_sitespro') . '</h2>';
+              }
+              if(get_field('texto_sitespro')) {
+                echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('texto_sitespro') . '</div>';
+              }
+              if(get_field('texto_melhor_parte_sitespro')) {
+                echo '<div class="items">
+                  <div class="item" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">
+                    <div class="icons">
+                      <svg class="icon">
+                        <use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#money"></use>
+                      </svg>
+                    </div>
+                    <p>' . get_field('texto_melhor_parte_sitespro') . '</p>
+                  </div>
+                </div>';
+              }
+            ?>
+          </div>
+          <div class="image">
+            <?php 
+              if(get_field('imagem_sitespro')) {
+                echo '<div class="image" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . wp_get_attachment_image(get_field('imagem_sitespro'), 'full') . '</div>';
+              }
+              if(get_field('texto_agilidade_modernidade_e_utilidade_sitespro')) {
+                echo '<div class="box" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+                  <div class="icons">
+                    <svg class="icon">
+                      <use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#time"></use>
+                    </svg>
+                  </div>
+                  <p>' . get_field('texto_agilidade_modernidade_e_utilidade_sitespro') . '</p>
+                </div>';
+              }
+            ?>
+          </div>
+        </div>
+      </div>
+    </section>
+    <?php } ?>
+    <!-- end:professionalWebsites -->
+
+    <!-- other-pages -->
+    <?php if(get_field('desativar_seccao_landing') !== 'inativo') { ?>
+    <?php get_template_part( 'template-parts/inc','other-pages' ); ?>
+    <?php } ?>
+    <!-- end:other-pages -->
+    
+    <?php if(!get_field('desativar_seccao_map')) { ?>
+    <section class="map-section">
+      <div class="container">
+        <div class="grid-map">
+          <div class="text">
+            <span class="subtitle"><?= get_field('subtitle_map') ?></span>
+            <h2 class="title"><?= get_field('title_map') ?></h2>
+            <p><?= get_field('text_map') ?></p>
+            <?php if(get_field('textstate_map')) {
+              echo '<div class="state">
+                <svg class="icon"><use xlink:href="'. get_bloginfo("template_url") .'/assets/img/icons.svg#checkfull"></use></svg>
+                <span>'.get_field('textstate_map').'</span>
+              </div>';
+            } ?>
+            <?php if(get_field('textmouse_map')) {
+              echo '<div class="mouse">
+                <svg class="icon"><use xlink:href="'. get_bloginfo("template_url") .'/assets/img/icons.svg#mouse"></use></svg>
+                <span>'.get_field('textmouse_map').'</span>
+              </div>';
+            } ?>
+          </div>
+          <div class="map">
+            <svg width="497" height="508" viewBox="0 0 497 508" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M83.2893 39.3518L72.9541 44.3589L72.6501 47.859L51.8217 46.036L53.6456 53.9355L62.1569 55.9043L63.5309 61.3732H50.156V70.3422L57.9013 75.0455L55.4695 79.6029L59.5792 84.1603L51.3719 125.177L39.9789 122.746L34.9572 128.823L22.7982 128.519L13.229 137.33L11.4052 154.041L1.06999 157.529L4.55963 161.94L0 165.744L12.3049 185.639L9.58131 192.019L23.4061 198.4L43.3104 192.773L43.6266 212.825H70.0603L74.0241 206.603L77.9636 208.888L102.136 196.735L107.461 196.419L108.677 204.926L106.537 207.211L110.039 211.768L107.145 216.471L117.797 228.017L136.935 233.194L168.098 246.708L174.482 281.345L197.28 280.591L196.064 292.744L205.183 296.998L207.311 305.043L203.056 329.349L196.976 331.172L203.202 339.072L202.448 356.232L219.008 358.517L229.198 355.624L234.523 380.538L244.396 377.658L249.26 382.215L244.092 401.198H253.37L257.467 411.237L254.731 421.373L228.128 436.904L207.007 463.179L217.184 461.211L227.374 474.883L232.237 470.933L255.339 484.909L263.547 495.543L257.163 500.1L257.625 508L269.176 501.778L276.314 485.371L296.534 470.471L306.261 450.273L317.958 442.373L321.606 426.72L319.928 408.041L339.699 387.684L360.661 378.108L371.458 366.878L402.768 368.239L407.327 358.979L417.2 354.567L418.574 339.983L434.223 323.127L434.989 307.17L441.835 297.605L443.658 272.534L441.676 240.777L455.355 233.644L467.818 207.356L480.427 201.887L480.135 196.735L493.352 180.62L497 156.629L487.723 135.969L465.545 133.684L430.891 105.27L410.063 107.555L405.965 103.156L384.225 97.9784L378.146 103.909L366.74 85.8253L361.123 89.4712L330.871 75.3493L322.36 77.9258L323.43 71.8492L307.477 64.1077L302.456 66.5383L301.24 60.7656L304.887 48.0048L296.826 39.3518L293.944 42.2321L288.169 26.275L283.913 9.57665L282.697 18.9832L272.058 29.3133L269.018 42.8397L255.643 37.9785L243.326 37.8205L227.07 35.9975L231.483 45.5742L211.263 42.0741L191.967 52.5622L179.65 48.0048L175.844 29.7751L181.169 16.2609L175.698 10.476L175.394 0L166.883 0.303828L165.217 9.57665L138.309 21.1221L136.181 16.7105L114.295 13.6722L123.268 30.9904L135.111 38.1365L135.877 41.3206L106.246 59.4044L104.568 54.0813L88.4569 58.3349L87.0829 46.036L83.2893 39.3518Z" fill="#042E8B"/>
+              <path d="M422.319 163.168L424.228 159.425L418.185 148.292L420.107 135.933L412.823 129.2L414.185 107.106L410.063 107.555L405.966 103.156L402.792 113.267H399.217L392.615 123.16L395.363 135.52L390.147 142.532L393.989 155.718H381.623L361.002 166.571L353.852 183.464L355.919 191.023V201.462L355.87 201.523L360.041 201.742L363.47 211.501L374.887 206.554L377.635 207.515L384.092 197.075L380.663 193.915L386.292 190.196L400.312 192.129L413.529 181.227L423 173.437L420.386 166.984L422.319 163.168Z" fill="#008CFF"/>
+              <path d="M472.816 160.02L461.277 156.556C461.277 156.556 465.411 148.389 465.605 147.806C465.8 147.235 458.675 148.292 458.675 148.292L450.784 153.968L447.416 149.155L447.902 165.209L444.461 168.199L454.82 170.119L464.39 162.718L468.183 165.89L464.39 173.194L465.593 178.772L474.737 171.845L487.723 165.112L495.48 166.607L497 156.629L495.602 153.506L475.503 151.172L472.804 160.02H472.816Z" fill="#008CFF"/>
+              <path d="M487.723 135.969L465.532 133.684L447.416 149.155L450.784 153.968L458.675 148.292C458.675 148.292 465.788 147.235 465.605 147.806C465.411 148.377 461.277 156.556 461.277 156.556L472.816 160.02L475.515 151.172L495.614 153.506L487.747 135.969H487.723Z" fill="#59608B"/>
+              <path d="M465.545 133.684L430.892 105.27L414.185 107.105L412.823 129.199L420.107 135.932L418.185 148.292L424.228 159.424L422.319 163.167L435.488 164.541L441.263 170.982L444.461 168.199L447.902 165.209L447.416 149.155L465.545 133.684Z" fill="#8DD7FF"/>
+              <path d="M351.396 84.9381L330.871 75.3493L322.36 77.9258L323.43 71.8492L307.477 64.0956L302.468 66.5262L301.252 60.7534L299.282 60.559L296.048 67.0366L287.001 70.719L281.554 85.4486L275.28 85.5579L257.868 50.8487L242.682 47.7253C242.682 47.7253 242.402 41.9283 242.183 37.6868L227.094 35.9976L231.495 45.5742L211.287 42.0741L191.979 52.5501L190.155 65.4324V73.6722L203.907 89.6049L223.702 97.2978L194.702 156.654L199.615 163.994L217.391 190.585L298.856 197.269L310.176 171.906L313.338 159.813L325.57 144.841L321.715 135.495L335.188 127.802L351.432 84.9138L351.396 84.9381Z" fill="#8DD7FF"/>
+              <path d="M179.65 48.0048L175.844 29.7751L181.17 16.2609L175.698 10.476L175.394 0L166.883 0.303828L165.217 9.57665L138.309 21.1221L136.181 16.7105L114.295 13.6722L123.268 30.9904L135.111 38.1365L135.877 41.3206L142.99 43.3258L145.325 80.9762L157.557 91.0025L159.21 75.483L170.895 79.1897L175.71 66.0035L190.143 65.4445L191.967 52.5622L179.65 48.0048Z" fill="#008CFF"/>
+              <path d="M257.844 50.8608L275.256 85.5701L281.53 85.4607L286.977 70.7312L296.024 67.0488L299.258 60.5712L301.228 60.7656L304.875 48.0048L296.826 39.3518L293.932 42.2443L288.157 26.2994L283.901 9.58887L282.685 19.0075L272.046 29.3377L269.006 42.8519L255.631 37.9907L243.326 37.8448L242.147 37.7112C242.378 41.9526 242.645 47.7496 242.645 47.7496L257.832 50.873L257.844 50.8608Z" fill="#59608B"/>
+              <path d="M321.691 135.519L336.124 140.879L334.191 162.584L340.927 174.81L346.703 171.65L347.396 176.743L340.112 187.449L349.596 201.195L355.87 201.523L355.919 201.462V191.022L353.852 183.463L361.002 166.57L381.623 155.718H393.989L390.147 142.532L395.363 135.519L392.615 123.16L399.217 113.267H402.792L405.966 103.155L384.225 97.9783L378.146 103.909L366.741 85.8252L361.123 89.4711L351.396 84.938L335.164 127.826L321.691 135.519Z" fill="#59608B"/>
+              <path d="M487.723 165.112L474.737 171.845L465.593 178.772L464.389 173.194L468.195 165.878L464.389 162.706L454.82 170.119L444.461 168.199L441.263 170.982L435.488 164.541L422.319 163.168L420.386 166.984L423 173.437L413.528 181.227L420.289 192.226L436.168 180.401L451.939 190.403L458.091 184.533L466.274 190.403L474.153 190.111L482.531 183.865L490.556 184.035L493.352 180.62L495.48 166.607L487.723 165.112Z" fill="#454588"/>
+              <path d="M355.87 201.523L349.596 201.195L340.112 187.45L347.396 176.743L346.702 171.651L340.927 174.811L334.191 162.585L336.124 140.879L321.691 135.52L325.534 144.865L313.302 159.838L310.14 171.93L298.82 197.294L293.093 210.127L291.877 235.625L300.79 230.873L299.562 236.232L311.101 241.033L313.168 236.232L324.707 242.272L349.244 236.804L346.702 214.247L355.87 201.523Z" fill="#008CFF"/>
+              <path d="M349.45 238.699L349.244 236.803L324.707 242.272L313.168 236.232L311.101 241.033L299.562 236.232L300.79 230.873L291.878 235.624L290.479 264.938L269.177 280.603L261.48 292.829L266.295 312.76L293.957 322.811L297.082 312.76L323.613 307.121L330.482 310.001L337.219 302.515L333.644 294.202L341.486 277.176V262.604L354.946 266.007L349.45 238.699Z" fill="#59608B"/>
+              <path d="M415.437 307.255L418.051 322.641L411.315 333.907L407.181 332.4L405.978 339.23L409.382 345.039L418.039 345.647L418.574 339.983L434.223 323.127L434.989 307.17L427.937 303.682L415.437 307.255Z" fill="#454588"/>
+              <path d="M409.382 345.039L405.977 339.23L402.232 342.548L401.138 351.772L391.374 355.892L368.832 359.744L371.458 366.878L402.767 368.239L407.327 358.979L417.2 354.567L418.039 345.647L409.382 345.039Z" fill="#59608B"/>
+              <path d="M350.277 368.944L344.915 359.331L349.183 346.558H340.927L335.978 328.693L312.061 333.64L312.475 328.693L302.857 327.454L289.798 330.48L283.743 334.733L274.125 356.171L265.881 359.744L263.644 362.771H286.637L293.507 367.024H306.699L311.648 389.276L322.238 390.929L322.105 394.782L330.178 397.492L339.699 387.684L360.661 378.108L371.458 366.878L368.832 359.744L350.277 368.944Z" fill="#8DD7FF"/>
+              <path d="M322.238 390.929L311.648 389.276L306.699 367.024H293.507L286.637 362.771H263.644L249.26 382.215L244.092 401.199H253.37L257.467 411.237L287.464 416.208L284.57 413.327L295.026 407.421L308.486 411.407L311.514 407.421L319.928 408.041L330.178 397.492L322.105 394.782L322.238 390.929Z" fill="#59608B"/>
+              <path d="M482.531 183.864L474.153 190.111L466.274 190.403L458.091 184.533L451.938 190.403L474.955 204.269L480.427 201.887L480.135 196.734L490.556 184.034L482.531 183.864Z" fill="#59608B"/>
+              <path d="M461.69 220.287L455.307 218.574L451.938 208.766L457.13 206.652L451.938 190.403L436.168 180.401L420.289 192.226L413.528 181.227L400.311 192.129L386.292 190.196L380.662 193.915L384.091 197.075L377.635 207.514L374.887 206.554L363.469 211.501L360.041 201.742L355.87 201.523L346.702 214.247L349.243 236.803L349.45 238.699L354.946 266.007L373.233 254L406.914 266.724L413.236 274.284L430.964 274.15L422.72 294.203L427.937 303.682L434.989 307.17L441.834 297.605L443.658 272.534L441.676 240.778L455.355 233.644L461.69 220.287Z" fill="#8DD7FF"/>
+              <path d="M457.13 206.652L451.938 208.766L455.307 218.574L461.69 220.287L467.818 207.356L474.955 204.27L451.938 190.403L457.13 206.652Z" fill="#008CFF"/>
+              <path d="M266.295 312.76L257.078 295.442L240.59 299.015L227.118 292.282L213.926 299.975L206.229 300.923L207.311 305.043L203.056 329.349L196.976 331.172L203.201 339.072L202.448 356.232L219.008 358.517L229.197 355.624L234.523 380.538L244.396 377.658L249.26 382.215L263.644 362.77L265.881 359.744L274.125 356.171L283.743 334.733L289.798 330.479L292.157 328.596L293.956 322.811L266.295 312.76Z" fill="#008CFF"/>
+              <path d="M175.564 223.86L176.391 211.355L157.97 212.594L155.635 181.13L150.966 184.703L140.242 172.89L130.758 173.303L124.302 184.703H114.818V190.196L107.522 189.516L105.054 192.129L95.1565 190.342L90.4023 196.2L96.7007 199.457L102.136 196.735L107.461 196.419L108.677 204.926L106.537 207.211L110.039 211.768L107.145 216.471L117.797 228.017L136.935 233.194L168.098 246.708L182.3 229.499L175.564 223.86Z" fill="#8DD7FF"/>
+              <path d="M90.4023 196.2L51.5786 176.05L4.55963 161.94L0 165.744L12.3049 185.639L9.58131 192.019L23.4061 198.4L43.3104 192.773L43.6266 212.825H70.0603L74.0241 206.603L77.9637 208.888L96.7007 199.457L90.4023 196.2Z" fill="#008CFF"/>
+              <path d="M217.354 190.61L199.578 164.019C198.532 170.958 196.733 182.649 196.733 182.649L155.635 181.142L157.97 212.607L176.391 211.367L175.564 223.873L182.3 229.512L168.098 246.72L174.482 281.357L197.28 280.603L196.064 292.756L205.183 297.01L206.229 300.948L213.926 300L227.118 292.307L240.59 299.04L257.09 295.467L266.295 312.773L261.48 292.854L269.176 280.628L290.479 264.962L291.877 235.649L293.093 210.14L298.82 197.318L217.354 190.634V190.61Z" fill="#454588"/>
+              <path d="M308.486 411.407L295.026 407.421L284.57 413.327L287.464 416.208L257.467 411.237L254.731 421.373L276.873 423.487L293.64 438.059L306.152 439.845L302.723 449.045L306.261 450.273L317.958 442.373L321.606 426.72L319.928 408.041L311.514 407.421L308.486 411.407Z" fill="#008CFF"/>
+              <path d="M306.152 439.845L293.64 438.059L276.873 423.487L254.731 421.373L228.128 436.904L207.007 463.179L217.184 461.21L227.374 474.883L232.237 470.933L255.339 484.909L263.547 495.543L257.163 500.1L257.625 508L269.176 501.778L276.314 485.371L296.534 470.471L306.261 450.273L302.723 449.045L306.152 439.845Z" fill="#454588"/>
+              <path d="M90.4025 196.2L95.1567 190.342L105.054 192.128L107.522 189.515L114.806 190.208V184.715H124.29L130.746 173.315L140.23 172.902L150.954 184.715L155.624 181.142L196.721 182.649C196.721 182.649 198.521 170.958 199.566 164.018L194.654 156.678L223.653 97.3219L203.858 89.629L190.106 73.6963V65.4564L175.674 66.0033L170.859 79.1895L159.174 75.4828L157.52 91.0023L145.288 80.976L142.954 43.3256L135.841 41.3204L106.197 59.4042L104.519 54.0811L88.4084 58.3347L87.0466 46.0358L83.253 39.3516L72.9178 44.3586L72.6139 47.8587L51.7976 46.0358L53.6215 53.9353L62.1328 55.9041L63.4946 61.373H50.1197V70.342L57.8771 75.0574L55.4453 79.6148L59.5551 84.1722L51.3477 125.189L39.9426 122.758L34.933 128.835L22.774 128.531L13.1927 137.342L11.3689 154.053L1.03369 157.553L4.53549 161.952L51.5544 176.062L90.3782 196.212L90.4025 196.2Z" fill="#59608B"/>
+            </svg>
+            <!-- img src="<?= get_bloginfo("template_url") ?>/assets/img/map.svg" alt="" -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <?php } ?>
+
+    <!-- featuredArticles -->
+    <?php get_template_part( 'template-parts/inc','articles' ); ?>
+    <!-- end:featuredArticles -->
+    
+    <div class="hidden">
+      <?php 
+        $var = do_shortcode('[rank_math_rich_snippet id="s-91a29f0b-37f9-438a-9f3b-9673ee53639b"]');
+        echo str_replace( "<img", '<img alt="criacao-de-sites" ', $var );
+      ?>
+    </div>
+  </main>
+  <!-- end:main -->
+
+<?php get_footer(); ?>
+
+
+
+

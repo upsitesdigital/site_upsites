@@ -6,7 +6,8 @@
   padding-top: 88px;
   padding-bottom: 132px;
   border-bottom: 1px solid #E0E0E0;
-  span {
+  span,
+  .subtitle {
     font-family: $font-main;
     font-style: normal;
     font-weight: 600;
@@ -68,12 +69,13 @@
         position: relative;
         img {
           width: 100%;
+          height: 100%;
           object-fit: cover;
         }
         .img {
           width: 100%;
           display: block;
-          height: 100%;
+          height: 271px;
           overflow: hidden;
           border-radius: 16px;
         }
@@ -110,7 +112,6 @@
         font-weight: 900;
         font-size: 18px;
         line-height: 133%;
-        text-transform: uppercase;
         color: $color-navy;
         padding-bottom: 7px;
       }
@@ -147,7 +148,8 @@
   .featuredArticles {
     padding-top: get-vw-lg(88px);
     padding-bottom: get-vw-lg(132px);
-    span {
+    span,
+    .subtitle {
       font-size: get-vw-lg(13px);
       padding-bottom: get-vw-lg(10px);
     }
@@ -171,6 +173,7 @@
         .image {
           .img {
             border-radius: get-vw-lg(16px);
+            height: get-vw-lg(271px);
           }
           .tag {
             font-size: get-vw-lg(12px);
@@ -213,21 +216,25 @@
   .featuredArticles {
     padding-top: get-vw-sm(88px);
     padding-bottom: get-vw-sm(132px);
-    span {
-      font-size: get-vw-sm(13px);
+    span,
+    .subtitle {
+      // font-size: get-vw-sm(13px);
       padding-bottom: get-vw-sm(10px);
     }
     h2 {
-      font-size: get-vw-sm(32px);
+      // font-size: get-vw-sm(32px);
       padding-bottom: get-vw-sm(51px);
     }
     .all {
-      top: get-vw-sm(46px);
-      right: get-vw-sm(8px);
-      font-size: get-vw-sm(14px);
+      top: 0;
+      right: 0;
+      position: relative;
+      margin-bottom: get-vw-sm(51px);
+      display: inline-block;
+      // font-size: get-vw-sm(14px);
       .icon {
-        width: get-vw-sm(20px);
-        height: get-vw-sm(12px);
+        // width: get-vw-sm(20px);
+        // height: get-vw-sm(12px);
         margin-left: get-vw-sm(17px);
       }
     }
@@ -238,11 +245,12 @@
         .image {
           .img {
             border-radius: get-vw-sm(16px);
+            height: get-vw-sm(271px);
           }
           .tag {
-            font-size: get-vw-sm(12px);
+            // font-size: get-vw-sm(12px);
             padding: get-vw-sm(8px) get-vw-sm(22px);
-            border-radius: get-vw-sm(30px);
+            // border-radius: get-vw-sm(30px);
             bottom: get-vw-sm(-15px);
             left: get-vw-sm(42px);
           }
@@ -251,11 +259,11 @@
           padding: get-vw-sm(26px) get-vw-sm(20px) get-vw-sm(60px) get-vw-sm(42px);
         }
         h3 {
-          font-size: get-vw-sm(18px);
+          // font-size: get-vw-sm(18px);
           padding-bottom: get-vw-sm(7px);
         }
         .link {
-          font-size: get-vw-sm(14px);
+          // font-size: get-vw-sm(14px);
           bottom: get-vw-sm(13px);
           left: get-vw-sm(43px);
         }
@@ -280,21 +288,25 @@
   .featuredArticles {
     padding-top: get-vw-xs(88px);
     padding-bottom: get-vw-xs(132px);
-    span {
-      font-size: get-vw-xs(13px);
+    span,
+    .subtitle {
+      // font-size: get-vw-xs(13px);
       padding-bottom: get-vw-xs(10px);
     }
     h2 {
-      font-size: get-vw-xs(32px);
+      // font-size: get-vw-xs(32px);
       padding-bottom: get-vw-xs(51px);
     }
     .all {
-      top: get-vw-xs(86px);
-      right: get-vw-xs(8px);
-      font-size: get-vw-xs(14px);
+      top: 0;
+      right: 0;
+      position: relative;
+      margin-bottom: get-vw-sm(51px);
+      display: inline-block;
+      // font-size: get-vw-xs(14px);
       .icon {
-        width: get-vw-xs(20px);
-        height: get-vw-xs(12px);
+        // width: get-vw-xs(20px);
+        // height: get-vw-xs(12px);
         margin-left: get-vw-xs(17px);
       }
     }
@@ -305,11 +317,12 @@
         .image {
           .img {
             border-radius: get-vw-xs(16px);
+            height: get-vw-xs(271px);
           }
           .tag {
-            font-size: get-vw-xs(12px);
+            // font-size: get-vw-xs(12px);
             padding: get-vw-xs(8px) get-vw-xs(22px);
-            border-radius: get-vw-xs(30px);
+            // border-radius: get-vw-xs(30px);
             bottom: get-vw-xs(-15px);
             left: get-vw-xs(42px);
           }
@@ -318,11 +331,11 @@
           padding: get-vw-xs(26px) get-vw-xs(20px) get-vw-xs(60px) get-vw-xs(42px);
         }
         h3 {
-          font-size: get-vw-xs(18px);
+          // font-size: get-vw-xs(18px);
           padding-bottom: get-vw-xs(7px);
         }
         .link {
-          font-size: get-vw-xs(14px);
+          // font-size: get-vw-xs(14px);
           bottom: get-vw-xs(13px);
           left: get-vw-xs(43px);
         }
@@ -336,7 +349,7 @@
       .container {
         padding-top: get-vw-xs(74px);
         .all {
-          top: get-vw-xs(120px);
+          top: 0;
         }
       }
     }

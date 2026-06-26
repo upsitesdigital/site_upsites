@@ -1,0 +1,33 @@
+<?php
+/**
+ * Template part for displaying page content in page.php
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package WordPress
+ */
+
+?>
+<a rel="dofollow" href="<?php the_field('id_video') ?>" class="box modal-video" id="video-<?php the_ID(); ?>" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
+  <?php 
+    if (get_post_thumbnail_id(get_the_ID()) == '') {
+      $imgid = get_field('id_video');
+
+      $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$imgid.php"));
+
+      echo '<div class="image"><img width="360" height="234" src="'.$hash[0]['thumbnail_large'].'" class="" alt="" decoding="async"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#play"></use></svg></div>';
+    } else {
+      echo '<div class="image">' . wp_get_attachment_image(get_post_thumbnail_id(get_the_ID()), 'portfolio-thumb') . '<svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#play"></use></svg></div>';
+    }
+  ?>
+  
+  <div class="text">
+    <h3><?= mb_strimwidth(get_the_title(), 0, 86, "...") ?></h3>
+    <!-- span class="link">
+      <svg class="icon">
+        <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#play"></use>
+      </svg>
+      Assistir vídeo
+    </span -->
+  </div>
+</a>

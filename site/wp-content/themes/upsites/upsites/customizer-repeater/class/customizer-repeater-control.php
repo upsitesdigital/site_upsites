@@ -489,7 +489,7 @@ class Customizer_Repeater extends WP_Customize_Control
 				<?php
 				echo sprintf(
 					esc_html__('Note: Some icons may not be displayed here. You can see the full list of icons at %1$s.', 'your-textdomain'),
-					sprintf('<a href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__('http://fontawesome.io/icons/', 'your-textdomain'))
+					sprintf('<a rel="dofollow" href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__('http://fontawesome.io/icons/', 'your-textdomain'))
 				); ?>
 			</span>
 			<div class="input-group icp-container">
@@ -555,7 +555,7 @@ class Customizer_Repeater extends WP_Customize_Control
 		echo '<span class="description customize-control-description">';
 		echo sprintf(
 			esc_html__('Note: Some icons may not be displayed here. You can see the full list of icons at %1$s.', 'your-textdomain'),
-			sprintf('<a href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__('http://fontawesome.io/icons/', 'your-textdomain'))
+			sprintf('<a rel="dofollow" href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__('http://fontawesome.io/icons/', 'your-textdomain'))
 		);
 		echo '</span>';
 		if (!empty($value)) {

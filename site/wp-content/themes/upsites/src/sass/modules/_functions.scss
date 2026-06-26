@@ -4,17 +4,18 @@
 
 .functions {
   padding-bottom: 50px;
-  background-color: #002D54;
+  background-color: #002d54;
   &.ptop {
     padding-top: 70px;
   }
   hr {
-    background-color: #E0E0E0;
+    background-color: #e0e0e0;
     opacity: 0.2;
     border: none;
     height: 1px;
   }
-  span {
+  span,
+  .subtitle {
     font-family: $font-main;
     font-style: normal;
     font-weight: 600;
@@ -22,7 +23,7 @@
     line-height: 120%;
     letter-spacing: 0.05em;
     padding-bottom: 16px;
-    color: #008CFF;
+    color: #008cff;
     display: block;
   }
   h2 {
@@ -32,7 +33,7 @@
     font-size: 32px;
     line-height: 119%;
     text-transform: uppercase;
-    color: #FFF;
+    color: #fff;
     display: block;
     padding-bottom: 44px;
     &.small {
@@ -45,17 +46,22 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
-    color: #969ECC;
+    color: #969ecc;
     padding: 0 0 19px 0;
+    strong,
+    b {
+      font-weight: 700;
+    }
     &.small {
       font-weight: 400;
       font-size: 15px;
       line-height: 153%;
-      color: #FFFFFF;
+      color: #ffffff;
     }
   }
+
   .grid {
-    @include columns( $quant: 51% 49%, $gutter: 0%, $align: stretch, $template: 'image text');
+    @include columns($quant: 51% 49%, $gutter: 0%, $align: stretch, $template: "image text");
     &.pbottom {
       padding-bottom: 27px;
     }
@@ -73,6 +79,7 @@
           margin: 60px 0 0 0;
           width: auto;
           height: auto;
+          max-width: 100%;
         }
       }
       h3 {
@@ -83,8 +90,8 @@
         line-height: 133%;
         text-align: center;
         text-transform: uppercase;
-        color: #FFFFFF;
-        margin: 0 70px 9px 70px;
+        color: #ffffff;
+        padding: 0 70px 9px 70px;
       }
       .btnBudgets {
         margin: 0 auto;
@@ -92,6 +99,7 @@
       }
     }
     .text {
+      overflow: hidden;
       grid-area: text;
       padding-top: 93px;
       ul {
@@ -103,7 +111,7 @@
           &:last-child {
             border-bottom: none;
           }
-          @include columns( $quant: 10% 88%, $gutter: 2%, $align: start, $template: 'icon title' 'icon text');
+          @include columns($quant: 42px 1fr, $gutter: 10px, $align: start, $template: "icon title" "icon text");
           .icons {
             grid-area: icon;
             width: 40px;
@@ -115,7 +123,7 @@
               width: 100%;
               height: 100%;
               fill: transparent;
-              stroke: #FFE000;
+              stroke: #ffe000;
             }
           }
           h3 {
@@ -125,9 +133,10 @@
             font-weight: bold;
             font-size: 22px;
             line-height: 145%;
-            color: #FFFFFF;
-            padding-bottom: 14px;
+            color: #ffffff;
+            padding-bottom: 0;
           }
+          p span,
           p {
             grid-area: text;
             font-family: $font-main;
@@ -135,8 +144,23 @@
             font-weight: normal;
             font-size: 16px;
             line-height: 150%;
-            color: #969ECC;
+            color: #969ecc;
             padding: 0;
+            letter-spacing: 0;
+            &.white {
+              color: $color-white;
+            }
+          }
+          .txtopen {
+            display: block;
+            cursor: pointer;
+          }
+          .txtclose {
+            display: none;
+            cursor: pointer;
+          }
+          .text-underline {
+            text-decoration: underline;
           }
           &.small {
             .icons {
@@ -146,8 +170,8 @@
               font-size: 16px;
               font-weight: 500;
               line-height: 200%;
-              color: #FFFFFF;
-              padding-bottom: 14px;
+              color: #ffffff;
+              padding-bottom: 0;
             }
             p {
               grid-area: text;
@@ -156,7 +180,7 @@
               font-weight: normal;
               font-size: 16px;
               line-height: 150%;
-              color: #969ECC;
+              color: #969ecc;
               padding: 0;
             }
           }
@@ -167,16 +191,20 @@
           li {
             padding-bottom: 8px;
             border-bottom: 0px solid rgba(215, 238, 253, 0.1);
-            @include columns( $quant: 12% 86%, $gutter: 2%, $align: start, $template: 'icon title' 'icon text');
+            @include columns($quant: 50px 1fr, $gutter: 10px, $align: start, $template: "icon title" "icon text");
             .icons {
               grid-area: icon;
               width: 48px;
               height: 48px;
-              background: #85FFE6;
+              background: #85ffe6;
               border-radius: 50%;
               padding: 12px;
               .icon {
                 stroke: #323232;
+              }
+              img {
+                width: 100%;
+                height: auto;
               }
             }
             h3 {
@@ -202,6 +230,40 @@
           }
         }
       }
+      .description {
+        ul {
+          padding: 0 0 0 0;
+          li {
+            padding-top: 8px;
+            padding-right: 0;
+            padding-bottom: 8px;
+            padding-left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 16px;
+            font-family: $font-main;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            color: #969ecc;
+            border: none;
+            &:before {
+              content: "";
+              width: 7px;
+              height: 7px;
+              background-color: $color-green;
+              flex-shrink: 0;
+              border-radius: 50%;
+            }
+            strong,
+            b {
+              font-weight: 700;
+            }
+          }
+        }
+      }
     }
     &.gridSmall {
       grid-template-columns: 45.5% 54.5%;
@@ -221,10 +283,10 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 175%;
-      color: #59608B;
+      color: #59608b;
     }
     .grid {
-      @include columns( $quant: 51% 49%, $gutter: 0%, $align: stretch, $template: 'image text');
+      @include columns($quant: 51% 49%, $gutter: 0%, $align: stretch, $template: "image text");
       .image {
         .image {
           width: 100%;
@@ -256,14 +318,14 @@
             .icons {
               background: rgba(215, 238, 253, 0.3);
               .icon {
-                stroke: #008CFF;
+                stroke: #008cff;
               }
             }
             h3 {
               color: $color-navy;
             }
             p {
-              color: #59608B;
+              color: #59608b;
             }
           }
           &.green {
@@ -272,12 +334,12 @@
             li {
               padding-bottom: 8px;
               border-bottom: 0px solid rgba(215, 238, 253, 0.1);
-              @include columns( $quant: 12% 86%, $gutter: 2%, $align: start, $template: 'icon title' 'icon text');
+              @include columns($quant: 42px 1fr, $gutter: 10px, $align: start, $template: "icon title" "icon text");
               .icons {
                 grid-area: icon;
                 width: 48px;
                 height: 48px;
-                background: #85FFE6;
+                background: #85ffe6;
                 border-radius: 50%;
                 padding: 12px;
                 .icon {
@@ -315,7 +377,7 @@
       padding-bottom: 0;
     }
     .grid {
-      @include columns( $quant: 49% 51%, $gutter: 0%, $align: stretch, $template: 'text image');
+      @include columns($quant: 49% 51%, $gutter: 0%, $align: stretch, $template: "text image");
       .text {
         padding-top: 102px;
       }
@@ -332,7 +394,7 @@
       font-weight: 700;
       font-size: 24px;
       line-height: 133%;
-      color: #FFFFFF;
+      color: #ffffff;
       padding: 0 0 6px 0;
     }
     p {
@@ -377,15 +439,18 @@
       .slick-slide {
         padding: 0 10px;
       }
+      .grid-slide {
+        @include columns($quant: repeat(4, 1fr), $gutter: 20px, $align: stretch, $template: "");
+      }
       .item {
-        background-color: #01203C;
+        background-color: #01203c;
         border-radius: 16px;
         padding: 23px 27px;
-        height: 216px;
+        //height: 216px;
         .icons {
           width: 25px;
           height: 25px;
-          background-color: #85FFE6;
+          background-color: #85ffe6;
           border-radius: 50%;
           padding: 5px;
           &.small {
@@ -397,7 +462,7 @@
           .icon {
             width: 100%;
             height: 100%;
-            fill: transparent
+            fill: transparent;
           }
         }
         p {
@@ -406,21 +471,42 @@
           font-weight: 500;
           font-size: 16px;
           line-height: 140%;
-          color: #FFFFFF;
+          color: #ffffff;
           padding: 0;
+        }
+      }
+    }
+    .slick-dots {
+      text-align: center;
+      li {
+        display: inline-block;
+        padding: 0 4px;
+        button {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          font-size: 0;
+          display: block;
+          padding: 0;
+          background: #d2d2d2;
+          border: none;
+        }
+        &.slick-active button {
+          background: $color-green;
         }
       }
     }
   }
 }
 
-@include breakpoint2($min:sm, $max:lg) {
+@include breakpoint2($min: sm, $max: lg) {
   .functions {
     padding-bottom: get-vw-lg(50px);
     &.ptop {
       padding-top: get-vw-lg(70px);
     }
-    span {
+    span,
+    .subtitle {
       font-size: get-vw-lg(13px);
       padding-bottom: get-vw-lg(16px);
     }
@@ -448,7 +534,7 @@
         }
         h3 {
           font-size: get-vw-lg(24px);
-          margin: 0 get-vw-lg(70px) get-vw-lg(9px) get-vw-lg(70px);
+          padding: 0 get-vw-lg(70px) get-vw-lg(9px) get-vw-lg(70px);
         }
         .btnBudgets {
           padding: get-vw-lg(20px) get-vw-lg(41px);
@@ -468,8 +554,9 @@
             }
             h3 {
               font-size: get-vw-lg(22px);
-              padding-bottom: get-vw-lg(14px);
+              padding-bottom: 0;
             }
+            p span,
             p {
               font-size: get-vw-lg(16px);
             }
@@ -508,6 +595,20 @@
             }
           }
         }
+        .description {
+          ul {
+            li {
+              padding-top: get-vw-lg(8px);
+              padding-bottom: get-vw-lg(8px);
+              gap: get-vw-lg(16px);
+              font-size: get-vw-lg(16px);
+              &:before {
+                width: get-vw-lg(7px);
+                height: get-vw-lg(7px);
+              }
+            }
+          }
+        }
       }
     }
     &.white {
@@ -524,14 +625,14 @@
       .grid {
         .image {
           .image {
-            height: get-vw-lg(524px);
+            //height: get-vw-lg(524px);
             img {
               margin: get-vw-lg(60px) get-vw-lg(110px) 0 get-vw-lg(-48px);
             }
           }
           &.big {
             .image {
-              height: get-vw-lg(524px);
+              //height: get-vw-lg(524px);
               img {
                 margin: get-vw-lg(60px) 0 0 0;
               }
@@ -609,10 +710,13 @@
         .slick-slide {
           padding: 0 get-vw-lg(10px);
         }
+        .grid-slide {
+          @include columns($quant: repeat(4, 1fr), $gutter: get-vw-lg(20px), $align: stretch, $template: "");
+        }
         .item {
           border-radius: get-vw-lg(16px);
           padding: get-vw-lg(23px) get-vw-lg(27px);
-          height: get-vw-lg(216px);
+          //height: get-vw-lg(216px);
           .icons {
             width: get-vw-lg(25px);
             height: get-vw-lg(25px);
@@ -630,32 +734,49 @@
   }
 }
 
-@include breakpoint2($min:xs, $max:sm) {
+@include breakpoint2($min: xs, $max: sm) {
   .functions {
     padding-bottom: get-vw-sm(50px);
     &.ptop {
       padding-top: get-vw-sm(70px);
     }
-    span {
-      font-size: get-vw-sm(13px);
+    &.hide-mobile {
+      display: none;
+    }
+    span,
+    .subtitle {
+      // font-size: get-vw-sm(13px);
       padding-bottom: get-vw-sm(16px);
     }
     h2 {
-      font-size: get-vw-sm(32px);
+      // font-size: get-vw-sm(32px);
       padding-bottom: get-vw-sm(44px);
+      br {
+        display: inherit;
+      }
       &.small {
         padding-bottom: get-vw-sm(11px);
       }
     }
     p {
-      font-size: get-vw-sm(16px);
+      // font-size: get-vw-sm(16px);
       padding: 0 0 get-vw-sm(19px) 0;
       &.small {
-        font-size: get-vw-sm(15px);
+        // font-size: get-vw-sm(15px);
       }
     }
     .grid {
-      @include columns( $quant: 25% 50% 25%, $gutter: 0%, $align: stretch, $template: 'text text text' 'space1 image space2');
+      @include columns(
+        $quant: 5% 90% 5%,
+        $gutter: 0%,
+        $align: stretch,
+        $template: "text text text" "space1 image space2"
+      );
+      &.reverse {
+        grid-template-areas:
+          "space1 image space2"
+          "text text text";
+      }
       &.pbottom {
         padding-bottom: get-vw-sm(27px);
       }
@@ -668,8 +789,8 @@
           }
         }
         h3 {
-          font-size: get-vw-sm(24px);
-          margin: 0 0 get-vw-sm(20px) 0;
+          // font-size: get-vw-sm(24px);
+          padding: 0 0 get-vw-sm(20px) 0;
         }
         .btnBudgets {
           display: inline-block;
@@ -685,24 +806,25 @@
             padding-top: get-vw-sm(32px);
             padding-bottom: get-vw-sm(34px);
             .icons {
-              width: get-vw-sm(40px);
-              height: get-vw-sm(40px);
-              padding: get-vw-sm(8px);
+              // width: get-vw-sm(40px);
+              // height: get-vw-sm(40px);
+              // padding: get-vw-sm(8px);
             }
             h3 {
-              font-size: get-vw-sm(22px);
-              padding-bottom: get-vw-sm(14px);
+              // font-size: get-vw-sm(22px);
+              padding-bottom: 0;
             }
+            p span,
             p {
-              font-size: get-vw-sm(16px);
+              // font-size: get-vw-sm(16px);
             }
             &.small {
               h3 {
-                font-size: get-vw-sm(16px);
+                // font-size: get-vw-sm(16px);
                 padding-bottom: get-vw-sm(14px);
               }
               p {
-                font-size: get-vw-sm(16px);
+                // font-size: get-vw-sm(16px);
               }
             }
           }
@@ -712,21 +834,35 @@
             li {
               padding-bottom: get-vw-sm(8px);
               .icons {
-                width: get-vw-sm(48px);
-                height: get-vw-sm(48px);
+                // width: get-vw-sm(48px);
+                // height: get-vw-sm(48px);
                 padding: get-vw-sm(12px);
               }
               h3 {
-                font-size: get-vw-sm(16px);
+                // font-size: get-vw-sm(16px);
               }
             }
             &.small {
               li {
                 .icons {
-                  width: get-vw-sm(40px);
-                  height: get-vw-sm(40px);
+                  // width: get-vw-sm(40px);
+                  // height: get-vw-sm(40px);
                   padding: get-vw-sm(8px);
                 }
+              }
+            }
+          }
+        }
+        .description {
+          ul {
+            li {
+              padding-top: get-vw-sm(8px);
+              padding-bottom: get-vw-sm(8px);
+              gap: get-vw-sm(16px);
+              font-size: get-vw-sm(16px);
+              &:before {
+                width: get-vw-sm(7px);
+                height: get-vw-sm(7px);
               }
             }
           }
@@ -745,10 +881,10 @@
         padding-bottom: get-vw-sm(44px);
       }
       p {
-        font-size: get-vw-sm(16px);
+        // font-size: get-vw-sm(16px);
       }
       .grid {
-        @include columns( $quant: 100%, $gutter: 0%, $align: stretch, $template: 'image' 'text');
+        @include columns($quant: 100%, $gutter: 0%, $align: stretch, $template: "image" "text");
         .image {
           .image {
             height: auto;
@@ -779,7 +915,7 @@
           }
         }
         .text {
-          padding-top: get-vw-sm(61px);
+          padding-top: 91px;
           ul {
             &.green {
               padding-top: get-vw-sm(18px);
@@ -787,19 +923,19 @@
               li {
                 padding-bottom: get-vw-sm(8px);
                 .icons {
-                  width: get-vw-sm(48px);
-                  height: get-vw-sm(48px);
+                  // width: get-vw-sm(48px);
+                  // height: get-vw-sm(48px);
                   padding: get-vw-sm(12px);
                 }
                 h3 {
-                  font-size: get-vw-sm(16px);
+                  // font-size: get-vw-sm(16px);
                 }
               }
               &.small {
                 li {
                   .icons {
-                    width: get-vw-sm(40px);
-                    height: get-vw-sm(40px);
+                    // width: get-vw-sm(40px);
+                    // height: get-vw-sm(40px);
                     padding: get-vw-sm(8px);
                   }
                 }
@@ -811,7 +947,7 @@
     }
     &.left {
       .grid {
-        @include columns( $quant: 100%, $gutter: 0%, $align: stretch, $template: 'text' 'image');
+        @include columns($quant: 100%, $gutter: 0%, $align: stretch, $template: "text" "image");
         .image {
           display: none;
         }
@@ -824,13 +960,14 @@
       margin: get-vw-sm(86px) 0 0 0;
       padding: get-vw-sm(70px) 0 0 0;
       h3 {
-        font-size: get-vw-sm(24px);
+        // font-size: get-vw-sm(24px);
         padding: 0 0 get-vw-sm(6px) 0;
       }
       p {
         padding: 0 0 get-vw-sm(50px) 0;
       }
       .prev {
+        display: none !important;
         width: get-vw-sm(30px);
         height: get-vw-sm(30px);
         top: get-vw-sm(230px);
@@ -838,6 +975,7 @@
         padding: get-vw-sm(7px);
       }
       .next {
+        display: none !important;
         width: get-vw-sm(30px);
         height: get-vw-sm(30px);
         top: get-vw-sm(230px);
@@ -849,20 +987,23 @@
         .slick-slide {
           padding: 0 get-vw-sm(10px);
         }
+        .grid-slide {
+          @include columns($quant: 1fr, $gutter: get-vw-sm(20px), $align: stretch, $template: "");
+        }
         .item {
           border-radius: get-vw-sm(16px);
           padding: get-vw-sm(23px) get-vw-sm(27px);
-          height: get-vw-sm(216px);
+          //height: get-vw-sm(216px);
           .icons {
-            width: get-vw-sm(25px);
-            height: get-vw-sm(25px);
+            // width: get-vw-sm(25px);
+            // height: get-vw-sm(25px);
             padding: get-vw-sm(5px);
             &.small {
               padding: get-vw-sm(5px);
             }
           }
           p {
-            font-size: get-vw-sm(16px);
+            // font-size: get-vw-sm(16px);
           }
         }
       }
@@ -870,32 +1011,49 @@
   }
 }
 
-@include breakpoint2($min:'', $max:xs) {
+@include breakpoint2($min: "", $max: xs) {
   .functions {
     padding-bottom: get-vw-xs(50px);
     &.ptop {
       padding-top: get-vw-xs(70px);
     }
-    span {
-      font-size: get-vw-xs(13px);
+    &.reverse {
+      grid-template-areas:
+        "space1 image space2"
+        "text text text";
+    }
+    &.hide-mobile {
+      display: none;
+    }
+    span,
+    .subtitle {
+      // font-size: get-vw-xs(13px);
       padding-bottom: get-vw-xs(16px);
     }
     h2 {
-      font-size: get-vw-xs(32px);
+      font-size: 28px;
       padding-bottom: get-vw-xs(44px);
+      br {
+        display: inherit;
+      }
       &.small {
         padding-bottom: get-vw-xs(11px);
       }
     }
     p {
-      font-size: get-vw-xs(16px);
+      // font-size: get-vw-xs(16px);
       padding: 0 0 get-vw-xs(19px) 0;
       &.small {
-        font-size: get-vw-xs(15px);
+        // font-size: get-vw-xs(15px);
       }
     }
     .grid {
-      @include columns( $quant: 15% 70% 15%, $gutter: 0%, $align: stretch, $template: 'text text text' 'space1 image space2');
+      @include columns(
+        $quant: 5% 90% 5%,
+        $gutter: 0%,
+        $align: stretch,
+        $template: "text text text" "space1 image space2"
+      );
       &.pbottom {
         padding-bottom: get-vw-xs(27px);
       }
@@ -908,8 +1066,9 @@
           }
         }
         h3 {
-          font-size: get-vw-xs(24px);
+          // font-size: get-vw-xs(24px);
           margin: 0 0 get-vw-xs(20px) 0;
+          padding: 0;
         }
         .btnBudgets {
           display: inline-block;
@@ -925,24 +1084,25 @@
             padding-top: get-vw-xs(32px);
             padding-bottom: get-vw-xs(34px);
             .icons {
-              width: get-vw-xs(40px);
-              height: get-vw-xs(40px);
-              padding: get-vw-xs(8px);
+              // width: get-vw-xs(40px);
+              // height: get-vw-xs(40px);
+              // padding: get-vw-xs(8px);
             }
             h3 {
-              font-size: get-vw-xs(22px);
+              // font-size: get-vw-xs(22px);
               padding-bottom: get-vw-xs(14px);
             }
+            p span,
             p {
-              font-size: get-vw-xs(16px);
+              // font-size: get-vw-xs(16px);
             }
             &.small {
               h3 {
-                font-size: get-vw-xs(16px);
+                // font-size: get-vw-xs(16px);
                 padding-bottom: get-vw-xs(14px);
               }
               p {
-                font-size: get-vw-xs(16px);
+                // font-size: get-vw-xs(16px);
               }
             }
           }
@@ -952,28 +1112,42 @@
             li {
               padding-bottom: get-vw-xs(8px);
               .icons {
-                width: get-vw-xs(48px);
-                height: get-vw-xs(48px);
+                // width: get-vw-xs(48px);
+                // height: get-vw-xs(48px);
                 padding: get-vw-xs(12px);
               }
               h3 {
-                font-size: get-vw-xs(16px);
+                // font-size: get-vw-xs(16px);
               }
             }
             &.small {
               li {
                 .icons {
-                  width: get-vw-xs(40px);
-                  height: get-vw-xs(40px);
+                  // width: get-vw-xs(40px);
+                  // height: get-vw-xs(40px);
                   padding: get-vw-xs(8px);
                 }
               }
             }
           }
         }
+        .description {
+          ul {
+            li {
+              padding-top: get-vw-xs(8px);
+              padding-bottom: get-vw-xs(8px);
+              gap: get-vw-xs(16px);
+              font-size: get-vw-xs(16px);
+              &:before {
+                width: get-vw-xs(7px);
+                height: get-vw-xs(7px);
+              }
+            }
+          }
+        }
       }
       &.gridSmall {
-        grid-template-columns: 15% 70% 15%;
+        grid-template-columns: 1fr;
       }
     }
     &.white {
@@ -982,18 +1156,19 @@
         padding-bottom: get-vw-xs(75px);
       }
       h2 {
+        font-size: 28px;
         padding-bottom: get-vw-xs(44px);
       }
       p {
-        font-size: get-vw-xs(16px);
+        // font-size: get-vw-xs(16px);
       }
       .grid {
-        @include columns( $quant: 100%, $gutter: 0%, $align: stretch, $template: 'image' 'text');
+        @include columns($quant: 100%, $gutter: 0%, $align: stretch, $template: "image" "text");
         .image {
           .image {
             height: auto;
             img {
-              max-width: 50%;
+              //max-width: 50%;
               margin: 0 auto;
               margin: get-vw-xs(60px) 0 0 0;
             }
@@ -1019,7 +1194,7 @@
           }
         }
         .text {
-          padding-top: get-vw-xs(61px);
+          padding-top: 91px;
           ul {
             &.green {
               padding-top: get-vw-xs(18px);
@@ -1027,19 +1202,19 @@
               li {
                 padding-bottom: get-vw-xs(8px);
                 .icons {
-                  width: get-vw-xs(48px);
-                  height: get-vw-xs(48px);
+                  // width: get-vw-xs(48px);
+                  // height: get-vw-xs(48px);
                   padding: get-vw-xs(12px);
                 }
                 h3 {
-                  font-size: get-vw-xs(16px);
+                  // font-size: get-vw-xs(16px);
                 }
               }
               &.small {
                 li {
                   .icons {
-                    width: get-vw-xs(40px);
-                    height: get-vw-xs(40px);
+                    // width: get-vw-xs(40px);
+                    // height: get-vw-xs(40px);
                     padding: get-vw-xs(8px);
                   }
                 }
@@ -1051,7 +1226,7 @@
     }
     &.left {
       .grid {
-        @include columns( $quant: 100%, $gutter: 0%, $align: stretch, $template: 'text' 'image');
+        @include columns($quant: 100%, $gutter: 0%, $align: stretch, $template: "text" "image");
         .image {
           display: none;
         }
@@ -1064,13 +1239,14 @@
       margin: get-vw-xs(86px) 0 0 0;
       padding: get-vw-xs(70px) 0 0 0;
       h3 {
-        font-size: get-vw-xs(24px);
+        // font-size: get-vw-xs(24px);
         padding: 0 0 get-vw-xs(6px) 0;
       }
       p {
         padding: 0 0 get-vw-xs(50px) 0;
       }
       .prev {
+        display: none !important;
         width: get-vw-xs(30px);
         height: get-vw-xs(30px);
         top: get-vw-xs(260px);
@@ -1078,6 +1254,7 @@
         padding: get-vw-xs(7px);
       }
       .next {
+        display: none !important;
         width: get-vw-xs(30px);
         height: get-vw-xs(30px);
         top: get-vw-xs(260px);
@@ -1089,20 +1266,23 @@
         .slick-slide {
           padding: 0 get-vw-xs(10px);
         }
+        .grid-slide {
+          @include columns($quant: 1fr, $gutter: get-vw-xs(20px), $align: stretch, $template: "");
+        }
         .item {
           border-radius: get-vw-xs(16px);
           padding: get-vw-xs(23px) get-vw-xs(27px);
-          height: get-vw-xs(216px);
+          //height: get-vw-xs(216px);
           .icons {
-            width: get-vw-xs(25px);
-            height: get-vw-xs(25px);
+            // width: get-vw-xs(25px);
+            // height: get-vw-xs(25px);
             padding: get-vw-xs(5px);
             &.small {
               padding: get-vw-xs(5px);
             }
           }
           p {
-            font-size: get-vw-xs(16px);
+            // font-size: get-vw-xs(16px);
           }
         }
       }

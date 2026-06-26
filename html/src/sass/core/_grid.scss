@@ -59,21 +59,21 @@
 .container {
   @include container;
   @include breakpoint2($min: '', $max: sm) {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
 .container-full {
   @include container-full;
   @include breakpoint2($min: '', $max: sm) {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
 @include make-default-margin(mtop, 20, top);
-@include make-default-padding(ptop, 20, top);
+@include make-default-padding(ptop, 25, top);
 @include make-default-margin(mbottom, 20, bottom);
 @include make-default-padding(pbottom, 20, bottom);
 .fl {

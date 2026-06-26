@@ -2,11 +2,31 @@
   Buttons
 ======================================*/
 
+@keyframes icon {
+  0% {
+    -webkit-transform: translate(0px, 0px) scale(1.5);
+    transform: translate(0px, 0px) scale(1.5);
+  }
+  50% {
+    -webkit-transform: translate(0px, -300%) scale(1.5);
+    transform: translate(0px, -300%) scale(1.5);
+  }
+  51% {
+    -webkit-transform: translate(0px, 300%) scale(1.5);
+    transform: translate(0px, 300%) scale(1.5);
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px) scale(1.5);
+    transform: translate(0px, 0px) scale(1.5);
+  }
+}
+
 .btn {
   @include animate($time: 0.3s);
   @include inline-block($align: middle);
 }
 
+.btnPost,
 .btnBudgets {
   @include animate($time: 0.3s);
   font-family: $font-main;
@@ -14,22 +34,48 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 100%;
-  color: #FFFFFF;
-  background-color: #00B48F;
+  color: $color-white;
+  background-color: $color-green;
+  border: 2px solid $color-green;
   padding: 21px 65px 21px 69px;
   margin-top: 23px;
   border-radius: 60px;
   display: inline-block;
+  overflow: hidden;
   .icon {
     width: 13px;
     height: 15px;
     margin-right: 10px;
     fill: $color-white;
     @include inline-block($align: middle);
+    @include animate($time: 0.3s);
+  }
+  &:hover {
+    color: $color-green;
+    background-color: transparent;
+    .icon {
+      transform: scale(1.5);
+      fill: $color-green;
+      animation: icon 0.3s cubic-bezier(0.17, 0.49, 0.96, 0.76) 1;
+    }
+  }
+  &.blue {
+    background-color: #265DF0;
+    border: 1px solid #265DF0;
+    &:hover {
+      color: #265DF0;
+      background-color: transparent;
+      .icon {
+        transform: scale(1.5);
+        fill: #265DF0;
+        animation: icon 0.3s cubic-bezier(0.17, 0.49, 0.96, 0.76) 1;
+      }
+    }
   }
 }
 
 @include breakpoint2($min:sm, $max:lg) {
+  .btnPost,
   .btnBudgets {
     font-size: get-vw-lg(18px);
     padding: get-vw-lg(21px) get-vw-lg(65px) get-vw-lg(21px) get-vw-lg(69px);
@@ -44,29 +90,31 @@
 }
 
 @include breakpoint2($min:xs, $max:sm) {
+  .btnPost,
   .btnBudgets {
-    font-size: get-vw-sm(18px);
-    padding: get-vw-sm(21px) get-vw-sm(65px) get-vw-sm(21px) get-vw-sm(69px);
+    // font-size: get-vw-sm(18px);
+    padding: get-vw-sm(21px) get-vw-sm(35px) get-vw-sm(21px) get-vw-sm(39px);
     margin-top: get-vw-sm(23px);
-    border-radius: get-vw-sm(60px);
+    //border-radius: get-vw-sm(60px);
     .icon {
-      width: get-vw-sm(13px);
-      height: get-vw-sm(15px);
-      margin-right: get-vw-sm(10px);
+      // width: get-vw-sm(13px);
+      // height: get-vw-sm(15px);
+      // margin-right: get-vw-sm(10px);
     }
   }
 }
 
 @include breakpoint2($min:'', $max:xs) {
+  .btnPost,
   .btnBudgets {
-    font-size: get-vw-xs(16px);
-    padding: get-vw-xs(21px) get-vw-xs(65px) get-vw-xs(21px) get-vw-xs(69px);
+    font-size: 16px;
+    padding: get-vw-xs(21px) get-vw-xs(35px) get-vw-xs(21px) get-vw-xs(39px);
     margin-top: get-vw-xs(23px);
-    border-radius: get-vw-xs(60px);
+    // border-radius: get-vw-xs(60px);
     .icon {
-      width: get-vw-xs(13px);
-      height: get-vw-xs(15px);
-      margin-right: get-vw-xs(10px);
+      // width: get-vw-xs(13px);
+      // height: get-vw-xs(15px);
+      // margin-right: get-vw-xs(10px);
     }
   }
 }

@@ -59,16 +59,16 @@
 .container {
   @include container;
   @include breakpoint2($min: '', $max: sm) {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
 .container-full {
   @include container-full;
   @include breakpoint2($min: '', $max: sm) {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 

@@ -3,7 +3,8 @@
 ======================================*/
 
 .fullControl {
-  span {
+  span,
+  .subtitle {
     font-family: $font-main;
     font-style: normal;
     font-weight: 600;
@@ -123,7 +124,8 @@
 
 @include breakpoint2($min:sm, $max:lg) {
   .fullControl {
-    span {
+    span,
+    .subtitle {
       font-size: get-vw-lg(13px);
       padding-bottom: get-vw-lg(17px);
     }
@@ -185,12 +187,13 @@
 
 @include breakpoint2($min:xs, $max:sm) {
   .fullControl {
-    span {
-      font-size: get-vw-sm(13px);
+    span,
+    .subtitle {
+      // font-size: get-vw-sm(13px);
       padding-bottom: get-vw-sm(17px);
     }
     h2 {
-      font-size: get-vw-sm(32px);
+      // font-size: get-vw-sm(32px);
       padding-bottom: get-vw-sm(31px);
     }
     .grid {
@@ -199,19 +202,19 @@
       .text {
         padding-top: get-vw-sm(92px);
         p {
-          font-size: get-vw-sm(16px);
+          // font-size: get-vw-sm(16px);
           padding-bottom: get-vw-sm(17px);
         }
         .items {
           padding-top: get-vw-sm(23px);
           .item {
-            font-size: get-vw-sm(16px);
+            // font-size: get-vw-sm(16px);
             padding: get-vw-sm(16px) get-vw-sm(10px) get-vw-sm(16px) get-vw-sm(26px);
             box-shadow: 0 get-vw-sm(30px) get-vw-sm(80px) rgba(0, 0, 114, 0.15);
             border-radius: get-vw-sm(16px);
             .icons {
-              width: get-vw-sm(40px);
-              height: get-vw-sm(40px);
+              // width: get-vw-sm(40px);
+              // height: get-vw-sm(40px);
               margin-right: get-vw-sm(5px);
               padding: get-vw-sm(8px);
             }
@@ -232,15 +235,16 @@
           }
         }
         .box {
+          display: none !important;
           margin-top: get-vw-sm(22px);
           @include columns( $quant: get-vw-sm(56px) auto, $gutter: get-vw-sm(23px), $align: stretch, $template: 'text image');
           .icons {
-            width: get-vw-sm(48px);
-            height: get-vw-sm(48px);
+            // width: get-vw-sm(48px);
+            // height: get-vw-sm(48px);
             padding: get-vw-sm(8px);
           }
           p {
-            font-size: get-vw-sm(16px);
+            // font-size: get-vw-sm(16px);
           }
         }
       }
@@ -250,12 +254,13 @@
 
 @include breakpoint2($min:'', $max:xs) {
   .fullControl {
-    span {
-      font-size: get-vw-xs(13px);
+    span,
+    .subtitle {
+      // font-size: get-vw-xs(13px);
       padding-bottom: get-vw-xs(17px);
     }
     h2 {
-      font-size: get-vw-xs(32px);
+      // font-size: get-vw-xs(32px);
       padding-bottom: get-vw-xs(31px);
     }
     .grid {
@@ -264,22 +269,25 @@
       .text {
         padding-top: get-vw-xs(92px);
         p {
-          font-size: get-vw-xs(16px);
+          // font-size: get-vw-xs(16px);
           padding-bottom: get-vw-xs(17px);
         }
         .items {
-          @include columns( $quant: 100%, $gutter: get-vw-xs(23px), $align: stretch, $template: 'text' 'image');
+          @include columns( $quant: repeat(3, 1fr), $gutter: get-vw-xs(23px), $align: stretch, $template: 'text' 'image');
           padding-top: get-vw-xs(23px);
           .item {
-            font-size: get-vw-xs(16px);
-            padding: get-vw-xs(16px) get-vw-xs(10px) get-vw-xs(16px) get-vw-xs(26px);
+            // font-size: get-vw-xs(16px);
+            padding: get-vw-xs(16px) get-vw-xs(26px);
             box-shadow: 0 get-vw-xs(30px) get-vw-xs(80px) rgba(0, 0, 114, 0.15);
             border-radius: get-vw-xs(16px);
+            text-align: center;
             .icons {
-              width: get-vw-xs(40px);
-              height: get-vw-xs(40px);
+              // width: get-vw-xs(40px);
+              // height: get-vw-xs(40px);
               margin-right: get-vw-xs(5px);
               padding: get-vw-xs(8px);
+              display: block;
+              margin: 0 auto;
             }
           }
         }
@@ -290,6 +298,7 @@
       }
       .image {
         .image {
+          display: none;
           height: auto;
           max-width: 50%;
           margin: 0 auto;
@@ -298,15 +307,16 @@
           }
         }
         .box {
+          display: none !important;
           margin-top: get-vw-xs(22px);
           @include columns( $quant: get-vw-xs(56px) auto, $gutter: get-vw-xs(23px), $align: stretch, $template: 'text image');
           .icons {
-            width: get-vw-xs(48px);
-            height: get-vw-xs(48px);
+            // width: get-vw-xs(48px);
+            // height: get-vw-xs(48px);
             padding: get-vw-xs(8px);
           }
           p {
-            font-size: get-vw-xs(16px);
+            // font-size: get-vw-xs(16px);
           }
         }
       }

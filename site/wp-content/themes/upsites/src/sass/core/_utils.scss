@@ -78,20 +78,61 @@
 }
 
 // Mixin for cross-browser inline-block
-@mixin inline-block($align: 'top') {
+@mixin inline-block($align: "top") {
   display: inline-block;
   vertical-align: #{$align};
   zoom: 1;
   *display: inline;
 }
 
+@mixin flex($type: "", $direction: "", $wrap: wrap, $align: center, $justify: "", $gap: "") {
+  @if ($type!= "") {
+    display: $type + "-flex";
+  } @else {
+    display: flex;
+  }
+  flex-wrap: $wrap;
+  align-items: $align;
+  @if ($direction!= "") {
+    flex-direction: $direction;
+  }
+  @if ($justify!= "") {
+    justify-content: $justify;
+  }
+  @if ($gap!= "") {
+    gap: $gap;
+  }
+}
+
+@mixin font($family: $font-main, $size: $font-size, $weight: 400, $height: 120%, $align: left, $color: $color-black) {
+  font-family: $family;
+  font-size: clamp(10px, $size, $size);
+  font-weight: $weight;
+  line-height: $height;
+  text-align: $align;
+  color: $color;
+  @include breakpoint2($min: xs, $max: sm) {
+    font-size: clamp(10px, get-vw-sm($size), $size);
+  }
+  @include breakpoint2($min: "", $max: xs) {
+    font-size: clamp(10px, get-vw-xs($size), $size);
+  }
+}
+
 // Mixin to create a grid
-@mixin columns($quant: repeat(12, 1fr), $gutter: 20, $align: top, $template: '', $quantMobile: 1fr, $templateMobile: '') {
+@mixin columns(
+  $quant: repeat(12, 1fr),
+  $gutter: 20,
+  $align: top,
+  $template: "",
+  $quantMobile: 1fr,
+  $templateMobile: ""
+) {
   display: grid;
   grid-template-columns: $quant;
   gap: $gutter;
   align-items: $align;
-  @if ($template!='') {
+  @if ($template!= "") {
     grid-template-areas: $template;
   }
 }
@@ -115,30 +156,27 @@
 }
 
 // animate
-@mixin animate($time:0.5s, $ease:ease, $delay:0s) {
+@mixin animate($time: 0.5s, $ease: ease, $delay: 0s) {
   transition: all $time $ease $delay;
   -webkit-transition: all $time $ease $delay;
   -moz-transition: all $time $ease $delay;
 }
 
 // Mixin for media queries
-@mixin breakpoint2($min:'', $max:'') {
+@mixin breakpoint2($min: "", $max: "") {
   @if (map-get($breakpoints, $min) and map-get($breakpoints, $max)) {
     @media (min-width: map-get($breakpoints, $min) + 1px) and (max-width: map-get($breakpoints, $max)) {
       @content;
     }
-  }
-  @else if $min=='' {
+  } @else if $min== "" {
     @media (max-width: map-get($breakpoints, $max)) {
       @content;
     }
-  }
-  @else if $max=='' {
+  } @else if $max== "" {
     @media (min-width: map-get($breakpoints, $min)) {
       @content;
     }
-  }
-  @else {
+  } @else {
     @media (max-width: $min) {
       @content;
     }
@@ -146,13 +184,13 @@
 }
 
 // Mixin to create a default margin
-@mixin make-default-margin($prefix: 'mtop', $limit: 10, $direction: 'top') {
+@mixin make-default-margin($prefix: "mtop", $limit: 10, $direction: "top") {
   @for $index from 1 through $limit {
     .#{$prefix}-#{$index * 5} {
       margin-#{$direction}: #{$index * 5}px !important;
     }
   }
-  @include breakpoint2($min:lg, $max:xl) {
+  @include breakpoint2($min: lg, $max: xl) {
     @for $index from 1 through $limit {
       $r: get-vw(xl, $index);
       .#{$prefix}-#{$index * 5} {
@@ -160,7 +198,7 @@
       }
     }
   }
-  @include breakpoint2($min:md, $max:lg) {
+  @include breakpoint2($min: md, $max: lg) {
     @for $index from 1 through $limit {
       $r: get-vw(lg, $index);
       .#{$prefix}-#{$index * 5} {
@@ -168,7 +206,7 @@
       }
     }
   }
-  @include breakpoint2($min:sm, $max:md) {
+  @include breakpoint2($min: sm, $max: md) {
     @for $index from 1 through $limit {
       $r: get-vw(md, $index);
       .#{$prefix}-#{$index * 5} {
@@ -176,7 +214,7 @@
       }
     }
   }
-  @include breakpoint2($min:xs, $max:sm) {
+  @include breakpoint2($min: xs, $max: sm) {
     @for $index from 1 through $limit {
       $r: get-vw(sm, $index);
       .#{$prefix}-#{$index * 5} {
@@ -187,7 +225,7 @@
       }
     }
   }
-  @include breakpoint2($min:'', $max:xs) {
+  @include breakpoint2($min: "", $max: xs) {
     @for $index from 1 through $limit {
       $r: get-vw(xs, $index);
       .#{$prefix}-#{$index * 5} {
@@ -201,13 +239,13 @@
 }
 
 // Mixin to create a default padding
-@mixin make-default-padding($prefix: 'ptop', $limit: 10, $direction: 'top') {
+@mixin make-default-padding($prefix: "ptop", $limit: 10, $direction: "top") {
   @for $index from 1 through $limit {
     .#{$prefix}-#{$index * 5} {
       padding-#{$direction}: #{$index * 5}px !important;
     }
   }
-  @include breakpoint2($min:lg, $max:xl) {
+  @include breakpoint2($min: lg, $max: xl) {
     @for $index from 1 through $limit {
       $r: get-vw(xl, $index);
       .#{$prefix}-#{$index * 5} {
@@ -215,7 +253,7 @@
       }
     }
   }
-  @include breakpoint2($min:md, $max:lg) {
+  @include breakpoint2($min: md, $max: lg) {
     @for $index from 1 through $limit {
       $r: get-vw(lg, $index);
       .#{$prefix}-#{$index * 5} {
@@ -223,7 +261,7 @@
       }
     }
   }
-  @include breakpoint2($min:sm, $max:md) {
+  @include breakpoint2($min: sm, $max: md) {
     @for $index from 1 through $limit {
       $r: get-vw(md, $index);
       .#{$prefix}-#{$index * 5} {
@@ -231,7 +269,7 @@
       }
     }
   }
-  @include breakpoint2($min:xs, $max:sm) {
+  @include breakpoint2($min: xs, $max: sm) {
     @for $index from 1 through $limit {
       $r: get-vw(sm, $index);
       .#{$prefix}-#{$index * 5} {
@@ -242,7 +280,7 @@
       }
     }
   }
-  @include breakpoint2($min:'', $max:xs) {
+  @include breakpoint2($min: "", $max: xs) {
     @for $index from 1 through $limit {
       $r: get-vw(xs, $index);
       .#{$prefix}-#{$index * 5} {
@@ -265,17 +303,17 @@
 /// @param {String} $svg - SVG image to encode
 /// @return {String} - Encoded SVG data uri
 @function svg-uri($svg) {
-  $encoded: '';
+  $encoded: "";
   $slice: 2000;
   $index: 0;
   $loops: ceil(str-length($svg) / $slice);
   @for $i from 1 through $loops {
     $chunk: str-slice($svg, $index, $index + $slice - 1);
     $chunk: str-replace($chunk, '"', "'");
-    $chunk: str-replace($chunk, '<', '%3C');
-    $chunk: str-replace($chunk, '>', '%3E');
-    $chunk: str-replace($chunk, '&', '%26');
-    $chunk: str-replace($chunk, '#', '%23');
+    $chunk: str-replace($chunk, "<", "%3C");
+    $chunk: str-replace($chunk, ">", "%3E");
+    $chunk: str-replace($chunk, "&", "%26");
+    $chunk: str-replace($chunk, "#", "%23");
     $encoded: #{$encoded}#{$chunk};
     $index: $index + $slice;
   }
@@ -289,16 +327,11 @@
 /// @param {String} $search - Substring to replace
 /// @param {String} $replace ('') - New value
 /// @return {String} - Updated string
-@function str-replace($string,
-$search,
-$replace: '') {
+@function str-replace($string, $search, $replace: "") {
   $index: str-index($string, $search);
   @if $index {
-    @return str-slice($string,
-    1,
-    $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)),
-    $search,
-    $replace);
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
   }
   @return $string;
 }

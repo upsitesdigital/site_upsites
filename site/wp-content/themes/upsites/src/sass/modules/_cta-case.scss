@@ -1,0 +1,174 @@
+/*======================================
+  case-howToWork
+======================================*/
+
+.cta-case {
+  width: 100%;
+  height: 589px;
+  padding: 90px 0 0 0;
+  background-color: #002d54;
+  .grid {
+    @include columns($quant: 423px 460px, $gutter: 0px, $align: center, $template: "");
+    justify-content: space-between;
+    .text {
+      padding-top: 50px;
+      padding-bottom: 50px;
+      position: relative;
+      z-index: 10;
+      .subtitle {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        color: #008cff;
+        padding: 9px 25px 8px 2px;
+        margin-bottom: 3px;
+        position: relative;
+        display: inline-block;
+        text-transform: uppercase;
+        b {
+          background: $color-white;
+          display: block;
+          position: relative;
+          padding: 3px 0;
+          font-weight: 600;
+        }
+      }
+      .title,
+      h2 {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 121%;
+        text-transform: uppercase;
+        color: $color-white;
+        margin-bottom: 25px;
+      }
+      p {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 156%;
+        color: $color-white;
+        margin: 0 0 23px 0;
+      }
+      .btnBudgets {
+        padding: 19px 27px 19px 30px;
+      }
+    }
+    .image {
+      position: relative;
+      display: flex;
+      align-items: center;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: sm, $max: lg) {
+  .cta-case {
+    height: get-vw-lg(589px);
+    padding: get-vw-lg(90px) 0 0 0;
+    .grid {
+      @include columns($quant: get-vw-lg(423px) get-vw-lg(460px), $gutter: 0, $align: center, $template: "");
+      .text {
+        padding-top: get-vw-lg(50px);
+        padding-bottom: get-vw-lg(50px);
+        .subtitle {
+          font-size: get-vw-lg(13px);
+          padding: get-vw-lg(9px) get-vw-lg(25px) get-vw-lg(8px) get-vw-lg(2px);
+          margin-bottom: get-vw-lg(3px);
+          b {
+            padding: get-vw-lg(3px) 0;
+          }
+        }
+        .title,
+        h2 {
+          font-size: get-vw-lg(32px);
+          margin-bottom: get-vw-lg(25px);
+        }
+        p {
+          font-size: get-vw-lg(16px);
+          margin: 0 0 get-vw-lg(23px) 0;
+        }
+        .btnBudgets {
+          padding: get-vw-lg(19px) get-vw-lg(27px) get-vw-lg(19px) get-vw-lg(30px);
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: xs, $max: sm) {
+  .cta-case {
+    height: auto;
+    padding: get-vw-sm(90px) 0 0 0;
+    .grid {
+      @include columns($quant: 100%, $gutter: 0, $align: center, $template: "");
+      .text {
+        padding-top: get-vw-sm(50px);
+        padding-bottom: get-vw-sm(50px);
+        .subtitle {
+          font-size: get-vw-sm(13px);
+          padding: get-vw-sm(9px) get-vw-sm(25px) get-vw-sm(8px) get-vw-sm(2px);
+          margin-bottom: get-vw-sm(3px);
+          b {
+            padding: get-vw-sm(3px) 0;
+          }
+        }
+        .title,
+        h2 {
+          font-size: get-vw-sm(32px);
+          margin-bottom: get-vw-sm(25px);
+        }
+        p {
+          font-size: get-vw-sm(16px);
+          margin: 0 0 get-vw-sm(23px) 0;
+        }
+        .btnBudgets {
+          padding: get-vw-sm(19px) get-vw-sm(27px) get-vw-sm(19px) get-vw-sm(30px);
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: "", $max: xs) {
+  .cta-case {
+    height: auto;
+    padding: get-vw-xs(90px) 0 0 0;
+    .grid {
+      @include columns($quant: 100%, $gutter: 0, $align: center, $template: "");
+      .text {
+        padding-top: get-vw-xs(50px);
+        padding-bottom: get-vw-xs(50px);
+        .subtitle {
+          font-size: get-vw-xs(13px);
+          padding: get-vw-xs(9px) get-vw-xs(25px) get-vw-xs(8px) get-vw-xs(2px);
+          margin-bottom: get-vw-xs(3px);
+          b {
+            padding: get-vw-xs(3px) 0;
+          }
+        }
+        .title,
+        h2 {
+          font-size: get-vw-xs(32px);
+          margin-bottom: get-vw-xs(25px);
+        }
+        p {
+          font-size: get-vw-xs(16px);
+          margin: 0 0 get-vw-xs(23px) 0;
+        }
+        .btnBudgets {
+          padding: get-vw-xs(19px) get-vw-xs(27px) get-vw-xs(19px) get-vw-xs(30px);
+        }
+      }
+    }
+  }
+}

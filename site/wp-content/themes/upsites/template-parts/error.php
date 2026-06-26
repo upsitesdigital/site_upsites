@@ -10,23 +10,23 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
+get_header();
 ?>
 
   <!-- main -->
-  <main>
+  <main id="main">
 
     <!-- 404 -->
     <section class="page-404">
       <div class="container">
-        <a href="<?= esc_url(home_url('/')) ?>" class="logo">
+        <a rel="dofollow" href="<?= esc_url(home_url('/')) ?>" class="logo">
           <img src="<?= get_template_directory_uri() ?>/assets/img/logo.png" width="100%">
         </a>
         <div class="grid">
           <div class="item">
             <img src="<?= get_template_directory_uri() ?>/assets/img/img-404.svg" class="img-404">
             <p>pagina não encontrada</p>
-            <a href="<?= esc_url(home_url('/')) ?>" class="btnBudgets">Voltar a home</a>
+            <a rel="dofollow" href="<?= esc_url(home_url('/')) ?>" class="btnBudgets">Voltar a home</a>
           </div>
           <div class="item">
             <img src="<?= get_template_directory_uri() ?>/assets/img/image-404.svg" class="image-404">
@@ -38,3 +38,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
   </main>
   <!-- end:main -->
+
+  <?php get_footer(); ?>

@@ -14,7 +14,7 @@
     font-style: normal;
     font-weight: 900;
     line-height: 110%;
-    color: #59608B;
+    color: #59608b;
     padding: 0 0 28px 0;
   }
   h1 {
@@ -42,7 +42,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 178%;
-    color: #59608B;
+    color: #59608b;
     opacity: 0.8;
     margin: 0 40px 40px 0;
     img {
@@ -71,7 +71,7 @@
       font-weight: 400;
       font-size: 18px;
       line-height: 178%;
-      color: #59608B;
+      color: #59608b;
       list-style: disc inside;
       strong {
         font-weight: 900;
@@ -81,10 +81,10 @@
       }
       a {
         font-weight: 900;
-        color: #59608B;
+        color: #59608b;
       }
       &::marker {
-        color: #59608B;
+        color: #59608b;
       }
     }
   }
@@ -96,7 +96,7 @@
       font-weight: 400;
       font-size: 18px;
       line-height: 178%;
-      color: #59608B;
+      color: #59608b;
       list-style: decimal inside;
       strong {
         font-weight: 900;
@@ -106,10 +106,10 @@
       }
       a {
         font-weight: 900;
-        color: #59608B;
+        color: #59608b;
       }
       &::marker {
-        color: #59608B;
+        color: #59608b;
       }
     }
   }
@@ -122,9 +122,9 @@
     border-bottom: 1px solid $color-black;
     margin: 64px 0 24px 0;
     padding: 31px 0 32px 0;
-    @include columns( $quant: 17% 83%, $gutter: 0, $align: stretch, $template: '');
+    @include columns($quant: 17% 83%, $gutter: 0, $align: stretch, $template: "");
     &::before {
-      content: ',,';
+      content: ",,";
       width: 44px;
       height: 34px;
       margin: 16px 0 0 52px;
@@ -133,11 +133,11 @@
       font-weight: 400;
       font-size: 100px;
       line-height: 0%;
-      color: #59608B;
+      color: #59608b;
       transform: rotate(180deg);
     }
     .icon {
-      fill: #59608B;
+      fill: #59608b;
       width: 44px;
       height: 34px;
       margin: 0 0 0 52px;
@@ -148,13 +148,13 @@
       font-weight: 400;
       font-size: 22px;
       line-height: 140%;
-      color: #59608B;
+      color: #59608b;
       margin: 0;
     }
   }
 }
 
-@include breakpoint2($min:sm, $max:lg) {
+@include breakpoint2($min: sm, $max: lg) {
   .simple-page {
     padding: get-vw-lg(100px) 0 get-vw-lg(50px) 0;
     h1,
@@ -224,7 +224,7 @@
   }
 }
 
-@include breakpoint2($min:xs, $max:sm) {
+@include breakpoint2($min: xs, $max: sm) {
   .simple-page {
     padding: get-vw-sm(100px) 0 get-vw-sm(50px) 0;
     h1,
@@ -236,26 +236,26 @@
       padding: 0 0 get-vw-sm(28px) 0;
     }
     h1 {
-      font-size: get-vw-sm(29px);
+      // font-size: get-vw-sm(29px);
     }
     h2 {
-      font-size: get-vw-sm(24px);
+      // font-size: get-vw-sm(24px);
     }
     h3 {
-      font-size: get-vw-sm(23px);
+      // font-size: get-vw-sm(23px);
     }
     h4 {
-      font-size: get-vw-sm(22px);
+      // font-size: get-vw-sm(22px);
     }
     h5 {
-      font-size: get-vw-sm(21px);
+      // font-size: get-vw-sm(21px);
     }
     h6 {
-      font-size: get-vw-sm(20px);
+      // font-size: get-vw-sm(20px);
     }
     p,
     pre {
-      font-size: get-vw-sm(18px);
+      // font-size: get-vw-sm(18px);
       margin: 0 get-vw-sm(40px) get-vw-sm(40px) 0;
       img {
         margin: get-vw-sm(23px) 0 0 0;
@@ -264,37 +264,37 @@
     ul {
       margin: 0 get-vw-sm(40px) get-vw-sm(40px) 0;
       li {
-        font-size: get-vw-sm(18px);
+        // font-size: get-vw-sm(18px);
       }
     }
     ol {
       margin: 0 get-vw-sm(40px) get-vw-sm(40px) 0;
       li {
-        font-size: get-vw-sm(18px);
+        // font-size: get-vw-sm(18px);
       }
     }
     blockquote {
       margin: get-vw-sm(64px) 0 get-vw-sm(24px) 0;
       padding: get-vw-sm(31px) 0 get-vw-sm(32px) 0;
       &::before {
-        width: get-vw-sm(44px);
-        height: get-vw-sm(34px);
+        // width: get-vw-sm(44px);
+        // height: get-vw-sm(34px);
         margin: get-vw-sm(16px) 0 0 get-vw-sm(52px);
-        font-size: get-vw-sm(100px);
+        // font-size: get-vw-sm(100px);
       }
       .icon {
-        width: get-vw-sm(44px);
-        height: get-vw-sm(34px);
+        // width: get-vw-sm(44px);
+        // height: get-vw-sm(34px);
         margin: 0 0 0 get-vw-sm(52px);
       }
       p {
-        font-size: get-vw-sm(22px);
+        // font-size: get-vw-sm(22px);
       }
     }
   }
 }
 
-@include breakpoint2($min:'', $max:xs) {
+@include breakpoint2($min: "", $max: xs) {
   .simple-page {
     padding: get-vw-xs(100px) 0 get-vw-xs(50px) 0;
     h1,
@@ -306,26 +306,26 @@
       padding: 0 0 get-vw-xs(28px) 0;
     }
     h1 {
-      font-size: get-vw-xs(29px);
+      // font-size: get-vw-xs(29px);
     }
     h2 {
-      font-size: get-vw-xs(24px);
+      // font-size: get-vw-xs(24px);
     }
     h3 {
-      font-size: get-vw-xs(23px);
+      // font-size: get-vw-xs(23px);
     }
     h4 {
-      font-size: get-vw-xs(22px);
+      // font-size: get-vw-xs(22px);
     }
     h5 {
-      font-size: get-vw-xs(21px);
+      // font-size: get-vw-xs(21px);
     }
     h6 {
-      font-size: get-vw-xs(20px);
+      // font-size: get-vw-xs(20px);
     }
     p,
     pre {
-      font-size: get-vw-xs(18px);
+      // font-size: get-vw-xs(18px);
       margin: 0 get-vw-xs(40px) get-vw-xs(40px) 0;
       img {
         margin: get-vw-xs(23px) 0 0 0;
@@ -334,31 +334,31 @@
     ul {
       margin: 0 get-vw-xs(40px) get-vw-xs(40px) 0;
       li {
-        font-size: get-vw-xs(18px);
+        // font-size: get-vw-xs(18px);
       }
     }
     ol {
       margin: 0 get-vw-xs(40px) get-vw-xs(40px) 0;
       li {
-        font-size: get-vw-xs(18px);
+        // font-size: get-vw-xs(18px);
       }
     }
     blockquote {
       margin: get-vw-xs(64px) 0 get-vw-xs(24px) 0;
       padding: get-vw-xs(31px) 0 get-vw-xs(32px) 0;
       &::before {
-        width: get-vw-xs(44px);
-        height: get-vw-xs(34px);
+        // width: get-vw-xs(44px);
+        // height: get-vw-xs(34px);
         margin: get-vw-xs(16px) 0 0 get-vw-xs(52px);
-        font-size: get-vw-xs(100px);
+        // font-size: get-vw-xs(100px);
       }
       .icon {
-        width: get-vw-xs(44px);
-        height: get-vw-xs(34px);
+        // width: get-vw-xs(44px);
+        // height: get-vw-xs(34px);
         margin: 0 0 0 get-vw-xs(52px);
       }
       p {
-        font-size: get-vw-xs(22px);
+        // font-size: get-vw-xs(22px);
       }
     }
   }

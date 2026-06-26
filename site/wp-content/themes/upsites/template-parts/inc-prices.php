@@ -11,16 +11,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 $idObj = get_page_by_path( 'home' );
-$idhome = $idObj->ID;
+
+$idhome = array_key_exists('id',$args) ? $args['id'] : $idObj->ID;
+//$idhome = $idObj->ID;
 
 $phone 					= get_theme_mod('US_phone');
-$phone_custom 	= str_replace(array('(', ')', '-', ' '), "", $phone);
+$phone_custom 	= '0'.str_replace(array('(', ')', '-', ' '), "", $phone);
+
+$term = array_key_exists('type',$args) ? $args['type'] : 'tree-cols';
+
 ?>
 <?php if(get_field('desativar_seccao_contsitepro') !== 'inativo') { ?>
-<section id="contratar" class="hireProfessionWebsite">
+<section id="contratar" class="hireProfessionWebsite <?= $term ?> ">
 	<div class="container">
 		<div class="grid">
-			<div class="fast">
+			<div class="fast" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">
 				<div class="box">
 					<div class="icons">
 						<svg class="icon">
@@ -35,16 +40,11 @@ $phone_custom 	= str_replace(array('(', ')', '-', ' '), "", $phone);
 								<hr>
 								<div class="price">' . get_sub_field('preco') . '</div>
 								<p class="small">' . get_sub_field('apoio') . '</p>
-								<hr>
-								<a href="' . get_sub_field('link_botao') . '" class="btnBudgets">
-									<svg class="icon">
-										<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use>
-									</svg> ' . get_sub_field('texto_botao') . '
-								</a>';
+								<hr>';
 								if( have_rows('itens') ):
 									echo '<ul>';
 									while ( have_rows('itens') ) : the_row();
-										echo '<li>
+										echo '<li data-scroll-reveal="enter right move 50px over 0.6s after 0.1s">
 											<div class="before">
 												<svg class="icon">
 													<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#check"></use>
@@ -55,16 +55,21 @@ $phone_custom 	= str_replace(array('(', ')', '-', ' '), "", $phone);
 									endwhile;
 									echo '</ul>';
 								endif;
+								echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0.1s" target="_blank" rel="nofollow" href="' . get_sub_field('link_botao') . '" class="btnBudgets mbottom-0">
+									<svg class="icon">
+										<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use>
+									</svg> ' . get_sub_field('texto_botao') . '
+								</a>';
 							endwhile;
 						endif;
 					?>
 				</div>
 			</div>
-			<div class="phone">
+			<div class="phone" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
 				<div class="boxStick">
 					<?php 
 						if(get_field('subtitulo_contsitepro', $idhome)) {
-							echo '<span>' . get_field('subtitulo_contsitepro', $idhome) . '</span>';
+							echo '<h3 class="subtitle">' . get_field('subtitulo_contsitepro', $idhome) . '</h3>';
 						}
 						if(get_field('titulo_contsitepro', $idhome)) {
 							echo '<h2>' . get_field('titulo_contsitepro', $idhome) . '</h2>';
@@ -81,7 +86,7 @@ $phone_custom 	= str_replace(array('(', ')', '-', ' '), "", $phone);
 					</svg>
 					<?php 
 						if($phone != '') {
-							echo '<a href="tel:+' . $phone_custom . '">
+							echo '<a rel="nofollow" href="tel:' . $phone_custom . '">
 								<svg class="icon">
 									<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#phone"></use>
 								</svg> ' . $phone . '
@@ -90,7 +95,7 @@ $phone_custom 	= str_replace(array('(', ')', '-', ' '), "", $phone);
 					?>
 				</div>
 			</div>
-			<div class="customSite">
+			<div class="customSite" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
 				<div class="box">
 					<div class="icons">
 						<svg class="icon">
@@ -105,16 +110,11 @@ $phone_custom 	= str_replace(array('(', ')', '-', ' '), "", $phone);
 								<hr>
 								<div class="budget">' . get_sub_field('preco') . '</div>
 								<p class="small">' . get_sub_field('apoio') . '</p>
-								<hr>
-								<a href="' . get_sub_field('link_botao') . '" class="btnBudgets">
-									<svg class="icon">
-										<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use>
-									</svg> ' . get_sub_field('texto_botao') . '
-								</a>';
+								<hr>';
 								if( have_rows('itens') ):
 									echo '<ul>';
 									while ( have_rows('itens') ) : the_row();
-										echo '<li>
+										echo '<li data-scroll-reveal="enter right move 50px over 0.6s after 0.1s">
 											<div class="before">
 												<svg class="icon">
 													<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#check"></use>
@@ -125,6 +125,11 @@ $phone_custom 	= str_replace(array('(', ')', '-', ' '), "", $phone);
 									endwhile;
 									echo '</ul>';
 								endif;
+								echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0.1s" rel="nofollow" target="_blank" href="' . get_sub_field('link_botao') . '" class="btnBudgets mbottom-0">
+									<svg class="icon">
+										<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use>
+									</svg> ' . get_sub_field('texto_botao') . '
+								</a>';
 							endwhile;
 						endif;
 					?>

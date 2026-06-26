@@ -3,19 +3,20 @@
 ======================================*/
 
 .dontJustWebsite {
-  padding-top: 279px;
+  padding-top: 79px;
   position: relative;
-  background-color: #002D54;
+  background-color: #002d54;
   .before {
-    content: '';
+    content: "";
     width: 100%;
     height: 220px;
     position: absolute;
     top: 0;
     left: 0;
+    display: none;
   }
   .after {
-    content: '';
+    content: "";
     width: 50%;
     height: 305px;
     position: absolute;
@@ -23,7 +24,7 @@
     left: 0;
   }
   .moon {
-    content: '';
+    content: "";
     width: 96px;
     height: 75px;
     position: absolute;
@@ -39,17 +40,18 @@
   }
   .grid {
     padding-bottom: 110px;
-    @include columns( $quant: 38% 40%, $gutter: 22%, $align: start, $template: 'left right');
+    @include columns($quant: 45% 40%, $gutter: 15%, $align: start, $template: "left right");
     .left {
       grid-area: left;
       h3 {
         font-family: $font-main;
         font-style: normal;
         font-weight: 900;
-        font-size: 24px;
+        font-size: 32px;
         line-height: 133%;
         text-transform: uppercase;
-        color: #FFFFFF;
+        color: #ffffff;
+        padding-bottom: 9px;
       }
       .btnBudgets {
         margin-top: 31px;
@@ -62,13 +64,17 @@
         font-weight: normal;
         font-size: 16px;
         line-height: 175%;
-        color: #FFFFFF;
+        color: #ffffff;
         margin-bottom: 28px;
+        b {
+          font-weight: bold;
+        }
       }
     }
     .right {
       grid-area: right;
-      span {
+      span,
+      .subtitle {
         font-family: $font-main;
         font-style: normal;
         font-weight: 600;
@@ -76,19 +82,19 @@
         line-height: 120%;
         letter-spacing: 0.05em;
         padding-bottom: 9px;
-        color: #008CFF;
+        color: #008cff;
         display: block;
       }
       h2 {
         font-family: $font-main;
         font-style: normal;
         font-weight: 900;
-        font-size: 32px;
+        font-size: 28px;
         line-height: 119%;
         text-transform: uppercase;
-        color: #FFF;
+        color: #fff;
         display: block;
-        padding-bottom: 79px;
+        padding-bottom: 28px;
       }
       ul {
         li {
@@ -97,16 +103,34 @@
           font-weight: 600;
           font-size: 16px;
           line-height: 175%;
-          color: #FFFFFF;
-          padding: 8px 15px;
+          color: #ffffff;
+          padding: 4px 15px;
           position: relative;
           &:before {
-            content: '.';
-            color: #FFF;
+            content: ".";
+            color: #fff;
             font-size: 33px;
             position: absolute;
-            top: 0;
+            top: -6px;
             left: -2px;
+          }
+        }
+        &.check {
+          li {
+            &:before {
+              content: "";
+              color: #fff;
+              font-size: 33px;
+              position: absolute;
+              top: 11px;
+              left: -5px;
+              width: 7px;
+              height: 10px;
+              border: 2px solid #fff;
+              display: block;
+              border-width: 0 2px 2px 0;
+              transform: rotate(45deg);
+            }
           }
         }
       }
@@ -114,9 +138,9 @@
   }
 }
 
-@include breakpoint2($min:sm, $max:lg) {
+@include breakpoint2($min: sm, $max: lg) {
   .dontJustWebsite {
-    padding-top: get-vw-lg(279px);
+    padding-top: get-vw-lg(79px);
     .before {
       height: get-vw-lg(220px);
     }
@@ -137,7 +161,8 @@
       padding-bottom: get-vw-lg(110px);
       .left {
         h3 {
-          font-size: get-vw-lg(24px);
+          font-size: get-vw-lg(32px);
+          padding-bottom: get-vw-lg(9px);
         }
         .btnBudgets {
           margin-top: get-vw-lg(31px);
@@ -150,20 +175,22 @@
         }
       }
       .right {
-        span {
+        span,
+        .subtitle {
           font-size: get-vw-lg(13px);
           padding-bottom: get-vw-lg(9px);
         }
         h2 {
-          font-size: get-vw-lg(32px);
-          padding-bottom: get-vw-lg(79px);
+          font-size: get-vw-lg(28px);
+          padding-bottom: get-vw-lg(28px);
         }
         ul {
           li {
             font-size: get-vw-lg(16px);
-            padding: get-vw-lg(8px) get-vw-lg(15px);
+            padding: get-vw-lg(4px) get-vw-lg(15px);
             &:before {
               font-size: get-vw-lg(33px);
+              top: get-vw-lg(-6px);
               left: get-vw-lg(-2px);
             }
           }
@@ -173,9 +200,12 @@
   }
 }
 
-@include breakpoint2($min:xs, $max:sm) {
+@include breakpoint2($min: xs, $max: sm) {
   .dontJustWebsite {
-    padding-top: get-vw-sm(179px);
+    padding-top: get-vw-sm(79px);
+    &.hide-mobile {
+      display: none !important;
+    }
     .before {
       height: get-vw-sm(220px);
     }
@@ -194,11 +224,11 @@
     }
     .grid {
       padding-bottom: get-vw-sm(210px);
-      @include columns( $quant: 100%, $gutter: 0%, $align: start, $template: 'left' 'right');
+      @include columns($quant: 100%, $gutter: 0%, $align: start, $template: "left" "right");
       .left {
         margin-bottom: get-vw-sm(42px);
         h3 {
-          font-size: get-vw-sm(24px);
+          // font-size: get-vw-sm(24px);
         }
         .btnBudgets {
           margin-top: get-vw-sm(31px);
@@ -206,25 +236,26 @@
           padding: get-vw-sm(20px) get-vw-sm(41px);
         }
         p {
-          font-size: get-vw-sm(16px);
+          // font-size: get-vw-sm(16px);
           margin-bottom: get-vw-sm(28px);
         }
       }
       .right {
-        span {
-          font-size: get-vw-sm(13px);
+        span,
+        .subtitle {
+          // font-size: get-vw-sm(13px);
           padding-bottom: get-vw-sm(9px);
         }
         h2 {
-          font-size: get-vw-sm(32px);
-          padding-bottom: get-vw-sm(29px);
+          // font-size: get-vw-sm(32px);
+          padding-bottom: get-vw-sm(28px);
         }
         ul {
           li {
-            font-size: get-vw-sm(16px);
-            padding: get-vw-sm(8px) get-vw-sm(15px);
+            // font-size: get-vw-sm(16px);
+            padding: get-vw-sm(4px) get-vw-sm(15px);
             &:before {
-              font-size: get-vw-sm(33px);
+              // font-size: get-vw-sm(33px);
               left: get-vw-sm(-2px);
             }
           }
@@ -234,9 +265,12 @@
   }
 }
 
-@include breakpoint2($min:'', $max:xs) {
+@include breakpoint2($min: "", $max: xs) {
   .dontJustWebsite {
-    padding-top: get-vw-xs(179px);
+    &.hide-mobile {
+      display: none !important;
+    }
+    padding-top: get-vw-xs(79px);
     .before {
       height: get-vw-xs(220px);
     }
@@ -255,11 +289,11 @@
     }
     .grid {
       padding-bottom: get-vw-xs(210px);
-      @include columns( $quant: 100%, $gutter: 0%, $align: start, $template: 'left' 'right');
+      @include columns($quant: 100%, $gutter: 0%, $align: start, $template: "left" "right");
       .left {
         margin-bottom: get-vw-xs(42px);
         h3 {
-          font-size: get-vw-xs(24px);
+          //font-size: get-vw-xs(32px);
         }
         .btnBudgets {
           margin-top: get-vw-xs(31px);
@@ -267,25 +301,26 @@
           padding: get-vw-xs(20px) get-vw-xs(41px);
         }
         p {
-          font-size: get-vw-xs(16px);
+          // font-size: get-vw-xs(16px);
           margin-bottom: get-vw-xs(28px);
         }
       }
       .right {
-        span {
-          font-size: get-vw-xs(13px);
+        span,
+        .subtitle {
+          // font-size: get-vw-xs(13px);
           padding-bottom: get-vw-xs(9px);
         }
         h2 {
-          font-size: get-vw-xs(32px);
-          padding-bottom: get-vw-xs(29px);
+          // font-size: get-vw-xs(32px);
+          padding-bottom: get-vw-xs(28px);
         }
         ul {
           li {
-            font-size: get-vw-xs(16px);
-            padding: get-vw-xs(8px) get-vw-xs(15px);
+            // font-size: get-vw-xs(16px);
+            padding: get-vw-xs(4px) get-vw-xs(15px);
             &:before {
-              font-size: get-vw-xs(33px);
+              // font-size: get-vw-xs(33px);
               left: get-vw-xs(-2px);
             }
           }

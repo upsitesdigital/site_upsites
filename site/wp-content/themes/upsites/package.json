@@ -34,9 +34,10 @@
     "webpack-bundle-analyzer": "^2.13.1"
   },
   "dependencies": {
-    "slick-carousel": "^1.6.0",
-    "svg4everybody": "^2.1.4",
-    "graceful-fs": "4.2.3"
+    "clipboard-copy": "^4.0.1",
+    "graceful-fs": "4.2.3",
+    "slick-carousel": "^1.8.1",
+    "svg4everybody": "^2.1.4"
   },
   "resolutions": {
     "graceful-fs": "4.2.3"

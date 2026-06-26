@@ -8,15 +8,16 @@
  */
 
 ?>
-<div class="item-port" id="post-<?php the_ID(); ?>">
+<div class="item-port" id="post-<?php the_ID(); ?>" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
   <div class="image">
-    <?= wp_get_attachment_image(get_post_thumbnail_id(get_the_ID()), 'portfolio-thumb') ?>
+    <a rel="nofollow" target="_blank" href="<?php the_field('link_templates') ?>"><?= wp_get_attachment_image(get_post_thumbnail_id(get_the_ID()), 'portfolio-thumb') ?></a>
   </div>
-  <div class="box">
-    <?= US_term_list(get_the_ID(), 'categories_templates') ?>
-    <span><?php the_field('subtitulo_templates') ?></span>
-    <h3><?php the_title() ?></h3>
-    <p><?php the_field('resumo_templates') ?></p>
-    <a class="link" target="_blank" href="<?php the_field('link_templates') ?>">Visite o modelo</a>
+  <div class="relative">
+    <a rel="nofollow" target="_blank" href="<?php the_field('link_templates') ?>" class="box">
+      <?= US_term_list(get_the_ID(), 'categories_templates', 'tags') ?>
+      <h3><?php the_title() ?></h3>
+      <!-- p><?php the_field('resumo_templates') ?></p-->
+      <span class="link">Visite o modelo</span>
+    </a>
   </div>
 </div>

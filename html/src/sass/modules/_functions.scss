@@ -14,7 +14,8 @@
     border: none;
     height: 1px;
   }
-  span {
+  span,
+  .subtitle {
     font-family: $font-main;
     font-style: normal;
     font-weight: 600;
@@ -64,12 +65,16 @@
       .box {
         position: sticky;
         top: 0;
+        text-align: center;
       }
       .image {
         width: 100%;
-        height: 524px;
+        padding-bottom: 20px;
         img {
-          margin: 60px 110px 0 -48px;
+          margin: 60px 0 0 0;
+          width: auto;
+          height: auto;
+          max-width: 100%;
         }
       }
       h3 {
@@ -81,14 +86,15 @@
         text-align: center;
         text-transform: uppercase;
         color: #FFFFFF;
-        margin: 0 145px 9px 0;
+        padding: 0 70px 9px 70px;
       }
       .btnBudgets {
-        margin-left: 72px;
+        margin: 0 auto;
         padding: 20px 41px;
       }
     }
     .text {
+      overflow: hidden;
       grid-area: text;
       padding-top: 93px;
       ul {
@@ -100,7 +106,7 @@
           &:last-child {
             border-bottom: none;
           }
-          @include columns( $quant: 10% 88%, $gutter: 2%, $align: start, $template: 'icon title' 'icon text');
+          @include columns( $quant: 42px 1fr, $gutter: 10px, $align: start, $template: 'icon title' 'icon text');
           .icons {
             grid-area: icon;
             width: 40px;
@@ -125,6 +131,7 @@
             color: #FFFFFF;
             padding-bottom: 14px;
           }
+          p span,
           p {
             grid-area: text;
             font-family: $font-main;
@@ -134,6 +141,18 @@
             line-height: 150%;
             color: #969ECC;
             padding: 0;
+            letter-spacing: 0;
+          }
+          .txtopen {
+            display: block;
+            cursor: pointer;
+          }
+          .txtclose {
+            display: none;
+            cursor: pointer;
+          }
+          .text-underline {
+            text-decoration: underline;
           }
           &.small {
             .icons {
@@ -164,16 +183,20 @@
           li {
             padding-bottom: 8px;
             border-bottom: 0px solid rgba(215, 238, 253, 0.1);
-            @include columns( $quant: 12% 86%, $gutter: 2%, $align: start, $template: 'icon title' 'icon text');
+            @include columns( $quant: 50px 1fr, $gutter: 10px, $align: start, $template: 'icon title' 'icon text');
             .icons {
               grid-area: icon;
               width: 48px;
               height: 48px;
               background: #85FFE6;
               border-radius: 50%;
-              padding: 8px;
+              padding: 12px;
               .icon {
                 stroke: #323232;
+              }
+              img {
+                width: 100%;
+                height: auto;
               }
             }
             h3 {
@@ -183,6 +206,18 @@
             }
             p {
               line-height: 175%;
+            }
+          }
+          &.small {
+            li {
+              .icons {
+                width: 40px;
+                height: 40px;
+                padding: 8px;
+                .icon {
+                  stroke: #323232;
+                }
+              }
             }
           }
         }
@@ -199,7 +234,7 @@
       padding-bottom: 75px;
     }
     h2 {
-      color: #371A45;
+      color: $color-navy;
       padding-bottom: 44px;
     }
     p {
@@ -213,32 +248,20 @@
       .image {
         .image {
           width: 100%;
-          height: 524px;
-          img {
-            margin: 60px 110px 0 -48px;
-          }
         }
         h3 {
-          color: #371A45;
-        }
-        .btnBudgets {
-          margin-left: 72px;
+          color: $color-navy;
         }
         &.big {
           .image {
             width: 100%;
-            height: 524px;
             img {
               margin: 60px 0px 0 0px;
             }
           }
           h3 {
-            color: #371A45;
+            color: $color-navy;
             margin-right: 0;
-            padding-left: 104px;
-          }
-          .btnBudgets {
-            margin-left: 130px;
           }
         }
       }
@@ -257,7 +280,7 @@
               }
             }
             h3 {
-              color: #371A45;
+              color: $color-navy;
             }
             p {
               color: #59608B;
@@ -269,14 +292,14 @@
             li {
               padding-bottom: 8px;
               border-bottom: 0px solid rgba(215, 238, 253, 0.1);
-              @include columns( $quant: 12% 86%, $gutter: 2%, $align: start, $template: 'icon title' 'icon text');
+              @include columns( $quant: 42px 1fr, $gutter: 10px, $align: start, $template: 'icon title' 'icon text');
               .icons {
                 grid-area: icon;
                 width: 48px;
                 height: 48px;
                 background: #85FFE6;
                 border-radius: 50%;
-                padding: 8px;
+                padding: 12px;
                 .icon {
                   stroke: #323232;
                 }
@@ -288,6 +311,18 @@
               }
               p {
                 line-height: 175%;
+              }
+            }
+            &.small {
+              li {
+                .icons {
+                  width: 40px;
+                  height: 40px;
+                  padding: 8px;
+                  .icon {
+                    stroke: #323232;
+                  }
+                }
               }
             }
           }
@@ -326,7 +361,7 @@
     .prev {
       width: 30px;
       height: 30px;
-      background-color: #00B48F;
+      background-color: $color-green;
       border-radius: 50%;
       position: absolute;
       top: 124px;
@@ -343,7 +378,7 @@
     .next {
       width: 30px;
       height: 30px;
-      background-color: #00B48F;
+      background-color: $color-green;
       border-radius: 50%;
       position: absolute;
       top: 124px;
@@ -362,11 +397,14 @@
       .slick-slide {
         padding: 0 10px;
       }
+      .grid-slide {
+        @include columns( $quant: repeat(4, 1fr), $gutter: 20px, $align: stretch, $template: '');
+      }
       .item {
         background-color: #01203C;
         border-radius: 16px;
         padding: 23px 27px;
-        height: 216px;
+        //height: 216px;
         .icons {
           width: 25px;
           height: 25px;
@@ -396,6 +434,26 @@
         }
       }
     }
+    .slick-dots {
+      text-align: center;
+      li {
+        display: inline-block;
+        padding: 0 4px;
+        button {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          font-size: 0;
+          display: block;
+          padding: 0;
+          background: #D2D2D2;
+          border: none;
+        }
+        &.slick-active button {
+          background: $color-green;
+        }
+      }
+    }
   }
 }
 
@@ -405,7 +463,8 @@
     &.ptop {
       padding-top: get-vw-lg(70px);
     }
-    span {
+    span,
+    .subtitle {
       font-size: get-vw-lg(13px);
       padding-bottom: get-vw-lg(16px);
     }
@@ -429,17 +488,13 @@
       }
       .image {
         .image {
-          height: get-vw-lg(524px);
-          img {
-            margin: get-vw-lg(60px) get-vw-lg(110px) 0 get-vw-lg(-48px);
-          }
+          padding-bottom: get-vw-lg(20px);
         }
         h3 {
           font-size: get-vw-lg(24px);
-          margin: 0 get-vw-lg(145px) get-vw-lg(9px) 0;
+          padding: 0 get-vw-lg(70px) get-vw-lg(9px) get-vw-lg(70px);
         }
         .btnBudgets {
-          margin-left: get-vw-lg(72px);
           padding: get-vw-lg(20px) get-vw-lg(41px);
         }
       }
@@ -459,6 +514,7 @@
               font-size: get-vw-lg(22px);
               padding-bottom: get-vw-lg(14px);
             }
+            p span,
             p {
               font-size: get-vw-lg(16px);
             }
@@ -480,10 +536,19 @@
               .icons {
                 width: get-vw-lg(48px);
                 height: get-vw-lg(48px);
-                padding: get-vw-lg(8px);
+                padding: get-vw-lg(12px);
               }
               h3 {
                 font-size: get-vw-lg(16px);
+              }
+            }
+            &.small {
+              li {
+                .icons {
+                  width: get-vw-lg(40px);
+                  height: get-vw-lg(40px);
+                  padding: get-vw-lg(8px);
+                }
               }
             }
           }
@@ -504,26 +569,21 @@
       .grid {
         .image {
           .image {
-            height: get-vw-lg(524px);
+            //height: get-vw-lg(524px);
             img {
               margin: get-vw-lg(60px) get-vw-lg(110px) 0 get-vw-lg(-48px);
             }
           }
-          .btnBudgets {
-            margin-left: get-vw-lg(72px);
-          }
           &.big {
             .image {
-              height: get-vw-lg(524px);
+              //height: get-vw-lg(524px);
               img {
                 margin: get-vw-lg(60px) 0 0 0;
               }
             }
             h3 {
-              padding-left: get-vw-lg(104px);
-            }
-            .btnBudgets {
-              margin-left: get-vw-lg(130px);
+              padding-left: get-vw-lg(70px);
+              padding-right: get-vw-lg(70px);
             }
           }
         }
@@ -538,10 +598,19 @@
                 .icons {
                   width: get-vw-lg(48px);
                   height: get-vw-lg(48px);
-                  padding: get-vw-lg(8px);
+                  padding: get-vw-lg(12px);
                 }
                 h3 {
                   font-size: get-vw-lg(16px);
+                }
+              }
+              &.small {
+                li {
+                  .icons {
+                    width: get-vw-lg(40px);
+                    height: get-vw-lg(40px);
+                    padding: get-vw-lg(8px);
+                  }
                 }
               }
             }
@@ -585,10 +654,13 @@
         .slick-slide {
           padding: 0 get-vw-lg(10px);
         }
+        .grid-slide {
+          @include columns( $quant: repeat(4, 1fr), $gutter: get-vw-lg(20px), $align: stretch, $template: '');
+        }
         .item {
           border-radius: get-vw-lg(16px);
           padding: get-vw-lg(23px) get-vw-lg(27px);
-          height: get-vw-lg(216px);
+          //height: get-vw-lg(216px);
           .icons {
             width: get-vw-lg(25px);
             height: get-vw-lg(25px);
@@ -612,26 +684,33 @@
     &.ptop {
       padding-top: get-vw-sm(70px);
     }
-    span {
-      font-size: get-vw-sm(13px);
+    &.hide-mobile {
+      display: none;
+    }
+    span,
+    .subtitle {
+      // font-size: get-vw-sm(13px);
       padding-bottom: get-vw-sm(16px);
     }
     h2 {
-      font-size: get-vw-sm(32px);
+      // font-size: get-vw-sm(32px);
       padding-bottom: get-vw-sm(44px);
+      br {
+        display: inherit;
+      }
       &.small {
         padding-bottom: get-vw-sm(11px);
       }
     }
     p {
-      font-size: get-vw-sm(16px);
+      // font-size: get-vw-sm(16px);
       padding: 0 0 get-vw-sm(19px) 0;
       &.small {
-        font-size: get-vw-sm(15px);
+        // font-size: get-vw-sm(15px);
       }
     }
     .grid {
-      @include columns( $quant: 25% 50% 25%, $gutter: 0%, $align: stretch, $template: 'text text text' 'space1 image space2');
+      @include columns( $quant: 5% 90% 5%, $gutter: 0%, $align: stretch, $template: 'text text text' 'space1 image space2');
       &.pbottom {
         padding-bottom: get-vw-sm(27px);
       }
@@ -644,8 +723,8 @@
           }
         }
         h3 {
-          font-size: get-vw-sm(24px);
-          margin: 0 0 get-vw-sm(20px) 0;
+          // font-size: get-vw-sm(24px);
+          padding: 0 0 get-vw-sm(20px) 0;
         }
         .btnBudgets {
           display: inline-block;
@@ -661,24 +740,25 @@
             padding-top: get-vw-sm(32px);
             padding-bottom: get-vw-sm(34px);
             .icons {
-              width: get-vw-sm(40px);
-              height: get-vw-sm(40px);
-              padding: get-vw-sm(8px);
+              // width: get-vw-sm(40px);
+              // height: get-vw-sm(40px);
+              // padding: get-vw-sm(8px);
             }
             h3 {
-              font-size: get-vw-sm(22px);
+              // font-size: get-vw-sm(22px);
               padding-bottom: get-vw-sm(14px);
             }
+            p span,
             p {
-              font-size: get-vw-sm(16px);
+              // font-size: get-vw-sm(16px);
             }
             &.small {
               h3 {
-                font-size: get-vw-sm(16px);
+                // font-size: get-vw-sm(16px);
                 padding-bottom: get-vw-sm(14px);
               }
               p {
-                font-size: get-vw-sm(16px);
+                // font-size: get-vw-sm(16px);
               }
             }
           }
@@ -688,12 +768,21 @@
             li {
               padding-bottom: get-vw-sm(8px);
               .icons {
-                width: get-vw-sm(48px);
-                height: get-vw-sm(48px);
-                padding: get-vw-sm(8px);
+                // width: get-vw-sm(48px);
+                // height: get-vw-sm(48px);
+                padding: get-vw-sm(12px);
               }
               h3 {
-                font-size: get-vw-sm(16px);
+                // font-size: get-vw-sm(16px);
+              }
+            }
+            &.small {
+              li {
+                .icons {
+                  // width: get-vw-sm(40px);
+                  // height: get-vw-sm(40px);
+                  padding: get-vw-sm(8px);
+                }
               }
             }
           }
@@ -712,7 +801,7 @@
         padding-bottom: get-vw-sm(44px);
       }
       p {
-        font-size: get-vw-sm(16px);
+        // font-size: get-vw-sm(16px);
       }
       .grid {
         @include columns( $quant: 100%, $gutter: 0%, $align: stretch, $template: 'image' 'text');
@@ -746,7 +835,7 @@
           }
         }
         .text {
-          padding-top: get-vw-sm(61px);
+          padding-top: 91px;
           ul {
             &.green {
               padding-top: get-vw-sm(18px);
@@ -754,12 +843,21 @@
               li {
                 padding-bottom: get-vw-sm(8px);
                 .icons {
-                  width: get-vw-sm(48px);
-                  height: get-vw-sm(48px);
-                  padding: get-vw-sm(8px);
+                  // width: get-vw-sm(48px);
+                  // height: get-vw-sm(48px);
+                  padding: get-vw-sm(12px);
                 }
                 h3 {
-                  font-size: get-vw-sm(16px);
+                  // font-size: get-vw-sm(16px);
+                }
+              }
+              &.small {
+                li {
+                  .icons {
+                    // width: get-vw-sm(40px);
+                    // height: get-vw-sm(40px);
+                    padding: get-vw-sm(8px);
+                  }
                 }
               }
             }
@@ -782,13 +880,14 @@
       margin: get-vw-sm(86px) 0 0 0;
       padding: get-vw-sm(70px) 0 0 0;
       h3 {
-        font-size: get-vw-sm(24px);
+        // font-size: get-vw-sm(24px);
         padding: 0 0 get-vw-sm(6px) 0;
       }
       p {
         padding: 0 0 get-vw-sm(50px) 0;
       }
       .prev {
+        display: none !important;
         width: get-vw-sm(30px);
         height: get-vw-sm(30px);
         top: get-vw-sm(230px);
@@ -796,6 +895,7 @@
         padding: get-vw-sm(7px);
       }
       .next {
+        display: none !important;
         width: get-vw-sm(30px);
         height: get-vw-sm(30px);
         top: get-vw-sm(230px);
@@ -807,20 +907,23 @@
         .slick-slide {
           padding: 0 get-vw-sm(10px);
         }
+        .grid-slide {
+          @include columns( $quant: 1fr, $gutter: get-vw-sm(20px), $align: stretch, $template: '');
+        }
         .item {
           border-radius: get-vw-sm(16px);
           padding: get-vw-sm(23px) get-vw-sm(27px);
-          height: get-vw-sm(216px);
+          //height: get-vw-sm(216px);
           .icons {
-            width: get-vw-sm(25px);
-            height: get-vw-sm(25px);
+            // width: get-vw-sm(25px);
+            // height: get-vw-sm(25px);
             padding: get-vw-sm(5px);
             &.small {
               padding: get-vw-sm(5px);
             }
           }
           p {
-            font-size: get-vw-sm(16px);
+            // font-size: get-vw-sm(16px);
           }
         }
       }
@@ -834,26 +937,33 @@
     &.ptop {
       padding-top: get-vw-xs(70px);
     }
-    span {
-      font-size: get-vw-xs(13px);
+    &.hide-mobile {
+      display: none;
+    }
+    span,
+    .subtitle {
+      // font-size: get-vw-xs(13px);
       padding-bottom: get-vw-xs(16px);
     }
     h2 {
-      font-size: get-vw-xs(32px);
+      font-size: 28px;
       padding-bottom: get-vw-xs(44px);
+      br {
+        display: inherit;
+      }
       &.small {
         padding-bottom: get-vw-xs(11px);
       }
     }
     p {
-      font-size: get-vw-xs(16px);
+      // font-size: get-vw-xs(16px);
       padding: 0 0 get-vw-xs(19px) 0;
       &.small {
-        font-size: get-vw-xs(15px);
+        // font-size: get-vw-xs(15px);
       }
     }
     .grid {
-      @include columns( $quant: 15% 70% 15%, $gutter: 0%, $align: stretch, $template: 'text text text' 'space1 image space2');
+      @include columns( $quant: 5% 90% 5%, $gutter: 0%, $align: stretch, $template: 'text text text' 'space1 image space2');
       &.pbottom {
         padding-bottom: get-vw-xs(27px);
       }
@@ -866,8 +976,9 @@
           }
         }
         h3 {
-          font-size: get-vw-xs(24px);
+          // font-size: get-vw-xs(24px);
           margin: 0 0 get-vw-xs(20px) 0;
+          padding: 0;
         }
         .btnBudgets {
           display: inline-block;
@@ -883,24 +994,25 @@
             padding-top: get-vw-xs(32px);
             padding-bottom: get-vw-xs(34px);
             .icons {
-              width: get-vw-xs(40px);
-              height: get-vw-xs(40px);
-              padding: get-vw-xs(8px);
+              // width: get-vw-xs(40px);
+              // height: get-vw-xs(40px);
+              // padding: get-vw-xs(8px);
             }
             h3 {
-              font-size: get-vw-xs(22px);
+              // font-size: get-vw-xs(22px);
               padding-bottom: get-vw-xs(14px);
             }
+            p span,
             p {
-              font-size: get-vw-xs(16px);
+              // font-size: get-vw-xs(16px);
             }
             &.small {
               h3 {
-                font-size: get-vw-xs(16px);
+                // font-size: get-vw-xs(16px);
                 padding-bottom: get-vw-xs(14px);
               }
               p {
-                font-size: get-vw-xs(16px);
+                // font-size: get-vw-xs(16px);
               }
             }
           }
@@ -910,19 +1022,28 @@
             li {
               padding-bottom: get-vw-xs(8px);
               .icons {
-                width: get-vw-xs(48px);
-                height: get-vw-xs(48px);
-                padding: get-vw-xs(8px);
+                // width: get-vw-xs(48px);
+                // height: get-vw-xs(48px);
+                padding: get-vw-xs(12px);
               }
               h3 {
-                font-size: get-vw-xs(16px);
+                // font-size: get-vw-xs(16px);
+              }
+            }
+            &.small {
+              li {
+                .icons {
+                  // width: get-vw-xs(40px);
+                  // height: get-vw-xs(40px);
+                  padding: get-vw-xs(8px);
+                }
               }
             }
           }
         }
       }
       &.gridSmall {
-        grid-template-columns: 15% 70% 15%;
+        grid-template-columns: 1fr;
       }
     }
     &.white {
@@ -931,10 +1052,11 @@
         padding-bottom: get-vw-xs(75px);
       }
       h2 {
+        font-size: 28px;
         padding-bottom: get-vw-xs(44px);
       }
       p {
-        font-size: get-vw-xs(16px);
+        // font-size: get-vw-xs(16px);
       }
       .grid {
         @include columns( $quant: 100%, $gutter: 0%, $align: stretch, $template: 'image' 'text');
@@ -942,7 +1064,7 @@
           .image {
             height: auto;
             img {
-              max-width: 50%;
+              //max-width: 50%;
               margin: 0 auto;
               margin: get-vw-xs(60px) 0 0 0;
             }
@@ -968,7 +1090,7 @@
           }
         }
         .text {
-          padding-top: get-vw-xs(61px);
+          padding-top: 91px;
           ul {
             &.green {
               padding-top: get-vw-xs(18px);
@@ -976,12 +1098,21 @@
               li {
                 padding-bottom: get-vw-xs(8px);
                 .icons {
-                  width: get-vw-xs(48px);
-                  height: get-vw-xs(48px);
-                  padding: get-vw-xs(8px);
+                  // width: get-vw-xs(48px);
+                  // height: get-vw-xs(48px);
+                  padding: get-vw-xs(12px);
                 }
                 h3 {
-                  font-size: get-vw-xs(16px);
+                  // font-size: get-vw-xs(16px);
+                }
+              }
+              &.small {
+                li {
+                  .icons {
+                    // width: get-vw-xs(40px);
+                    // height: get-vw-xs(40px);
+                    padding: get-vw-xs(8px);
+                  }
                 }
               }
             }
@@ -1004,13 +1135,14 @@
       margin: get-vw-xs(86px) 0 0 0;
       padding: get-vw-xs(70px) 0 0 0;
       h3 {
-        font-size: get-vw-xs(24px);
+        // font-size: get-vw-xs(24px);
         padding: 0 0 get-vw-xs(6px) 0;
       }
       p {
         padding: 0 0 get-vw-xs(50px) 0;
       }
       .prev {
+        display: none !important;
         width: get-vw-xs(30px);
         height: get-vw-xs(30px);
         top: get-vw-xs(260px);
@@ -1018,6 +1150,7 @@
         padding: get-vw-xs(7px);
       }
       .next {
+        display: none !important;
         width: get-vw-xs(30px);
         height: get-vw-xs(30px);
         top: get-vw-xs(260px);
@@ -1029,20 +1162,23 @@
         .slick-slide {
           padding: 0 get-vw-xs(10px);
         }
+        .grid-slide {
+          @include columns( $quant: 1fr, $gutter: get-vw-xs(20px), $align: stretch, $template: '');
+        }
         .item {
           border-radius: get-vw-xs(16px);
           padding: get-vw-xs(23px) get-vw-xs(27px);
-          height: get-vw-xs(216px);
+          //height: get-vw-xs(216px);
           .icons {
-            width: get-vw-xs(25px);
-            height: get-vw-xs(25px);
+            // width: get-vw-xs(25px);
+            // height: get-vw-xs(25px);
             padding: get-vw-xs(5px);
             &.small {
               padding: get-vw-xs(5px);
             }
           }
           p {
-            font-size: get-vw-xs(16px);
+            // font-size: get-vw-xs(16px);
           }
         }
       }

@@ -18,14 +18,14 @@ $idhome = $idObj->ID;
 	<div class="container relative">
 		<?php 
 			if(get_field('subtitulo_articles', $idhome)) {
-				echo '<span>' . get_field('subtitulo_articles', $idhome) . '</span>';
+				echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('subtitulo_articles', $idhome) . '</h3>';
 			}
 			if(get_field('titulo_articles', $idhome)) {
-				echo '<h2>' . get_field('titulo_articles', $idhome) . '</h2>';
+				echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_articles', $idhome) . '</h2>';
 			}
 		?>
-		<a href="<?= get_permalink( get_page_by_path( 'blog' ) ) ?>" class="all">
-			VEJA MAIS
+		<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" href="<?= get_permalink( get_page_by_path( 'blog' ) ) ?>" class="all" aria-label="Todos os posts do blog">
+			TODOS OS ARTIGOS
 			<svg class="icon arrowSlide">
 				<use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrowSlide"></use>
 			</svg>
@@ -45,9 +45,12 @@ $idhome = $idObj->ID;
 				);
 				$postcat = new WP_Query($postargs);
 				while ($postcat->have_posts()) : $postcat->the_post();
-					get_template_part('template-parts/posts/content', 'blog');
+					$args = array(
+						'current_post' => $postcat->current_post,
+					);
+					get_template_part('template-parts/posts/content', 'blog', $args);
 				endwhile;
-				// wp_reset_postdata();
+				wp_reset_postdata();
 			?>
 		</div>
 	</div>

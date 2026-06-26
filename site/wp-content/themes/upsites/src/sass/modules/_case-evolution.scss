@@ -1,0 +1,173 @@
+/*======================================
+  case-evolution
+======================================*/
+
+.case-evolution {
+  padding: 0 0 37px 0;
+  .subtitle {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    padding-bottom: 16px;
+    color: #008cff;
+    display: block;
+    text-align: center;
+  }
+  .title {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: $color-navy;
+    display: block;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+  .before-after {
+    margin: 0 -22px;
+    .box {
+      width: 100%;
+      background: url(../img/before-after.png) top center no-repeat;
+      background-size: contain;
+      margin: 0 auto;
+      padding: 62px 0 52px 1px;
+      .images {
+        overflow: hidden;
+        border-radius: 0 0 10px 10px;
+        margin: 0 auto;
+        width: 942px;
+        position: relative;
+        .separator {
+          font-weight: normal;
+        }
+        img {
+          height: 432px;
+        }
+        .div {
+          width: 2px;
+          height: 432px;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          cursor: pointer;
+          &:before {
+            content: "";
+            width: 166px;
+            height: 432px;
+            background: url(../img/before-after-div.png) top center no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, 0);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: sm, $max: lg) {
+  .case-evolution {
+    padding: 0 0 get-vw-lg(37px) 0;
+    .subtitle {
+      font-size: get-vw-lg(13px);
+      padding-bottom: get-vw-lg(16px);
+    }
+    .title {
+      font-size: get-vw-lg(36px);
+      padding-bottom: get-vw-lg(50px);
+    }
+    .before-after {
+      margin: 0 get-vw-lg(-22px);
+      .box {
+        padding: get-vw-lg(62px) 0 get-vw-lg(52px) get-vw-lg(1px);
+        .images {
+          border-radius: 0 0 get-vw-lg(10px) get-vw-lg(10px);
+          width: get-vw-lg(942px);
+          img {
+            height: get-vw-lg(432px);
+          }
+          .div {
+            width: get-vw-lg(2px);
+            height: get-vw-lg(432px);
+            &:before {
+              width: get-vw-lg(166px);
+              height: get-vw-lg(432px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: xs, $max: sm) {
+  .case-evolution {
+    padding: 0 0 get-vw-sm(37px) 0;
+    .subtitle {
+      font-size: get-vw-sm(13px);
+      padding-bottom: get-vw-sm(16px);
+    }
+    .title {
+      font-size: get-vw-sm(36px);
+      padding-bottom: get-vw-sm(50px);
+    }
+    .before-after {
+      margin: 0 get-vw-sm(-22px);
+      .box {
+        width: 100%;
+        padding: get-vw-sm(62px) 0 get-vw-sm(52px) get-vw-sm(1px);
+        .images {
+          border-radius: 0 0 get-vw-sm(10px) get-vw-sm(10px);
+          width: 84%;
+          .div {
+            width: get-vw-sm(2px);
+            height: get-vw-sm(432px);
+            &:before {
+              width: get-vw-sm(166px);
+              height: get-vw-sm(432px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: "", $max: xs) {
+  .case-evolution {
+    padding: 0 0 get-vw-xs(37px) 0;
+    .subtitle {
+      font-size: get-vw-xs(13px);
+      padding-bottom: get-vw-xs(16px);
+    }
+    .title {
+      font-size: get-vw-xs(36px);
+      padding-bottom: get-vw-xs(50px);
+    }
+    .before-after {
+      .box {
+        width: 100%;
+        padding: get-vw-sm(53px) 0 get-vw-sm(51px) get-vw-sm(1px);
+        .images {
+          border-radius: 0 0 get-vw-sm(10px) get-vw-sm(10px);
+          width: 84%;
+          .div {
+            width: get-vw-xs(2px);
+            height: get-vw-xs(432px);
+            &:before {
+              width: get-vw-xs(166px);
+              height: get-vw-xs(432px);
+            }
+          }
+        }
+      }
+    }
+  }
+}

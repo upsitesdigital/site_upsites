@@ -36,13 +36,13 @@ $idhome = $idObj->ID;
           }
         ?>
         <div class="links">
-          <a href="<?= get_permalink( get_page_by_path( 'site-por-assinatura' ) ) ?>">Todos</a>
+          <a rel="dofollow" href="<?= get_permalink( get_page_by_path( 'site-por-assinatura' ) ) ?>">Todos</a>
           <?php 
           $terms = get_terms( 'categories_templates' );
           if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
             foreach ( $terms as $term ) {
               $act = $termName == $term->name ? 'act' : '' ;
-              echo '<a class="' . $act . '" href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a>';
+              echo '<a rel="dofollow" class="' . $act . '" href="' . esc_url( get_term_link( $term ) ) . '">' . $term->name . '</a>';
             }
           }
           ?>
@@ -75,7 +75,7 @@ $idhome = $idObj->ID;
         </div>
         <div class="align-center">
           <?php if($maxpages != $paged) { ?>
-            <a href="#" class="seeMore" id="load-more-templates" data-maxpages="<?= $maxpages; ?>" data-currentPage="<?= $paged; ?>" data-cat="<?= $termSlug; ?>" data-type="templates" data-tax="categories_templates">
+            <a rel="dofollow" href="#" class="seeMore" id="load-more-templates" data-maxpages="<?= $maxpages; ?>" data-currentPage="<?= $paged; ?>" data-cat="<?= $termSlug; ?>" data-type="templates" data-tax="categories_templates">
               <svg class="icon">
                 <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrow"></use>
               </svg> Carregar mais

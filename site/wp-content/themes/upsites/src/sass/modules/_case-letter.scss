@@ -1,0 +1,270 @@
+/*======================================
+  case-howToWork
+======================================*/
+
+.case-letter {
+  padding: 138px 0 0 0;
+  .grid-letter {
+    @include columns($quant: 1fr 571px, $gutter: 50px, $align: start, $template: "");
+    .text {
+      ul {
+        li {
+          padding-top: 28px;
+          .title {
+            color: #000;
+            padding-bottom: 10px;
+          }
+          span {
+            font-family: $font-main;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 172%;
+            color: #4d5a5f;
+            display: block;
+          }
+          &:first-child {
+            padding-top: 0;
+          }
+        }
+      }
+    }
+    .font-type {
+      .font-type-list {
+        padding-bottom: 33px;
+        li {
+          padding: 37px 0;
+          border-bottom: 1px solid #e7e7e7;
+          .subtitle {
+            font-family: $font-main;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 110%;
+            color: #000072;
+            display: block;
+          }
+          .title {
+            font-size: 88px;
+            line-height: 110%;
+            color: #000000;
+            display: block;
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+          &:first-child {
+            padding-top: 0;
+          }
+        }
+      }
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  .color-palette {
+    padding: 70px 0 70px 0;
+    border-bottom: 1px solid #e7e7e7;
+    .title {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 110%;
+      color: #000072;
+      display: block;
+      padding-bottom: 25px;
+    }
+    .flex {
+      display: flex;
+      align-items: start;
+      .box-color {
+        .bar {
+          width: 100%;
+          height: 44px;
+        }
+        .hex {
+          padding-top: 24px;
+          font-family: $font-main;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 125%;
+          color: #616161;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: sm, $max: lg) {
+  .case-letter {
+    padding: get-vw-lg(138px) 0 0 0;
+    .grid-letter {
+      @include columns($quant: 1fr get-vw-lg(571px), $gutter: get-vw-lg(50px), $align: start, $template: "");
+      .text {
+        ul {
+          li {
+            padding-top: get-vw-lg(28px);
+            .title {
+              padding-bottom: get-vw-lg(10px);
+            }
+            span {
+              font-size: get-vw-lg(13px);
+            }
+            &:first-child {
+              padding-top: 0;
+            }
+          }
+        }
+      }
+      .font-type {
+        .font-type-list {
+          padding-bottom: get-vw-lg(33px);
+          li {
+            padding: get-vw-lg(37px) 0;
+            .subtitle {
+              font-size: get-vw-lg(20px);
+            }
+            .title {
+              font-size: get-vw-lg(88px);
+            }
+          }
+        }
+      }
+    }
+    .color-palette {
+      padding: get-vw-lg(70px) 0 get-vw-lg(70px) 0;
+      .title {
+        font-size: get-vw-lg(24px);
+        padding-bottom: get-vw-lg(25px);
+      }
+      .flex {
+        .box-color {
+          .bar {
+            height: get-vw-lg(44px);
+          }
+          .hex {
+            padding-top: get-vw-lg(24px);
+            font-size: get-vw-lg(16px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: xs, $max: sm) {
+  .case-letter {
+    padding: get-vw-sm(138px) 0 0 0;
+    .grid-letter {
+      @include columns($quant: 100%, $gutter: get-vw-sm(50px), $align: start, $template: "");
+      .text {
+        ul {
+          li {
+            padding-top: get-vw-sm(28px);
+            .title {
+              padding-bottom: get-vw-sm(10px);
+            }
+            span {
+              font-size: get-vw-sm(13px);
+            }
+            &:first-child {
+              padding-top: 0;
+            }
+          }
+        }
+      }
+      .font-type {
+        .font-type-list {
+          padding-bottom: get-vw-sm(33px);
+          li {
+            padding: get-vw-sm(37px) 0;
+            .subtitle {
+              font-size: get-vw-sm(20px);
+            }
+            .title {
+              font-size: get-vw-sm(88px);
+            }
+          }
+        }
+      }
+    }
+    .color-palette {
+      padding: get-vw-sm(70px) 0 get-vw-sm(70px) 0;
+      .title {
+        font-size: get-vw-sm(24px);
+        padding-bottom: get-vw-sm(25px);
+      }
+      .flex {
+        .box-color {
+          .bar {
+            height: get-vw-sm(44px);
+          }
+          .hex {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: "", $max: xs) {
+  .case-letter {
+    padding: get-vw-xs(138px) 0 0 0;
+    .grid-letter {
+      @include columns($quant: 100%, $gutter: get-vw-xs(50px), $align: start, $template: "");
+      .text {
+        ul {
+          li {
+            padding-top: get-vw-xs(28px);
+            .title {
+              padding-bottom: get-vw-xs(10px);
+            }
+            span {
+              font-size: get-vw-xs(13px);
+            }
+            &:first-child {
+              padding-top: 0;
+            }
+          }
+        }
+      }
+      .font-type {
+        .font-type-list {
+          padding-bottom: get-vw-xs(33px);
+          li {
+            padding: get-vw-xs(37px) 0;
+            .subtitle {
+              font-size: get-vw-xs(20px);
+            }
+            .title {
+              font-size: get-vw-xs(88px);
+            }
+          }
+        }
+      }
+    }
+    .color-palette {
+      padding: get-vw-xs(70px) 0 get-vw-xs(70px) 0;
+      .title {
+        font-size: get-vw-xs(24px);
+        padding-bottom: get-vw-xs(25px);
+      }
+      .flex {
+        .box-color {
+          .bar {
+            height: get-vw-xs(44px);
+          }
+          .hex {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

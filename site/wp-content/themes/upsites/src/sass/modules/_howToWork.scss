@@ -7,10 +7,10 @@
   padding-bottom: 30px;
   position: relative;
   &::before {
-    content: '';
+    content: "";
     width: 100%;
     height: 28%;
-    background-color: #002D54;
+    background-color: #002d54;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -20,7 +20,9 @@
       height: 49%;
     }
   }
-  span {
+  span,
+  .title,
+  .subtitle {
     font-family: $font-main;
     font-style: normal;
     font-weight: 600;
@@ -28,7 +30,7 @@
     line-height: 120%;
     letter-spacing: 0.05em;
     padding-bottom: 9px;
-    color: #008CFF;
+    color: #008cff;
     display: block;
     text-align: center;
   }
@@ -37,7 +39,7 @@
     font-style: normal;
     font-weight: 900;
     font-size: 32px;
-    line-height: 181%;
+    line-height: 120%;
     text-transform: uppercase;
     color: $color-navy;
     display: block;
@@ -53,16 +55,17 @@
     text-align: center;
   }
   .grid {
-    @include columns( $quant: 31.6% 31.6% 31.6%, $gutter: 2.6%, $align: stretch, $template: 'cols-01 cols-02 cols-03');
+    @include columns($quant: 31.6% 31.6% 31.6%, $gutter: 2.6%, $align: stretch, $template: "cols-01 cols-02 cols-03");
     .item {
       padding: 32px 32px 58px 32px;
       background-color: $color-white;
       border-radius: 16px;
       box-shadow: 0px 30px 80px rgba(0, 0, 114, 0.05);
+      @include animate($time: 0.3s);
       .icons {
         width: 40px;
         height: 40px;
-        background-color: #FFF2BD;
+        background-color: #fff2bd;
         border-radius: 50%;
         padding: 10px;
         &.small {
@@ -78,7 +81,7 @@
         .icon {
           width: 100%;
           height: 100%;
-          fill: transparent
+          fill: transparent;
         }
       }
       h3 {
@@ -96,66 +99,107 @@
         font-weight: normal;
         font-size: 16px;
         line-height: 162%;
-        color: #59608B;
+        color: #59608b;
         text-align: left;
         padding: 0;
         b {
           font-weight: 600;
         }
       }
+      &:hover {
+        box-shadow: 0px 30px 80px rgba(0, 0, 114, 0.2);
+      }
     }
     &.fourCols {
-      @include columns( $quant: 23.05% 23.05% 23.05% 23.05%, $gutter: 2.6%, $align: stretch, $template: 'cols-01 cols-02 cols-03 cols-04');
+      @include columns(
+        $quant: 23.05% 23.05% 23.05% 23.05%,
+        $gutter: 2.6%,
+        $align: stretch,
+        $template: "cols-01 cols-02 cols-03 cols-04"
+      );
     }
   }
   &.blue {
-    background-color: #002D54;
+    background-color: #002d54;
     &::before {
       display: none;
     }
     span {
-      color: #008CFF;
+      color: #008cff;
     }
     h2 {
-      color: #FFF;
-      padding-bottom: 8px;
+      color: #fff;
+      //padding-bottom: 8px;
     }
     p {
-      color: #B0BBF8;
+      color: #b0bbf8;
       padding-bottom: 38px;
     }
     .grid {
       .item {
         background-color: transparent;
         border: 1px solid rgba(255, 255, 255, 0.2);
+
         h3 {
-          color: #FFF;
+          color: #fff;
         }
         p {
-          color: #B0BBF8;
+          color: #b0bbf8;
+        }
+        &.white {
+          background-color: $color-white;
+          h3 {
+            color: $color-navy;
+          }
+          p {
+            color: #59608b;
+          }
         }
       }
     }
   }
   &.top {
     &::before {
-      content: '';
+      content: "";
       width: 100%;
       height: 47%;
-      background-color: #002D54;
+      background-color: #002d54;
       position: absolute;
       top: 0;
       bottom: auto;
       left: 0;
     }
   }
+  &.top-big {
+    &::before {
+      content: "";
+      width: 100%;
+      height: 60%;
+      background-color: #002d54;
+      position: absolute;
+      top: 0;
+      bottom: auto;
+      left: 0;
+    }
+    h2 {
+      color: $color-white;
+      &.pbottom {
+        padding-bottom: 8px;
+      }
+    }
+    p {
+      color: #b0bbf8;
+      padding-bottom: 44px;
+    }
+  }
 }
 
-@include breakpoint2($min:sm, $max:lg) {
+@include breakpoint2($min: sm, $max: lg) {
   .howToWork {
     padding-top: get-vw-lg(18px);
     padding-bottom: get-vw-lg(30px);
-    span {
+    span,
+    .title {
       font-size: get-vw-lg(13px);
       padding-bottom: get-vw-lg(9px);
     }
@@ -186,6 +230,9 @@
         p {
           font-size: get-vw-lg(16px);
         }
+        &:hover {
+          box-shadow: 0 get-vw-lg(30px) get-vw-lg(80px) rgba(0, 0, 114, 0.2);
+        }
       }
     }
     &.blue {
@@ -199,7 +246,7 @@
   }
 }
 
-@include breakpoint2($min:xs, $max:sm) {
+@include breakpoint2($min: xs, $max: sm) {
   .howToWork {
     padding-top: get-vw-sm(18px);
     padding-bottom: get-vw-sm(30px);
@@ -211,41 +258,52 @@
         height: 29%;
       }
     }
-    span {
-      font-size: get-vw-sm(13px);
+    span,
+    .title {
+      // font-size: get-vw-sm(13px);
       padding-bottom: get-vw-sm(9px);
     }
     h2 {
-      font-size: get-vw-sm(32px);
+      // font-size: get-vw-sm(32px);
       padding-bottom: get-vw-sm(44px);
     }
     p {
-      font-size: get-vw-sm(16px);
+      // font-size: get-vw-sm(16px);
     }
     .grid {
-      @include columns( $quant: 100%, $gutter: 2.6%, $align: stretch, $template: 'cols-01' 'cols-02' 'cols-03');
+      @include columns($quant: 100%, $gutter: 2.6%, $align: stretch, $template: "cols-01" "cols-02" "cols-03");
       .item {
         padding: get-vw-sm(32px) get-vw-sm(32px) get-vw-sm(58px) get-vw-sm(32px);
-        border-radius: get-vw-sm(16px);
+        // border-radius: get-vw-sm(16px);
         box-shadow: 0 get-vw-sm(30px) get-vw-sm(80px) rgba(0, 0, 114, 0.05);
+        max-width: 100%;
+        margin: 0 auto;
         .icons {
-          width: get-vw-sm(40px);
-          height: get-vw-sm(40px);
+          // width: get-vw-sm(40px);
+          // height: get-vw-sm(40px);
           padding: get-vw-sm(10px);
           &.small {
             padding: get-vw-sm(5px);
           }
         }
         h3 {
-          font-size: get-vw-sm(20px);
+          // font-size: get-vw-sm(20px);
           padding: get-vw-sm(15px) 0 get-vw-sm(8px) 0;
         }
         p {
-          font-size: get-vw-sm(16px);
+          // font-size: get-vw-sm(16px);
+        }
+        &:hover {
+          box-shadow: 0 get-vw-sm(30px) get-vw-sm(80px) rgba(0, 0, 114, 0.2);
         }
       }
       &.fourCols {
-        @include columns( $quant: 49% 49%, $gutter: get-vw-sm(16px) 2%, $align: stretch, $template: 'cols-01 cols-02' 'cols-03 cols-04');
+        @include columns(
+          $quant: 49% 49%,
+          $gutter: get-vw-sm(16px) 2%,
+          $align: stretch,
+          $template: "cols-01 cols-02" "cols-03 cols-04"
+        );
       }
     }
     &.blue {
@@ -259,7 +317,7 @@
   }
 }
 
-@include breakpoint2($min:'', $max:xs) {
+@include breakpoint2($min: "", $max: xs) {
   .howToWork {
     padding-top: get-vw-xs(18px);
     padding-bottom: get-vw-xs(30px);
@@ -271,41 +329,55 @@
         height: 29%;
       }
     }
-    span {
-      font-size: get-vw-xs(13px);
+    span,
+    .title {
+      //font-size: get-vw-xs(13px);
       padding-bottom: get-vw-xs(9px);
     }
     h2 {
-      font-size: get-vw-xs(32px);
+      //font-size: get-vw-xs(32px);
       padding-bottom: get-vw-xs(44px);
     }
     p {
-      font-size: get-vw-xs(16px);
+      //font-size: get-vw-xs(16px);
     }
     .grid {
-      @include columns( $quant: 100%, $gutter: 2.6%, $align: stretch, $template: 'cols-01' 'cols-02' 'cols-03');
+      @include columns($quant: 100%, $gutter: 2.6%, $align: stretch, $template: "cols-01" "cols-02" "cols-03");
       .item {
         padding: get-vw-xs(32px) get-vw-xs(32px) get-vw-xs(58px) get-vw-xs(32px);
         border-radius: get-vw-xs(16px);
         box-shadow: 0 get-vw-xs(30px) get-vw-xs(80px) rgba(0, 0, 114, 0.05);
+        max-width: 100%;
+        margin: 0 auto;
         .icons {
-          width: get-vw-xs(40px);
-          height: get-vw-xs(40px);
+          // width: get-vw-xs(40px);
+          // height: get-vw-xs(40px);
+          margin: 0 auto;
           padding: get-vw-xs(10px);
           &.small {
             padding: get-vw-xs(5px);
           }
         }
         h3 {
-          font-size: get-vw-xs(20px);
+          // font-size: get-vw-xs(20px);
+          text-align: center;
           padding: get-vw-xs(15px) 0 get-vw-xs(8px) 0;
         }
         p {
-          font-size: get-vw-xs(16px);
+          // font-size: get-vw-xs(16px);
+          text-align: center;
+        }
+        &:hover {
+          box-shadow: 0 get-vw-xs(30px) get-vw-xs(80px) rgba(0, 0, 114, 0.2);
         }
       }
       &.fourCols {
-        @include columns( $quant: 100%, $gutter: get-vw-xs(16px) 0, $align: stretch, $template: 'cols-01' 'cols-02' 'cols-03' 'cols-04');
+        @include columns(
+          $quant: 100%,
+          $gutter: get-vw-xs(16px) 0,
+          $align: stretch,
+          $template: "cols-01" "cols-02" "cols-03" "cols-04"
+        );
       }
     }
     &.blue {

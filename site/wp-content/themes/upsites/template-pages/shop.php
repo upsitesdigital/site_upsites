@@ -1,12 +1,13 @@
 <?php
 /*
 Template Name: Loja
+Template Post Type: services, page
 */
 get_header();
 ?>
 
   <!-- main -->
-  <main>
+  <main id="main">
     <!-- slideFull -->
     <?php if(get_field('desativar_seccao_toppage') !== 'inativo') { ?>
     <section class="slideFull blue">
@@ -15,20 +16,20 @@ get_header();
           <div class="text">
             <?php 
               if(get_field('subtitulo_toppage')) {
-                echo '<div class="tag"><b>' . get_field('subtitulo_toppage') . '</b></div>';
+                echo '<div class="tag" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s"><h3 class="subtitle">' . get_field('subtitulo_toppage') . '</h3></div>';
               }
               if(get_field('titulo_toppage')) {
-                echo '<h1>' . get_field('titulo_toppage') . '</h1>';
+                echo '<h1 class="title" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">' . get_field('titulo_toppage') . '</h1>';
               }
               if(get_field('texto_toppage')) {
-                echo '<p>' . get_field('texto_toppage') . '</p>';
+                echo '<p data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">' . get_field('texto_toppage') . '</p>';
               }
               if(get_field('texto_botao_toppage')) {
-                echo '<a href="' . get_field('link_botao_toppage') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_toppage') . '</a>';
+                echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s"><a rel="dofollow" href="' . get_field('link_botao_toppage') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_toppage') . '</a></div>';
               }
             ?>
           </div>
-          <div class="image">
+          <div class="image" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.7s">
             <?php 
               if(get_field('imagem_toppage')) {
                 echo wp_get_attachment_image(get_field('imagem_toppage'), 'full');
@@ -51,13 +52,13 @@ get_header();
             <div class="box">
               <?php 
                 if(get_field('imagem_func')) {
-                  echo '<div class="image">' . wp_get_attachment_image(get_field('imagem_func'), 'full') . '</div>';
+                  echo '<div class="image" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">' . wp_get_attachment_image(get_field('imagem_func'), 'full') . '</div>';
                 }
                 if(get_field('texto_func')) {
-                  echo '<h3>' . get_field('texto_func') . '</h3>';
+                  echo '<h3 data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">' . get_field('texto_func') . '</h3>';
                 }
                 if(get_field('texto_botao_func')) {
-                  echo '<a href="' . get_field('link_botao_func') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_func') . '</a>';
+                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s"><a rel="dofollow" href="' . get_field('link_botao_func') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_func') . '</a></div>';
                 }
               ?>
             </div>
@@ -65,23 +66,23 @@ get_header();
           <div class="text">
             <?php 
               if(get_field('subtitulo_func')) {
-                echo '<span>' . get_field('subtitulo_func') . '</span>';
+                echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">' . get_field('subtitulo_func') . '</h3>';
               }
               if(get_field('titulo_func')) {
-                echo '<h2>' . get_field('titulo_func') . '</h2>';
+                echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">' . get_field('titulo_func') . '</h2>';
               }
               
               if( have_rows('funcionalidades_func') ):
                 echo '<ul>';
                 while ( have_rows('funcionalidades_func') ) : the_row();
                   if(get_sub_field('icone')) {
-                    $image = '<div class="icons">' . wp_get_attachment_image(get_sub_field('icone'), 'full') . '</div>';
+                    $image = '<div class="icons" data-scroll-reveal="enter right move 50px over 0.6s after 0.2s">' . wp_get_attachment_image(get_sub_field('icone'), 'full') . '</div>';
                   } else {
-                    $image = '<div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#responsive"></use></svg></div>';
+                    $image = '<div class="icons" data-scroll-reveal="enter right move 50px over 0.6s after 0.2s"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#responsive"></use></svg></div>';
                   }
                   echo '<li>' . $image . '
-                    <h3>' . get_sub_field('titulo') . '</h3>
-                    <p>' . get_sub_field('texto') . '</p>
+                    <h3 data-scroll-reveal="enter right move 50px over 0.6s after 0.3s">' . get_sub_field('titulo') . '</h3>
+                    <p data-scroll-reveal="enter right move 50px over 0.6s after 0.4s">' . get_sub_field('texto') . '</p>
                   </li>';
                 endwhile;
                 echo '</ul>';
@@ -100,11 +101,11 @@ get_header();
       <div class="container">
         <?php 
           if(get_field('titulo_tab')) {
-            echo '<h2>' . get_field('titulo_tab') . '</h2>';
+            echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">' . get_field('titulo_tab') . '</h2>';
           }
         ?>
-        <div id="link-tabs" class="tabs">
-          <a href="#" data-tab="ecommerce-01" class="act">
+        <div id="link-tabs" class="tabs" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
+          <a rel="dofollow" href="#" data-tab="ecommerce-01" class="act">
             <div class="icons">
               <svg class="icon">
                 <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#ecommerce-01"></use>
@@ -112,7 +113,7 @@ get_header();
             </div>
             <span>Desenvolvido para <br>vendas online</span>
           </a>
-          <a href="#" data-tab="ecommerce-02">
+          <a rel="dofollow" href="#" data-tab="ecommerce-02">
             <div class="icons">
               <svg class="icon">
                 <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#ecommerce-02"></use>
@@ -120,7 +121,7 @@ get_header();
             </div>
             <span>Integração com meios <br>de pagamento digital</span>
           </a>
-          <a href="#" data-tab="ecommerce-03">
+          <a rel="dofollow" href="#" data-tab="ecommerce-03">
             <div class="icons">
               <svg class="icon">
                 <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#ecommerce-03"></use>
@@ -128,7 +129,7 @@ get_header();
             </div>
             <span>O melhor serviço <br>ao consumidor</span>
           </a>
-          <a href="#" data-tab="ecommerce-04">
+          <a rel="dofollow" href="#" data-tab="ecommerce-04">
             <div class="icons">
               <svg class="icon">
                 <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#ecommerce-04"></use>
@@ -136,7 +137,7 @@ get_header();
             </div>
             <span>Lojas Virtuais de <br>Produtos por Assinatura</span>
           </a>
-          <a href="#" data-tab="ecommerce-05">
+          <a rel="dofollow" href="#" data-tab="ecommerce-05">
             <div class="icons">
               <svg class="icon">
                 <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#ecommerce-05"></use>
@@ -145,7 +146,7 @@ get_header();
             <span>Loja virtual otimizada <br>para o Google</span>
           </a>
         </div>
-        <div id="content-tabs" class="content">
+        <div id="content-tabs" class="content" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">
           <div id="ecommerce-01" class="grid act">
             <div class="image">
               <?php 
@@ -163,7 +164,7 @@ get_header();
                   echo get_field('texto_tab01');
                 }
                 if(get_field('texto_botao_tab')) {
-                  echo '<a href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
+                  echo '<a rel="dofollow" href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
                 }
               ?>
             </div>
@@ -185,7 +186,7 @@ get_header();
                   echo get_field('texto_tab02');
                 }
                 if(get_field('texto_botao_tab')) {
-                  echo '<a href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
+                  echo '<a rel="dofollow" href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
                 }
               ?>
             </div>
@@ -207,7 +208,7 @@ get_header();
                   echo get_field('texto_tab03');
                 }
                 if(get_field('texto_botao_tab')) {
-                  echo '<a href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
+                  echo '<a rel="dofollow" href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
                 }
               ?>
             </div>
@@ -229,7 +230,7 @@ get_header();
                   echo get_field('texto_tab04');
                 }
                 if(get_field('texto_botao_tab')) {
-                  echo '<a href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
+                  echo '<a rel="dofollow" href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
                 }
               ?>
             </div>
@@ -251,7 +252,7 @@ get_header();
                   echo get_field('texto_tab05');
                 }
                 if(get_field('texto_botao_tab')) {
-                  echo '<a href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
+                  echo '<a rel="dofollow" href="' . get_field('link_botao_tab') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tab') . '</a>';
                 }
               ?>
             </div>
@@ -267,7 +268,7 @@ get_header();
     <section class="paymentMethod">
       <div class="container">
         <div class="grid">
-          <div class="image">
+          <div class="image" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
             <?php 
               if(get_field('imagem_paymentmethod')) {
                 echo wp_get_attachment_image(get_field('imagem_paymentmethod'), 'full');
@@ -277,13 +278,13 @@ get_header();
           <div class="text">
             <?php 
               if(get_field('subtitulo_paymentmethod')) {
-                echo '<span>' . get_field('subtitulo_paymentmethod') . '</span>';
+                echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">' . get_field('subtitulo_paymentmethod') . '</h3>';
               }
               if(get_field('titulo_paymentmethod')) {
-                echo '<h2>' . get_field('titulo_paymentmethod') . '</h2>';
+                echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">' . get_field('titulo_paymentmethod') . '</h2>';
               }
               if(get_field('texto_paymentmethod')) {
-                echo '<p>' . get_field('texto_paymentmethod') . '</p>';
+                echo '<p data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s">' . get_field('texto_paymentmethod') . '</p>';
               }
             ?>
           </div>
@@ -294,7 +295,11 @@ get_header();
     <!-- end:paymentMethod -->
 
     <!-- clients -->
-    <?php get_template_part( 'template-parts/inc','clients' ); ?>
+    <?php 
+      $args = array(
+        'clientSlide' => 'false',
+      ); 
+      get_template_part( 'template-parts/inc','clients', $args ); ?>
     <!-- end:clients -->
 
     <!-- price -->
@@ -302,7 +307,7 @@ get_header();
     <section class="priceAndOptions">
       <div class="container">
         <div class="grid ptop-100 pbottom-55">
-          <div class="box">
+          <div class="box" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
             <div class="icons">
               <svg class="icon">
                 <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#cart"></use>
@@ -317,7 +322,7 @@ get_header();
                   <div class="budget">' . get_sub_field('preco') . '</div>
                   <p class="small">' . get_sub_field('apoio') . '</p>
                   <hr>
-                  <a href="' . get_sub_field('link_botao') . '" class="btnBudgets">
+                  <a rel="dofollow" href="' . get_sub_field('link_botao') . '" class="btnBudgets">
                     <svg class="icon">
                       <use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use>
                     </svg> ' . get_sub_field('texto_botao') . '
@@ -337,7 +342,7 @@ get_header();
                   if( have_rows('itens') ):
                     echo '<ul>';
                     while ( have_rows('itens') ) : the_row();
-                      echo '<li>
+                      echo '<li data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">
                         <div class="before">
                           <svg class="icon">
                             <use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#check"></use>
@@ -361,11 +366,11 @@ get_header();
 
     <!-- functions -->
     <?php if(get_field('desativar_seccao_fastwebsiteshop') !== 'inativo') { ?>
-    <section class="functions">
+    <section class="functions hide-mobile">
       <div class="container">
         <div class="grid gridSmall">
           <div class="image">
-            <div class="box">
+            <div class="box" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
               <?php 
                 if(get_field('imagem_fastwebsiteshop')) {
                   echo '<div class="image">' . wp_get_attachment_image(get_field('imagem_fastwebsiteshop'), 'full') . '</div>';
@@ -374,7 +379,7 @@ get_header();
                   echo '<h3>' . get_field('texto_fastwebsiteshop') . '</h3>';
                 }
                 if(get_field('texto_botao_fastwebsiteshop')) {
-                  echo '<a href="' . get_field('link_botao_fastwebsiteshop') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_fastwebsiteshop') . '</a>';
+                  echo '<a rel="dofollow" href="' . get_field('link_botao_fastwebsiteshop') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_fastwebsiteshop') . '</a>';
                 }
               ?>
             </div>
@@ -382,10 +387,10 @@ get_header();
           <div class="text ptop-65">
             <?php 
               if(get_field('subtitulo_fastwebsiteshop')) {
-                echo '<span>' . get_field('subtitulo_fastwebsiteshop') . '</span>';
+                echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">' . get_field('subtitulo_fastwebsiteshop') . '</h3>';
               }
               if(get_field('titulo_fastwebsiteshop')) {
-                echo '<h2 class="pbottom-5">' . get_field('titulo_fastwebsiteshop') . '</h2>';
+                echo '<h2 class="pbottom-5" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">' . get_field('titulo_fastwebsiteshop') . '</h2>';
               }
             ?>
             <?php
@@ -393,13 +398,13 @@ get_header();
                 echo '<ul>';
                 while ( have_rows('lista_fastwebsiteshop') ) : the_row();
                   if(get_sub_field('icone')) {
-                    $image = '<div class="icons">' . wp_get_attachment_image(get_sub_field('icone'), 'full') . '</div>';
+                    $image = '<div class="icons" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">' . wp_get_attachment_image(get_sub_field('icone'), 'full') . '</div>';
                   } else {
-                    $image = '<div class="icons"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#responsive"></use></svg></div>';
+                    $image = '<div class="icons" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#responsive"></use></svg></div>';
                   }
                   echo '<li>' . $image . '
-                    <h3>' . get_sub_field('titulo') . '</h3>
-                    <p>' . get_sub_field('texto') . '</p>
+                    <h3 data-scroll-reveal="enter bottom move 50px over 0.6s after 0.3s">' . get_sub_field('titulo') . '</h3>
+                    <p data-scroll-reveal="enter bottom move 50px over 0.6s after 0.4s">' . get_sub_field('texto') . '</p>
                   </li>';
                 endwhile;
                 echo '</ul>';
@@ -421,13 +426,13 @@ get_header();
 
     <!-- formRequestQuote -->
     <?php if(get_field('desativar_seccao_requestquote') !== 'inativo') { ?>
-    <section id="contato" class="formRequestQuote">
+    <section id="contato" class="formRequestQuote" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s">
       <div class="container">
         <div class="grid">
           <div class="text">
             <?php 
               if(get_field('subtitulo_requestquote')) {
-                echo '<span>' . get_field('subtitulo_requestquote') . '</span>';
+                echo '<h3 class="subtitle">' . get_field('subtitulo_requestquote') . '</h3>';
               }
               if(get_field('titulo_requestquote')) {
                 echo '<h2>' . get_field('titulo_requestquote') . '</h2>';

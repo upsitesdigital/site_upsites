@@ -1,0 +1,530 @@
+/*======================================
+  Price box
+======================================*/
+
+.price-box {
+  padding: 120px 0 187px 0;
+  .subtitle {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 120%;
+    letter-spacing: 0.05em;
+    padding-bottom: 12px;
+    color: #008cff;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .title {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 181%;
+    text-transform: uppercase;
+    color: $color-navy;
+    display: block;
+    text-align: center;
+    padding-bottom: 0px;
+  }
+  p {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    color: #371a45;
+    padding-bottom: 48px;
+  }
+  .grid {
+    padding: 0 0 0 4px;
+    @include columns($quant: 1fr 1fr, $gutter: 30px, $align: stretch, $template: "monthlyplan annualplan");
+    .icons {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 auto 16px auto;
+      padding: 10px;
+      .icon {
+        width: 100%;
+        height: 100%;
+        fill: transparent;
+        stroke: #323232;
+      }
+    }
+    h3 {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 133%;
+      color: $color-navy;
+      width: 100%;
+      text-align: center;
+      padding: 0 0 0 0;
+    }
+    p {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 157%;
+      text-align: center;
+      color: #59608b;
+      padding: 6px 0 0 0;
+      &.small {
+        font-size: 12px;
+        line-height: 217%;
+      }
+    }
+    ul {
+      text-align: left;
+      li {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 153%;
+        color: #59608b;
+        display: block;
+        position: relative;
+        padding: 12px 21px 12px 41px;
+        .before {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          position: absolute;
+          top: 10px;
+          left: 0;
+          padding: 0 7px;
+          .icon {
+            width: 100%;
+            height: 100%;
+            fill: transparent;
+          }
+        }
+      }
+    }
+    hr {
+      border: none;
+      width: 87%;
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 16px auto;
+    }
+    .price {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 32px;
+      color: $color-green;
+      text-align: center;
+      padding: 16px 0;
+    }
+    .budget {
+      font-family: $font-main;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 114%;
+      color: $color-green;
+      text-align: center;
+      padding-bottom: 7px;
+    }
+    .btnBudgets {
+      margin-top: 16px;
+      margin-bottom: 16px;
+      padding: 17px 25px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .box {
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid #e0e0e0;
+      padding: 32px 31px 31px 31px;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0px 30px 80px rgba(0, 0, 114, 0.05);
+    }
+    .monthly-plan {
+      grid-area: monthlyplan;
+      .icons {
+        background-color: #b9e6ff;
+      }
+      ul {
+        li {
+          .before {
+            background-color: #b9e6ff;
+          }
+        }
+      }
+    }
+    .annual-plan {
+      grid-area: annualplan;
+      .icons {
+        background-color: #fff2bd;
+      }
+      ul {
+        li {
+          .before {
+            background-color: #fff2bd;
+          }
+        }
+      }
+    }
+    .phone {
+      grid-area: phone;
+      text-align: center;
+      position: relative;
+      .boxStick {
+        position: sticky;
+        top: 50px;
+        padding: 48px 0 0 0;
+        &:before {
+          content: "";
+          width: 39px;
+          height: 4px;
+          display: inline-block;
+          position: absolute;
+          background-color: $color-green;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%, 0px);
+          border-radius: 5px;
+        }
+      }
+      span,
+      .subtitle {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 120%;
+        letter-spacing: 0.05em;
+        padding-bottom: 8px;
+        color: #008cff;
+        display: block;
+      }
+      h2 {
+        font-family: $font-main;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 125%;
+        text-transform: uppercase;
+        color: $color-navy;
+        display: block;
+        padding-bottom: 36px;
+      }
+      .image {
+        width: 100%;
+        // height: 300px;
+        img {
+          margin: 24px 69px 24px 56px;
+          width: auto;
+          height: auto;
+        }
+      }
+      p {
+        padding: 5px 0 0 0;
+        font-size: 16px;
+        line-height: 137%;
+      }
+      a {
+        @include animate($time: 0.3s);
+        display: block;
+        width: 55%;
+        padding: 11px 10px 9px 16px;
+        border: 2px solid $color-green;
+        border-radius: 20px;
+        margin: 16px auto;
+        font-size: 13px;
+        letter-spacing: 0.05em;
+        font-weight: bold;
+        color: $color-green;
+        .icon {
+          width: 20px;
+          height: 20px;
+          fill: transparent;
+          stroke: $color-green;
+          margin: 0 7px 0 0;
+          vertical-align: middle;
+        }
+        &:hover {
+          transform: scale(1.1);
+          -webkit-box-shadow: 2px 2px 0px 0px rgba(0, 180, 143, 1);
+          -moz-box-shadow: 2px 2px 0px 0px rgba(0, 180, 143, 1);
+          box-shadow: 2px 2px 0px 0px rgba(0, 180, 143, 1);
+        }
+      }
+      .arrowSlide {
+        fill: transparent;
+        width: 16px;
+        height: 20px;
+        transform: rotate(90deg);
+        margin: 41px auto 39px auto;
+        display: block;
+      }
+    }
+    .customSite {
+      grid-area: customSite;
+      .icons {
+        background-color: #85ffe6;
+      }
+      ul {
+        li {
+          .before {
+            background-color: #85ffe6;
+          }
+        }
+      }
+    }
+    .see-more {
+      @include font($size: 16px, $weight: 600, $height: 100%, $align: left, $color: $color-green);
+      @include flex($align: center, $justify: center, $gap: 10px);
+      margin-top: 24px;
+      display: none;
+    }
+  }
+}
+
+@include breakpoint2($min: sm, $max: lg) {
+  .price-box {
+    padding: get-vw-lg(120px) 0 get-vw-lg(187px) 0;
+    .subtitle {
+      font-size: get-vw-lg(13px);
+      padding-bottom: get-vw-lg(12px);
+    }
+    .title {
+      font-size: get-vw-lg(32px);
+    }
+    p {
+      font-size: get-vw-lg(16px);
+      padding-bottom: get-vw-lg(48px);
+    }
+    .grid {
+      padding: 0 0 0 get-vw-lg(4px);
+      @include columns($quant: 1fr 1fr, $gutter: get-vw-lg(30px), $align: stretch, $template: "monthlyplan annualplan");
+      .icons {
+        width: get-vw-lg(40px);
+        height: get-vw-lg(40px);
+        margin: 0 auto get-vw-lg(16px) auto;
+        padding: get-vw-lg(10px);
+      }
+      h3 {
+        font-size: get-vw-lg(24px);
+      }
+      p {
+        font-size: get-vw-lg(14px);
+        padding: get-vw-lg(6px) 0 0 0;
+        &.small {
+          font-size: get-vw-lg(12px);
+        }
+      }
+      ul {
+        li {
+          font-size: get-vw-lg(15px);
+          padding: get-vw-lg(12px) get-vw-lg(21px) get-vw-lg(12px) get-vw-lg(41px);
+          .before {
+            width: get-vw-lg(25px);
+            height: get-vw-lg(25px);
+            top: get-vw-lg(10px);
+            padding: 0 get-vw-lg(7px);
+          }
+        }
+      }
+      hr {
+        margin: get-vw-lg(16px) auto;
+      }
+      .price {
+        font-size: get-vw-lg(28px);
+        line-height: get-vw-lg(32px);
+        padding: get-vw-lg(16px) 0;
+      }
+      .budget {
+        font-size: get-vw-lg(28px);
+        padding-bottom: get-vw-lg(7px);
+      }
+      .btnBudgets {
+        margin-top: get-vw-lg(16px);
+        margin-bottom: get-vw-lg(16px);
+        padding: get-vw-lg(17px) get-vw-lg(25px);
+      }
+      .box {
+        border-radius: get-vw-lg(16px);
+        padding: get-vw-lg(32px) get-vw-lg(31px) get-vw-lg(31px) get-vw-lg(31px);
+        box-shadow: 0 get-vw-lg(30px) get-vw-lg(80px) rgba(0, 0, 114, 0.05);
+      }
+    }
+  }
+}
+@include breakpoint2($min: xs, $max: sm) {
+  .price-box {
+    padding: get-vw-sm(120px) 0 get-vw-sm(187px) 0;
+    .subtitle {
+      font-size: get-vw-sm(13px);
+      padding-bottom: get-vw-sm(12px);
+    }
+    .title {
+      font-size: get-vw-sm(32px);
+    }
+    p {
+      font-size: get-vw-sm(16px);
+      padding-bottom: get-vw-sm(48px);
+    }
+    .grid {
+      padding: 0 0 0 get-vw-sm(4px);
+      @include columns($quant: 1fr, $gutter: get-vw-sm(30px), $align: stretch, $template: "monthlyplan" "annualplan");
+      .icons {
+        width: get-vw-sm(40px);
+        height: get-vw-sm(40px);
+        margin: 0 auto get-vw-sm(16px) auto;
+        padding: get-vw-sm(10px);
+      }
+      h3 {
+        font-size: get-vw-sm(24px);
+      }
+      p {
+        font-size: get-vw-sm(14px);
+        padding: get-vw-sm(6px) 0 0 0;
+        &.small {
+          font-size: get-vw-sm(12px);
+        }
+      }
+      ul {
+        li {
+          font-size: get-vw-sm(15px);
+          padding: get-vw-sm(12px) get-vw-sm(21px) get-vw-sm(12px) get-vw-sm(41px);
+          .before {
+            width: get-vw-sm(25px);
+            height: get-vw-sm(25px);
+            top: get-vw-sm(10px);
+            padding: 0 get-vw-sm(7px);
+          }
+          &.hidemobile {
+            display: none;
+            &.show {
+              display: block;
+            }
+          }
+        }
+      }
+      hr {
+        margin: get-vw-sm(16px) auto;
+      }
+      .price {
+        font-size: get-vw-sm(28px);
+        line-height: get-vw-sm(32px);
+        padding: get-vw-sm(16px) 0;
+      }
+      .budget {
+        font-size: get-vw-sm(28px);
+        padding-bottom: get-vw-sm(7px);
+      }
+      .btnBudgets {
+        margin-top: get-vw-sm(16px);
+        margin-bottom: get-vw-sm(16px);
+        padding: get-vw-sm(17px) get-vw-sm(25px);
+      }
+      .box {
+        border-radius: get-vw-sm(16px);
+        padding: get-vw-sm(32px) get-vw-sm(31px) get-vw-sm(31px) get-vw-sm(31px);
+        box-shadow: 0 get-vw-sm(30px) get-vw-sm(80px) rgba(0, 0, 114, 0.05);
+      }
+      .see-more {
+        display: flex;
+      }
+    }
+  }
+}
+@include breakpoint2($min: "", $max: xs) {
+  .price-box {
+    padding: get-vw-xs(120px) 0 get-vw-xs(187px) 0;
+    .subtitle {
+      font-size: get-vw-xs(13px);
+      padding-bottom: get-vw-xs(12px);
+    }
+    .title {
+      font-size: get-vw-xs(32px);
+    }
+    p {
+      font-size: get-vw-xs(16px);
+      padding-bottom: get-vw-xs(48px);
+    }
+    .grid {
+      padding: 0 0 0 get-vw-xs(4px);
+      @include columns($quant: 1fr, $gutter: get-vw-xs(30px), $align: stretch, $template: "monthlyplan" "annualplan");
+      .icons {
+        width: get-vw-xs(40px);
+        height: get-vw-xs(40px);
+        margin: 0 auto get-vw-xs(16px) auto;
+        padding: get-vw-xs(10px);
+      }
+      h3 {
+        font-size: get-vw-xs(24px);
+      }
+      p {
+        font-size: get-vw-xs(14px);
+        padding: get-vw-xs(6px) 0 0 0;
+        &.small {
+          font-size: get-vw-xs(12px);
+        }
+      }
+      ul {
+        li {
+          font-size: get-vw-xs(15px);
+          padding: get-vw-xs(12px) get-vw-xs(21px) get-vw-xs(12px) get-vw-xs(41px);
+          .before {
+            width: get-vw-xs(25px);
+            height: get-vw-xs(25px);
+            top: get-vw-xs(10px);
+            padding: 0 get-vw-xs(7px);
+          }
+          &.hidemobile {
+            display: none;
+            &.show {
+              display: block;
+            }
+          }
+        }
+      }
+      hr {
+        margin: get-vw-xs(16px) auto;
+      }
+      .price {
+        font-size: get-vw-xs(28px);
+        line-height: get-vw-xs(32px);
+        padding: get-vw-xs(16px) 0;
+      }
+      .budget {
+        font-size: get-vw-xs(28px);
+        padding-bottom: get-vw-xs(7px);
+      }
+      .btnBudgets {
+        margin-top: get-vw-xs(16px);
+        margin-bottom: get-vw-xs(16px);
+        padding: get-vw-xs(17px) get-vw-xs(25px);
+      }
+      .box {
+        border-radius: get-vw-xs(16px);
+        padding: get-vw-xs(32px) get-vw-xs(31px) get-vw-xs(31px) get-vw-xs(31px);
+        box-shadow: 0 get-vw-xs(30px) get-vw-xs(80px) rgba(0, 0, 114, 0.05);
+      }
+      .see-more {
+        display: flex;
+      }
+    }
+  }
+}
+
+@include breakpoint2($min: sm, $max: lg) {
+}
+@include breakpoint2($min: xs, $max: sm) {
+}
+@include breakpoint2($min: "", $max: xs) {
+}

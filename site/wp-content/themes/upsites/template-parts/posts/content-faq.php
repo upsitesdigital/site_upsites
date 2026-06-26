@@ -8,7 +8,7 @@
  */
 
 ?>
-<div class="item accordion" id="faq-<?php the_ID(); ?>">
+<div class="item accordion" id="faq-<?php the_ID(); ?>" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">
   <div class="title accordionClick">
     <h3><?php the_title() ?></h3>
     <svg class="icon accordionIcon">

@@ -5,7 +5,8 @@
 .advancedFeatures {
   padding-top: 106px;
   background-color: #F9F9F9;
-  span {
+  span,
+  .subtitle {
     font-family: $font-main;
     font-style: normal;
     font-weight: 600;
@@ -50,6 +51,8 @@
       background-color: $color-white;
       border-radius: 16px;
       margin-bottom: 15px;
+      box-shadow: 0 30px 80px rgba(0, 0, 114, .05);
+      @include animate($time: 0.3s);
       .icons {
         width: 40px;
         height: 40px;
@@ -86,6 +89,9 @@
         text-align: left;
         padding: 0;
       }
+      &:hover {
+        box-shadow: 0 30px 80px rgba(0, 0, 114, .2);
+      }
     }
   }
 }
@@ -93,7 +99,8 @@
 @include breakpoint2($min:sm, $max:lg) {
   .advancedFeatures {
     padding-top: get-vw-lg(106px);
-    span {
+    span,
+    .subtitle {
       font-size: get-vw-lg(13px);
       padding-bottom: get-vw-lg(9px);
     }
@@ -135,16 +142,17 @@
 @include breakpoint2($min:xs, $max:sm) {
   .advancedFeatures {
     padding-top: get-vw-sm(106px);
-    span {
-      font-size: get-vw-sm(13px);
+    span,
+    .subtitle {
+      // font-size: get-vw-sm(13px);
       padding-bottom: get-vw-sm(9px);
     }
     h2 {
-      font-size: get-vw-sm(32px);
+      // font-size: get-vw-sm(32px);
       padding-bottom: get-vw-sm(18px);
     }
     p {
-      font-size: get-vw-sm(16px);
+      // font-size: get-vw-sm(16px);
       padding-bottom: get-vw-sm(30px);
     }
     .grid {
@@ -156,19 +164,19 @@
         border-radius: get-vw-sm(16px);
         margin-bottom: get-vw-sm(15px);
         .icons {
-          width: get-vw-sm(40px);
-          height: get-vw-sm(40px);
+          // width: get-vw-sm(40px);
+          // height: get-vw-sm(40px);
           padding: get-vw-sm(10px);
           &.small {
             padding: get-vw-sm(5px);
           }
         }
         h3 {
-          font-size: get-vw-sm(20px);
+          // font-size: get-vw-sm(20px);
           padding: get-vw-sm(15px) 0 get-vw-sm(8px) 0;
         }
         p {
-          font-size: get-vw-sm(16px);
+          // font-size: get-vw-sm(16px);
         }
       }
     }
@@ -178,16 +186,17 @@
 @include breakpoint2($min:'', $max:xs) {
   .advancedFeatures {
     padding-top: get-vw-xs(106px);
-    span {
-      font-size: get-vw-xs(13px);
+    span,
+    .subtitle {
+      // font-size: get-vw-xs(13px);
       padding-bottom: get-vw-xs(9px);
     }
     h2 {
-      font-size: get-vw-xs(32px);
+      // font-size: get-vw-xs(32px);
       padding-bottom: get-vw-xs(18px);
     }
     p {
-      font-size: get-vw-xs(16px);
+      // font-size: get-vw-xs(16px);
       padding-bottom: get-vw-xs(30px);
     }
     .grid {
@@ -199,19 +208,22 @@
         border-radius: get-vw-xs(16px);
         margin-bottom: get-vw-xs(15px);
         .icons {
-          width: get-vw-xs(40px);
-          height: get-vw-xs(40px);
+          // width: get-vw-xs(40px);
+          // height: get-vw-xs(40px);
           padding: get-vw-xs(10px);
+          margin: 0 auto;
           &.small {
             padding: get-vw-xs(5px);
           }
         }
         h3 {
-          font-size: get-vw-xs(20px);
+          text-align: center;
+          // font-size: get-vw-xs(20px);
           padding: get-vw-xs(15px) 0 get-vw-xs(8px) 0;
         }
         p {
-          font-size: get-vw-xs(16px);
+          text-align: center;
+          // font-size: get-vw-xs(16px);
         }
       }
     }

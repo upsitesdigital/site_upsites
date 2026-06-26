@@ -1,0 +1,17 @@
+/*======================================
+  Cases
+======================================*/
+
+
+
+@include breakpoint2($min: sm, $max: lg) {
+
+}
+
+@include breakpoint2($min: xs, $max: sm) {
+
+}
+
+@include breakpoint2($min: "", $max: xs) {
+
+}

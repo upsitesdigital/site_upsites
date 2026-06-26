@@ -1,2 +1,3 @@
 *.zip
 /html/node_modules/*
+/site/wp-content/themes/upsites/node_modules/*

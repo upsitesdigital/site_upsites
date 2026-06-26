@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); 
 ?>
   <!-- main -->
-  <main>
+  <main id="main">
     <!-- simple-page -->
     <section class="simple-page">
       <div class="container">
