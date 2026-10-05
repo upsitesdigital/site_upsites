@@ -2,9 +2,31 @@
   Breadcrumbs
 ======================================*/
 
+.contentPost article .rank-math-breadcrumb p {
+  padding: 0 0 20px 0;
+  font-family: $font-main;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.52px;
+  text-align: left;
+  text-transform: uppercase;
+
+  a {
+    color: $color-navy;
+    &:hover {
+      color: #00B48F;
+    }
+  }
+}
+
 @include breakpoint2($min:xl, $max:'') {}
+
 @include breakpoint2($min:lg, $max:xl) {}
+
 @include breakpoint2($min:md, $max:lg) {}
+
 @include breakpoint2($min:sm, $max:md) {}
+
 @include breakpoint2($min:xs, $max:sm) {}
+
 @include breakpoint2($min:'', $max:xs) {}

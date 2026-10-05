@@ -1,14 +1,14 @@
-var gulp          = require('gulp');
-var $             = require('gulp-load-plugins')();
-var browserSync   = require('browser-sync').create();
+var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
+var browserSync = require('browser-sync').create();
 
-var webpack       = require('webpack');
+var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.js');
-var bundler       = webpack(webpackConfig);
+var bundler = webpack(webpackConfig);
 
-var uglify        = require('gulp-uglify');
+var uglify = require('gulp-uglify');
 
-var isWatching    = false;
+var isWatching = false;
 
 /**
  * SVG
@@ -28,6 +28,7 @@ gulp.task('svg2png', function() {
 
   return svg;
 });
+
 /**
  * Icons
  */
@@ -38,7 +39,7 @@ gulp.task('svgicons', function() {
       var prefix = path.basename(file.relative, path.extname(file.relative));
       return {
         plugins: [{
-          removeAttrs: { attrs : 'fill' },
+          removeAttrs: { attrs: 'fill' },
           cleanupIDs: {
             prefix: prefix + '-',
             minify: true
@@ -50,20 +51,61 @@ gulp.task('svgicons', function() {
     .pipe(gulp.dest('./assets/img/'));
 });
 
-
 /**
  * Sass
  */
 gulp.task('sass', function() {
   return gulp.src(['./src/sass/main.scss'])
     .pipe($.sourcemaps.init())
-      .pipe(
-        $.sass({
-          includePaths: ['./node_modules/'],
-          outputStyle: 'expanded'
-        })
-        .on('error', $.sass.logError)
-      )
+    .pipe(
+      $.sass({
+        includePaths: ['./node_modules/'],
+        outputStyle: 'expanded'
+      })
+      .on('error', $.sass.logError)
+    )
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('./assets/css/'))
+    .pipe(browserSync.stream());
+});
+gulp.task('sasshome', function() {
+  return gulp.src(['./src/sass/home.scss'])
+    .pipe($.sourcemaps.init())
+    .pipe(
+      $.sass({
+        includePaths: ['./node_modules/'],
+        outputStyle: 'expanded'
+      })
+      .on('error', $.sass.logError)
+    )
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('./assets/css/'))
+    .pipe(browserSync.stream());
+});
+gulp.task('sassstructure', function() {
+  return gulp.src(['./src/sass/structure.scss'])
+    .pipe($.sourcemaps.init())
+    .pipe(
+      $.sass({
+        includePaths: ['./node_modules/'],
+        outputStyle: 'expanded'
+      })
+      .on('error', $.sass.logError)
+    )
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('./assets/css/'))
+    .pipe(browserSync.stream());
+});
+gulp.task('sasspostinternal', function() {
+  return gulp.src(['./src/sass/post-internal.scss'])
+    .pipe($.sourcemaps.init())
+    .pipe(
+      $.sass({
+        includePaths: ['./node_modules/'],
+        outputStyle: 'expanded'
+      })
+      .on('error', $.sass.logError)
+    )
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('./assets/css/'))
     .pipe(browserSync.stream());
@@ -73,15 +115,36 @@ gulp.task('sass:release', ['sass'], function() {
   return gulp.src(['./assets/css/main.css'])
     .pipe($.autoprefixer(['last 2 versions', 'ie 8', 'ie 9', '> 1%']))
     .pipe($.rename({ suffix: '.min' }))
-    .pipe($.cleanCss({ compatibility: 'ie8' }))
+    .pipe($.cleanCss({ compatibility: 'ie8', processImport: false }))
+    .pipe(gulp.dest('./assets/css/'));
+});
+gulp.task('sasshome:release', ['sasshome'], function() {
+  return gulp.src(['./assets/css/home.css'])
+    .pipe($.autoprefixer(['last 2 versions', 'ie 8', 'ie 9', '> 1%']))
+    .pipe($.rename({ suffix: '.min' }))
+    .pipe($.cleanCss({ compatibility: 'ie8', processImport: false }))
+    .pipe(gulp.dest('./assets/css/'));
+});
+gulp.task('sassstructure:release', ['sassstructure'], function() {
+  return gulp.src(['./assets/css/structure.css'])
+    .pipe($.autoprefixer(['last 2 versions', 'ie 8', 'ie 9', '> 1%']))
+    .pipe($.rename({ suffix: '.min' }))
+    .pipe($.cleanCss({ compatibility: 'ie8', processImport: false }))
+    .pipe(gulp.dest('./assets/css/'));
+});
+gulp.task('sasspostinternal:release', ['sasspostinternal'], function() {
+  return gulp.src(['./assets/css/post-internal.css'])
+    .pipe($.autoprefixer(['last 2 versions', 'ie 8', 'ie 9', '> 1%']))
+    .pipe($.rename({ suffix: '.min' }))
+    .pipe($.cleanCss({ compatibility: 'ie8', processImport: false }))
     .pipe(gulp.dest('./assets/css/'));
 });
 
-gulp.task('js:release', function () {
-   gulp.src(['./assets/js/bundle.js'])
-      .pipe(uglify())
-      .pipe($.rename({ suffix: '.min' }))
-      .pipe(gulp.dest('./assets/js/')) // It will create folder client.min.js
+gulp.task('js:release', function() {
+  gulp.src(['./assets/js/bundle.js'])
+    .pipe(uglify())
+    .pipe($.rename({ suffix: '.min' }))
+    .pipe(gulp.dest('./assets/js/')) // It will create folder client.min.js
 });
 
 
@@ -127,12 +190,12 @@ gulp.task('serve', function() {
 /**
  * Build
  */
-gulp.task('build', ['sass', 'scripts', 'svg2png'], function() {
+gulp.task('build', ['sass', 'sasshome', 'sasspostinternal', 'sassstructure', 'scripts'], function() {
   $.util.log($.util.colors.green('Build is finished'));
 });
 
 gulp.task('build:min', function() {
-  gulp.start('sass:release', 'js:release');
+  gulp.start('sass:release', 'sasshome:release', 'sasspostinternal:release', 'sassstructure:release', 'js:release');
 });
 
 /**
@@ -145,11 +208,11 @@ gulp.task('watch', ['serve'], function() {
   gulp.watch('./*.html', { cwd: './' }).on('change', browserSync.reload);
 
   /* Watch styles */
-  gulp.watch(['**/*.scss'], { cwd: './src/sass/' }, ['sass']).on('change', browserSync.reload);
+  gulp.watch(['**/*.scss'], { cwd: './src/sass/' }, ['sass', 'sasshome', 'sasspostinternal', 'sassstructure']).on('change', browserSync.reload);
 
   /* Watch SVG */
   gulp.watch(['*.svg'], { cwd: './src/img/icons/' }, ['svgicons']).on('change', browserSync.reload);
-  gulp.watch(['*.svg'], { cwd: './src/img/svg/' },   ['svg2png']).on('change', browserSync.reload);
+  gulp.watch(['*.svg'], { cwd: './src/img/svg/' }, ['svg2png']).on('change', browserSync.reload);
 });
 
 /**

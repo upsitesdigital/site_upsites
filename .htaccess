@@ -1,0 +1,241 @@
+# BEGIN Website Firewall Bypass Prevention
+
+RewriteEngine On
+RewriteCond %{HTTP:NOC-CDN-Location} ^$ [NC]
+RewriteCond %{HTTP_HOST} ^(www.)?upsites\.digital$
+RewriteRule ^(.*)$ - [F,L]
+ErrorDocument 403 Forbidden
+
+# END Website Firewall Bypass Prevention
+
+AddCharset UTF-8 .txt
+
+
+
+
+
+
+
+
+
+
+
+RewriteEngine On
+RewriteBase /
+
+# Redirecionar de /amp para sem /amp
+RewriteCond %{REQUEST_URI} (.+)/amp$
+RewriteRule ^ %1/ [R=301,L]
+
+# Redirecionar de /amp/ para sem /amp
+RewriteCond %{REQUEST_URI} (.+)/amp/$
+RewriteRule ^ %1/ [R=301,L]
+
+# Redireciona URLs que contêm a query string 'fb_comment_id' para a homepage
+RewriteCond %{QUERY_STRING} (^|&)fb_comment_id= [NC]
+RewriteRule ^ https://upsites.digital/? [L,R=301]
+
+
+# BEGIN LSCACHE
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule litespeed/debug/.*\.log$ - [F,L]
+RewriteRule \.litespeed_conf\.dat - [F,L]
+</IfModule>
+<IfModule LiteSpeed>
+CacheLookup on
+RewriteRule .* - [E=Cache-Control:no-autoflush]
+
+### marker ASYNC start ###
+RewriteCond %{REQUEST_URI} /wp-admin/admin-ajax\.php
+RewriteCond %{QUERY_STRING} action=async_litespeed
+RewriteRule .* - [E=noabort:1]
+### marker ASYNC end ###
+
+### marker DROPQS start ###
+CacheKeyModify -qs:fbclid
+CacheKeyModify -qs:gclid
+CacheKeyModify -qs:utm*
+CacheKeyModify -qs:_ga
+### marker DROPQS end ###
+
+</IfModule>
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+# END LSCACHE
+# BEGIN NON_LSCACHE
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+### marker BROWSER CACHE start ###
+<IfModule mod_expires.c>
+ExpiresActive on
+ExpiresByType application/pdf A31557600
+ExpiresByType image/x-icon A31557600
+ExpiresByType image/vnd.microsoft.icon A31557600
+ExpiresByType image/svg+xml A31557600
+
+ExpiresByType image/jpg A31557600
+ExpiresByType image/jpeg A31557600
+ExpiresByType image/png A31557600
+ExpiresByType image/gif A31557600
+ExpiresByType image/webp A31557600
+ExpiresByType image/avif A31557600
+
+ExpiresByType video/ogg A31557600
+ExpiresByType audio/ogg A31557600
+ExpiresByType video/mp4 A31557600
+ExpiresByType video/webm A31557600
+
+ExpiresByType text/css A31557600
+ExpiresByType text/javascript A31557600
+ExpiresByType application/javascript A31557600
+ExpiresByType application/x-javascript A31557600
+
+ExpiresByType application/x-font-ttf A31557600
+ExpiresByType application/x-font-woff A31557600
+ExpiresByType application/font-woff A31557600
+ExpiresByType application/font-woff2 A31557600
+ExpiresByType application/vnd.ms-fontobject A31557600
+ExpiresByType font/ttf A31557600
+ExpiresByType font/otf A31557600
+ExpiresByType font/woff A31557600
+ExpiresByType font/woff2 A31557600
+
+</IfModule>
+### marker BROWSER CACHE end ###
+
+## LITESPEED WP CACHE PLUGIN - Do not edit the contents of this block! ##
+# END NON_LSCACHE
+RewriteEngine On
+RewriteRule ^marketing/arquitetura/como-captar-clientes-escritorio-arquitetura/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/arquitetura/como-vender-moveis-planejados-captar-mais-clientes/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/coaching/como-captar-clientes-para-coaching/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/estetica-beleza/como-atrair-clientes-para-salao-de-beleza/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/estetica-beleza/divulgacao-de-estudio-de-tatuagem/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/instagram-para-empresas-qual-a-importancia/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/mensageiro-instantaneo-alternativa-slack-chanty/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^vendas-online/melhores-plataformas-de-vendas/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^desenvolvimento-web/como-industria-marketplace-aumentar-vendas/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^geral/dicas-essenciais-seguranca-email/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^geral/ecommerce-decoracao-erros-comuns-saiba-evitar/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^geral/entenda-como-a-jornada-do-cliente-pode-revolucionar-o-seu-negocio/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^geral/guardar-dados-empresa-mais-local-seguro/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^geral/review-plataforma-redacao-infinity-copy/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/5-formas-de-alimentar-o-funil-de-vendas-com-o-marketing-digital/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/beneficios-seo-site/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/como-alavancar-sua-carreira-de-marketing-digital/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/como-alavancar-sua-carreira-de-marketing/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/como-fazer-mailing-segmentado/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/energia-solar-e-marketing/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/entregabilidade-no-e-mail-marketing/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/erros-comuns-em-e-mail-marketing/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/indicadores-de-e-mail-marketing/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/principais-metricas-marketing-digital-aplicativo-mobile/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/principais-widgets-marketing-elementor/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^negocios/aspectos-reputacao-online/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^negocios/como-usar-o-whatsapp-para-negocios/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^negocios/empresa-de-marketing-digital-sem-socios/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^negocios/gerenciamento-de-projetos-pratica/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^negocios/tecnologia-e-industria-saiba-o-que-fazer-para-melhorar-sua-empresa/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^negocios/vendas-por-videoconferencia/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^seguranca-digital/por-que-franquias-devem-utilizar-de-banco-de-dados/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^vendas-online/atrair-clientes-loja-virtual/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^vendas-online/como-usar-recursos-visuais-aumentar-vendas/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^vendas-online/dicas-para-economizar-no-frete-das-suas-vendas/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^desenvolvimento-web/5-dicas-para-aumentar-as-vendas-do-seu-site/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^geral/10-dicas-ecommerce-suplementos-deveria-seguir/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/campanhas-de-e-mail-segmentadas/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/entenda-como-construir-uma-estrategia-de-whatsapp-marketing-de-uma-vez-por-todas/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/marketing-precisao-era-agricultura/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^catalogo-online/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^criacao-site-clinicas-veterinarias-pet-shop/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^criacao-site-nutricionistas/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^lista-de-espera/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/arquitetura/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^marketing/coaching/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^marketing/design/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^marketing/educacao/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^marketing/estetica-beleza/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^redes-sociais/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^seo/$ https://upsites.digital/trafego-organico/ [R=301,L]
+RewriteRule ^tutoriais/$ https://upsites.digital/ [R=301,L]
+RewriteRule ^marketing/estetica-beleza/como-atrair-clientes-para-barbearia/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^marketing/link-do-whatsapp-no-instagram/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^redes-sociais/instagram-para-negocios/$ https://upsites.digital/marketing [R=301,L]
+RewriteRule ^desenvolvimento-web/diferencas-https-https-seo/$ https://upsites.digital/trafego-organico/diferencas-https-https-seo/ [R=301,L]
+RewriteRule ^desenvolvimento-web/ferramentas-ideais-gerenciar-e-commerce/$ https://upsites.digital/negocios/ferramentas-ideais-gerenciar-e-commerce/ [R=301,L]
+RewriteRule ^desenvolvimento-web/google-sites-wordpress-melhor-criador-sites/$ https://upsites.digital/trafego-organico/google-sites-wordpress-melhor-criador-sites/ [R=301,L]
+RewriteRule ^desenvolvimento-web/melhorar-velocidade-do-wordpress/$ https://upsites.digital/trafego-organico/melhorar-velocidade-do-wordpress/ [R=301,L]
+RewriteRule ^desenvolvimento-web/o-que-e-um-link-nofollow/$ https://upsites.digital/trafego-organico/o-que-e-um-link-nofollow/ [R=301,L]
+RewriteRule ^geral/dicas-otimizar-comunicacao-empresarial/$ https://upsites.digital/negocios/dicas-otimizar-comunicacao-empresarial/ [R=301,L]
+RewriteRule ^geral/hospedagem-linux-windows-qual-escolher/$ https://upsites.digital/trafego-organico/hospedagem-linux-windows-qual-escolher/ [R=301,L]
+RewriteRule ^geral/marketing-experiencia-como-usar/$ https://upsites.digital/marketing/marketing-experiencia-como-usar/ [R=301,L]
+RewriteRule ^geral/o-que-e-recaptcha/$ https://upsites.digital/seguranca-digital/o-que-e-recaptcha/ [R=301,L]
+RewriteRule ^geral/site-realidade-virtual-tendencias/$ https://upsites.digital/desenvolvimento-web/site-realidade-virtual-tendencias/ [R=301,L]
+RewriteRule ^marketing/como-atrair-reconhecimento-marca-gerar-trafego/$ https://upsites.digital/trafego-organico/como-atrair-reconhecimento-marca-gerar-trafego/ [R=301,L]
+RewriteRule ^marketing/como-montar-um-planejamento-de-redes-sociais-realmente-efetivo/$ https://upsites.digital/negocios/como-montar-um-planejamento-de-redes-sociais-realmente-efetivo/ [R=301,L]
+RewriteRule ^marketing/design/o-que-e-efeito-parallax-como-funciona/$ https://upsites.digital/marketing/o-que-e-efeito-parallax-como-funciona/ [R=301,L]
+RewriteRule ^marketing/design/papel-design-experiencia-usuario/$ https://upsites.digital/desenvolvimento-web/papel-design-experiencia-usuario/ [R=301,L]
+RewriteRule ^marketing/design/webnode-x-wordpress/$ https://upsites.digital/negocios/webnode-x-wordpress/ [R=301,L]
+RewriteRule ^marketing/educacao/como-atrair-alunos-para-escola-de-ingles/$ https://upsites.digital/marketing/como-atrair-alunos-para-escola-de-ingles/ [R=301,L]
+RewriteRule ^marketing/educacao/como-captar-alunos-para-faculdades/$ https://upsites.digital/marketing/como-captar-alunos-para-faculdades/ [R=301,L]
+RewriteRule ^marketing/estetica-beleza/como-conseguir-clientes-de-personal-trainer/$ https://upsites.digital/saude/como-conseguir-clientes-de-personal-trainer/ [R=301,L]
+RewriteRule ^marketing/estetica-beleza/marketing-clinicas-estetica/$ https://upsites.digital/saude/marketing-clinicas-estetica/ [R=301,L]
+RewriteRule ^marketing/o-numero-de-visitantes-no-site-aumentou-e-agora/$ https://upsites.digital/trafego-organico/o-numero-de-visitantes-no-site-aumentou-e-agora/ [R=301,L]
+RewriteRule ^marketing/que-e-legibilidade-como-afeta-seo/$ https://upsites.digital/trafego-organico/que-e-legibilidade-como-afeta-seo/ [R=301,L]
+RewriteRule ^negocios/site-de-vendas-criar-do-zero-ou-plataforma-de-ecommerce/$ https://upsites.digital/negocios/site-de-vendas-criar-do-zero-ou-plataforma-de-ecommerce/ [R=301,L]
+#RewriteRule ^negocios/whatsapp-business-empresas/$ https://upsites.digital/negocios/whatsapp-business-empresas/ [R=301,L]
+RewriteRule ^responsividade/como-analisar-performance-site-atrair-clientes/$ https://upsites.digital/desenvolvimento-web/como-analisar-performance-site-atrair-clientes/ [R=301,L]
+RewriteRule ^responsividade/uptime-sua-importancia/$ https://upsites.digital/desenvolvimento-web/uptime-sua-importancia/ [R=301,L]
+RewriteRule ^saude/eat-e-ymyl-para-ramo-da-medicina/$ https://upsites.digital/trafego-organico/eat-e-ymyl-para-ramo-da-medicina/ [R=301,L]
+RewriteRule ^seo/backlinks-que-sao-qual-importancia-seo/$ https://upsites.digital/trafego-organico/backlinks-que-sao-qual-importancia-seo/ [R=301,L]
+RewriteRule ^seo/como-criar-conteudo-otimizado/$ https://upsites.digital/trafego-organico/como-criar-conteudo-otimizado/ [R=301,L]
+RewriteRule ^seo/eat-estrategias-link-building/$ https://upsites.digital/trafego-organico/eat-estrategias-link-building/ [R=301,L]
+RewriteRule ^seo/erro-404-afeta-seo/$ https://upsites.digital/trafego-organico/erro-404-afeta-seo/ [R=301,L]
+RewriteRule ^seo/estrategias-de-seo/$ https://upsites.digital/trafego-organico/estrategias-de-seo/ [R=301,L]
+RewriteRule ^seo/links-rejeicao-orientacoes/$ https://upsites.digital/trafego-organico/links-rejeicao-orientacoes/ [R=301,L]
+RewriteRule ^seo/otimizacao-url/$ https://upsites.digital/trafego-organico/otimizacao-url/ [R=301,L]
+RewriteRule ^seo/robots-txt-e-seo-o-que-saber/$ https://upsites.digital/trafego-organico/robots-txt-e-seo-o-que-saber/ [R=301,L]
+RewriteRule ^seo/seo-para-imagens/$ https://upsites.digital/trafego-organico/seo-para-imagens/ [R=301,L]
+RewriteRule ^seo/sitelinks/$ https://upsites.digital/trafego-organico/sitelinks/ [R=301,L]
+RewriteRule ^seo/sitemaps-robots-txt-importancia-seo/$ https://upsites.digital/trafego-organico/sitemaps-robots-txt-importancia-seo/ [R=301,L]
+RewriteRule ^seo/tecnicas-seo/$ https://upsites.digital/trafego-organico/tecnicas-seo/ [R=301,L]
+RewriteRule ^seo/url-amigavel-o-que-e-e-por-que-e-importante/$ https://upsites.digital/trafego-organico/url-amigavel-o-que-e-e-por-que-e-importante/ [R=301,L]
+RewriteRule ^vendas-online/aplicar-comunicacao-nao-violenta-marketing/$ https://upsites.digital/marketing/aplicar-comunicacao-nao-violenta-marketing/ [R=301,L]
+RewriteRule ^vendas-online/como-vender-mais-usando-o-web-push/$ https://upsites.digital/negocios/como-vender-mais-usando-o-web-push/ [R=301,L]
+RewriteRule ^observatorio-sul-americano-defesa-forcas-armadas/$ https://upsites.digital [R=301,L]
+RewriteRule ^wp-content/uploads/2018/06/Informe-Semanal-Brasil-Sul-Americano-12-2014\.pdf$ https://upsites.digital [R=301,L]
+
+
+RewriteOptions inherit
+# BEGIN WordPress
+# As diretrizes (linhas) entre "BEGIN WordPress" e "END WordPress" são
+# geradas dinamicamente e só devem ser modificadas através de filtros do WordPress.
+# Quaisquer alterações nas diretivas entre esses marcadores serão sobrescritas.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+Header set Last-Modified "expr=%{file:mtime}"
+</IfModule>
+
+# END WordPress
+RewriteCond %{HTTP_HOST} ^orcamentos\.upsites\.digital$
+RewriteRule ^/?$ "https\:\/\/upsites\.digital\/orcamentos\/" [R=301,L]
+
+# BEGIN LiteSpeed
+# As diretrizes (linhas) entre "BEGIN LiteSpeed" e "END LiteSpeed" são
+# geradas dinamicamente e só devem ser modificadas através de filtros do WordPress.
+# Quaisquer alterações nas diretivas entre esses marcadores serão sobrescritas.
+<IfModule Litespeed>
+SetEnv noabort 1
+</IfModule>
+# END LiteSpeed
+RewriteCond %{HTTP_HOST} ^upsites\.digital$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.upsites\.digital$
+RewriteRule ^marketing\/arquitetura\/como\-captar\-clientes\-escritorio\-arquitetura\/$ "https\:\/\/upsites\.digital\/" [R=301,L]
+
+RewriteRule ^llms\.txt$ /llms.html [L,R=301]

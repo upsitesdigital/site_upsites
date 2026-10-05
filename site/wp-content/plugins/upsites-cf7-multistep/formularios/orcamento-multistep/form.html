@@ -1,0 +1,75 @@
+<div class="up-step" data-short="Contato" data-title="Vamos começar pelo básico" data-sub="Por onde a gente fala com você.">
+
+	<div class="up-field">
+		<label for="up-nome">Nome completo</label>
+		[text* nome id:up-nome autocomplete:name placeholder "Seu nome completo"]
+	</div>
+
+	<div class="up-field up-field--telefone">
+		<label for="up-telefone">Telefone / WhatsApp</label>
+		<p class="up-help">Pode ser o seu WhatsApp — é por onde a gente te chama.</p>
+		<div class="up-linha-telefone">
+			[select ddi id:up-ddi "+55" "+351" "+1" "+54" "+44" "+34"]
+			[tel* telefone id:up-telefone autocomplete:tel-national placeholder "(11) 99999-9999"]
+		</div>
+		<p class="up-dica" data-upms-dica="celular" hidden>Celular identificado</p>
+	</div>
+
+	<div class="up-field">
+		<label for="up-email">E-mail</label>
+		[email* email id:up-email autocomplete:email placeholder "voce@email.com"]
+	</div>
+
+</div>
+
+<div class="up-step" data-short="Perfil" data-title="Conta um pouco sobre você" data-sub="Quanto mais a gente souber, mais afiada fica a sua proposta.">
+
+	<div class="up-field">
+		<label for="up-empresa">Nome da empresa</label>
+		<p class="up-help">Pessoa física? Pode deixar em branco. Já tem empresa, mas ainda sem nome? Escreva "em definição".</p>
+		[text empresa id:up-empresa autocomplete:organization placeholder "Nome da empresa"]
+	</div>
+
+	<div class="up-field">
+		<label for="up-site">Endereço do site</label>
+		<p class="up-help">Cole o link do seu site atual. Ainda não tem? Pode deixar em branco.</p>
+		[text site_url id:up-site autocomplete:url placeholder "www.seusite.com.br"]
+	</div>
+
+</div>
+
+<div class="up-step" data-short="Projeto" data-title="Qual o tipo de projeto?" data-sub="Selecione a opção que melhor descreve a sua necessidade.">
+
+	<div class="up-field up-escolha">
+		[radio tipo_projeto use_label_element class:up-obrigatorio "Desenvolvimento de site / Landing Page" "Loja virtual / Catálogo" "Manutenção de site existente" "Posicionamento orgânico (SEO)" "Ser mencionado nas IAs (GEO)" "Desenvolvimento de sistema / app" "Não tenho certeza, preciso de ajuda para definir"]
+	</div>
+
+</div>
+
+<div class="up-step" data-short="Prazo" data-title="E o prazo?" data-sub="Pra gente se organizar com você.">
+
+	<div class="up-field up-escolha">
+		[radio prazo use_label_element "Entre 30 e 45 dias" "Entre 2 e 3 meses" "Preciso o quanto antes" "Prazo não é um problema"]
+	</div>
+
+</div>
+
+[submit "Enviar pedido"]
+
+[acceptance consentimento default:on optional] Autorizo a UpSites e seus representantes a entrarem em contato por telefone, WhatsApp e e-mail sobre a minha solicitação, conforme a <a href="https://upsites.digital/politica-de-privacidade/" target="_blank" rel="noopener">Política de Privacidade</a>. [/acceptance]
+
+[upsites_honeypot up_website]
+
+[upsites_hidden lead_uid]
+[upsites_hidden gclid]
+[upsites_hidden gbraid]
+[upsites_hidden wbraid]
+[upsites_hidden utm_source]
+[upsites_hidden utm_medium]
+[upsites_hidden utm_campaign]
+[upsites_hidden utm_term]
+[upsites_hidden utm_content]
+[upsites_hidden referrer]
+[upsites_hidden landing_url]
+[upsites_hidden telefone_e164]
+[upsites_hidden origem]

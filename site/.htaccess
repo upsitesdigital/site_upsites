@@ -14,3 +14,39 @@ RewriteRule . /projetos/site_upsites/site/index.php [L]
 </IfModule>
 
 # END WordPress
+
+# BEGIN Cache Control (upsites)
+# Aplica cache de longa duração só a assets estáticos (imagens, fontes, CSS, JS)
+# via mod_expires/mod_headers - NÃO cobre text/html, que continua dinâmico/sem cache.
+# Envoltos em IfModule para não quebrar em servidores sem esses módulos habilitados.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <IfModule mod_expires.c>
+    Header append Cache-Control "public" "expr=%{resp:Content-Type} =~ m#^(image|font)/#"
+  </IfModule>
+</IfModule>
+# END Cache Control (upsites)
+
+# BEGIN Compression (upsites)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+# END Compression (upsites)

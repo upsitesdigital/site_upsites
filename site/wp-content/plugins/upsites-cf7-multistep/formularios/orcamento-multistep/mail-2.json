@@ -1,0 +1,11 @@
+{
+  "active": false,
+  "subject": "Recebemos seu pedido — UpSites",
+  "sender": "UpSites Digital <contato@upsites.digital>",
+  "recipient": "[email]",
+  "body": "Olá, [nome]!\n\nRecebemos seu pedido de orçamento. Nossa equipe vai analisar e retornar em breve.\n\nUpSites Digital\n",
+  "additional_headers": "Reply-To: comercial@upsites.digital",
+  "attachments": "",
+  "use_html": 0,
+  "exclude_blank": 0
+}

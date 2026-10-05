@@ -1,0 +1,4 @@
+# O consentimento é opcional por decisão de produto: vem pré-marcado, e
+# desmarcá-lo não impede o envio — apenas registra o opt-out no payload.
+# Por isso NÃO usamos acceptance_as_validation.
+skip_mail: off

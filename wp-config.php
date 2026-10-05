@@ -1,4 +1,6 @@
 <?php
+define( 'WP_CACHE', true );
+
 
 
 
@@ -20,6 +22,7 @@
 require_once dirname(__FILE__) . '/../etc/php/lib/CloudezSettings.php';
 
 define('FS_METHOD', 'direct');
+define('WPCF7_AUTOP', false);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */

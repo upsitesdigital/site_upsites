@@ -1,0 +1,10 @@
+{
+  "subject": "[Orçamento] Novo lead do site — [nome]",
+  "sender": "UpSites Site <wordpress@upsites.digital>",
+  "recipient": "comercial@upsites.digital",
+  "body": "Novo pedido de orçamento pelo formulário do site principal.\n\nCONTATO\n  Nome ............ [nome]\n  E-mail .......... [email]\n  Telefone ........ [ddi] [telefone]\n  E.164 ........... [telefone_e164]\n\nPERFIL\n  Empresa ......... [empresa]\n  Site atual ...... [site_url]\n\nPROJETO\n  Tipo ............ [tipo_projeto]\n  Prazo ........... [prazo]\n\nCONSENTIMENTO (LGPD)\n  [consentimento]\n  Versao do aviso: v1-2026-07\n\nORIGEM\n  origem .......... [origem]\n  lead_uid ........ [lead_uid]\n  gclid ........... [gclid]\n  gbraid .......... [gbraid]\n  wbraid .......... [wbraid]\n  utm_source ...... [utm_source]\n  utm_medium ...... [utm_medium]\n  utm_campaign .... [utm_campaign]\n  utm_term ........ [utm_term]\n  utm_content ..... [utm_content]\n  referrer ........ [referrer]\n  landing_url ..... [landing_url]\n\n--\nEnviado por [_site_title] ([_site_url]) em [_date] [_time].\nEste e-mail é a cópia de segurança: o lead também foi enviado ao middleware\ne, de lá, para Ploomes, GS Engage e Digisac.\n",
+  "additional_headers": "Reply-To: [email]",
+  "attachments": "",
+  "use_html": 0,
+  "exclude_blank": 0
+}

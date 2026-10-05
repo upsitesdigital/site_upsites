@@ -91,7 +91,9 @@
   grid-template-columns: $quant;
   gap: $gutter;
   align-items: $align;
-  grid-template-areas: $template;
+  @if ($template!='') {
+    grid-template-areas: $template;
+  }
 }
 
 // Mixin to create a grid container

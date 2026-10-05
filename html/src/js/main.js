@@ -1,6 +1,6 @@
 /*
-* Plugins
-*/
+ * Plugins
+ */
 import 'slick-carousel';
 // import 'selectric';
 import svg4everybody from 'svg4everybody';
@@ -9,6 +9,7 @@ import svg4everybody from 'svg4everybody';
  * Modules
  */
 import slider from './modules/slider';
+import parallax from './modules/parallax';
 
 /**
  * Vendors
@@ -28,6 +29,7 @@ import home from './pages/_home';
     svg4everybody();
     slider();
     // plugins();
+    parallax();
     home();
   });
 })(jQuery);
