@@ -1,0 +1,67 @@
+<?php
+/**
+ * Template part for displaying page content in page.php
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package WordPress
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+$idObj = get_page_by_path( 'home' );
+//$idhome = $idObj->ID;
+
+$idhome = array_key_exists('idpage', $args) ? $args['idpage'] : $idObj->ID;
+$ids = array_key_exists('ids', $args) ? $args['ids'] : '';
+?>
+<?php if(get_field('desativar_seccao_articles') !== 'inativo') { ?>
+<section class="featuredArticles">
+	<div class="container relative">
+		<?php 
+			if(get_field('subtitulo_articles', $idhome)) {
+				echo '<h3 class="subtitle" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('subtitulo_articles', $idhome) . '</h3>';
+			}
+			if(get_field('titulo_articles', $idhome)) {
+				echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_articles', $idhome) . '</h2>';
+			}
+		?>
+		<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" href="<?= get_permalink( get_page_by_path( 'blog' ) ) ?>" class="all" aria-label="Todos os posts do blog">
+			TODOS OS ARTIGOS
+			<svg class="icon arrowSlide">
+				<use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrowSlide"></use>
+			</svg>
+		</a>
+		<div class="grid">
+			<?php
+				$postargs = array(
+					'post_type' 						 => 'post',
+					'posts_per_page'         => 3,
+					'post_status'            => 'publish',
+					//'meta_key'      				 => 'destacar_post',
+					//'meta_value'    				 => '1',
+					'no_found_rows'          => true,
+					'update_post_term_cache' => false,
+					'update_post_meta_cache' => false,
+					'cache_results'          => false
+				);
+				if($ids != '') {
+					$postargs['post__in'] = $ids;
+				} else {
+					$postargs['meta_key'] = 'destacar_post';
+					$postargs['meta_value'] = '1';
+				}
+				$postcat = new WP_Query($postargs);
+				while ($postcat->have_posts()) : $postcat->the_post();
+					$args = array(
+						'current_post' => $postcat->current_post,
+					);
+					get_template_part('template-parts/posts/content', 'blog', $args);
+				endwhile;
+				wp_reset_postdata();
+			?>
+		</div>
+	</div>
+</section>
+<?php } ?>

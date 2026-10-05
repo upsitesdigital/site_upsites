@@ -1,0 +1,24 @@
+# Bloqueia acesso público direto a arquivos e pastas de backup manuais
+# espalhados pelo tema (bkp/, src-bkp/, *-bkp*, *-Copia*, etc). Esses backups
+# não são versionados no git e vários eram servidos com HTTP 200 (alguns .php
+# executando normalmente, outros expondo o código-fonte PHP em texto puro por
+# não terem extensão .php reconhecida pelo Apache).
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Qualquer pasta chamada "bkp", "bkp-*" ou "src-bkp" em qualquer nível
+  RewriteCond %{REQUEST_URI} (^|/)(bkp|bkp-[^/]*|src-bkp)(/|$) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+<IfModule mod_authz_core.c>
+  <FilesMatch "(?i)(-bkp|bkp-|-copia| - copia)">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+  <FilesMatch "(?i)(-bkp|bkp-|-copia| - copia)">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>

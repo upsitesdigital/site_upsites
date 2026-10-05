@@ -1,0 +1,10 @@
+node_modules/
+bkp/
+bkp-*/
+src-bkp/
+~/
+debug.log
+*-bkp*
+*bkp.php
+* - Copia*
+.claude/settings.local.json

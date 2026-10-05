@@ -26,6 +26,7 @@
 
 /site/wp-content/themes/*
 !/site/wp-content/themes/xyh/
+!/site/wp-content/themes/upsites/
 
 /site/wp-content/ai1wm-backups/*
 /site/wp-content/languages/*
