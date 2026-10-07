@@ -222,7 +222,7 @@ $mail = get_theme_mod('US_mail');
               <?php 
                 if(get_field('banner_blog',$id_blog)) {
                   if(get_field('link_banner_blog',$id_blog)) {
-                    echo '<a rel="dofollow" href="'.get_field('link_banner_blog',$id_blog).'">';
+                    echo '<a rel="sponsored" href="'.get_field('link_banner_blog',$id_blog).'">';
                   }
                   echo wp_get_attachment_image(get_field('banner_blog',$id_blog), 'full');
                   if(get_field('link_banner_blog',$id_blog)) {

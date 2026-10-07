@@ -77,7 +77,7 @@ get_header();
               <?php 
                 if(get_field('banner_img_blog_lateral')) {
                   if(get_field('banner_img_link_blog_lateral')) {
-                    echo '<a rel="dofollow" href="'.get_field('banner_img_link_blog_lateral').'">';
+                    echo '<a rel="sponsored" href="'.get_field('banner_img_link_blog_lateral').'">';
                   }
                   echo wp_get_attachment_image(get_field('banner_img_blog_lateral'), 'full');
                   if(get_field('banner_img_link_blog_lateral')) {

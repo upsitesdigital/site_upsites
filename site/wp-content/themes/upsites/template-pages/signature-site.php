@@ -581,7 +581,11 @@ $id_home = get_page_by_path( 'home' );
 
 
     <!-- featuredArticles -->
-    <?php get_template_part( 'template-parts/inc','articles' ); ?>
+    <?php $args = array(
+      'idpage' => get_the_ID(),
+      'ids' => get_field('selecionar_posts'),
+    );
+    get_template_part( 'template-parts/inc','articles',$args ); ?>
     <!-- end:featuredArticles -->
 
   </main>
