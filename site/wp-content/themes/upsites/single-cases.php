@@ -314,7 +314,7 @@ $mail = get_theme_mod('US_mail');
       <div class="container relative">
         <h3 class="subtitle">CASES</h3>
         <h2>Confira outros cases</h2>
-        <a rel="dofollow" href="<?= get_permalink( get_page_by_path( 'case' ) ) ?>" class="all" aria-label="Todos os posts do blog">
+        <a rel="dofollow" href="<?= get_permalink( get_page_by_path( 'cases-de-sucessos' ) ) ?>" class="all" aria-label="Todos os posts do blog">
           VEJA TODOS OS CASES
           <svg class="icon arrowSlide">
             <use xlink:href="<?= get_bloginfo("template_url") ?>/assets/img/icons.svg#arrowSlide"></use>

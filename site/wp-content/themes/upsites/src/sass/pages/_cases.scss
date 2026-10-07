@@ -18,7 +18,7 @@
       font-size: 13px;
       letter-spacing: 0.05em;
       color: #008cff;
-      padding: 9px 25px 8px 2px;
+      padding: 9px 0 8px 0;
       margin-bottom: 24px;
       position: relative;
       display: inline-block;
@@ -33,7 +33,7 @@
           display: inline;
         }
       }
-      &:before {
+      /*&:before {
         content: "";
         width: 81%;
         height: 100%;
@@ -42,7 +42,7 @@
         position: absolute;
         top: 0;
         right: 0;
-      }
+      }*/
     }
     .title,
     h2 {
@@ -111,11 +111,44 @@
       align-items: center;
       gap: 26px;
       .search {
-        width: 28px;
-        height: 28px;
-        img {
-          width: 100%;
-          height: auto;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        input {
+          width: 0;
+          padding: 0;
+          opacity: 0;
+          border: 0;
+          border-bottom: 1px solid #00b48f;
+          border-radius: 0;
+          background: transparent;
+          font-family: $font-main;
+          font-size: 15px;
+          line-height: 100%;
+          color: #1c1c1c;
+          outline: none;
+          @include animate($time: 0.3s);
+        }
+        button {
+          width: 28px;
+          height: 28px;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          cursor: pointer;
+          flex-shrink: 0;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+        &.open {
+          input {
+            width: 240px;
+            padding: 6px 8px;
+            margin-right: 10px;
+            opacity: 1;
+          }
         }
       }
       a {
@@ -139,6 +172,14 @@
   .list-cases {
     @include columns($quant: repeat(3, 1fr), $gutter: 82px 28px, $align: start, $template: "");
     padding: 52px 0 59px 0;
+    .no-results {
+      grid-column: 1 / -1;
+      margin: 0;
+      text-align: center;
+      font-family: $font-main;
+      font-size: 16px;
+      color: #4d4d4d;
+    }
     .item-case {
       position: relative;
       -webkit-box-shadow: 0px 0px 60px 20px rgba(0, 0, 114, 0.1);
@@ -265,8 +306,7 @@
 
 .cta-case {
   width: 100%;
-  height: 589px;
-  padding: 90px 0 0 0;
+  padding: 90px 0 30px 0;
   background-color: #002d54;
   .grid {
     @include columns($quant: 423px 460px, $gutter: 0px, $align: center, $template: "text image");
@@ -508,14 +548,10 @@
       width: get-vw-lg(560px);
       .tag {
         font-size: get-vw-lg(13px);
-        padding: get-vw-lg(9px) get-vw-lg(25px) get-vw-lg(8px) get-vw-lg(2px);
+        padding: get-vw-lg(9px) 0 get-vw-lg(8px) 0;
         margin-bottom: get-vw-lg(24px);
         b {
           padding: get-vw-lg(3px) 0;
-        }
-        &:before {
-          border-radius: get-vw-lg(30px);
-          border: get-vw-lg(1.5px) solid #008cff;
         }
       }
       .title,
@@ -551,8 +587,18 @@
       .filter-btns {
         gap: get-vw-lg(26px);
         .search {
-          width: get-vw-lg(28px);
-          height: get-vw-lg(28px);
+          input {
+            font-size: get-vw-lg(15px);
+          }
+          button {
+            width: get-vw-lg(28px);
+            height: get-vw-lg(28px);
+          }
+          &.open input {
+            width: get-vw-lg(240px);
+            padding: get-vw-lg(6px) get-vw-lg(8px);
+            margin-right: get-vw-lg(10px);
+          }
         }
         a {
           gap: get-vw-lg(9px);
@@ -621,8 +667,7 @@
   }
 
   .cta-case {
-    height: get-vw-lg(589px);
-    padding: get-vw-lg(90px) 0 0 0;
+    padding: get-vw-lg(90px) 0 get-vw-lg(30px) 0;
     .grid {
       @include columns($quant: get-vw-lg(423px) get-vw-lg(460px), $gutter: 0, $align: center, $template: "text image");
       .text {
@@ -713,17 +758,13 @@
   .hero-case {
     padding: get-vw-sm(46px) 0 get-vw-sm(82px) 0;
     .text {
-      width: get-vw-sm(560px);
+      width: 100%;
       .tag {
         font-size: get-vw-sm(13px);
-        padding: get-vw-sm(9px) get-vw-sm(25px) get-vw-sm(8px) get-vw-sm(2px);
+        padding: get-vw-sm(9px) 0 get-vw-sm(8px) 0;
         margin-bottom: get-vw-sm(24px);
         b {
           padding: get-vw-sm(3px) 0;
-        }
-        &:before {
-          border-radius: get-vw-sm(30px);
-          border: get-vw-sm(1.5px) solid #008cff;
         }
       }
       .title,
@@ -759,8 +800,18 @@
       .filter-btns {
         gap: get-vw-sm(26px);
         .search {
-          width: get-vw-sm(28px);
-          height: get-vw-sm(28px);
+          input {
+            font-size: get-vw-sm(15px);
+          }
+          button {
+            width: get-vw-sm(28px);
+            height: get-vw-sm(28px);
+          }
+          &.open input {
+            width: get-vw-sm(240px);
+            padding: get-vw-sm(6px) get-vw-sm(8px);
+            margin-right: get-vw-sm(10px);
+          }
         }
         a {
           gap: get-vw-sm(9px);
@@ -771,7 +822,7 @@
       }
     }
     .list-cases {
-      @include columns($quant: repeat(2, 1fr), $gutter: get-vw-sm(82px) get-vw-sm(28px), $align: start, $template: "");
+      @include columns($quant: repeat(2, 1fr), $gutter: get-vw-sm(42px), $align: start, $template: "");
       padding: get-vw-sm(52px) 0 get-vw-sm(59px) 0;
       .item-case {
         -webkit-box-shadow: 0 0 get-vw-sm(60px) get-vw-sm(20px) rgba(0, 0, 114, 0.1);
@@ -829,12 +880,12 @@
   }
 
   .cta-case {
-    height: get-vw-sm(589px);
-    padding: get-vw-sm(90px) 0 0 0;
+    height: auto;
+    padding: get-vw-sm(50px) 0;
     .grid {
-      @include columns($quant: get-vw-sm(423px) get-vw-sm(460px), $gutter: 0, $align: center, $template: "text image");
+      @include columns($quant: 100%, $gutter: 0, $align: center, $template: "text" "image");
       .text {
-        padding-top: get-vw-sm(50px);
+        padding-top: 0;
         padding-bottom: get-vw-sm(50px);
         .subtitle {
           font-size: get-vw-sm(13px);
@@ -856,6 +907,10 @@
         .btnBudgets {
           padding: get-vw-sm(19px) get-vw-sm(27px) get-vw-sm(19px) get-vw-sm(30px);
         }
+      }
+      .image {
+        max-width: 70%;
+        margin: 0 auto;
       }
     }
   }
@@ -921,17 +976,13 @@
   .hero-case {
     padding: get-vw-xs(46px) 0 get-vw-xs(82px) 0;
     .text {
-      width: get-vw-xs(560px);
+      width: 100%;
       .tag {
         font-size: get-vw-xs(13px);
-        padding: get-vw-xs(9px) get-vw-xs(25px) get-vw-xs(8px) get-vw-xs(2px);
+        padding: get-vw-xs(9px) 0 get-vw-xs(8px) 0;
         margin-bottom: get-vw-xs(24px);
         b {
           padding: get-vw-xs(3px) 0;
-        }
-        &:before {
-          border-radius: get-vw-xs(30px);
-          border: get-vw-xs(1.5px) solid #008cff;
         }
       }
       .title,
@@ -968,8 +1019,18 @@
       .filter-btns {
         gap: get-vw-xs(26px);
         .search {
-          width: get-vw-xs(28px);
-          height: get-vw-xs(28px);
+          input {
+            font-size: get-vw-xs(15px);
+          }
+          button {
+            width: get-vw-xs(28px);
+            height: get-vw-xs(28px);
+          }
+          &.open input {
+            width: get-vw-xs(240px);
+            padding: get-vw-xs(6px) get-vw-xs(8px);
+            margin-right: get-vw-xs(10px);
+          }
         }
         a {
           gap: get-vw-xs(9px);
@@ -980,7 +1041,7 @@
       }
     }
     .list-cases {
-      @include columns($quant: repeat(1, 1fr), $gutter: get-vw-xs(82px) get-vw-xs(28px), $align: start, $template: "");
+      @include columns($quant: repeat(1, 1fr), $gutter: get-vw-xs(42px), $align: start, $template: "");
       padding: get-vw-xs(52px) 0 get-vw-xs(59px) 0;
       .item-case {
         -webkit-box-shadow: 0 0 get-vw-xs(60px) get-vw-xs(20px) rgba(0, 0, 114, 0.1);
@@ -1038,12 +1099,12 @@
   }
 
   .cta-case {
-    height: get-vw-xs(589px);
-    padding: get-vw-xs(90px) 0 0 0;
+    height: auto;
+    padding: get-vw-sm(50px) 0;
     .grid {
-      @include columns($quant: get-vw-xs(423px) get-vw-xs(460px), $gutter: 0, $align: center, $template: "text image");
+      @include columns($quant: 100%, $gutter: 0, $align: center, $template: "text" "image");
       .text {
-        padding-top: get-vw-xs(50px);
+        padding-top: 0;
         padding-bottom: get-vw-xs(50px);
         .subtitle {
           font-size: get-vw-xs(13px);
@@ -1065,6 +1126,10 @@
         .btnBudgets {
           padding: get-vw-xs(19px) get-vw-xs(27px) get-vw-xs(19px) get-vw-xs(30px);
         }
+      }
+      .image {
+        max-width: 70%;
+        margin: 0 auto;
       }
     }
   }

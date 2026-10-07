@@ -197,11 +197,16 @@ add_action('wp_enqueue_scripts', function () {
     add_action('wp_head', function () {
       if( have_rows('fontslist_casesletter') ): 
         while( have_rows('fontslist_casesletter') ): the_row(); ?>
-          <?php if(get_sub_field("origem") == 'file') { ?>
+          <?php if(get_sub_field("origem") == 'file') {
+            $fontfile = get_sub_field("archive");
+            $fontformats = array('woff2' => 'woff2', 'woff' => 'woff', 'ttf' => 'truetype', 'otf' => 'opentype');
+            $fontext = strtolower(pathinfo(parse_url($fontfile, PHP_URL_PATH), PATHINFO_EXTENSION));
+            $fontformat = isset($fontformats[$fontext]) ? $fontformats[$fontext] : 'woff'; ?>
             <style>
             @font-face {
-              font-family: '<?= get_sub_field("fontname") ?>';
-              src: url('<?= get_sub_field("archive") ?>') format('woff');
+              font-family: '<?= esc_attr(get_sub_field("fontname")) ?>';
+              src: url('<?= esc_url($fontfile) ?>') format('<?= $fontformat ?>');
+              font-display: swap;
             }
             </style>
           <?php } elseif(get_sub_field("origem") == 'google') { ?>
@@ -434,6 +439,10 @@ function get_load_cases() {
     'post_status' => 'publish',
     'paged' => $paged,
   );
+  $search = isset($_POST['search']) ? sanitize_text_field(wp_unslash($_POST['search'])) : '';
+  if ($search !== '') {
+    $ajaxpostsArgs['s'] = $search;
+  }
   $arraytax = json_decode(stripslashes($_POST['tax']));
   $types_cases = [];
   $categories_cases = [];
@@ -488,7 +497,7 @@ function get_load_cases() {
     endwhile;
     $pag = US_paging_nav($ajaxposts, $paged, $maxpages);
   } else {
-    $response = '';
+    $response = '<p class="no-results">Nenhum case encontrado.</p>';
   }
   echo $response;
   exit;
@@ -913,10 +922,50 @@ add_action('wp_ajax_nopriv_get_load_segment', 'get_load_segment');
 
 function custom_mime_types($mimes) {
     $mimes['woff'] = 'font/woff';
-    
+    $mimes['woff2'] = 'font/woff2';
+    $mimes['ttf'] = 'font/ttf';
+    $mimes['otf'] = 'font/otf';
+
     return $mimes;
 }
 add_filter('upload_mimes', 'custom_mime_types');
+
+// O finfo do PHP detecta fontes com MIME variado (font/sfnt, application/octet-stream...),
+// o que faz o WordPress recusar o upload; para fontes, confia na extensão
+function custom_font_filetype($data, $file, $filename, $mimes) {
+  if (empty($data['ext'])) {
+    $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+    if (in_array($ext, array('woff', 'woff2', 'ttf', 'otf'), true)) {
+      $filetype = wp_check_filetype($filename, $mimes);
+      if ($filetype['ext']) {
+        $data['ext'] = $filetype['ext'];
+        $data['type'] = $filetype['type'];
+      }
+    }
+  }
+  return $data;
+}
+add_filter('wp_check_filetype_and_ext', 'custom_font_filetype', 10, 4);
+
+// Valida o link do Google Fonts dos cases: o Google responde 400 para fonte ou peso
+// inexistente e o navegador cai na fonte padrão sem nenhum aviso
+function US_validate_google_font_url($valid, $value) {
+  if ($valid !== true || empty($value)) {
+    return $valid;
+  }
+  if (parse_url($value, PHP_URL_HOST) !== 'fonts.googleapis.com') {
+    return $valid;
+  }
+  $response = wp_remote_get($value, array('timeout' => 10));
+  if (is_wp_error($response)) {
+    return $valid;
+  }
+  if (wp_remote_retrieve_response_code($response) !== 200) {
+    return 'O Google Fonts recusou esse link: a fonte não existe no Google ou algum peso (wght) não está disponível para ela.';
+  }
+  return $valid;
+}
+add_filter('acf/validate_value/key=field_692725f57e967', 'US_validate_google_font_url', 10, 2);
 
 
 add_filter('trp_flags_path', 'trpc_flags_path', 10, 2);

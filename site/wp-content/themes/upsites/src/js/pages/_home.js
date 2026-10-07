@@ -745,38 +745,93 @@ export default function () {
 
   
   
-  jQuery(document).on("click", ".menu-filter-box .footer button", function (event) {
-    $(".loader").fadeIn();
+  let casesRequest = null;
+  let casesSearchTimer = null;
+  let casesLastSearch = '';
+
+  function loadCases() {
     let arrcats = [];
-    const path = pathURL.templateurl;
-    jQuery('.cases .filters .list-filters').html('');
     jQuery( ".menu-filter-box .box ul li input:checked" ).each(function( index ) {
-      let html = '<a href="#" class="item" data-tax="' + jQuery( this ).data('tax') + '" data-slug="' + jQuery( this ).val() + '"><img class="icon" src="' + path + '/assets/img/close.svg" alt="">' + jQuery( this ).data('name') + '</a>';
-      jQuery('.cases .filters .list-filters').append(html);
       arrcats.push({tax: jQuery( this ).data('tax'), value: jQuery( this ).val()});
     });
+    casesLastSearch = jQuery.trim(jQuery('.cases .filters .search input').val() || '');
 
-    
-    $.ajax({
+    if (casesRequest) {
+      casesRequest.abort();
+    }
+    $(".loader").fadeIn();
+    casesRequest = $.ajax({
       url: usAjax.ajaxurl,
       type: "POST",
       data: {
         action: "get_load_cases",
         nonce: usAjax.nonce,
         type: 'cases',
-        tax: JSON.stringify(arrcats)
+        tax: JSON.stringify(arrcats),
+        search: casesLastSearch
       },
       success: function (result) {
-        console.log('result');
-        jQuery('.cases .list-cases').html('');
         jQuery('.cases .list-cases').html(result);
         jQuery('.cases .paginations').remove();
-        $(".loader").fadeOut();
-        console.log(result);
+      },
+      complete: function (xhr, status) {
+        if (status !== 'abort') {
+          casesRequest = null;
+          $(".loader").fadeOut();
+        }
       },
     });
+  }
 
+  jQuery(document).on("click", ".menu-filter-box .footer button", function (event) {
+    const path = pathURL.templateurl;
+    jQuery('.cases .filters .list-filters').html('');
+    jQuery( ".menu-filter-box .box ul li input:checked" ).each(function( index ) {
+      let html = '<a href="#" class="item" data-tax="' + jQuery( this ).data('tax') + '" data-slug="' + jQuery( this ).val() + '"><img class="icon" src="' + path + '/assets/img/close.svg" alt="">' + jQuery( this ).data('name') + '</a>';
+      jQuery('.cases .filters .list-filters').append(html);
+    });
+
+    loadCases();
     return false;
+  });
+
+  // Busca de cases: a lupa abre o campo; com texto, busca ao digitar (debounce) ou ao enviar
+  // Sem <form> de propósito: evita envio nativo e a interceptação do CleanTalk
+  jQuery(document).on("click", ".cases .filters .search button", function (event) {
+    const $form = jQuery(this).closest('.search');
+    const $input = $form.find('input');
+
+    if (!$form.hasClass('open')) {
+      $form.addClass('open');
+      $input.trigger('focus');
+      return false;
+    }
+    clearTimeout(casesSearchTimer);
+    if (jQuery.trim($input.val()) !== casesLastSearch) {
+      loadCases();
+    } else if (!$input.val()) {
+      $form.removeClass('open');
+    }
+    return false;
+  });
+
+  jQuery(document).on("input", ".cases .filters .search input", function () {
+    clearTimeout(casesSearchTimer);
+    casesSearchTimer = setTimeout(function () {
+      if (jQuery.trim(jQuery('.cases .filters .search input').val()) !== casesLastSearch) {
+        loadCases();
+      }
+    }, 400);
+  });
+
+  jQuery(document).on("keydown", ".cases .filters .search input", function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      jQuery(this).closest('.search').find('button').trigger('click');
+    } else if (event.key === 'Escape') {
+      jQuery(this).val('').trigger('input');
+      jQuery(this).closest('.search').removeClass('open');
+    }
   });
 
   setTimeout(function() {$('#device-mobile').css('height', '0');}, 1000);

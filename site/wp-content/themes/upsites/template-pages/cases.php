@@ -6,7 +6,7 @@ get_header();
 ?>
 
   <!-- main -->
-  <main id="main">
+  <main id="main" class="ptop-50">
     
     <section class="hero-case">
       <div class="container">
@@ -26,7 +26,10 @@ get_header();
           <div class="list-filters">
           </div>
           <div class="filter-btns">
-            <div class="search"><img src="<?= get_bloginfo("template_url") ?>/assets/img/search-minus.svg" alt=""></div>
+            <div class="search" role="search">
+              <input type="search" placeholder="Buscar case..." aria-label="Buscar cases" autocomplete="off">
+              <button type="button" aria-label="Buscar"><img src="<?= get_bloginfo("template_url") ?>/assets/img/search-minus.svg" alt=""></button>
+            </div>
             <a href="#" class="adjustments">
               <img src="<?= get_bloginfo("template_url") ?>/assets/img/icon-adjustments.svg" alt="">
               filtros
@@ -92,7 +95,7 @@ get_header();
             <?php
               $typesargs = array(
                 'taxonomy'    => 'types_cases',
-                'hide_empty'  => false,
+                'hide_empty'  => true,
                 'orderby'     => 'name',
                 'order'       => 'ASC'
               );
@@ -117,7 +120,7 @@ get_header();
             <?php
               $catsargs = array(
                 'taxonomy'    => 'categories_cases',
-                'hide_empty'  => false,
+                'hide_empty'  => true,
                 'orderby'     => 'name',
                 'order'       => 'ASC'
               );
@@ -142,7 +145,7 @@ get_header();
             <?php
               $technologiesargs = array(
                 'taxonomy'    => 'technologies_cases',
-                'hide_empty'  => false,
+                'hide_empty'  => true,
                 'orderby'     => 'name',
                 'order'       => 'ASC'
               );

@@ -14558,7 +14558,7 @@ if (function_exists('acf_add_local_field_group')) :
     'instruction_placement' => 'label',
     'hide_on_screen' => array(
       0 => 'the_content',
-      1 => 'featured_image',
+      //1 => 'featured_image',
     ),
     'active' => true,
     'description' => '',
@@ -14894,11 +14894,11 @@ if (function_exists('acf_add_local_field_group')) :
             'return_format' => 'id',
             'preview_size' => 'medium',
             'library' => 'all',
-            'min_width' => 702,
-            'min_height' => 368,
+            'min_width' => 697,
+            'min_height' => 346,
             'min_size' => '',
-            'max_width' => 702,
-            'max_height' => 368,
+            'max_width' => 697,
+            'max_height' => 346,
             'max_size' => '',
             'mime_types' => '',
           ),
@@ -14992,7 +14992,7 @@ if (function_exists('acf_add_local_field_group')) :
     'instruction_placement' => 'label',
     'hide_on_screen' => array(
       0 => 'the_content',
-      1 => 'featured_image',
+      //1 => 'featured_image',
     ),
     'active' => true,
     'description' => '',
@@ -15122,7 +15122,7 @@ if (function_exists('acf_add_local_field_group')) :
     'instruction_placement' => 'label',
     'hide_on_screen' => array(
       0 => 'the_content',
-      1 => 'featured_image',
+      //1 => 'featured_image',
     ),
     'active' => true,
     'description' => '',
@@ -15306,7 +15306,7 @@ if (function_exists('acf_add_local_field_group')) :
     'instruction_placement' => 'label',
     'hide_on_screen' => array(
       0 => 'the_content',
-      1 => 'featured_image',
+      //1 => 'featured_image',
     ),
     'active' => true,
     'description' => '',
@@ -15584,7 +15584,7 @@ if (function_exists('acf_add_local_field_group')) :
     'instruction_placement' => 'label',
     'hide_on_screen' => array(
       0 => 'the_content',
-      1 => 'featured_image',
+      //1 => 'featured_image',
     ),
     'active' => true,
     'description' => '',
@@ -15664,7 +15664,7 @@ if (function_exists('acf_add_local_field_group')) :
             'library' => 'all',
             'min_size' => '',
             'max_size' => '',
-            'mime_types' => 'woff',
+            'mime_types' => 'woff, woff2, ttf, otf',
           ),
           array(
             'key' => 'field_692725f57e967',
@@ -15739,7 +15739,7 @@ if (function_exists('acf_add_local_field_group')) :
         'sub_fields' => array(
           array(
             'key' => 'field_7026e905cccfa',
-            'label' => 'Font style',
+            'label' => 'Font subtitle',
             'name' => 'subtitle_casesletter',
             'type' => 'text',
             'instructions' => '',
@@ -16067,7 +16067,7 @@ if (function_exists('acf_add_local_field_group')) :
     'instruction_placement' => 'label',
     'hide_on_screen' => array(
       0 => 'the_content',
-      1 => 'featured_image',
+      //1 => 'featured_image',
     ),
     'active' => true,
     'description' => '',
@@ -16214,7 +16214,7 @@ if (function_exists('acf_add_local_field_group')) :
     'instruction_placement' => 'label',
     'hide_on_screen' => array(
       0 => 'the_content',
-      1 => 'featured_image',
+      //1 => 'featured_image',
     ),
     'active' => true,
     'description' => '',
