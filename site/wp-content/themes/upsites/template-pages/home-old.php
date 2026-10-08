@@ -240,6 +240,57 @@ get_header();
     <?php } ?>
     <!-- end:portfolio -->
 
+    
+
+    <!-- case-home -->
+    <?php if(!get_field('desativar_seccao_casehome')) { ?>
+    <section class="case-home">
+      <div class="container">
+        <span class="subtitle"><?= get_field('subtitle_casehome') ?></span>
+        <h2 class="title"><?= get_field('title_casehome') ?></h2>
+        <?php if(get_field('text_casehome')) { ?>
+          <p class="description"><?= get_field('text_casehome') ?></p>
+        <?php } ?>
+        <?php
+          $caseargs = array(
+            'post_type'              => 'cases',
+            'post_status'            => 'publish',
+            'posts_per_page'         => 2,
+            'no_found_rows'          => true,
+            'update_post_term_cache' => false,
+            'cache_results'          => false
+          );
+          if(get_field('list_casehome')) {
+            $caseargs['post__in']       = get_field('list_casehome');
+            $caseargs['orderby']        = 'post__in';
+            $caseargs['posts_per_page'] = -1;
+          }
+          $caseposts = new WP_Query($caseargs);
+          if($caseposts->have_posts()) {
+        ?>
+          <div class="grid-cases">
+            <?php while ($caseposts->have_posts()) : $caseposts->the_post(); ?>
+              <a rel="dofollow" href="<?php the_permalink() ?>" class="item">
+                <div class="image"><?= wp_get_attachment_image(get_post_thumbnail_id(), 'full', '', array( "loading" => "lazy" )) ?></div>
+                <div class="content">
+                  <span><?php the_field('subtitle_case') ?></span>
+                  <h3><?php the_title() ?></h3>
+                  <p><?php the_field('text_case') ?></p>
+                </div>
+              </a>
+            <?php endwhile; wp_reset_postdata(); ?>
+          </div>
+        <?php } ?>
+        <?php if(get_field('textbtn_casehome')) { ?>
+          <div class="center">
+            <a rel="dofollow" href="<?= get_field('linkbtn_casehome') ? get_field('linkbtn_casehome') : get_permalink( get_page_by_path( 'cases-de-sucessos' ) ) ?>" class="btnBudgets"><?= get_field('textbtn_casehome') ?></a>
+          </div>
+        <?php } ?>
+      </div>
+    </section>
+    <?php } ?>
+    <!-- end:case-home -->
+
     <?php if(!get_field('desativar_seccao_process_worksp')) { ?>
     <section class="how-the-process-works">
       <div class="container">
