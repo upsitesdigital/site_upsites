@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); 
-$id_glossario = get_page_by_path( 'glossario' );
+$id_glossario = get_page_by_path( 'glossarios' );
 $id_glossary_theme = get_page_by_path( 'glossario-tema' );
 
 US_set_post_views(get_the_ID());
@@ -72,7 +72,9 @@ $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "a
           </div>
           <div class="box-link">
             <div class="box">
-              <h3>simply dummy text of the printing</h3>
+              <?php if(get_field('titulobox_postglossary')) : ?>
+                <h3><?= get_field('titulobox_postglossary'); ?></h3>
+              <?php endif; ?>
               <p class="likes"><span>
                 <?php 
                   if(get_post_meta(get_the_ID(), 'US_post_like_count', true) == '') {
@@ -124,6 +126,7 @@ $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "a
                 ?>
               </ul>
             </div>
+            <?php if(get_field('title_bannerglossary', $id_glossario)) { ?>
             <div class="box-banner">
               <h3><?= get_field('title_bannerglossary', $id_glossario); ?></h3>
               <p><?= get_field('text_bannerglossary', $id_glossario); ?></p>
@@ -136,6 +139,7 @@ $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "a
                 <img src="<?= get_bloginfo("template_url") ?>/assets/img/glossary-box-banner.png" alt="">
               </div>
             </div>
+            <?php } ?>
           </div>
         </div>
         <?php
@@ -160,6 +164,8 @@ $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "a
             </div></div>';
           endif;
         ?>
+        
+        <?php if(get_field('title_fullbannerglossary', $id_glossario)) { ?>
         <div class="bannerfull-glossary">
           <span class="subtitle"><?= get_field('subtitle_fullbannerglossary', $id_glossario); ?></span>
           <h2 class="title"><?= get_field('title_fullbannerglossary', $id_glossario); ?></h2>
@@ -170,6 +176,7 @@ $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "a
             }
           ?>
         </div>
+        <?php } ?>
       </div>
     </section>
     <!-- featuredArticles -->

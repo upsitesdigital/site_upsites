@@ -633,38 +633,11 @@ $logo_mobile    		    = get_theme_mod('US_logo_mobile');
   <?php } ?>
   <!-- end:box-text -->
 
-  <!-- section class="other-pages">
-    <div class="container">
-      <h2>TAMBÉM CRIAMOS SITE PARA:</h2>
-      <div class="box-slide-page pageSlide">
-        <?php
-          $relargs = array(
-            'post_type' 						 => 'landings',
-            'post_status'            => 'publish',
-            'posts_per_page'         => '-1',
-            'post__not_in'     			 => array(get_the_ID()),
-            'no_found_rows'          => true,
-            'update_post_term_cache' => false,
-            'update_post_meta_cache' => false,
-            'cache_results'          => false
-          );
-          $relposts = new WP_Query($relargs);
-          while ($relposts->have_posts()) : $relposts->the_post();
-        ?>
-            <a href="<?= get_the_permalink() ?>" class="item">
-              <div class="box-icon" style="background-color: <?= get_field('cor_seglanding') ?>;">
-                <?= wp_get_attachment_image(get_field('icone_seglanding'), 'full') ?>
-              </div>
-              <h3>Site para <?= get_field('texto_seglanding') ?></h3>
-            </a>
-        <?php
-           endwhile;
-          wp_reset_postdata();
-        ?>
-        
-      </div>
-    </div>
-  </section -->
+  <!-- other-pages -->
+  <?php if(get_field('desativar_seccao_landing') !== 'inativo') { ?>
+  <?php get_template_part( 'template-parts/inc','other-pages' ); ?>
+  <?php } ?>
+  <!-- end:other-pages -->
   
 </main>
 <!-- end:main -->

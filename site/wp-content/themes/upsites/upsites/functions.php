@@ -353,6 +353,42 @@ function US_paging_nav($posts, $paged, $maxpages)
   echo '</div>' . "\n";
 }
 
+/**
+ * Paginação da listagem de cases (navegação via AJAX).
+ * Mesmo markup do US_paging_nav, com data-page nas setas; $base gera hrefs reais
+ * no carregamento inicial (fallback sem JS), vazio gera '#' nas respostas AJAX.
+ */
+function US_cases_paging_nav($paged, $maxpages, $base = '')
+{
+  $max = intval($maxpages);
+  if ($max <= 1)
+    return '';
+
+  $paged = max(1, min(intval($paged), $max));
+  $icon  = '<svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#arrowSlide"></use></svg>';
+
+  $link = function ($page) use ($base) {
+    if (!$base) return '#';
+    return $page <= 1 ? $base : trailingslashit($base) . 'page/' . $page . '/';
+  };
+
+  $html  = '<div class="paginations paginations-cases">' . "\n";
+  if ($paged > 1) {
+    $html .= '<a rel="dofollow" href="' . esc_url($link($paged - 1)) . '" data-page="' . ($paged - 1) . '" id="slick-prev" class="slick-prev slick-arrow" aria-label="Previous">' . $icon . '</a>' . "\n";
+  } else {
+    $html .= '<a href="#" id="slick-prev" class="slick-prev slick-arrow" aria-label="Previous">' . $icon . '</a>' . "\n";
+  }
+  $html .= '<div class="pagingInfo">' . sprintf('%02d', $paged) . ' • ' . sprintf('%02d', $max) . '</div>';
+  if ($paged < $max) {
+    $html .= '<a rel="dofollow" href="' . esc_url($link($paged + 1)) . '" data-page="' . ($paged + 1) . '" id="slick-next" class="slick-next slick-arrow" aria-label="Next">' . $icon . '</a>' . "\n";
+  } else {
+    $html .= '<a href="#" id="slick-next" class="slick-next slick-arrow" aria-label="Next">' . $icon . '</a>' . "\n";
+  }
+  $html .= '</div>' . "\n";
+
+  return $html;
+}
+
 function searchFilter($query)
 {
   if ($query->is_search) {
@@ -431,11 +467,11 @@ add_action('wp_ajax_nopriv_get_load_more', 'get_load_more');
 function get_load_cases() {
   check_ajax_referer('nonce', 'nonce');
 
-  $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+  $paged = isset($_POST['paged']) ? max(1, intval($_POST['paged'])) : 1;
   $ajaxpostsArgs = array(
     'post_type' => $_POST['type'],
     'order' => 'DESC',
-    'posts_per_page' => -1,
+    'posts_per_page' => 3,
     'post_status' => 'publish',
     'paged' => $paged,
   );
@@ -485,22 +521,20 @@ function get_load_cases() {
 
   $ajaxposts = new WP_Query($ajaxpostsArgs);
   $maxpages = $ajaxposts->max_num_pages;
-  $response = '';
-  $result = [];
-  $pag = '';
-
+  ob_start();
   if($ajaxposts->have_posts()) {
     while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-      //echo $t++;
-      $response .= get_template_part('template-parts/posts/content', 'cases');
-      
+      get_template_part('template-parts/posts/content', 'cases');
     endwhile;
-    $pag = US_paging_nav($ajaxposts, $paged, $maxpages);
+    wp_reset_postdata();
   } else {
-    $response = '<p class="no-results">Nenhum case encontrado.</p>';
+    echo '<p class="no-results">Nenhum case encontrado.</p>';
   }
-  echo $response;
-  exit;
+
+  wp_send_json(array(
+    'html'       => ob_get_clean(),
+    'pagination' => US_cases_paging_nav($paged, $maxpages),
+  ));
 }
 add_action('wp_ajax_get_load_cases', 'get_load_cases');
 add_action('wp_ajax_nopriv_get_load_cases', 'get_load_cases');

@@ -431,6 +431,7 @@
           left: 0;
           width: 100%;
           height: 100%;
+          z-index: 1;
           opacity: 0;
           cursor: pointer;
         }
@@ -756,7 +757,7 @@
 
 @include breakpoint2($min: xs, $max: sm) {
   .hero-case {
-    padding: get-vw-sm(46px) 0 get-vw-sm(82px) 0;
+    padding: get-vw-sm(100px) 0 get-vw-sm(82px) 0;
     .text {
       width: 100%;
       .tag {
@@ -974,7 +975,7 @@
 
 @include breakpoint2($min: "", $max: xs) {
   .hero-case {
-    padding: get-vw-xs(46px) 0 get-vw-xs(82px) 0;
+    padding: get-vw-xs(100px) 0 get-vw-xs(82px) 0;
     .text {
       width: 100%;
       .tag {

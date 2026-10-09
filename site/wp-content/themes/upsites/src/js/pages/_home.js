@@ -749,7 +749,14 @@ export default function () {
   let casesSearchTimer = null;
   let casesLastSearch = '';
 
-  function loadCases() {
+  // URL da primeira página da listagem (remove o /page/N/ da paginação)
+  function casesFirstPageURL() {
+    return window.location.pathname.replace(/page\/\d+\/?$/, '') + window.location.search;
+  }
+
+  // Carrega os cases via AJAX (filtros + busca + página) e atualiza a paginação
+  function loadCases(page) {
+    page = parseInt(page, 10) || 1;
     let arrcats = [];
     jQuery( ".menu-filter-box .box ul li input:checked" ).each(function( index ) {
       arrcats.push({tax: jQuery( this ).data('tax'), value: jQuery( this ).val()});
@@ -763,16 +770,28 @@ export default function () {
     casesRequest = $.ajax({
       url: usAjax.ajaxurl,
       type: "POST",
+      dataType: 'json',
       data: {
         action: "get_load_cases",
         nonce: usAjax.nonce,
         type: 'cases',
         tax: JSON.stringify(arrcats),
-        search: casesLastSearch
+        search: casesLastSearch,
+        paged: page
       },
       success: function (result) {
-        jQuery('.cases .list-cases').html(result);
+        jQuery('.cases .list-cases').html(result.html);
         jQuery('.cases .paginations').remove();
+        jQuery('.cases .list-cases').after(result.pagination);
+
+        // Sem filtro/busca o URL acompanha a página; com filtro fica na primeira página
+        let url = casesFirstPageURL();
+        if (page > 1 && !arrcats.length && !casesLastSearch) {
+          url = url.replace(/\/?(\?|$)/, '/page/' + page + '/$1');
+        }
+        if (url !== window.location.pathname + window.location.search) {
+          window.history.replaceState(null, '', url);
+        }
       },
       complete: function (xhr, status) {
         if (status !== 'abort') {
@@ -783,6 +802,15 @@ export default function () {
     });
   }
 
+  jQuery(document).on("click", ".cases .paginations-cases a", function (event) {
+    const page = jQuery(this).data('page');
+    if (page) {
+      loadCases(page);
+      jQuery('html, body').animate({ scrollTop: jQuery('.cases').offset().top - 100 }, 400);
+    }
+    return false;
+  });
+
   jQuery(document).on("click", ".menu-filter-box .footer button", function (event) {
     const path = pathURL.templateurl;
     jQuery('.cases .filters .list-filters').html('');
@@ -791,7 +819,17 @@ export default function () {
       jQuery('.cases .filters .list-filters').append(html);
     });
 
-    loadCases();
+    // Filtrar sempre volta para a primeira página
+    loadCases(1);
+    return false;
+  });
+
+  // Cancelar: limpa os filtros e volta para a primeira página
+  jQuery(document).on("click", ".menu-filter-box .footer a", function (event) {
+    jQuery('.menu-filter-box .box ul li input:checked').prop('checked', false);
+    jQuery('.cases .filters .list-filters').html('');
+    jQuery('body').removeClass('menu-filter-open');
+    loadCases(1);
     return false;
   });
 

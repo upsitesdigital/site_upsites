@@ -11,11 +11,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+$title   = get_field('title_otherpages') ? get_field('title_otherpages') : 'TAMBÉM CRIAMOS SITE PARA:';
+$linkbtn = get_field('linkbtn_otherpages') ? get_field('linkbtn_otherpages') : get_permalink( get_page_by_path( 'criacao-sites-segmentos' ) );
+$textbtn = get_field('textbtn_otherpages') ? get_field('textbtn_otherpages') : 'Ver todos';
+$list    = get_field('list_otherpages');
+
 ?>
 
 <section class="other-pages">
 	<div class="container">
-		<h2>TAMBÉM CRIAMOS SITE PARA:</h2>
+		<h2><?= $title ?></h2>
 		<div class="box-slide-page pageSlide">
 			<?php
 				$relargs = array(
@@ -28,11 +33,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'update_post_meta_cache' => false,
 					'cache_results'          => false
 				);
-				$relposts = new WP_Query($relargs);
-				$ids = array(19737, 19735, 19971, 20917);
-				if(is_home() or is_page_template( 'template-pages/home.php' ) or is_page_template( 'template-pages/home-old.php' ) or is_page_template( 'template-pages/home-new.php' )) {
-					$relargs['post__in'] = array(19737, 19735, 19971, 20917);
+				if($list) {
+					$relargs['post__in'] = $list;
+					$relargs['orderby']  = 'post__in';
 				}
+				$relposts = new WP_Query($relargs);
 				while ($relposts->have_posts()) : $relposts->the_post();
 			?>
 					<a href="<?= get_the_permalink() ?>" class="item">
@@ -47,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 		</div>
 		<div class="center" style="text-align: center;">
-			<a href="<?= get_permalink( get_page_by_path( 'criacao-sites-segmentos' ) ) ?>" class="btnBudgets">Ver todos</a>
+			<a href="<?= $linkbtn ?>" class="btnBudgets"><?= $textbtn ?></a>
 		</div>
 	</div>
 </section>

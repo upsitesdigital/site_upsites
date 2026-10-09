@@ -6,7 +6,7 @@ get_header();
 ?>
 
   <!-- main -->
-  <main id="main" class="ptop-50">
+  <main id="main">
     
     <section class="hero-case">
       <div class="container">
@@ -42,8 +42,8 @@ get_header();
             $postargs = array(
               'post_type' 						 => 'cases',
               'order'                  => 'DESC',
-              'posts_per_page'         => -1,
-              //'paged' 								 => $paged,
+              'posts_per_page'         => 3,
+              'paged' 								 => $paged,
               'post_status'            => 'publish',
             );
             $postcat = new WP_Query($postargs);
@@ -54,7 +54,7 @@ get_header();
             wp_reset_postdata();
           ?>
         </div>
-        <?php // US_paging_nav($postcat, $paged, $maxpages); ?>
+        <?= US_cases_paging_nav($paged, $maxpages, get_permalink()); ?>
       </div>
     </section>
 
@@ -166,7 +166,7 @@ get_header();
         </div>
       </div>
       <div class="footer">
-        <button>FILTRA</button>
+        <button>FILTRAR</button>
         <a href="#">CANCELAR</a>
       </div>
     </div>

@@ -276,6 +276,12 @@ get_header();
                   <span><?php the_field('subtitle_case') ?></span>
                   <h3><?php the_title() ?></h3>
                   <p><?php the_field('text_case') ?></p>
+                  <div class="btn-case">
+                    VER CASE
+                    <svg class="icon arrowSlide">
+                      <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrowSlide"></use>
+                    </svg>
+                  </div>
                 </div>
               </a>
             <?php endwhile; wp_reset_postdata(); ?>
