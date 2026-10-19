@@ -65,6 +65,9 @@ html {
           height: 20px;
           fill: transparent;
           transform: rotate(90deg);
+          &.norotate {
+            transform: rotate(180deg);
+          }
         }
       }
     }

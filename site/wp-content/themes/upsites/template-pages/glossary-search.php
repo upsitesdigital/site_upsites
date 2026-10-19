@@ -31,9 +31,9 @@ if (isset($_GET['search'])) {
             <span class="subtitle"><?= get_field('subtitle_glossary'); ?></span>
             <h1 class="title"><?= get_field('title_glossary'); ?></h1>
             <p><?= get_field('text_glossary'); ?></p>
-            <a href="#glossary" class="btn">
-              Confira todos os termos
-              <svg class="icon"><use xlink:href="<?= get_bloginfo("template_url") ?>/assets/img/icons.svg#arrowSlide"></use></svg>
+            <a href="<?= get_permalink($id_glossario) ?>#glossary" class="btn">
+              <svg class="icon norotate"><use xlink:href="<?= get_bloginfo("template_url") ?>/assets/img/icons.svg#arrowSlide"></use></svg>
+              Voltar ao glossário completo
             </a>
           </div>
           <div class="box-search">
@@ -50,14 +50,6 @@ if (isset($_GET['search'])) {
     </section>
 
     <section id="glossary" class="glossary">
-      <div class="container">
-        <div class="filter">
-          <div class="btns">
-            <a href="<?= get_permalink($id_glossario) ?>#glossary" class="btn">por letras</a>
-            <a href="<?= get_permalink($id_glossary_theme) ?>#glossary" class="btn">por temas</a>
-          </div>
-        </div>
-      </div>
       <div class="container">
         <?php 
           
