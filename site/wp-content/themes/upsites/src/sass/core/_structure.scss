@@ -782,13 +782,13 @@ header#header-mobile {
         li {
           width: 100%;
           margin: 0;
-          padding: 7px 0;
-          @include animate($time: 0.3s);
+          padding: 0;
           a {
             position: relative;
-            padding: 0 20px;
-            max-width: 366px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 7px max(20px, calc((100% - 326px) / 2));
             font-family: Inter;
             color: rgba(89, 96, 139, 1);
             font-size: 16px;
@@ -797,6 +797,7 @@ header#header-mobile {
             gap: 23px;
             @include animate($time: 0.3s);
             .box-icon {
+              flex-shrink: 0;
               width: 46px;
               height: 46px;
               border-radius: 50%;
@@ -812,60 +813,87 @@ header#header-mobile {
                 stroke: rgba(89, 96, 139, 1);
                 @include animate($time: 0.3s);
               }
-            }
-            .fa {
-              position: absolute;
-              top: 13px;
-              right: 8px;
-              font-size: 19px;
-              color: rgba(89, 96, 139, 1);
-              @include animate($time: 0.3s);
-            }
-          }
-          &:nth-child(1),
-          &:nth-child(4),
-          &:nth-child(6),
-          &:nth-child(8),
-          &:nth-child(9) {
-            a {
-              .box-icon {
+              &.fill {
                 .icon {
                   fill: rgba(89, 96, 139, 1);
                   stroke: transparent;
                 }
               }
             }
+            .label {
+              padding: 0 30px 0 0;
+            }
+            .fa {
+              position: absolute;
+              top: 50%;
+              right: max(8px, calc((100% - 366px) / 2 + 8px));
+              width: 40px;
+              height: 40px;
+              margin: -20px -12px 0 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 19px;
+              color: rgba(89, 96, 139, 1);
+              @include animate($time: 0.3s);
+            }
           }
-          &.current-menu-item,
-          &:hover {
+          &.current-menu-item > a,
+          > a:hover {
             background-color: rgba(215, 239, 234, 1);
-            a {
-              color: $color-green;
-              .box-icon {
-                border: 1px solid $color-green;
+            color: $color-green;
+            .box-icon {
+              border: 1px solid $color-green;
+              .icon {
+                fill: transparent;
+                stroke: $color-green;
+              }
+              &.fill {
                 .icon {
-                  fill: transparent;
-                  stroke: $color-green;
+                  fill: $color-green;
+                  stroke: transparent;
                 }
               }
-              .fa {
-                color: $color-green;
-              }
             }
-            &:nth-child(1),
-            &:nth-child(4),
-            &:nth-child(6),
-            &:nth-child(8),
-            &:nth-child(9) {
+            .fa {
+              color: $color-green;
+            }
+          }
+          &.current-menu-ancestor > a,
+          &.current-menu-parent > a {
+            color: $color-green;
+          }
+          &.open > a .fa-angle-down {
+            transform: rotate(180deg);
+          }
+          .sub-menu {
+            display: none;
+            max-width: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            li {
               a {
+                padding-left: calc(max(20px, calc((100% - 326px) / 2)) + 30px);
+                font-size: 15px;
+                line-height: 15px;
+                gap: 18px;
                 .box-icon {
+                  width: 40px;
+                  height: 40px;
                   .icon {
-                    fill: $color-green;
-                    stroke: transparent;
+                    width: 18px;
+                    height: 18px;
                   }
                 }
+                .fa {
+                  font-size: 17px;
+                }
               }
             }
+          }
+          &.open > .sub-menu {
+            display: block;
           }
         }
       }
@@ -1324,6 +1352,7 @@ main {
 // end main
 // footer
 footer {
+  overflow: hidden;
   .grid {
     @include columns($quant: 37.3% 18.5% 21.6% 22.6%, $gutter: 0, $align: start, $template: "");
     padding-bottom: 45px;

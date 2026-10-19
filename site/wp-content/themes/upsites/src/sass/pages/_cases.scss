@@ -378,12 +378,12 @@
   @include animate($time: 0.3s);
   width: 100%;
   max-width: 428px;
-  height: 100vh;
+  height: 100%;
   background-color: #ffffff;
   position: fixed;
   top: 0;
   right: -500px;
-  z-index: 100;
+  z-index: 110;
   .scroll {
     padding: 26px 38px 50px 38px;
     height: calc(100vh - 90px);
@@ -757,7 +757,7 @@
 
 @include breakpoint2($min: xs, $max: sm) {
   .hero-case {
-    padding: get-vw-sm(100px) 0 get-vw-sm(82px) 0;
+    padding: get-vw-sm(160px) 0 get-vw-sm(82px) 0 !important;
     .text {
       width: 100%;
       .tag {
@@ -921,7 +921,7 @@
     right: get-vw-sm(-500px);
     .scroll {
       padding: get-vw-sm(26px) get-vw-sm(38px) get-vw-sm(50px) get-vw-sm(38px);
-      height: calc(100vh - 7.5vw);
+      height: calc(100% - 90px);
     }
     .header {
       h3 {
@@ -954,7 +954,7 @@
     .footer {
       box-shadow: 0 get-vw-sm(4px) get-vw-sm(60px) 0 #0000001a;
       width: get-vw-sm(428px);
-      height: get-vw-sm(90px);
+      height: 90px;
       gap: get-vw-sm(10px);
       padding: 0 get-vw-sm(38px) 0 get-vw-sm(38px);
       button {
@@ -975,7 +975,7 @@
 
 @include breakpoint2($min: "", $max: xs) {
   .hero-case {
-    padding: get-vw-xs(100px) 0 get-vw-xs(82px) 0;
+    padding: get-vw-xs(160px) 0 get-vw-xs(82px) 0 !important;
     .text {
       width: 100%;
       .tag {
@@ -1140,7 +1140,7 @@
     right: get-vw-xs(-500px);
     .scroll {
       padding: get-vw-xs(26px) get-vw-xs(38px) get-vw-xs(50px) get-vw-xs(38px);
-      height: calc(100vh - 7.5vw);
+      height: calc(100% - 90px);
     }
     .header {
       h3 {
@@ -1173,7 +1173,7 @@
     .footer {
       box-shadow: 0 get-vw-xs(4px) get-vw-xs(60px) 0 #0000001a;
       width: get-vw-xs(428px);
-      height: get-vw-xs(90px);
+      height: 90px;
       gap: get-vw-xs(10px);
       padding: 0 get-vw-xs(38px) 0 get-vw-xs(38px);
       button {

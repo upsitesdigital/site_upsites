@@ -42,7 +42,7 @@ get_header();
             $postargs = array(
               'post_type' 						 => 'cases',
               'order'                  => 'DESC',
-              'posts_per_page'         => 3,
+              'posts_per_page'         => US_CASES_PER_PAGE,
               'paged' 								 => $paged,
               'post_status'            => 'publish',
             );

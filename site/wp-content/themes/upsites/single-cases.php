@@ -53,8 +53,8 @@ $mail = get_theme_mod('US_mail');
             <div class="box">
               <div class="images">
                 <div class="beforeAfter">
-                  <?= wp_get_attachment_image(get_field('imagebefore_casesevolution'), 'full', '', array( "loading" => "lazy" )) ?>
-                  <?= wp_get_attachment_image(get_field('imageafter_casesevolution'), 'full', '', array( "loading" => "lazy" )) ?>
+                  <?= wp_get_attachment_image(get_field('imagebefore_casesevolution'), 'full', '', array( "loading" => "lazy", "data-no-lazy" => "1" )) ?>
+                  <?= wp_get_attachment_image(get_field('imageafter_casesevolution'), 'full', '', array( "loading" => "lazy", "data-no-lazy" => "1" )) ?>
                 </div>
                 <!-- div class="div"></div -->
               </div>

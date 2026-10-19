@@ -104,6 +104,8 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 				if(is_page_template( 'template-pages/signature-site.php' ) or is_tax( 'categories_templates' )) {
 					$nenu = 'menusignaturesite';
 				}
+				// O menu mobile usa o mesmo menu do desktop
+				$menu_location = (isset($nenu) && has_nav_menu($nenu)) ? $nenu : 'menu';
 				if (has_nav_menu($nenu)) {
 					$itemsWrap = '<ul id="%1$s" class="%2$s">%3$s</ul>';
 					wp_nav_menu(
@@ -274,8 +276,8 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 					$itemsWrap = '<ul id="%1$s" class="%2$s">%3$s</ul>';
 					wp_nav_menu(
 						array(
-							'theme_location'       => 'menumobile',
-							'menu'                 => 'menu-mobile',
+							'theme_location'       => $menu_location,
+							'menu'                 => '',
 							'container'            => 'ul',
 							'container_class'      => 'menu',
 							'container_id'         => '',
@@ -287,7 +289,7 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 							'before'               => '',
 							'after'                => '',
 							'link_before'          => '',
-							'link_after'           => '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+							'link_after'           => '',
 							'items_wrap'           => $itemsWrap,
 							'item_spacing'         => 'preserve',
 							'depth'                => 0,

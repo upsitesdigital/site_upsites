@@ -464,6 +464,50 @@ add_action('wp_ajax_nopriv_get_load_more', 'get_load_more');
 
 
 
+// Quantidade de cases por página (listagem inicial em cases.php e paginação AJAX)
+define('US_CASES_PER_PAGE', 6);
+
+/**
+ * IDs dos cases que casam com a busca: título/conteúdo, nome de tipo de site,
+ * nicho ou tecnologia, e os campos do card (subtitle_case / text_case).
+ */
+function US_search_cases_ids($search)
+{
+  global $wpdb;
+
+  // Título e conteúdo (busca padrão do WP)
+  $ids = get_posts(array(
+    'post_type'      => 'cases',
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'fields'         => 'ids',
+    's'              => $search,
+  ));
+
+  // Nome dos termos: tipo de site, nicho e tecnologia
+  $terms = get_terms(array(
+    'taxonomy'   => array('types_cases', 'categories_cases', 'technologies_cases'),
+    'name__like' => $search,
+    'hide_empty' => true,
+    'fields'     => 'ids',
+  ));
+  if (!is_wp_error($terms) && !empty($terms)) {
+    $ids = array_merge($ids, get_objects_in_term($terms, array('types_cases', 'categories_cases', 'technologies_cases')));
+  }
+
+  // Campos ACF exibidos no card
+  $like = '%' . $wpdb->esc_like($search) . '%';
+  $ids = array_merge($ids, $wpdb->get_col($wpdb->prepare(
+    "SELECT DISTINCT post_id FROM {$wpdb->postmeta} WHERE meta_key IN ('subtitle_case', 'text_case') AND meta_value LIKE %s",
+    $like
+  )));
+
+  $ids = array_unique(array_map('intval', $ids));
+
+  // post__in vazio retornaria todos os posts
+  return !empty($ids) ? $ids : array(0);
+}
+
 function get_load_cases() {
   check_ajax_referer('nonce', 'nonce');
 
@@ -471,13 +515,13 @@ function get_load_cases() {
   $ajaxpostsArgs = array(
     'post_type' => $_POST['type'],
     'order' => 'DESC',
-    'posts_per_page' => 3,
+    'posts_per_page' => US_CASES_PER_PAGE,
     'post_status' => 'publish',
     'paged' => $paged,
   );
   $search = isset($_POST['search']) ? sanitize_text_field(wp_unslash($_POST['search'])) : '';
   if ($search !== '') {
-    $ajaxpostsArgs['s'] = $search;
+    $ajaxpostsArgs['post__in'] = US_search_cases_ids($search);
   }
   $arraytax = json_decode(stripslashes($_POST['tax']));
   $types_cases = [];
@@ -661,6 +705,43 @@ add_action('wp_head', function () {
 class WPDocs_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
+	 * Ícones do sprite (assets/img/icons.svg) por slug do título do item.
+	 * Usado quando o item de menu não tem um ícone definido na descrição.
+	 */
+	private $icons = array(
+		'home'               => 'home',
+		'inicio'             => 'home',
+		'servicos'           => 'fullCustom',
+		'portfolio'          => 'portfolio',
+		'portifolio'         => 'portfolio',
+		'cases-de-sucesso'   => 'star-port',
+		'cases-de-sucessos'  => 'star-port',
+		'cases'              => 'star-port',
+		'clientes'           => 'star-port',
+		'precos'             => 'coin',
+		'orcamento'          => 'ray',
+		'orcamentos'         => 'ray',
+		'blog'               => 'blog',
+		'como-funciona'      => 'site-sobmedida',
+		'site-sob-medida'    => 'site-sobmedida',
+		'site-sobmedida'     => 'site-sobmedida',
+		'site-wordpress'     => 'device-desktop',
+		'site-expresso'      => 'site-expresso',
+		'loja-virtual'       => 'loja-virtual',
+		'consultoria-de-seo' => 'trafego-organico',
+		'trafego-organico'   => 'trafego-organico',
+		'chatbot'            => 'chatbot',
+		'criacao-de-chatbot' => 'chatbot',
+		'software-house'     => 'software-house',
+		'aviso-de-cookies'   => 'cookie',
+	);
+
+	/**
+	 * Ícones desenhados com preenchimento (os demais usam contorno).
+	 */
+	private $fill_icons = array( 'home', 'blog', 'chatbot', 'loja-virtual', 'ray', 'star-port' );
+
+	/**
 	 * Starts the list before the elements are added.
 	 *
 	 * Adds classes to the unordered list sub-menus.
@@ -697,7 +778,6 @@ class WPDocs_Walker_Nav_Menu extends Walker_Nav_Menu {
 	 * @param int    $id     Current item ID.
 	 */
 	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
-		global $wp_query;
 		$indent = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' ); // code indent
 
 		// Depth-dependent classes.
@@ -712,24 +792,51 @@ class WPDocs_Walker_Nav_Menu extends Walker_Nav_Menu {
 		// Passed classes.
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
+		$has_children = in_array( 'menu-item-has-children', $classes );
+		$is_open = $has_children && ( in_array( 'current-menu-ancestor', $classes ) || in_array( 'current-menu-parent', $classes ) );
 
 		// Build HTML.
-		$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . '">';
+		$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $depth_class_names . ' ' . $class_names . ( $is_open ? ' open' : '' ) . '">';
 
 		// Link attributes.
 		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
 		$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : ' href="#"';
 		$attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
-    $description = ! empty( $item->description ) ? esc_attr( $item->description ) : 'home';
+		if ( $has_children ) {
+			$attributes .= ' aria-expanded="' . ( $is_open ? 'true' : 'false' ) . '"';
+		}
+
+		$title = apply_filters( 'the_title', $item->title, $item->ID );
+
+		// O menu desktop é cadastrado em caixa alta; no mobile o texto fica em caixa normal
+		if ( $title === mb_strtoupper( $title, 'UTF-8' ) ) {
+			$title = mb_strtolower( $title, 'UTF-8' );
+			$title = mb_strtoupper( mb_substr( $title, 0, 1, 'UTF-8' ), 'UTF-8' ) . mb_substr( $title, 1, null, 'UTF-8' );
+			$title = preg_replace( array( '/\bseo\b/iu', '/\bwordpress\b/iu' ), array( 'SEO', 'WordPress' ), $title );
+		}
+
+		// Ícone: descrição do item (ex.: "site-expresso") ou, na falta dela, o slug do título.
+		$icon = trim( (string) $item->description );
+		if ( $icon === '' || preg_match( '/\s/', $icon ) ) {
+			$slug = sanitize_title( $title );
+			$icon = isset( $this->icons[ $slug ] ) ? $this->icons[ $slug ] : 'home';
+		}
+		$icon_class = in_array( $icon, $this->fill_icons ) ? 'box-icon fill' : 'box-icon';
+
+		$arrow = $has_children ? '<i class="fa fa-angle-down" aria-hidden="true"></i>' : '<i class="fa fa-angle-right" aria-hidden="true"></i>';
+
 		// Build HTML output and pass through the proper filter.
-		$item_output = sprintf( '%1$s<a%2$s><div class="box-icon"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#'.$description.'"></use></svg></div>%3$s%4$s%5$s</a>%6$s',
+		$item_output = sprintf( '%1$s<a%2$s><div class="%3$s"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#%4$s"></use></svg></div><span class="label">%5$s%6$s%7$s</span>%8$s</a>%9$s',
 			$args->before,
 			$attributes,
+			$icon_class,
+			esc_attr( $icon ),
 			$args->link_before,
-			apply_filters( 'the_title', $item->title, $item->ID ),
+			$title,
 			$args->link_after,
+			$arrow,
 			$args->after
 		);
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

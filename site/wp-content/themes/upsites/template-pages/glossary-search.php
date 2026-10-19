@@ -4,7 +4,7 @@ Template Name: Glossary search
 */
 get_header();
 
-$id_glossario = get_page_by_path( 'glossario' );
+$id_glossario = get_page_by_path( 'glossarios' );
 $id_glossary_theme = get_page_by_path( 'glossario-tema' );
 $id_glossary_search = get_page_by_path( 'glossario-search' );
 $termGlossaryargs = array(
@@ -50,7 +50,14 @@ if (isset($_GET['search'])) {
     </section>
 
     <section id="glossary" class="glossary">
-      
+      <div class="container">
+        <div class="filter">
+          <div class="btns">
+            <a href="<?= get_permalink($id_glossario) ?>#glossary" class="btn">por letras</a>
+            <a href="<?= get_permalink($id_glossary_theme) ?>#glossary" class="btn">por temas</a>
+          </div>
+        </div>
+      </div>
       <div class="container">
         <?php 
           

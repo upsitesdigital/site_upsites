@@ -85,10 +85,24 @@ export default function () {
 
   $(document).on(
     "click",
-    "header#header-mobile #menu-mobile .box-menu .menu-mobile li",
-    function () {
-      $("body").toggleClass("menu-open");
-      $("#open-menu").toggleClass("opened").attr("aria-expanded", "false");
+    "header#header-mobile #menu-mobile .box-menu .menu-mobile a",
+    function (e) {
+      const $this = $(this);
+      const $li = $this.parent("li");
+      const href = $this.attr("href");
+
+      // Item com submenu: o clique na seta (ou em link sem destino) abre/fecha o submenu
+      if (
+        $li.hasClass("menu-item-has-children") &&
+        ($(e.target).closest(".fa").length || !href || href === "#")
+      ) {
+        $li.toggleClass("open").children(".sub-menu").stop().slideToggle(300);
+        $this.attr("aria-expanded", $li.hasClass("open") ? "true" : "false");
+        return false;
+      }
+
+      $("body").removeClass("menu-open");
+      $("#open-menu").removeClass("opened").attr("aria-expanded", "false");
     }
   );
 
@@ -733,6 +747,18 @@ export default function () {
     var $body = $("body");
     $body.removeClass("menu-filter-open");
     return false;
+  });
+
+  // Fecha o menu de filtros ao clicar fora dele (ou com Esc)
+  jQuery(document).on("click", function (event) {
+    if (jQuery('body').hasClass('menu-filter-open') && !jQuery(event.target).closest('.menu-filter-box, .cases .filters .filter-btns .adjustments').length) {
+      jQuery('body').removeClass('menu-filter-open');
+    }
+  });
+  jQuery(document).on("keydown", function (event) {
+    if (event.key === 'Escape' && jQuery('body').hasClass('menu-filter-open')) {
+      jQuery('body').removeClass('menu-filter-open');
+    }
   });
 
   jQuery(document).on("click", ".cases .filters .list-filters a", function (event) {
