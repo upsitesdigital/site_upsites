@@ -249,6 +249,51 @@ function US_customizer_register($wp_customize)
   ));
   /* end:title_tagline */
 
+  /* US_section_general */
+  $wp_customize->add_section('US_section_general', array(
+    'title' => __('Topbar', 'upsites'),
+    'panel' => 'US_client_theme',
+  ));
+  $wp_customize->add_setting('US_bar_partners_disable', array(
+    'capability' => 'edit_theme_options',
+    'default' => false,
+    'sanitize_callback' => 'wp_validate_boolean',
+  ));
+  $wp_customize->add_control('US_bar_partners_disable', array(
+    'type' => 'checkbox',
+    'section' => 'US_section_general',
+    'label' => __('Desativar barra do topo', 'upsites'),
+  ));
+  $wp_customize->add_setting('US_bar_partners_title', array(
+    'capability' => 'edit_theme_options',
+    'default' => 'Seu site está perdendo clientes?',
+  ));
+  $wp_customize->add_control('US_bar_partners_title', array(
+    'type' => 'text',
+    'section' => 'US_section_general',
+    'label' => __('Barra do topo: texto em negrito', 'upsites'),
+  ));
+  $wp_customize->add_setting('US_bar_partners_text', array(
+    'capability' => 'edit_theme_options',
+    'default' => 'Receba uma análise de SEO gratuita!',
+  ));
+  $wp_customize->add_control('US_bar_partners_text', array(
+    'type' => 'text',
+    'section' => 'US_section_general',
+    'label' => __('Barra do topo: texto', 'upsites'),
+  ));
+  $wp_customize->add_setting('US_bar_partners_link', array(
+    'capability' => 'edit_theme_options',
+    'default' => 'https://seo.upsites.digital/',
+    'sanitize_callback' => 'esc_url_raw',
+  ));
+  $wp_customize->add_control('US_bar_partners_link', array(
+    'type' => 'url',
+    'section' => 'US_section_general',
+    'label' => __('Barra do topo: link', 'upsites'),
+  ));
+  /* end:US_section_general */
+
 }
 add_action('customize_register', 'US_customizer_register');
 

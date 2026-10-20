@@ -47,7 +47,9 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 <!-- header -->
  <?php 
  		if(
-			is_home() 
+			!get_theme_mod('US_bar_partners_disable', false)
+			and (
+			is_home()
 			or is_page_template( 'template-pages/home.php' ) 
 			or is_page_template( 'template-pages/home-old.php' ) 
 			or is_page_template( 'template-pages/home-new.php' )
@@ -56,12 +58,13 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 			or is_page_template( 'template-pages/blog.php' ) 
 			or is_archive( )
 			or is_single()
+			)
 		) {
-	 echo '<div id="bar-partners" class="<?= $bar_partners ?>">
+	 echo '<div id="bar-partners" class="' . esc_attr($bar_partners) . '">
 		 <div class="container">
-			 <a target="_blank" href="https://seo.upsites.digital/">
-				 <b>Seu site está perdendo clientes? </b>
-				 Receba uma análise de SEO gratuita!
+			 <a target="_blank" href="' . esc_url(get_theme_mod('US_bar_partners_link', 'https://seo.upsites.digital/')) . '">
+				 <b>' . esc_html(get_theme_mod('US_bar_partners_title', 'Seu site está perdendo clientes?')) . ' </b>
+				 ' . esc_html(get_theme_mod('US_bar_partners_text', 'Receba uma análise de SEO gratuita!')) . '
 				 <svg class="icon">
 					 <use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg?v=4#arrow-right"></use>
 				 </svg>
@@ -156,7 +159,7 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 					);
 				}; 
 				
-				if(is_user_logged_in()) {
+				/*if(is_user_logged_in() and function_exists('trp_custom_language_switcher')) {
 					if(!(is_page_template( 'template-pages/blog.php' ) or is_category())) {
 						echo '<div class="lang">';
 							$current_language = get_locale();
@@ -185,7 +188,7 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 							} 
 						echo '</div>';
 					}
-				}
+				}*/
 				?>
 			</div>
 			<div class="item phone">
@@ -220,7 +223,7 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 		</li>
 		<li>
 			<?php 
-				if(is_user_logged_in()) {
+				if(is_user_logged_in() and function_exists('trp_custom_language_switcher')) {
 					if(!(is_page_template( 'template-pages/blog.php' ) or is_category())) {
 						echo '<div class="lang">';
 							$current_language = get_locale();
