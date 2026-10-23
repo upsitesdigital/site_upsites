@@ -221,7 +221,7 @@ $link_popup    		      = get_theme_mod('US_link_popup');
         ?>
         <?php
           if ($link_privacy_policy != '') {
-            echo '<a rel="nofollow" href="' . $link_privacy_policy  . '">Política de privacidade</a>';
+            echo '<a href="' . $link_privacy_policy  . '">Política de privacidade</a>';
           }
         ?>
       </div>

@@ -48,7 +48,7 @@ get_header();
                   echo '<div class="form" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s">' . do_shortcode(get_field('form_tophome')) . '</div>';
                 }
                 if(get_field('texto_botao_tophome')) {
-                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s"><a rel="nofollow" target="_blank" href="' . get_field('link_botao_tophome') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tophome') . '</a></div>';
+                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s"><a rel="dofollow" target="_blank" href="' . get_field('link_botao_tophome') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tophome') . '</a></div>';
                 } ?>
                 <div class="clients ptop-20 pbottom-0" style="min-height: auto; max-width: 1128px;">
                 
@@ -270,7 +270,7 @@ get_header();
         ?>
           <div class="grid-cases">
             <?php while ($caseposts->have_posts()) : $caseposts->the_post(); ?>
-              <a rel="dofollow" href="<?php the_permalink() ?>" class="item">
+              <a href="<?php the_permalink() ?>" class="item">
                 <div class="image"><?= wp_get_attachment_image(get_post_thumbnail_id(), 'full', '', array( "loading" => "lazy" )) ?></div>
                 <div class="content">
                   <span><?php the_field('subtitle_case') ?></span>
@@ -289,7 +289,7 @@ get_header();
         <?php } ?>
         <?php if(get_field('textbtn_casehome')) { ?>
           <div class="center">
-            <a rel="dofollow" href="<?= get_field('linkbtn_casehome') ? get_field('linkbtn_casehome') : get_permalink( get_page_by_path( 'cases-de-sucessos' ) ) ?>" class="btnBudgets"><?= get_field('textbtn_casehome') ?></a>
+            <a href="<?= get_field('linkbtn_casehome') ? get_field('linkbtn_casehome') : get_permalink( get_page_by_path( 'cases-de-sucessos' ) ) ?>" class="btnBudgets"><?= get_field('textbtn_casehome') ?></a>
           </div>
         <?php } ?>
       </div>

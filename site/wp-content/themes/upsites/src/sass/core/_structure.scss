@@ -82,17 +82,17 @@ body::-webkit-scrollbar-thumb {
     font-size: 15px;
     line-height: 119%;
     text-transform: uppercase;
-    color: #00ffcb;
+    color: #fec604;
     gap: 8px;
     padding: 13px 0 10px 0;
     &::before {
       content: "";
-      width: 81px;
+      width: 53px;
       height: 40px;
       position: absolute;
-      left: 0;
+      left: 26px;
       bottom: 0;
-      background: url(../img/bar-partners-right.svg) top left no-repeat;
+      background: url(../img/upsites-sites-profissionais-geo.svg) top left no-repeat;
       background-size: contain;
     }
     &::after {
@@ -115,6 +115,11 @@ body::-webkit-scrollbar-thumb {
       fill: transparent;
       width: 24px;
       height: 24px;
+      fill: transparent;
+      stroke: #fec604;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
   }
   &.white {
@@ -138,8 +143,9 @@ body::-webkit-scrollbar-thumb {
       gap: get-vw-lg(8px);
       padding: get-vw-lg(13px) 0 get-vw-lg(10px) 0;
       &::before {
-        width: get-vw-lg(81px);
+        width: get-vw-lg(53px);
         height: get-vw-lg(40px);
+        left: get-vw-lg(25px);
       }
       &::after {
         width: get-vw-lg(81px);

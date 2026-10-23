@@ -465,7 +465,7 @@ add_action('wp_ajax_nopriv_get_load_more', 'get_load_more');
 
 
 // Quantidade de cases por página (listagem inicial em cases.php e paginação AJAX)
-define('US_CASES_PER_PAGE', 6);
+define('US_CASES_PER_PAGE', 12);
 
 /**
  * IDs dos cases que casam com a busca: título/conteúdo, nome de tipo de site,
@@ -1124,12 +1124,12 @@ function trpc_flags_path($original_flags_path, $language_code)
 }
 
 
-add_filter('rank_math/frontend/robots', function ($robots) {
+/*add_filter('rank_math/frontend/robots', function ($robots) {
   if (is_page_template( 'template-pages/budgets.php' )) {
-    return ['noindex', 'nofollow'];
+    return ['index' => 'noindex', 'follow' => 'follow'];
   }
   return $robots;
-});
+});*/
 
 
 add_filter( 'user_contactmethods', function( $methods ) {

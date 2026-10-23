@@ -66,7 +66,7 @@ $link_pinterest         = get_theme_mod('US_link_pinterest');
 				 <b>' . esc_html(get_theme_mod('US_bar_partners_title', 'Seu site está perdendo clientes?')) . ' </b>
 				 ' . esc_html(get_theme_mod('US_bar_partners_text', 'Receba uma análise de SEO gratuita!')) . '
 				 <svg class="icon">
-					 <use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg?v=4#arrow-right"></use>
+					 <use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg?v=5#arrow-right-yellow"></use>
 				 </svg>
 			 </a>
 		 </div>
