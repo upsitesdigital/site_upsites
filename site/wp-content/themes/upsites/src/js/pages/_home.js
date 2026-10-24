@@ -85,19 +85,26 @@ export default function () {
 
   $(document).on(
     "click",
-    "header#header-mobile #menu-mobile .box-menu .menu-mobile a",
-    function (e) {
+    "header#header-mobile #menu-mobile .box-menu .menu-mobile .submenu-toggle, header#header-mobile #menu-mobile .box-menu .menu-mobile a",
+    function () {
       const $this = $(this);
       const $li = $this.parent("li");
       const href = $this.attr("href");
 
-      // Item com submenu: o clique na seta (ou em link sem destino) abre/fecha o submenu
+      // Toggle do submenu (ou link sem destino de um item com submenu): abre/fecha o submenu
       if (
         $li.hasClass("menu-item-has-children") &&
-        ($(e.target).closest(".fa").length || !href || href === "#")
+        ($this.hasClass("submenu-toggle") || !href || href === "#")
       ) {
-        $li.toggleClass("open").children(".sub-menu").stop().slideToggle(300);
-        $this.attr("aria-expanded", $li.hasClass("open") ? "true" : "false");
+        const $sub = $li.children(".sub-menu").stop(true, true);
+        if ($li.hasClass("open")) {
+          $sub.slideUp(300, () => $li.removeClass("open"));
+          $li.children(".submenu-toggle").attr("aria-expanded", "false");
+        } else {
+          $li.addClass("open");
+          $sub.hide().slideDown(300, () => $sub.css("display", ""));
+          $li.children(".submenu-toggle").attr("aria-expanded", "true");
+        }
         return false;
       }
 

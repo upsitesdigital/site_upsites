@@ -786,6 +786,8 @@ header#header-mobile {
         display: block;
         padding: 0;
         li {
+          display: block;
+          position: relative;
           width: 100%;
           margin: 0;
           padding: 0;
@@ -793,6 +795,7 @@ header#header-mobile {
             position: relative;
             width: 100%;
             max-width: 100%;
+            min-height: 60px;
             margin: 0;
             padding: 7px max(20px, calc((100% - 326px) / 2));
             font-family: Inter;
@@ -815,15 +818,17 @@ header#header-mobile {
               .icon {
                 width: 20px;
                 height: 20px;
+                object-fit: contain;
+                @include animate($time: 0.3s);
+              }
+              &.sprite .icon {
                 fill: transparent;
                 stroke: rgba(89, 96, 139, 1);
                 @include animate($time: 0.3s);
               }
-              &.fill {
-                .icon {
-                  fill: rgba(89, 96, 139, 1);
-                  stroke: transparent;
-                }
+              &.sprite.fill .icon {
+                fill: rgba(89, 96, 139, 1);
+                stroke: transparent;
               }
             }
             .label {
@@ -850,15 +855,15 @@ header#header-mobile {
             color: $color-green;
             .box-icon {
               border: 1px solid $color-green;
-              .icon {
-                fill: transparent;
+              &:not(.sprite) .icon {
+                filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(130deg) brightness(95%) contrast(101%);
+              }
+              &.sprite .icon {
                 stroke: $color-green;
               }
-              &.fill {
-                .icon {
-                  fill: $color-green;
-                  stroke: transparent;
-                }
+              &.sprite.fill .icon {
+                fill: $color-green;
+                stroke: transparent;
               }
             }
             .fa {
@@ -869,8 +874,42 @@ header#header-mobile {
           &.current-menu-parent > a {
             color: $color-green;
           }
-          &.open > a .fa-angle-down {
-            transform: rotate(180deg);
+          &.menu-item-has-children > a .label {
+            padding: 0 50px 0 0;
+          }
+          .submenu-toggle {
+            position: absolute;
+            top: 10px;
+            right: 0;
+            @media (min-width: 367px) {
+              right: calc((100% - 366px) / 2);
+            }
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            cursor: pointer;
+            z-index: 1;
+            .fa {
+              width: 32px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 19px;
+              color: rgba(89, 96, 139, 1);
+              @include animate($time: 0.3s);
+            }
+          }
+          > .submenu-toggle[aria-expanded="true"] .fa,
+          &.current-menu-ancestor > .submenu-toggle .fa {
+            color: $color-green;
+          }
+          > .submenu-toggle[aria-expanded="true"] .fa {
+            transform: rotate(90deg);
           }
           .sub-menu {
             display: none;
@@ -881,16 +920,13 @@ header#header-mobile {
             li {
               a {
                 padding-left: calc(max(20px, calc((100% - 326px) / 2)) + 30px);
+                min-height: 54px;
                 font-size: 15px;
                 line-height: 15px;
                 gap: 18px;
                 .box-icon {
                   width: 40px;
                   height: 40px;
-                  .icon {
-                    width: 18px;
-                    height: 18px;
-                  }
                 }
                 .fa {
                   font-size: 17px;

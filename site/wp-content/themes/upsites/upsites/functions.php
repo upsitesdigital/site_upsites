@@ -705,43 +705,6 @@ add_action('wp_head', function () {
 class WPDocs_Walker_Nav_Menu extends Walker_Nav_Menu {
 
 	/**
-	 * Ícones do sprite (assets/img/icons.svg) por slug do título do item.
-	 * Usado quando o item de menu não tem um ícone definido na descrição.
-	 */
-	private $icons = array(
-		'home'               => 'home',
-		'inicio'             => 'home',
-		'servicos'           => 'fullCustom',
-		'portfolio'          => 'portfolio',
-		'portifolio'         => 'portfolio',
-		'cases-de-sucesso'   => 'star-port',
-		'cases-de-sucessos'  => 'star-port',
-		'cases'              => 'star-port',
-		'clientes'           => 'star-port',
-		'precos'             => 'coin',
-		'orcamento'          => 'ray',
-		'orcamentos'         => 'ray',
-		'blog'               => 'blog',
-		'como-funciona'      => 'site-sobmedida',
-		'site-sob-medida'    => 'site-sobmedida',
-		'site-sobmedida'     => 'site-sobmedida',
-		'site-wordpress'     => 'device-desktop',
-		'site-expresso'      => 'site-expresso',
-		'loja-virtual'       => 'loja-virtual',
-		'consultoria-de-seo' => 'trafego-organico',
-		'trafego-organico'   => 'trafego-organico',
-		'chatbot'            => 'chatbot',
-		'criacao-de-chatbot' => 'chatbot',
-		'software-house'     => 'software-house',
-		'aviso-de-cookies'   => 'cookie',
-	);
-
-	/**
-	 * Ícones desenhados com preenchimento (os demais usam contorno).
-	 */
-	private $fill_icons = array( 'home', 'blog', 'chatbot', 'loja-virtual', 'ray', 'star-port' );
-
-	/**
 	 * Starts the list before the elements are added.
 	 *
 	 * Adds classes to the unordered list sub-menus.
@@ -804,9 +767,6 @@ class WPDocs_Walker_Nav_Menu extends Walker_Nav_Menu {
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : ' href="#"';
 		$attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
-		if ( $has_children ) {
-			$attributes .= ' aria-expanded="' . ( $is_open ? 'true' : 'false' ) . '"';
-		}
 
 		$title = apply_filters( 'the_title', $item->title, $item->ID );
 
@@ -817,26 +777,32 @@ class WPDocs_Walker_Nav_Menu extends Walker_Nav_Menu {
 			$title = preg_replace( array( '/\bseo\b/iu', '/\bwordpress\b/iu' ), array( 'SEO', 'WordPress' ), $title );
 		}
 
-		// Ícone: descrição do item (ex.: "site-expresso") ou, na falta dela, o slug do título.
-		$icon = trim( (string) $item->description );
-		if ( $icon === '' || preg_match( '/\s/', $icon ) ) {
-			$slug = sanitize_title( $title );
-			$icon = isset( $this->icons[ $slug ] ) ? $this->icons[ $slug ] : 'home';
+		// Ícone cadastrado no item de menu (Aparência > Menus, campo ACF "Ícone (menu mobile)")
+		$icon = function_exists( 'get_field' ) ? get_field( 'menu_icon_image', $item->ID ) : '';
+		$icon_html = '';
+		$icon_url = $icon ? wp_get_attachment_image_url( $icon, 'full' ) : '';
+		if ( $icon_url ) {
+			$icon_html = '<div class="box-icon"><img class="icon" src="' . esc_url( $icon_url ) . '" width="20" height="20" alt="" loading="lazy"></div>';
+		} elseif ( preg_match( '/^[\w-]+$/', trim( (string) $item->description ) ) ) {
+			// Sem imagem cadastrada: usa o ícone do sprite indicado na descrição do item (formato antigo)
+			$sprite_fill = in_array( trim( $item->description ), array( 'home', 'blog', 'chatbot', 'loja-virtual', 'ray', 'star-port' ) ) ? ' fill' : '';
+			$icon_html = '<div class="box-icon sprite' . $sprite_fill . '"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#' . esc_attr( trim( $item->description ) ) . '"></use></svg></div>';
 		}
-		$icon_class = in_array( $icon, $this->fill_icons ) ? 'box-icon fill' : 'box-icon';
 
-		$arrow = $has_children ? '<i class="fa fa-angle-down" aria-hidden="true"></i>' : '<i class="fa fa-angle-right" aria-hidden="true"></i>';
+		// Item com submenu ganha um botão de toggle próprio, fora do link
+		$arrow = $has_children ? '' : '<i class="fa fa-angle-right" aria-hidden="true"></i>';
+		$toggle = $has_children ? '<button type="button" class="submenu-toggle" aria-expanded="' . ( $is_open ? 'true' : 'false' ) . '" aria-label="' . esc_attr( 'Abrir submenu ' . wp_strip_all_tags( $title ) ) . '"><i class="fa fa-angle-right" aria-hidden="true"></i></button>' : '';
 
 		// Build HTML output and pass through the proper filter.
-		$item_output = sprintf( '%1$s<a%2$s><div class="%3$s"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#%4$s"></use></svg></div><span class="label">%5$s%6$s%7$s</span>%8$s</a>%9$s',
+		$item_output = sprintf( '%1$s<a%2$s>%3$s<span class="label">%4$s%5$s%6$s</span>%7$s</a>%8$s%9$s',
 			$args->before,
 			$attributes,
-			$icon_class,
-			esc_attr( $icon ),
+			$icon_html,
 			$args->link_before,
 			$title,
 			$args->link_after,
 			$arrow,
+			$toggle,
 			$args->after
 		);
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

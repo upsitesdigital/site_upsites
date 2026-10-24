@@ -18138,4 +18138,53 @@ if (function_exists('acf_add_local_field_group')) :
     'description' => '',
     'show_in_rest' => 1, // Libera os campos na REST API
   ));
+  // Ícone do item de menu (exibido no menu mobile)
+  acf_add_local_field_group(array(
+    'key' => 'group_6a1b3c2e4d5f6',
+    'title' => 'Item de menu',
+    'fields' => array(
+      array(
+        'key' => 'field_6a1b3c2e4d5f8',
+        'label' => 'Ícone (menu mobile)',
+        'name' => 'menu_icon_image',
+        'type' => 'image',
+        'instructions' => 'Imagem de 20x20px (SVG ou PNG) exibida ao lado do item no menu mobile.',
+        'required' => 0,
+        'conditional_logic' => 0,
+        'wrapper' => array(
+          'width' => '',
+          'class' => '',
+          'id' => '',
+        ),
+        'return_format' => 'id',
+        'preview_size' => 'thumbnail',
+        'library' => 'all',
+        'min_width' => '',
+        'min_height' => '',
+        'min_size' => '',
+        'max_width' => '',
+        'max_height' => '',
+        'max_size' => '',
+        'mime_types' => 'svg, png, webp, jpg, jpeg',
+      ),
+    ),
+    'location' => array(
+      array(
+        array(
+          'param' => 'nav_menu_item',
+          'operator' => '==',
+          'value' => 'all',
+        ),
+      ),
+    ),
+    'menu_order' => 0,
+    'position' => 'normal',
+    'style' => 'default',
+    'label_placement' => 'top',
+    'instruction_placement' => 'label',
+    'hide_on_screen' => '',
+    'active' => true,
+    'description' => '',
+    'show_in_rest' => 1,
+  ));
 endif;
