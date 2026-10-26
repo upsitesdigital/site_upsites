@@ -48,7 +48,7 @@ get_header();
                   echo '<div class="form" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s">' . do_shortcode(get_field('form_tophome')) . '</div>';
                 }
                 if(get_field('texto_botao_tophome')) {
-                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s"><a rel="nofollow" target="_blank" href="' . get_field('link_botao_tophome') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tophome') . '</a></div>';
+                  echo '<div data-scroll-reveal="enter bottom move 50px over 0.6s after 0.5s"><a rel="dofollow" target="_blank" href="' . get_field('link_botao_tophome') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_tophome') . '</a></div>';
                 }
                 if(get_field('texto_botao_veja_mais_tophome')) {
                   $anchor = strpos(get_field('link_botao_veja_mais_tophome'), '#') === false ? 'more' : 'more anchor' ;
@@ -272,7 +272,7 @@ get_header();
                   echo '<h3 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('texto_func') . '</h3>';
                 }
                 if(get_field('texto_botao_func')) {
-                  echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="nofollow" target="'.get_field('target_type_func').'" href="' . get_field('link_botao_func') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_func') . '</a>';
+                  echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" target="'.get_field('target_type_func').'" href="' . get_field('link_botao_func') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_func') . '</a>';
                 }
               ?>
             </div>
@@ -354,7 +354,7 @@ get_header();
             </div>
             <?php
             if(get_field('texto_botao_fullcontrol')) {
-                echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="nofollow" target="'.get_field('target_type_fullcontrol').'" href="' . get_field('link_botao_fullcontrol') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_fullcontrol') . '</a>';
+                echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" target="'.get_field('target_type_fullcontrol').'" href="' . get_field('link_botao_fullcontrol') . '" class="btnBudgets"><svg class="icon"><use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use></svg> ' . get_field('texto_botao_fullcontrol') . '</a>';
               }
             ?>
           </div>

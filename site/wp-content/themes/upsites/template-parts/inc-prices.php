@@ -55,7 +55,7 @@ $term = array_key_exists('type',$args) ? $args['type'] : 'tree-cols';
 									endwhile;
 									echo '</ul>';
 								endif;
-								echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0.1s" target="_blank" rel="nofollow" href="' . get_sub_field('link_botao') . '" class="btnBudgets mbottom-0">
+								echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0.1s" target="_blank" rel="dofollow" href="' . get_sub_field('link_botao') . '" class="btnBudgets mbottom-0">
 									<svg class="icon">
 										<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use>
 									</svg> ' . get_sub_field('texto_botao') . '
@@ -125,7 +125,7 @@ $term = array_key_exists('type',$args) ? $args['type'] : 'tree-cols';
 									endwhile;
 									echo '</ul>';
 								endif;
-								echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0.1s" rel="nofollow" target="_blank" href="' . get_sub_field('link_botao') . '" class="btnBudgets mbottom-0">
+								echo '<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0.1s" rel="dofollow" target="_blank" href="' . get_sub_field('link_botao') . '" class="btnBudgets mbottom-0">
 									<svg class="icon">
 										<use xlink:href="' . get_template_directory_uri() . '/assets/img/icons.svg#ray"></use>
 									</svg> ' . get_sub_field('texto_botao') . '

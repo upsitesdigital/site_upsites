@@ -192,8 +192,7 @@ $mail = get_theme_mod('US_mail');
         <div class="container relative">
           <?php if( have_rows('slidetopmobile_casesgallery') ): ?>
             <div class="slide-top" >
-              <?php while( have_rows('slidetopmobile_casesgallery') ): the_row(); 
-              var_dump(get_sub_field('image'));
+              <?php while( have_rows('slidetopmobile_casesgallery') ): the_row();
               ?>
                 <a data-fancybox="gallery" href="<?= wp_get_attachment_image_url(get_sub_field('image'), 'full') ?>"><?= wp_get_attachment_image(get_sub_field('image'), 'full', '', array( )) ?></a>
               <?php endwhile; ?>

@@ -22,7 +22,7 @@ $mail = get_theme_mod('US_mail');
           <h3>Você já se perguntou quanto custa ter um site para o seu negócio? </h3>
           <p>Entendemos a importância de um site de qualidade e acessível para todos.<br>
           Descubra agora uma estimativa de preço para contratar um site profissional.</p>
-            <a rel="nofollow" target="_blank" href="https://upsites.digital/orcamentos/?origin=banner-post-<?=  get_post_field( 'post_name', get_the_ID() ) ?>" class="btnBudgets">
+            <a rel="dofollow" target="_blank" href="https://upsites.digital/orcamentos/?origin=banner-post-<?=  get_post_field( 'post_name', get_the_ID() ) ?>" class="btnBudgets">
               <svg class="icon"><use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#coins"></use></svg> 
               Calcule o valor do site
             </a>

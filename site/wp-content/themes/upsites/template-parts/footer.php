@@ -238,7 +238,7 @@ $link_popup    		      = get_theme_mod('US_link_popup');
         </a>
       </li>
       <li>
-        <a rel="nofollow" target="_blank" href="<?= $link_budgets ?>?origin=footer-mobile">
+        <a rel="dofollow" target="_blank" href="<?= $link_budgets ?>?origin=footer-mobile">
           <div class="box">
             <svg class="icon">
             <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#ray"></use>
