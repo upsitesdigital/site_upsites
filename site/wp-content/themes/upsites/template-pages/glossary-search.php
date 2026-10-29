@@ -4,8 +4,8 @@ Template Name: Glossary search
 */
 get_header();
 
-$id_glossario = get_page_by_path( 'glossarios' );
-$id_glossary_theme = get_page_by_path( 'glossario-tema' );
+$id_glossario = get_page_by_path( 'glossario' );
+$id_glossary_theme = get_page_by_path( 'glossary-theme' );
 $id_glossary_search = get_page_by_path( 'glossario-search' );
 $termGlossaryargs = array(
   'hierarchical' => 1,

@@ -8,7 +8,7 @@
   //background: url(../img/hero-case.png) bottom center no-repeat;
   background-color: #f8f8fc;
   .grid-hero {
-    @include columns($quant: 1fr 354px, $gutter: 192px, $align: end, $template: "");
+    @include columns($quant: 1fr 429px, $gutter: 117px, $align: end, $template: "");
     .text {
       width: 560px;
       margin: 0 auto;
@@ -122,84 +122,70 @@
       }
     }
     .box-link {
-      .box {
-        display: flex;
-        align-items: start;
-        justify-content: center;
-        flex-direction: column;
-        background-color: #ffffff;
-        border-radius: 16px;
-        width: 100%;
-        height: 230px;
-        padding: 0 70px;
-        position: relative;
-        h3 {
-          font-family: $font-main;
-          font-style: normal;
-          font-weight: 900;
-          font-size: 18px;
-          line-height: 120%;
-          text-transform: uppercase;
-          color: #1a1f47;
-          margin-bottom: 20px;
+      position: relative;
+      .image {
+        position: absolute;
+        right: 0;
+        top: -76px;
+        width: 171px;
+        height: 87px;
+        img {
+          width: 100%;
+          height: auto;
         }
-        p.likes {
-          font-family: $font-main;
-          font-style: normal;
-          font-weight: 700;
-          font-size: 12px;
-          line-height: 120%;
-          text-transform: uppercase;
-          color: #9b9b9b;
-          margin-bottom: 20px;
-        }
-        .btn {
-          @include animate($time: 0.3s);
-          font-family: $font-main;
-          font-style: normal;
-          font-weight: 600;
-          font-size: 18px;
-          line-height: 100%;
-          color: $color-white;
-          background-color: $color-green;
-          border: 2px solid $color-green;
-          padding: 21px 65px 21px 69px;
-          border-radius: 60px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
+      }
+      .box-reviewed {
+        background: #fff;
+        filter: drop-shadow(0 30px 45px rgba(0, 0, 114, 0.2));
+        border-radius: 12px;
+        padding: 24px;
+        @include columns($quant: 69px 1fr, $gutter: 22px, $align: start, $template: "");
+        .box-avatar {
+          width: 69px;
+          height: 69px;
+          border-radius: 8px;
           overflow: hidden;
-          .icon {
-            width: 24px;
-            height: 24px;
-            fill: transparent;
-            stroke: white;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            @include inline-block($align: middle);
-            @include animate($time: 0.3s);
-          }
-          &:hover {
-            color: $color-green;
-            background-color: transparent;
-            .icon {
-              transform: scale(1.5);
-              stroke: $color-green;
-              animation: icon 0.3s cubic-bezier(0.17, 0.49, 0.96, 0.76) 1;
-            }
-          }
-        }
-        .image {
-          position: absolute;
-          top: -76px;
-          right: 0;
-          width: 171px;
-          height: 87px;
           img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .box-content {
+          .reviewed-icon {
+            display: flex;
+            align-items: center;
+            font-family: $font-main;
+            font-weight: 500;
+            color: $color-navy;
+            text-transform: uppercase;
+            gap: 8px;
+            font-size: 12px;
+            line-height: 14.52px;
+          }
+          .reviewer-name {
+            font-family: $font-main;
+            font-weight: 900;
+            color: $color-navy;
+            font-size: 18px;
+            line-height: 21.78px;
+            padding: 10px 0 19px 0;
+          }
+          p:not(.reviewer-name) {
+            font-family: $font-main;
+            font-weight: 400;
+            color: #726977;
+            font-size: 14px;
+            line-height: 19.6px;
+            padding: 0 0 17px 0;
+          }
+          a {
+            font-family: $font-main;
+            font-weight: 600;
+            color: $color-green;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 19.6px;
           }
         }
       }
@@ -255,6 +241,14 @@
         line-height: 160%;
         color: #726977;
         padding-bottom: 24px;
+        b,
+        strong {
+          font-weight: 700;
+        }
+        i,
+        em {
+          font-style: italic;
+        }
       }
       ol {
         padding-bottom: 24px;
@@ -268,6 +262,10 @@
           line-height: 160%;
           color: #726977;
           padding: 4px 0;
+          b,
+          strong {
+            font-weight: 700;
+          }
         }
       }
       ul {
@@ -282,6 +280,10 @@
           line-height: 160%;
           color: #726977;
           padding: 4px 0;
+          b,
+          strong {
+            font-weight: 700;
+          }
         }
       }
       table {
@@ -726,7 +728,7 @@
     padding: get-vw-lg(76px) 0 get-vw-lg(93px) 0;
     background-color: #f8f8fc;
     .grid-hero {
-      @include columns($quant: 1fr get-vw-lg(354px), $gutter: get-vw-lg(192px), $align: end, $template: "");
+      @include columns($quant: 1fr get-vw-lg(429px), $gutter: get-vw-lg(117px), $align: end, $template: "");
       .text {
         width: get-vw-lg(560px);
         .breadcrumb {
@@ -758,37 +760,40 @@
         }
       }
       .box-link {
-        .box {
-          border-radius: get-vw-lg(16px);
-          height: get-vw-lg(230px);
-          padding: 0 get-vw-lg(70px);
-          h3 {
-            font-size: get-vw-lg(18px);
-            margin-bottom: get-vw-lg(20px);
+        .image {
+          top: get-vw-lg(-76px);
+          width: get-vw-lg(171px);
+          height: get-vw-lg(87px);
+        }
+        .box-reviewed {
+          border-radius: get-vw-lg(12px);
+          padding: get-vw-lg(24px);
+          @include columns($quant: get-vw-lg(69px) 1fr, $gutter: get-vw-lg(22px), $align: start, $template: "");
+          .box-avatar {
+            width: get-vw-lg(69px);
+            height: get-vw-lg(69px);
+            border-radius: get-vw-lg(8px);
           }
-          p.likes {
-            font-size: get-vw-lg(12px);
-            margin-bottom: get-vw-lg(20px);
-          }
-          .btn {
-            font-size: get-vw-lg(18px);
-            border: get-vw-lg(2px) solid $color-green;
-            padding: get-vw-lg(21px) get-vw-lg(65px) get-vw-lg(21px) get-vw-lg(69px);
-            border-radius: get-vw-lg(60px);
-            gap: get-vw-lg(10px);
-            .icon {
-              width: get-vw-lg(24px);
-              height: get-vw-lg(24px);
+          .box-content {
+            .reviewed-icon {
+              gap: get-vw-lg(8px);
+              font-size: get-vw-lg(12px);
+              line-height: get-vw-lg(14.52px);
             }
-            &:hover {
-              .icon {
-              }
+            .reviewer-name {
+              font-size: get-vw-lg(18px);
+              line-height: get-vw-lg(21.78px);
+              padding: get-vw-lg(10px) 0 get-vw-lg(19px) 0;
             }
-          }
-          .image {
-            top: get-vw-lg(-76px);
-            width: get-vw-lg(171px);
-            height: get-vw-lg(87px);
+            p:not(.reviewer-name) {
+              font-size: get-vw-lg(14px);
+              line-height: get-vw-lg(19.6px);
+              padding: 0 0 get-vw-lg(17px) 0;
+            }
+            a {
+              font-size: get-vw-lg(14px);
+              line-height: get-vw-lg(19.6px);
+            }
           }
         }
       }
@@ -1040,37 +1045,40 @@
         }
       }
       .box-link {
-        .box {
-          border-radius: get-vw-sm(16px);
-          height: get-vw-sm(230px);
-          padding: 0 get-vw-sm(70px);
-          h3 {
-            font-size: get-vw-sm(18px);
-            margin-bottom: get-vw-sm(20px);
+        .image {
+          top: get-vw-sm(-76px);
+          width: get-vw-sm(171px);
+          height: get-vw-sm(87px);
+        }
+        .box-reviewed {
+          border-radius: get-vw-sm(12px);
+          padding: get-vw-sm(24px);
+          @include columns($quant: get-vw-sm(69px) 1fr, $gutter: get-vw-sm(22px), $align: start, $template: "");
+          .box-avatar {
+            width: get-vw-sm(69px);
+            height: get-vw-sm(69px);
+            border-radius: get-vw-sm(8px);
           }
-          p.likes {
-            font-size: get-vw-sm(12px);
-            margin-bottom: get-vw-sm(20px);
-          }
-          .btn {
-            font-size: get-vw-sm(18px);
-            border: get-vw-sm(2px) solid $color-green;
-            padding: get-vw-sm(21px) get-vw-sm(65px) get-vw-sm(21px) get-vw-sm(69px);
-            border-radius: get-vw-sm(60px);
-            gap: get-vw-sm(10px);
-            .icon {
-              width: get-vw-sm(24px);
-              height: get-vw-sm(24px);
+          .box-content {
+            .reviewed-icon {
+              gap: get-vw-sm(8px);
+              font-size: get-vw-sm(12px);
+              line-height: get-vw-sm(14.52px);
             }
-            &:hover {
-              .icon {
-              }
+            .reviewer-name {
+              font-size: get-vw-sm(18px);
+              line-height: get-vw-sm(21.78px);
+              padding: get-vw-sm(10px) 0 get-vw-sm(19px) 0;
             }
-          }
-          .image {
-            top: get-vw-sm(-76px);
-            width: get-vw-sm(171px);
-            height: get-vw-sm(87px);
+            p:not(.reviewer-name) {
+              font-size: get-vw-sm(14px);
+              line-height: get-vw-sm(19.6px);
+              padding: 0 0 get-vw-sm(17px) 0;
+            }
+            a {
+              font-size: get-vw-sm(14px);
+              line-height: get-vw-sm(19.6px);
+            }
           }
         }
       }
@@ -1317,37 +1325,40 @@
         }
       }
       .box-link {
-        .box {
-          border-radius: get-vw-xs(16px);
-          height: get-vw-xs(230px);
-          padding: 0 get-vw-xs(70px);
-          h3 {
-            font-size: get-vw-xs(18px);
-            margin-bottom: get-vw-xs(20px);
+        .image {
+          top: get-vw-xs(-76px);
+          width: get-vw-xs(171px);
+          height: get-vw-xs(87px);
+        }
+        .box-reviewed {
+          border-radius: get-vw-xs(12px);
+          padding: get-vw-xs(24px);
+          @include columns($quant: get-vw-xs(69px) 1fr, $gutter: get-vw-xs(22px), $align: start, $template: "");
+          .box-avatar {
+            width: get-vw-xs(69px);
+            height: get-vw-xs(69px);
+            border-radius: get-vw-xs(8px);
           }
-          p.likes {
-            font-size: get-vw-xs(12px);
-            margin-bottom: get-vw-xs(20px);
-          }
-          .btn {
-            font-size: get-vw-xs(18px);
-            border: get-vw-xs(2px) solid $color-green;
-            padding: get-vw-xs(21px) get-vw-xs(65px) get-vw-xs(21px) get-vw-xs(69px);
-            border-radius: get-vw-xs(60px);
-            gap: get-vw-xs(10px);
-            .icon {
-              width: get-vw-xs(24px);
-              height: get-vw-xs(24px);
+          .box-content {
+            .reviewed-icon {
+              gap: get-vw-xs(8px);
+              font-size: get-vw-xs(12px);
+              line-height: get-vw-xs(14.52px);
             }
-            &:hover {
-              .icon {
-              }
+            .reviewer-name {
+              font-size: get-vw-xs(18px);
+              line-height: get-vw-xs(21.78px);
+              padding: get-vw-xs(10px) 0 get-vw-xs(19px) 0;
             }
-          }
-          .image {
-            top: get-vw-xs(-76px);
-            width: get-vw-xs(171px);
-            height: get-vw-xs(87px);
+            p:not(.reviewer-name) {
+              font-size: get-vw-xs(14px);
+              line-height: get-vw-xs(19.6px);
+              padding: 0 0 get-vw-xs(17px) 0;
+            }
+            a {
+              font-size: get-vw-xs(14px);
+              line-height: get-vw-xs(19.6px);
+            }
           }
         }
       }

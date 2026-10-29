@@ -167,7 +167,7 @@ add_action('wp_enqueue_scripts', function () {
     } else {
       wp_enqueue_style('cases', "{$assets_src}/css/cases.min.css", [], $version, 'screen');
     }
-  } else if (is_page_template( 'template-pages/glossary.php' ) or is_page_template( 'template-pages/glossary-theme.php' ) or is_page_template( 'template-pages/glossary-search.php' )) {
+  } else if (is_page_template( 'template-pages/glossary.php' )) {
     if (strpos(get_bloginfo('url'), 'local.wp4') !== false or strpos(get_bloginfo('url'), 'localhost') !== false) {
       wp_enqueue_style('glossary', "{$assets_src}/css/glossary.css", [], $version, 'all');
     } else {
@@ -1131,3 +1131,36 @@ function get_load_like() {
 }
 add_action('wp_ajax_get_load_like', 'get_load_like');
 add_action('wp_ajax_nopriv_get_load_like', 'get_load_like');
+
+// página do glossário achada pelo template, pois o slug muda entre ambientes (glossario / glossarios)
+function US_glossary_page() {
+  static $page = null;
+  if ($page === null) {
+    $pages = get_pages(array('meta_key' => '_wp_page_template', 'meta_value' => 'template-pages/glossary.php', 'number' => 1));
+    $page = $pages ? $pages[0] : false;
+  }
+  return $page;
+}
+
+// páginas antigas do glossário (por temas e busca) agora são modos do template glossary.php
+add_action('template_redirect', function () {
+  global $wp;
+  $slug = basename($wp->request);
+  if (!in_array($slug, array('glossary-theme', 'glossario-tema', 'glossario-search')) || !(is_page($slug) || is_404())) {
+    return;
+  }
+
+  if (!US_glossary_page()) {
+    return;
+  }
+  $url = get_permalink(US_glossary_page());
+  if ($slug == 'glossario-search') {
+    if (!empty($_GET['search'])) {
+      $url = add_query_arg('search', rawurlencode(wp_unslash($_GET['search'])), $url);
+    }
+  } else {
+    $url = add_query_arg('view', 'temas', $url);
+  }
+  wp_safe_redirect($url, 301);
+  exit;
+});

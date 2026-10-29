@@ -5,14 +5,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); 
-$id_glossario = get_page_by_path( 'glossarios' );
-$id_glossary_theme = get_page_by_path( 'glossario-tema' );
+$id_glossario = US_glossary_page();
+$url_glossario = get_permalink($id_glossario);
 
 US_set_post_views(get_the_ID());
 
 $mail = get_theme_mod('US_mail');
 $term = wp_get_post_terms(get_the_ID(), 'term-glossary',  array("fields" => "all"));
 $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "all"));
+// sem revisor escolhido, usa o autor do termo
+$reviewer = get_field('authors_reviewed');
+if (!$reviewer) {
+  $reviewer = array(
+    'ID' => $post->post_author,
+    'display_name' => get_the_author_meta('display_name', $post->post_author),
+  );
+}
+if ($reviewer) {
+  $avatar_reviewer = (get_user_meta($reviewer['ID'], 'us_imagem_avatar', true) != '') ? wp_get_attachment_image(get_user_meta($reviewer['ID'], 'us_imagem_avatar', true)) : get_avatar($reviewer['ID'], 120);
+}
 ?>
   <!-- main -->
   <main id="main">
@@ -22,11 +33,11 @@ $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "a
         <div class="grid-hero">
           <div class="text">
             <div class="breadcrumb">
-              <a href="<?= get_permalink($id_glossario) ?>">Glossário</a>
+              <a href="<?= $url_glossario ?>">Glossário</a>
               <div class="div"><svg class="icon"><use xlink:href="<?= get_bloginfo("template_url") ?>/assets/img/icons.svg#chevron2"></use></svg></div>
-              <a href="<?= get_permalink($id_glossario) . '#' . $term[0]->name  ?>"><?= $term[0]->name; ?></a>
+              <a href="<?= $url_glossario . '#' . $term[0]->name  ?>"><?= $term[0]->name; ?></a>
               <div class="div"><svg class="icon"><use xlink:href="<?= get_bloginfo("template_url") ?>/assets/img/icons.svg#chevron2"></use></svg></div>
-              <a href="<?= get_permalink($id_glossary_theme) ?>#<?= $theme[0]->name; ?>"><span><?= $theme[0]->name; ?></span></a>
+              <a href="<?= add_query_arg('view', 'temas', $url_glossario) ?>#<?= $theme[0]->name; ?>"><span><?= $theme[0]->name; ?></span></a>
             </div>
             <!-- <span class="subtitle">CATEGORIA</span> -->
             <h1 class="title"><?php the_title() ?></h1>
@@ -71,25 +82,18 @@ $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "a
             </div>
           </div>
           <div class="box-link">
-            <div class="box">
-              <?php if(get_field('titulobox_postglossary')) : ?>
-                <h3><?= get_field('titulobox_postglossary'); ?></h3>
-              <?php endif; ?>
-              <p class="likes"><span>
-                <?php 
-                  if(get_post_meta(get_the_ID(), 'US_post_like_count', true) == '') {
-                    echo '0';
-                    } else {
-                    echo get_post_meta(get_the_ID(), 'US_post_like_count', true);
-                  } 
-                ?>
-              </span> curtidas</p>
-              <a href="#" class="btn" data-id="<?= get_the_ID() ?>">
-                <svg class="icon"><use xlink:href="<?= get_bloginfo("template_url") ?>/assets/img/icons.svg#like"></use></svg>
-                Like
-              </a>
-              <div class="image"><img src="<?= get_bloginfo("template_url") ?>/assets/img/glossary-box-internal.png" alt=""></div>
+            <?php if ($reviewer) : ?>
+            <div class="box-reviewed">
+              <div class="box-avatar"><?= $avatar_reviewer ?></div>
+              <div class="box-content">
+                <span class="reviewed-icon"><img src="<?= get_template_directory_uri() ?>/assets/img/reviewed.svg" alt=""> revisado</span>
+                <p class="reviewer-name"><?= $reviewer['display_name']; ?></p>
+                <p><?= mb_strimwidth(get_the_author_meta('description', $reviewer['ID']), 0, 100, "...") ?></p>
+                <a href="<?= get_author_posts_url($reviewer['ID']) ?>">Ver perfil completo</a>
+              </div>
             </div>
+            <div class="image"><img src="<?= get_bloginfo("template_url") ?>/assets/img/glossary-box-internal.png" alt=""></div>
+            <?php endif; ?>
           </div>
         </div>
       </div>
@@ -109,7 +113,8 @@ $theme = wp_get_post_terms(get_the_ID(), 'theme-glossary',  array("fields" => "a
                   $args = array(
                     'post_type' 						 => 'glossary',
                     'post_status'            => 'publish',
-                    'posts_per_page' => 5,
+                    'posts_per_page'         => 5,
+                    'post__not_in'           => array(get_the_ID()),
                     'tax_query' => array(
                       array(
                         'taxonomy'  => 'theme-glossary',
