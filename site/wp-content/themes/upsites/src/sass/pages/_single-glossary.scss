@@ -196,7 +196,7 @@
 .internal-glossary {
   .grid-internal-glossary {
     padding: 55px 0 0 0;
-    @include columns($quant: calc(100% - 456px) 349px, $gutter: 107px, $align: stretch, $template: "");
+    @include columns($quant: calc(100% - 456px) 389px, $gutter: 67px, $align: stretch, $template: "");
     .text {
       width: 100%;
       padding: 21px 0 0 0;
@@ -804,8 +804,8 @@
     .grid-internal-glossary {
       padding: get-vw-lg(55px) 0 0 0;
       @include columns(
-        $quant: calc(100% - get-vw-lg(456px)) get-vw-lg(349px),
-        $gutter: get-vw-lg(107px),
+        $quant: calc(100% - get-vw-lg(456px)) get-vw-lg(389px),
+        $gutter: get-vw-lg(67px),
         $align: stretch,
         $template: ""
       );
@@ -1088,7 +1088,7 @@
   .internal-glossary {
     .grid-internal-glossary {
       padding: get-vw-sm(55px) 0 0 0;
-      @include columns($quant: 1fr, $gutter: get-vw-sm(107px), $align: stretch, $template: "");
+      @include columns($quant: 1fr, $gutter: get-vw-sm(52px), $align: stretch, $template: "");
       .text {
         padding: get-vw-sm(21px) 0 0 0;
         h1,
@@ -1368,7 +1368,7 @@
   .internal-glossary {
     .grid-internal-glossary {
       padding: get-vw-xs(55px) 0 0 0;
-      @include columns($quant: 1fr, $gutter: get-vw-xs(107px), $align: stretch, $template: "");
+      @include columns($quant: 1fr, $gutter: get-vw-xs(52px), $align: stretch, $template: "");
       .text {
         padding: get-vw-xs(21px) 0 0 0;
         h1,
