@@ -14,6 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
+	<script>
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-WBSP9BT');
+	</script>
 	<?php
 		// Inter/Montserrat agora self-hosted via core/_fonts.scss (compilado em
 		// structure.min.css) - sem Google Fonts, sem preconnect necessário.
@@ -425,5 +432,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   </style>
 </head>
 <body <?php body_class(); ?>>
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBSP9BT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <?php
 get_template_part( 'template-parts/header' );
