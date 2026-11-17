@@ -221,6 +221,11 @@ get_header();
         'text' => get_field('texto_clientsseo') ?: 'Veja alguns dos resultados incríveis de nossos clientes com a consultoria de SEO.',
         'testimonySlide' => get_field('exibir_depoimentos_clientsseo') ? NULL : 'false',
         'google' => get_field('exibir_google_clientsseo') ? NULL : 'false',
+        // grupo ACF "Textos fixos SEO"; o partial usa os textos atuais quando o campo está vazio
+        'ariaPrev' => get_field('aria_anterior_clients_textosseo'),
+        'ariaNext' => get_field('aria_proximo_clients_textosseo'),
+        'notaGoogle' => get_field('nota_google_textosseo'),
+        'altEstrela' => get_field('alt_estrela_textosseo'),
       );
       get_template_part( 'template-parts/inc','clients', $args ); ?>
     <!-- end:clients -->
@@ -240,12 +245,12 @@ get_header();
             endif;
           ?>
         </div>
-        <a rel="dofollow" href="#" class="prev" aria-label="Slide anterior">
+        <a rel="dofollow" href="#" class="prev" aria-label="<?= esc_attr(get_field('aria_anterior_slide_textosseo') ?: 'Slide anterior') ?>">
           <svg class="icon">
             <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrow"></use>
           </svg>
         </a>
-        <a rel="dofollow" href="#" class="next" aria-label="Próximo slide">
+        <a rel="dofollow" href="#" class="next" aria-label="<?= esc_attr(get_field('aria_proximo_slide_textosseo') ?: 'Próximo slide') ?>">
           <svg class="icon">
             <use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrow"></use>
           </svg>
@@ -359,8 +364,11 @@ get_header();
 
     <!-- faq -->
     <?php 
+    // campo de taxonomia pode vir como objeto ou ID; vazio usa a categoria "seo"
+    $faq_categoria = get_field('categoria_faq_textosseo');
+    $faq_categoria = $faq_categoria ? get_term($faq_categoria, 'categories_faqs') : null;
     $args = array(
-      'type' => 'seo',
+      'type' => ($faq_categoria && !is_wp_error($faq_categoria)) ? $faq_categoria->slug : 'seo',
     );
     get_template_part( 'template-parts/inc','faqs', $args ); ?>
     <!-- end:faq -->
@@ -400,6 +408,8 @@ get_header();
     <?php $args = array(
       'idpage' => get_the_ID(),
       'ids' => get_field('selecionar_posts'),
+      'textoBotao' => get_field('texto_botao_articles_textosseo'),
+      'ariaBotao' => get_field('aria_botao_articles_textosseo'),
     );
     get_template_part( 'template-parts/inc','articles',$args ); ?>
     <!-- end:featuredArticles -->

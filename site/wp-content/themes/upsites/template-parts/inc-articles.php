@@ -15,6 +15,8 @@ $idObj = get_page_by_path( 'home' );
 
 $idhome = array_key_exists('idpage', $args) ? $args['idpage'] : $idObj->ID;
 $ids = array_key_exists('ids', $args) ? $args['ids'] : '';
+$texto_botao = !empty($args['textoBotao']) ? $args['textoBotao'] : 'TODOS OS ARTIGOS';
+$aria_botao = !empty($args['ariaBotao']) ? $args['ariaBotao'] : 'Todos os posts do blog';
 ?>
 <?php if(get_field('desativar_seccao_articles') !== 'inativo') { ?>
 <section class="featuredArticles">
@@ -27,8 +29,8 @@ $ids = array_key_exists('ids', $args) ? $args['ids'] : '';
 				echo '<h2 data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">' . get_field('titulo_articles', $idhome) . '</h2>';
 			}
 		?>
-		<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" href="<?= get_permalink( get_page_by_path( 'blog' ) ) ?>" class="all" aria-label="Todos os posts do blog">
-			TODOS OS ARTIGOS
+		<a data-scroll-reveal="enter bottom move 50px over 0.6s after 0s" rel="dofollow" href="<?= get_permalink( get_page_by_path( 'blog' ) ) ?>" class="all" aria-label="<?= esc_attr($aria_botao) ?>">
+			<?= esc_html($texto_botao) ?>
 			<svg class="icon arrowSlide">
 				<use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrowSlide"></use>
 			</svg>

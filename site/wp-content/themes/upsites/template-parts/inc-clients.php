@@ -19,6 +19,13 @@ $text = array_key_exists('text',$args) ? $args['text'] : NULL;
 $testimony = array_key_exists('testimonySlide',$args) ? $args['testimonySlide'] : NULL;
 $clients = array_key_exists('clientSlide',$args) ? $args['clientSlide'] : NULL;
 $google = array_key_exists('google',$args) ? $args['google'] : NULL;
+$aria_prev = !empty($args['ariaPrev']) ? $args['ariaPrev'] : 'Previous';
+$aria_next = !empty($args['ariaNext']) ? $args['ariaNext'] : 'Next';
+$alt_estrela = !empty($args['altEstrela']) ? $args['altEstrela'] : 'star';
+// nota de 0 a 5; estrelas cheias + meia estrela se a fração for >= 0,5 (4,5 = layout original)
+$nota_google = (isset($args['notaGoogle']) && is_numeric($args['notaGoogle'])) ? max(0, min(5, (float) $args['notaGoogle'])) : 4.5;
+$estrelas_cheias = (int) floor($nota_google);
+$meia_estrela = ($nota_google - $estrelas_cheias) >= 0.5;
 ?>
 <?php if(get_field('desativar_seccao_clients') !== 'inativo') { ?>
 <section class="clients">
@@ -108,11 +115,11 @@ $google = array_key_exists('google',$args) ? $args['google'] : NULL;
 					?>
 				</div>
 				<div class="pagSlide" data-scroll-reveal="enter bottom move 50px over 0.6s after 0s">
-					<button id="slick-prev" class="slick-prev slick-arrow" aria-label="Previous" type="button"><svg class="icon">
+					<button id="slick-prev" class="slick-prev slick-arrow" aria-label="<?= esc_attr($aria_prev) ?>" type="button"><svg class="icon">
 							<use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrowSlide"></use>
 						</svg></button>
 					<div class="pagingInfo"></div>
-					<button id="slick-next" class="slick-next slick-arrow" aria-label="Next" type="button"><svg class="icon">
+					<button id="slick-next" class="slick-next slick-arrow" aria-label="<?= esc_attr($aria_next) ?>" type="button"><svg class="icon">
 							<use xlink:href="<?= get_template_directory_uri() ?>/assets/img/icons.svg#arrowSlide"></use>
 						</svg></button>
 				</div>
@@ -137,11 +144,12 @@ $google = array_key_exists('google',$args) ? $args['google'] : NULL;
 									echo '<span>' . get_field('text_banner_clients_g2', $idhome) . '</span>';
 								}
 							?>
-							<img class="star" src="<?= get_template_directory_uri() ?>/assets/img/full-star.svg" alt="star" width="17" height="16" />
-							<img class="star" src="<?= get_template_directory_uri() ?>/assets/img/full-star.svg" alt="star" width="17" height="16" />
-							<img class="star" src="<?= get_template_directory_uri() ?>/assets/img/full-star.svg" alt="star" width="17" height="16" />
-							<img class="star" src="<?= get_template_directory_uri() ?>/assets/img/full-star.svg" alt="star" width="17" height="16" />
-							<img class="star" src="<?= get_template_directory_uri() ?>/assets/img/half-star.svg" alt="star" width="17" height="16" />
+							<?php for ($i = 0; $i < $estrelas_cheias; $i++) { ?>
+							<img class="star" src="<?= get_template_directory_uri() ?>/assets/img/full-star.svg" alt="<?= esc_attr($alt_estrela) ?>" width="17" height="16" />
+							<?php } ?>
+							<?php if ($meia_estrela) { ?>
+							<img class="star" src="<?= get_template_directory_uri() ?>/assets/img/half-star.svg" alt="<?= esc_attr($alt_estrela) ?>" width="17" height="16" />
+							<?php } ?>
 						</div>
 						<?php 
 							if(get_field('text_banner_clients_g3', $idhome)) {
