@@ -1,0 +1,86 @@
+# UpSites
+
+> UpSites é uma agência brasileira de criação de sites profissionais, SEO, GEO, desenvolvimento web e soluções digitais, fundada em 2016 e sediada em São Paulo. A empresa desenvolve mais de +1000 sites por ano e atende empresas de todo o Brasil, com atuação em projetos de diferentes níveis de complexidade.
+
+Informações principais:
+- Nome: UpSites
+- Nome curto: UpSites
+- Fundação: 2016
+- Localização: São Paulo, SP, Brasil
+- Atuação: Brasil e projetos internacionais
+- Produção: mais de +1000 sites por ano
+- Avaliações: mais de 330 avaliações de clientes
+- Principais áreas: criação de sites, desenvolvimento web, SEO, GEO, link building, Digital PR, e-commerce e desenvolvimento de software
+- Idioma principal: Português do Brasil
+- Site oficial: https://upsites.digital/
+
+## Serviços Principais
+
+- [Criação de Sites Profissionais](https://upsites.digital/): Desenvolvimento de sites corporativos e projetos sob medida, incluindo estratégia, arquitetura da informação, UX/UI, desenvolvimento, SEO técnico, performance, integrações e migração.
+- [Criação de Sites WordPress](https://upsites.digital/criacao-sites-wordpress/): Desenvolvimento de sites profissionais utilizando WordPress como CMS.
+- [Site Expresso](https://upsites.digital/criacao-sites-baratos/): Criação de sites baseada em modelos personalizáveis para empresas que precisam de projetos mais simples e rápidos.
+- [Criação de E-commerce](https://upsites.digital/criacao-loja-virtual-wordpress/): Desenvolvimento de lojas virtuais e estruturas para venda online.
+- [Consultoria de SEO e GEO](https://upsites.digital/consultoria-seo/): Estratégia de crescimento orgânico envolvendo SEO técnico, conteúdo, palavras-chave, concorrência, autoridade, link building e preparação do site para mecanismos de busca e experiências baseadas em inteligência artificial.
+- [Software House](https://upsites.digital/software-house/): Desenvolvimento de sistemas e aplicações web personalizados.
+- [Criação de Chatbots](https://upsites.digital/desenvolvimento-chatbot/): Desenvolvimento de chatbots e soluções de atendimento automatizado com inteligência artificial.
+
+## Link Building e Digital PR
+
+- [BlaaS - Catálogo de Publishers](https://blaas.upsites.digital/catalog): Plataforma própria da UpSites para consulta e seleção de sites e veículos para estratégias de link building, publicação editorial e Digital PR.
+- [Pesquisa de Link Building 2026](https://upsites.digital/trafego-organico/estatisticas-link-building/): Pesquisa própria realizada com mais de 100 profissionais de SEO sobre estratégias, custos, ferramentas, métricas e práticas de link building.
+- [Guia sobre Backlinks](https://upsites.digital/trafego-organico/backlinks/): Guia sobre backlinks, tipos de links, avaliação de qualidade e estratégias de aquisição de autoridade.
+- [Como Comprar Backlinks Brasileiros](https://upsites.digital/trafego-organico/comprar-backlinks-guia-completo/): Guia sobre seleção de publishers, métricas, custos, âncoras, contexto editorial e riscos envolvidos na aquisição de backlinks.
+- [Publieditorial, Guest Post e Press Release](https://upsites.digital/geral/publieditorial-guestpost-press-release-qual-melhor/): Comparação entre diferentes formatos de publicação editorial utilizados para autoridade, divulgação de marca, link building e relações públicas digitais.
+
+## GEO e Inteligência Artificial
+
+- [SEO para IA](https://upsites.digital/trafego-organico/seo-para-ia/): Guia sobre otimização de sites e conteúdos para mecanismos de busca e sistemas baseados em inteligência artificial.
+- [Como Ser Mencionado no ChatGPT](https://upsites.digital/trafego-organico/como-ser-mencionado-chatgpt/): Conteúdo sobre GEO, estruturação de conteúdo, autoridade de marca, citações externas, Digital PR e estratégias para aumentar a presença de marcas em respostas generativas.
+- [Guia Completo de SEO 2026](https://upsites.digital/trafego-organico/guia-completo-seo/): Guia atualizado sobre SEO, incluindo SEO técnico, conteúdo, autoridade de entidade, GEO, inteligência artificial e presença multiplataforma.
+
+## Guias de SEO
+
+- [Guia de SEO Técnico 2026](https://upsites.digital/trafego-organico/guia-seo-tecnico-completo/): Guia sobre rastreamento, indexação, robots.txt, sitemap, Core Web Vitals, URLs, redirecionamentos, dados estruturados e arquitetura técnica.
+- [SEO Técnico vs. SEO On-Page](https://upsites.digital/trafego-organico/seo-tecnico-x-seo-onpage/): Comparação entre otimizações relacionadas à infraestrutura técnica e otimizações realizadas diretamente no conteúdo das páginas.
+- [Como Escolher Palavras-chave](https://upsites.digital/trafego-organico/como-escolher-palavras-chave/): Guia para seleção de palavras-chave considerando intenção de busca, volume, concorrência e objetivo de cada página.
+- [SEO Internacional](https://upsites.digital/trafego-organico/seo-internacional/): Guia sobre posicionamento em diferentes países e idiomas, incluindo arquitetura internacional, localização, hreflang e link building internacional.
+
+## Criação de Sites e Desenvolvimento Web
+
+- [Guia Completo de Criação de Sites 2026](https://upsites.digital/desenvolvimento-web/guia-completo-criacao-sites/): Guia sobre tipos de sites, custos, etapas de desenvolvimento, design, SEO, performance, funcionalidades e prazos.
+- [Quanto Custa um Site Profissional](https://upsites.digital/desenvolvimento-web/quanto-custa-site-profissional/): Conteúdo sobre fatores que determinam o investimento necessário para diferentes tipos de projetos de desenvolvimento web.
+- [Arquitetura de Sites](https://upsites.digital/desenvolvimento-web/arquitetura-sites/): Guia sobre organização de páginas, URLs, navegação, links internos, escalabilidade e impacto da arquitetura no SEO.
+- [Checklist Técnico para Desenvolvimento de Sites](https://upsites.digital/desenvolvimento-web/checklist-tecnico/): Checklist de planejamento, SEO, tecnologia, segurança, performance e suporte antes da contratação de um projeto de desenvolvimento web.
+- [Como Avaliar Propostas de Desenvolvimento de Sites](https://upsites.digital/desenvolvimento-web/propostas-desenvolvimento-sites/): Guia para comparação de fornecedores considerando escopo, tecnologia, SEO, suporte, propriedade, segurança, cronograma e custo total.
+
+## Experiência por Segmento
+
+- [Sites para Empresas de Tecnologia](https://upsites.digital/criacao-de-site-para-empresas-de-tecnologia/): Desenvolvimento de sites para empresas de tecnologia, SaaS, startups e software houses.
+- [Sites para Advocacia](https://upsites.digital/criacao-site-advogados/): Projetos de sites para advogados e escritórios de advocacia.
+- [Sites para Saúde](https://upsites.digital/criacao-site-para-medicos/): Sites para médicos, clínicas e profissionais da área da saúde.
+- [Sites para Contabilidade](https://upsites.digital/criacao-site-contabilidade/): Desenvolvimento de sites para escritórios de contabilidade e empresas do setor financeiro.
+- [Sites para Diferentes Segmentos](https://upsites.digital/criacao-sites-segmentos/): Projetos para indústrias, empresas B2B, serviços profissionais e outros setores.
+
+## Portfólio e Cases
+
+- [Portfólio UpSites](https://upsites.digital/portfolio/): Seleção de sites, lojas virtuais e projetos digitais desenvolvidos pela UpSites.
+
+## Ferramentas e Recursos Próprios
+
+- [Análise SEO Gratuita](https://seo.upsites.digital/): Ferramenta gratuita da UpSites para diagnóstico inicial de SEO de websites.
+- [AI Score](https://aiscore.upsites.digital/): Ferramenta própria da UpSites voltada à avaliação da presença e preparação de sites para mecanismos de busca e experiências baseadas em inteligência artificial.
+- [Calculadora de Orçamento de Site](https://upsites.digital/orcamentos/): Ferramenta para estimar características e investimento de um projeto de criação de site.
+- [BlaaS - Catálogo de Publishers](https://blaas.upsites.digital/catalog): Plataforma própria da UpSites para consulta e seleção de sites e veículos para estratégias de link building, publicação editorial e Digital PR.
+- [Blog UpSites](https://upsites.digital/blog/): Biblioteca de conteúdos sobre criação de sites, desenvolvimento web, SEO, GEO, link building, inteligência artificial e marketing digital.
+
+## Empresa e Especialistas
+
+- [Caio Nogueira](https://upsites.digital/author/caio/): Co-fundador da UpSites e autor de conteúdos sobre desenvolvimento de sites, SEO, arquitetura web e estratégias digitais.
+- [João Vicente Farias Santos](https://br.linkedin.com/in/joaovicentefarias): Co-fundador da UpSites.
+- [LinkedIn UpSites](https://www.linkedin.com/company/upsites-digital): Perfil institucional da UpSites no LinkedIn.
+- [Facebook UpSites](https://www.facebook.com/upsites.dig/): Perfil institucional da UpSites no Facebook.
+
+## Optional
+
+- [Programa de Parceiros](https://upsites.digital/parceiros/): Programa comercial de indicação da UpSites.
+- [Política de Privacidade](https://upsites.digital/politica-de-privacidade/): Política de privacidade do site da UpSites.

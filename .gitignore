@@ -35,3 +35,11 @@
 /site/wp-content/index.php
 /site/wp-content/themes/index.php
 /site/wp-content/themes/xyh/node_modules/*
+
+# Backups do All-in-One WP Migration
+*.wpress
+
+# Arquivos soltos na raiz
+/customizer-register.php
+/full-star.svg
+/half-star.svg
