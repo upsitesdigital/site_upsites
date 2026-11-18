@@ -17898,7 +17898,7 @@ if (function_exists('acf_add_local_field_group')) :
 
   acf_add_local_field_group(array(
     'key' => 'group_6ac2f1a0b3f01',
-    'title' => 'Textos fixos SEO',
+    'title' => 'FAQs SEO',
     'fields' => array(
       array(
         'key' => 'field_6ac2f1a0b3f02',
@@ -17922,7 +17922,7 @@ if (function_exists('acf_add_local_field_group')) :
         'return_format' => 'object',
         'multiple' => 0,
       ),
-      array(
+      /*array(
         'key' => 'field_6ac2f1a0b3f03',
         'label' => 'Texto do botão de artigos',
         'name' => 'texto_botao_articles_textosseo',
@@ -18075,7 +18075,7 @@ if (function_exists('acf_add_local_field_group')) :
         'prepend' => '',
         'append' => '',
         'maxlength' => '',
-      ),
+      ),*/
     ),
     'location' => array(
       array(

@@ -476,7 +476,7 @@ get_header();
     <?php get_template_part( 'template-parts/inc','articles' ); ?>
     <!-- end:featuredArticles -->
     
-    <div class="hidden"><?= do_shortcode('[rank_math_rich_snippet id="s-91a29f0b-37f9-438a-9f3b-9673ee53639b"]'); ?></div>
+    
   </main>
   <!-- end:main -->
 
